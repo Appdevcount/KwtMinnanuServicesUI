@@ -1,0 +1,248 @@
+﻿@model WebApplication1.Models.LogOnRequest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css" />*@
+
+    <!--<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/amiri" type="text/css" />-->
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+
+
+    <link href="~/styles/newStyle/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link href="~/styles/newStyle/icons.css" rel="stylesheet" id="">
+
+    <script src="~/styles/newStyle/jquery.min.js"></script>
+    <script src="~/styles/newStyle/bootstrap.min.js"></script>
+    <link href="~/styles/newStyle/style.css" rel="stylesheet" id="">
+
+
+    <title>@Resources.Resource.KuwaitCustoms</title>
+
+
+
+</head>
+<body class="bg-image-v2-dark">
+
+
+    @{
+
+        HttpCookie langCookie = Request.Cookies["culture"];
+        var lang = langCookie.Value;
+
+        string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+        string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+
+        if (lang == "en")
+        {
+
+            <div class="container login-container">
+                <div class="row">
+
+
+                    <div class="col-md-12">
+
+                    </div>
+
+                    <div class="col-md-6 login-form-2 fixLoginStyleEn">
+
+
+                        <h6>
+                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+                        </h6>
+
+                        <h6>
+                            <!--class="float-right"-->
+                            <img src="~/images/HomeIcons/Arabic.png" id=""
+                                 onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index2", urlredirect = AbsolutePathAndQuery })'"
+                                 class="LangIcon" />
+
+                            @Resources.Resource.KuwaitCustoms
+
+                        </h6>
+
+                        @*<h5>
+
+                بوابة الخدمات الالكترونية للجمارك الكويتية
+            </h5>*@
+
+                        <div class="col-md-12 iconsContainer">
+                            <div class="row">
+                                <div class="col-md-6 hoverDiv openBrokers">
+                                    <i class="fas fa-users fa-3x openBrokers" style="color:#00a4e4;"></i>
+                                    <br />
+                                    <label class="openBrokers">
+                                        @*خدمات المخلصين*@
+                                        @Resources.Resource.BrokerServices
+                                    </label>
+                                </div>
+
+                                <div class="col-md-6 hoverDiv openOrganizations">
+                                    <i class="fas fa-building fa-3x openOrganizations" style="color:#00a4e4;"></i>
+                                    <br />
+                                    <label class="openOrganizations">
+                                        @*الخدمات الالكترونية للشركات*@
+
+                                        @Resources.Resource.OrganizationServices
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h1 class="hideInMobile">
+                            &nbsp;
+                        </h1>
+                        <h1 class="hideInMobile">
+                            &nbsp;
+                        </h1>
+                        <h1 class="hideInMobile">
+                            &nbsp;
+                        </h1>
+                        <h1 class="hideInMobile">
+                            &nbsp;
+                        </h1>
+                    </div>
+
+
+                    @*<div class="col-md-6 login-form-1">
+            <h3 class="hideInMobile">&nbsp;</h3>
+
+            <div class="form-group" style="text-align:center;">
+                <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+
+            </div>
+
+        </div>*@
+
+                </div>
+            </div>
+
+        }
+        else
+        {
+
+            <!--   style="text-align:center;  background: rgba(244, 244, 244, 0.4) ;
+              border: 1px #f8f9fa solid;" -->
+            <div class="container login-container">
+                <div class="row">
+
+                    @*<div class="col-md-6 login-form-1">
+                            <h3 class="hideInMobile">&nbsp;</h3>
+
+                            <div class="form-group" style="text-align:center;">
+                                <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+
+                            </div>
+
+                        </div>*@
+
+
+                    <div class="col-md-12"> 
+                        <div class="col-md-6 login-form-2 fixLoginStyleAr">
+
+
+                            <h6>
+                                <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+                            </h6>
+
+                            <h6>
+
+
+
+                                @Resources.Resource.KuwaitCustoms
+
+                                @*&nbsp;*@
+
+                                <!--class="float-right"-->
+                                <img src="~/images/HomeIcons/English.png" id=""
+                                     onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index2", urlredirect = AbsolutePathAndQuery })'"
+                                     class="LangIcon" />
+
+                            </h6>
+
+                            @*<h5>
+
+                                    بوابة الخدمات الالكترونية للجمارك الكويتية
+                                </h5>*@
+
+                            <div class="col-md-12 iconsContainer">
+                                <div class="row">
+                                    <div class="col-md-6 hoverDiv openBrokers">
+                                        <i class="fas fa-users fa-3x openBrokers" style="color:#00a4e4;"></i>
+                                        <br />
+                                        <label class="openBrokers">
+                                            @*خدمات المخلصين*@
+                                            @Resources.Resource.BrokerServices
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-6 hoverDiv openOrganizations">
+                                        <i class="fas fa-building fa-3x openOrganizations" style="color:#00a4e4;"></i>
+                                        <br />
+                                        <label class="openOrganizations">
+                                            @*الخدمات الالكترونية للشركات*@
+
+                                            @Resources.Resource.OrganizationServices
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <h1 class="hideInMobile">
+                                &nbsp;
+                            </h1>
+                            <h1 class="hideInMobile">
+                                &nbsp;
+                            </h1>
+                            <h1 class="hideInMobile">
+                                &nbsp;
+                            </h1>
+                            <h1 class="hideInMobile">
+                                &nbsp;
+                            </h1>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        }
+    }
+
+
+    <!--rgba(0, 0, 0, 0.4)-->
+
+
+
+
+    <script type="text/javascript">
+
+        $(".openBrokers").click(function ()
+        {
+            window.location = '@Url.Action("BrokerServices1", "Registration")';//"loginBrokers.html";
+        });
+
+        $(".openOrganizations").click(function () {
+            window.location = '@Url.Action("StakeholderServices1", "Registration")';//"loginOrganizations.html";
+        });
+
+    </script>
+
+
+
+</body>
+</html>

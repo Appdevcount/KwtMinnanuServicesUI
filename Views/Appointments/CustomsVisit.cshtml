@@ -1,0 +1,540 @@
+﻿@model WebApplication1.Models.CustomsVisit
+
+@{
+    /**/
+
+    ViewBag.Title = "CustomsVisit";
+    //Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@{
+    HttpCookie langCookie = Request.Cookies["culture"];
+
+    if (langCookie != null)
+    {
+        if (langCookie.Value.Contains("ar"))
+        {
+            <link href="~/styles/bootstrapArabic.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+        }
+        else
+        {
+            <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+        }
+    }
+}
+@*<link rel="stylesheet" href="~/styles/font-awesome.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+<link href="~/styles/jquery-ui.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+<link href="~/styles/datepickercss.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+<script src="~/Scripts/jquery.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery-ui.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+@*<script src="~/Scripts/datepicker-ar.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@
+
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+<style>
+    .smalltextCharacter {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 2px 2px #807b7b;
+    }
+
+    .largetextCharacter {
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .notesCharacter {
+        color: #9a4802;
+        font-weight: bold;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .divht {
+        height: 35px;
+        margin-bottom:4px;
+    }
+
+    .btnclass {
+        font-weight: bold;
+        font-size: 15px;
+        min-height: 35px;
+        min-width: 100px;
+        box-shadow: 2px 2px 2px 2px grey;
+    }
+
+    .form-horizontal .form-group {
+        padding-left: 15px;
+    }
+    .alert-info{
+        border-radius:5px;
+    }
+    address {
+         margin-bottom: 0px;
+    }
+    .form-group {
+        margin-bottom: 8px;
+    }
+    .colminht {
+        min-height: 78px;
+    }
+    .customsLogoleft {
+    position: absolute;
+    z-index: 11;
+    left: 20px;
+    top: 20px;
+    height: 100px;
+}
+    .customsLogoright {
+        position: absolute;
+        z-index: 11;
+        right: 20px;
+        top: 20px;
+        height: 100px;
+    }
+
+    @@media (max-width: 900px) {
+
+
+        .customsLogoleft, .customsLogoright {
+            height: 90px;
+        }
+    }
+
+@@media (max-width: 768px) {
+
+
+    .customsLogoleft, .customsLogoright {
+        height: 80px;
+    }
+
+
+
+}
+
+
+@@media (max-width: 600px) {
+
+    .customsLogoleft, .customsLogoright {
+        height: 50px;
+    }
+}
+/*@@media (min-width: 600px) {
+
+    .customsLogoleft, .customsLogoright {
+        height: 70px;
+    }
+}*/
+
+</style>
+
+@*<h2>CustomsVisit</h2>*@
+
+<div class="container-fluid">
+    <div class="row">
+        @*image*@
+        <div class="col-lg-12" style="background-image:url(/images/bgimg/kuwaitappointmentimg.jpg);height:160px; background-repeat:no-repeat;background-size:100% 100%;background-position:center;">
+            <img src="~/images/GCSKnet/KgacLogo.png" class="customsLogoleft">
+            <div style="color:white;font-size:larger;padding-top: 58px;text-align:center;font-size: 29px;
+    font-weight: bold;    text-shadow: 2px 2px black;">Kuwait General Administration of Customs</div>
+            <img src="~/images/GCSKnet/KgacLogo.png" class="customsLogoright">
+        </div>
+    </div>
+    <div class="row " style="background-color:#966bc1;text-align:center">
+        @*black  bg title - language switch*@
+        <div class="col-lg-12 divht smalltextCharacter" style="padding-top:4px"> Customs Visit Appointment</div>
+    </div>
+    @*<div class="row ">
+
+           <div class="col-lg-12 divht notesCharacter alert-warning" style="padding-top:4px">
+                Please fill in all the details
+            </div>
+        </div>*@
+    @*style="    margin: 24px;    margin-top: 9px;
+    padding: 14px;
+    border-style: solid;
+    border-color: #ccc9c9;
+    border-radius: 26px; box-shadow:10px 10px 10px 10px grey"*@
+    <div class="row">
+        @*<div class="col-lg-12 divht notesCharacter alert-warning" style="padding-top:4px">
+            Please fill in all the details
+        </div>*@
+        @*form controls*@
+        @using (Html.BeginForm())
+        {
+        <div class="col-md-push-2 col-lg-8 col-lg-pull-2  col-sm-12 
+             " style="    margin-top: 9px;
+    padding: 14px;padding-left: 75px;
+    padding-right: 75px;
+    border-style: solid;
+    border-color: #ccc9c9;
+    border-radius: 26px; box-shadow:10px 10px 10px 10px grey">
+
+            <div class="col-lg-12 divht notesCharacter alert-warning" style="padding-top:4px">
+                Please fill in all the details
+            </div>
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.RequestId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequestId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequestId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.RequestNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequestNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequestNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ReservationNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReservationNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReservationNo, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+                @Html.HiddenFor(model => model.RequestId)
+                @Html.HiddenFor(model => model.RequestNumber)
+                @Html.HiddenFor(model => model.ReservationNo)
+
+
+
+                <div class="form-group col-md">
+                    @Html.LabelFor(model => model.VisitorType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.VisitorType,
+                     new SelectList(
+                    Model.VisitorTypeData,
+                    "VisitorTypeId",
+                    "VisitorTypeName",
+                     Model.VisitorType), new { @class = " form-control  select2  " } )
+                        @*@Html.EditorFor(model => model.VisitorType, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(model => model.VisitorType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VisitorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VisitorName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VisitorName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CivilId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CivilId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 colminht">
+                    @Html.LabelFor(model => model.MobileNum, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.MobileNum, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MobileNum, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 colminht">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(MODEL=>MODEL.Department,new SelectList(
+                    Model.DepartmentDetails,
+                    "DepartmentId",
+                    "DepartmentName",
+                     Model.Department), new { @class = " form-control  select2  " })
+                        @*<select id="BayanPort"
+                                class="form-control  select2 ">
+                            <option value="KWI" selected="selected"> Kuwait Intnl. Airport </option>
+                            <option value="SAL">Salmi</option>
+                            <optkion value="FTZ">Kuwait FTZ</optkion>
+                            <option value="NUW">Nuwaiseeb</option>
+                            <option value="VGM">Vegetable Market </option>
+                            <option value="KFN">Kaifan</option>
+                            <option value="DOH">Doha</option>
+                            <option value="SAA">Shuaiba</option>
+                            <option value="SWK">Shuwaikh </option>
+                            <option value="MEA">Mina Al Ahmadi </option>
+                            <option value="ABD">Abdeli</option>
+                            <option value="SLB">Sulaibiya</option>
+                            <option value="HTN">Hiteen</option>
+
+                        </select>*@
+                        @*@Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group alert-info">
+                    @*@Html.LabelFor(model => model.DeptAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeptAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DeptAddress, "", new { @class = "text-danger" })
+            </div>*@
+                    <div class="col-lg-2">DeptAddress : </div><div class="col-lg-10">
+                        <address id="DeptAddress">test</address>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VisitPurpose, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(MODEL=>MODEL.VisitPurpose,new List<SelectListItem> { new SelectListItem() { Text= "Select VisitPurpose", Value="0",Selected=true  } }, new { @class = " form-control  select2  " })
+                        @*<select id="BayanPort"
+                                class="form-control  select2">
+                            <option value="KWI" selected="selected"> Kuwait Intnl. Airport </option>
+                            <option value="SAL">Salmi</option>
+                            <optkion value="FTZ">Kuwait FTZ</optkion>
+                            <option value="NUW">Nuwaiseeb</option>
+                            <option value="VGM">Vegetable Market </option>
+                            <option value="KFN">Kaifan</option>
+                            <option value="DOH">Doha</option>
+                            <option value="SAA">Shuaiba</option>
+                            <option value="SWK">Shuwaikh </option>
+                            <option value="MEA">Mina Al Ahmadi </option>
+                            <option value="ABD">Abdeli</option>
+                            <option value="SLB">Sulaibiya</option>
+                            <option value="HTN">Hiteen</option>
+
+                        </select>*@
+                        @*@Html.EditorFor(model => model.VisitPurpose, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(model => model.VisitPurpose, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group alert-info">
+                    @*@Html.LabelFor(model => model.Guideline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Guideline, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Guideline, "", new { @class = "text-danger" })
+            </div>*@
+                    <div class="col-lg-2">Guideline : </div><div class="col-lg-10">
+                        <address id="Guideline">test</address>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 colminht">
+                    @*@Html.LabelFor(model => model.AppointmentDate, htmlAttributes: new { @class = "control-label col-md-4" })*@
+                    @Html.Label("Date", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.AppointmentDate, new { htmlAttributes = new { @class = "form-control date" } })
+                        @Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 colminht">
+                    @*@Html.LabelFor(model => model.AppointmentTimeSlot, htmlAttributes: new { @class = "control-label col-md-4" })*@
+                    @Html.Label("Time", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(MODEL => MODEL.AppointmentTimeSlot, new List<SelectListItem> { new SelectListItem() { Text = "Select Time", Value = "0", Selected = true } }, new { @class = " form-control  select2  " })
+                        @*<select id="BayanPort"
+                                class="form-control  select2 ">
+                            <option value="KWI" selected="selected"> Kuwait Intnl. Airport </option>
+                            <option value="SAL">Salmi</option>
+                            <optkion value="FTZ">Kuwait FTZ</optkion>
+                            <option value="NUW">Nuwaiseeb</option>
+                            <option value="VGM">Vegetable Market </option>
+                            <option value="KFN">Kaifan</option>
+                            <option value="DOH">Doha</option>
+                            <option value="SAA">Shuaiba</option>
+                            <option value="SWK">Shuwaikh </option>
+                            <option value="MEA">Mina Al Ahmadi </option>
+                            <option value="ABD">Abdeli</option>
+                            <option value="SLB">Sulaibiya</option>
+                            <option value="HTN">Hiteen</option>
+
+                        </select>*@
+                        @*@Html.EditorFor(model => model.AppointmentTimeSlot, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(model => model.AppointmentTimeSlot, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RequestNote, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RequestNote, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RequestNote, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.DepartmentDetailsstring, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DepartmentDetailsstring, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DepartmentDetailsstring, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AppointmentTimeSlotsstring, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AppointmentTimeSlotsstring, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AppointmentTimeSlotsstring, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>*@
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-3 col-sm-6 col-xs-6 text-center">
+                        <input type="submit" value="Book" class="btn btn-success btnclass" />
+                        @*form actioon button*@
+                        @*<div class="col-lg-offset-3 col-lg-3">
+                        <input type="submit" value="Book" class="btn btn-success" />
+                    </div>*@
+                    </div>
+                    <div class="col-md-3  col-sm-6 col-xs-6 text-center">
+                        <button class="btn btn-danger btnclass">Cancel</button>
+                        @*<div class="col-lg-3 col-lg-offset-3">
+                        <button class="btn btn-danger">Cancel</button>
+                    </div>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        }
+    </div>
+
+    @*<div class="row" style="background-color:#c7c6c6;height:30px;margin-top:30px;margin-bottom:-1px"></div>*@
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+
+        var DepartmentDetailsstring = JSON.parse( '@Model.DepartmentDetailsstring');
+        var VisitPurposestring = '@Model.VisitPurposestring';
+        var AppointmentTimeSlotsstring = '@Model.AppointmentTimeSlotsstring';
+
+        console.log((DepartmentDetailsstring));
+        console.log((VisitPurposestring));
+        console.log((AppointmentTimeSlotsstring));
+
+        console.log(JSON.stringify(DepartmentDetailsstring));
+        console.log(JSON.stringify(VisitPurposestring));
+        console.log(JSON.stringify(AppointmentTimeSlotsstring));
+
+        console.log(JSON.parse( DepartmentDetailsstring));
+        console.log(JSON.parse(VisitPurposestring));
+        console.log(JSON.parse(AppointmentTimeSlotsstring));
+
+
+        $('#AppointmentDate').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+10",
+            buttonImage: "ui-icon-calender",
+            //showButtonPanel: true,
+            //buttonImageOnly: false,
+            //showOn: "both",
+            beforeShowDay: function (date) {
+
+                var day = date.getDay();
+                console.log(day);
+
+                if (day == 0 )//&& $('#RecurrencyWeek_Sunday').is(':checked'))
+                    return [false];
+                if (day == 1)// && $('#RecurrencyWeek_Monday').is(':checked'))
+                    return [true];
+                if (day == 2)// && $('#RecurrencyWeek_Tuesday').is(':checked'))
+                    return [false];
+                if (day == 3)//&& $('#RecurrencyWeek_Wednesday').is(':checked'))
+                    return [true];
+                if (day == 4)// && $('#RecurrencyWeek_Thursday').is(':checked'))
+                    return [false];
+                if (day == 5)//&& $('#RecurrencyWeek_Friday').is(':checked'))
+                    return [true];
+                if (day == 6)//&& $('#RecurrencyWeek_Saturday').is(':checked'))
+                    return [false];
+
+                return [false];
+            }
+        }).attr('readonly', 'readonly');
+
+  var VisitPurposeFull ;
+var AppointmentTimeSlot;
+        $('#Department').change(function () {
+
+
+             VisitPurposeFull = VisitPurposestring.filter(function (item) { return item.DepartmentId === $('#Department').val(); });
+             AppointmentTimeSlot = AppointmentTimeSlotsstring.filter(function (item) { return item.DepartmentId === $('#Department').val(); });
+
+ $('#VisitPurpose').children('option:not(:first)').remove();
+            for (var i = 0; i < AppointmentTimeSlot.length; i++) {
+                $('#VisitPurpose').append('<option value=' + VisitPurposeFull[i].VisitPurposeName + '>' + VisitPurposeFull[i].VisitPurposeName + '</option>');
+            }
+
+            $('#AppointmentTimeSlot').children('option:not(:first)').remove();
+            for (var i = 0; i < AppointmentTimeSlot.length; i++) {
+                $('#AppointmentTimeSlot').append('<option value=' + AppointmentTimeSlot[i].AppountmentHour + '>' + AppointmentTimeSlot[i].AppountmentHour + '</option>');
+            }
+
+            //$(GovernorateRegionPostalCodes).each(function (index)
+            //{
+            //    console.log("There " +  GovernorateRegionPostalCodes[index].RegionID);
+            //    if (GovernorateRegionPostalCodes[index].RegionID == $('#Region').val())
+            //    {
+            //        console.log("I'm Here  " +  index);
+            //    }
+            //});
+
+            console.log(temp);
+            if (temp) {
+                console.log('found', temp);
+                console.log('found', temp[0].PostalCode);
+
+                $('#PostalCode').val(temp[0].PostalCode);
+            }
+
+
+
+        });
+    });
+</script>
+
+

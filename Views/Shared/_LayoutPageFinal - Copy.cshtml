@@ -1,0 +1,848 @@
+﻿@using System.Data;
+@using System.Configuration;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+
+    <link href="~/styles/Untitled.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link rel="stylesheet" href="~/styles/font-awesome.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    @*
+        <script src="~/Scripts/jquery.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@
+
+
+    <script src="~/Scripts/jquery.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    @{
+        /**/
+
+
+        HttpCookie langCookie = Request.Cookies["culture"];
+        String notificationDropdownClass = String.Empty;
+
+        if (langCookie != null)
+        {
+            if (langCookie.Value.Contains("ar"))
+            {
+                <link href="~/styles/bootstrapArabic.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+                <link rel="stylesheet" href="~/styles/style4Arabic.css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
+                notificationDropdownClass = "dropdown-menu dropdown-menu-left pull-left";
+            }
+            else
+            {
+                <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+                <link rel="stylesheet" href="~/styles/style4.css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
+                notificationDropdownClass = "dropdown-menu dropdown-menu-right pull-right";
+            }
+        }
+    }
+
+
+
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/Scripts/jquery-ui.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link href="~/styles/datepickercss.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    @*
+        <link href="~/styles/animate.min.css" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+
+    <link href="~/styles/fileUploadCss/fileinput.css" media="all" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/fileUpload/fileinput.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    @{
+        if (langCookie != null)
+        {
+            if (langCookie.Value.Contains("ar"))
+            {
+                <script src="~/Scripts/fileUpload/ar.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+            }
+        }
+    }
+
+
+    <script src="~/Scripts/datatables.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+    <script src="~/Scripts/datepicker-ar.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+    <link href="~/styles/select2.css" media="all" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <script src="~/Scripts/Select2.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <style>
+        .mydate {
+            cursor: pointer;
+            background-color: #FFFFFF;
+        }
+    </style>
+
+    <link href="~/styles/datatables.min.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link href="~/styles/ModifiedStyles.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    @*
+        <script src="~/Scripts/eServiceScript.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@
+
+    <title>@ViewBag.Title</title>
+
+</head>
+
+<body dir="@Resources.Resource.dir">
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <div class="wrapper">
+
+        <!-- Sidebar Holder -->
+        <nav id="sidebar" class="active">
+            <div class="sidebar-header">
+                <h5 id="sidebarCollapsee">@Resources.Resource.eServiceHeader</h5>
+                @*<strong id="sidebarCollapseee">&nbsp;</strong>*@
+
+                <img id="sidebarCollapseee" src="~/images/customs.png" width="50" alt="@Resources.Resource.eServiceHeader" />
+            </div>
+           
+@if (Session["ServiceId"] != null)
+{ 
+            <div id="sessionDiv" style="display:none" data-id="@Session["ServiceId"]"></div>
+}
+                <ul class="list-unstyled components">
+                    @*
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-home"></i>
+                        @Resources.Resource.homePage
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li><a href="#">Home 1</a></li>
+                        <li><a href="#">Home 2</a></li>
+                        <li><a href="#">Home 3</a></li>
+                    </ul>
+                </li>*@
+
+                    @if (Session["UserId"] == null)
+                    {
+                        <li>
+                            <a href="@Url.Action("Start", "registration")">
+                                <i class="glyphicon glyphicon-home"></i>
+                                <strong>@Resources.Resource.homePage</strong>
+                            </a>
+                        </li>
+                    }
+
+                    @if (Session["AllowmenuAfterAcountUpdate"] != null)
+                    {
+
+                        if (Session["AllowmenuAfterAcountUpdate"].ToString() == "False")
+                        {
+
+                            <li>
+                                <a href="@Url.Action("LogOut", "registration")">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    <strong>@Resources.Resource.homePage</strong>
+                                </a>
+                            </li>
+                        }
+                    }
+                    @if (Session["UserId"] != null)
+                    {
+                        <li>
+                            <a href="@Url.Action("MenuView", "dashboard")">
+                                <i class="glyphicon glyphicon-home"></i>
+                                <strong>@Resources.Resource.home</strong>
+                            </a>
+                        </li>
+                    }
+                    @{
+
+                        if (Session["UserId"] != null && Session["AllowmenuAfterAcountUpdate"].ToString() == "True")
+                        {
+                            int UserIdtoGetServices = int.Parse(Session["UserId"].ToString());
+                            WebApplication1.Models.ReqObj serviceSubscription = new WebApplication1.Models.ReqObj { ParentID = UserIdtoGetServices, ChildUser = 0 };
+                            WebApplication1.Models.Dataclass objdataclass = new WebApplication1.Models.Dataclass();
+
+                            DataTable dataTable = objdataclass.GETParentUserActiveServices(serviceSubscription, false);
+
+                            if (Session["serviceSubscriptionDataTable"] != null)
+                            {
+                                Session.Remove("serviceSubscriptionDataTable");
+                            }
+
+                            Session.Add("serviceSubscriptionDataTable", dataTable);
+
+
+                            if (Session["serviceSubscriptionDataTable"] != null)
+                            {
+
+                                DataTable serviceSubscriptionDataTable = Session["serviceSubscriptionDataTable"] as DataTable;
+                                <li>
+                                    <a href="#pageSubmen" data-toggle="collapse" aria-expanded="false">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                        <strong>@Resources.Resource.AvailableServices1</strong>
+                                    </a>
+                                    <ul class="collapse list-unstyled marginMenuFix" id="pageSubmen">
+
+
+                                        @foreach (DataRow row in serviceSubscriptionDataTable.Rows)
+                                        {
+
+                                            String ExamServiceId = ConfigurationManager.AppSettings["ExamService"].ToString();
+                                            String RenewalServiceId = ConfigurationManager.AppSettings["RenewalService"].ToString();
+                                            String DeActivateServiceId = ConfigurationManager.AppSettings["DeActivateService"].ToString();
+                                            String TransferServiceId = ConfigurationManager.AppSettings["TransferService"].ToString();
+                                            String CancelServiceId = ConfigurationManager.AppSettings["CancelService"].ToString();
+                                            String IssuanceServiceId = ConfigurationManager.AppSettings["IssuanceService"].ToString();
+                                            String WhomItConcernsLetterServiceID = ConfigurationManager.AppSettings["WhomItConcernsLetterService"].ToString();
+                                            String PrintLostIdCardServiceID = ConfigurationManager.AppSettings["PrintLostIdCard"].ToString();
+                                            String OrganizationRegistrationServiceId = ConfigurationManager.AppSettings["OrganizationRegistrationService"].ToString();
+                                            String subScriptionServiceId = ConfigurationManager.AppSettings["subScriptionService"].ToString();
+
+                                            if (row["ServiceID"].ToString() == ExamServiceId && Convert.ToBoolean(Session["ClearingAgentServices"]))
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("ExamRequest", "ClearingAgentExamRequest" )">
+                                                        @*<i class="fa fa-id-badge"></i>*@
+                                                        <strong>@Resources.Resource.clearingAgentExamRequest</strong>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                            if (row["ServiceID"].ToString() == RenewalServiceId && Convert.ToBoolean(Session["ClearingAgentServices"]))
+                                            {
+                                                Session["RenewalServiceAllowed"] = true;
+                                                <li>
+
+                                                    <a href="@Url.Action("BrokerRenewal", "BrokerRenewal",new { ServiceId=RenewalServiceId })">
+                                                       
+                                                        <strong>@Resources.Resource.BrokerRenewalRequests</strong>
+                                                    </a>
+                                                </li>
+                                            }
+                                            if (row["ServiceID"].ToString() == DeActivateServiceId && Convert.ToBoolean(Session["ClearingAgentServices"]))
+                                            {
+                                                Session["DeActivateServiceAllowed"] = true;
+                                          
+
+                                                <li>
+
+                                                    <a href="@Url.Action("BrokerRenewal", "BrokerRenewal",new { ServiceId=DeActivateServiceId })">
+
+                                                        <strong>@Resources.Resource.BrokerDeactivateRequests</strong>
+                                                    </a>
+                                                </li>
+                                            }
+                                            if (row["ServiceID"].ToString() == CancelServiceId && Convert.ToBoolean(Session["ClearingAgentServices"]))
+                                            {
+                                                Session["CancelServiceAllowed"] = true;
+
+
+                                                <li>
+
+                                                    <a href="@Url.Action("BrokerRenewal", "BrokerRenewal",new { ServiceId=CancelServiceId })">
+
+                                                        <strong>@Resources.Resource.BrokerCancelRequests</strong>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                       
+                                            if (row["ServiceID"].ToString() == WhomItConcernsLetterServiceID && Convert.ToBoolean(Session["ClearingAgentServices"]))
+                                            {
+                                                Session["CancelServiceAllowed"] = true;
+
+
+                                                <li>
+
+                                                    <a href="@Url.Action("BrokerRenewal", "BrokerRenewal",new { ServiceId=WhomItConcernsLetterServiceID })">
+
+                                                        <strong>@Resources.Resource.BrokerToWhomItConcern</strong>
+                                                    </a>
+                                                </li>
+                                            }
+                                            if (row["ServiceID"].ToString() == PrintLostIdCardServiceID && Convert.ToBoolean(Session["ClearingAgentServices"]))
+                                            {
+                                                Session["CancelServiceAllowed"] = true;
+
+
+                                                <li>
+
+                                                    <a href="@Url.Action("BrokerRenewal", "BrokerRenewal",new { ServiceId=PrintLostIdCardServiceID })">
+
+                                                        <strong>@Resources.Resource.BrokerPrintLostIdCard</strong>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                      
+                                            if (row["ServiceID"].ToString() == OrganizationRegistrationServiceId && Convert.ToBoolean(Session["OrganizationServices"]))
+                                            {
+                                                Session["OrgRegistrationAllowed"] = true;
+                                                <li>
+                                                    <a href="@Url.Action("Org_Registration", "User",new { NewRequest=true})">
+                                                        @*<i class="fa fa-bank"></i>*@
+                                                        <strong>@Resources.Resource.OrgReg_Header2</strong>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                            if (row["ServiceID"].ToString() == "8" && Convert.ToBoolean(Session["OrganizationServices"]))
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("payment", "User")">
+                                                        @*<i class="fa fa-bank"></i>*@
+                                                        <strong>@Resources.Resource.Menu4</strong>
+                                                    </a>
+                                                </li>
+                                            }
+                                            if (row["ServiceID"].ToString() == "9" && Convert.ToBoolean(Session["OrganizationServices"]))
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("DeclarationSearch", "User")">
+                                                        @*<i class="fa fa-bank"></i>*@
+                                                        <strong>@Resources.Resource.DeclarationSearch</strong>
+                                                    </a>
+                                                </li>
+                                            }
+                                            if (row["ServiceID"].ToString() == "10" && Convert.ToBoolean(Session["OrganizationServices"]))
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("HouseBillSearch", "User")">
+                                                        @*<i class="fa fa-bank"></i>*@
+                                                        <strong>@Resources.Resource.HousebillSearch</strong>
+                                                    </a>
+                                                </li>
+                                            }
+                                            if (row["ServiceID"].ToString() == "11" && Convert.ToBoolean(Session["OrganizationServices"]))
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("HSCodeSearch", "User")">
+                                                        @*<i class="fa fa-bank"></i>*@
+                                                        <strong>@Resources.Resource.HSCodeSearch</strong>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                        }
+
+                                        @*@if (Session["LegalEntity"] != null)
+                                    {
+                                        if (Session["LegalEntity"].ToString() == "2" && Convert.ToBoolean(Session["OrganizationServices"]))
+                                        {
+
+                                            <li>
+                                                <a href="@Url.Action("payment", "User")">
+
+                                                    <strong>@Resources.Resource.Menu4</strong>
+                                                </a>
+                                            </li>
+                                        }
+                                    }*@
+                                        @*<i class="fa fa-money-bill"></i>*@
+
+
+                                        @*
+
+                                    if (Session["LegalEntity"].ToString() == "2" && Convert.ToBoolean(Session["OrganizationServices"]))//Session["AllowedMenus"].ToString() != "" &&
+                                    {
+                                        <li>
+                                                                    <a href="@Url.Action("DeclarationSearch", "User")">
+                                                                        <strong>@Resources.Resource.DeclarationSearch</strong>
+                                                                    </a>
+                                                                </li>
+                                                                     <li>
+                                                                    <a href="@Url.Action("HouseBillSearch", "User")">
+                                                                        <strong>@Resources.Resource.HousebillSearch</strong>
+                                                                    </a>
+                                                                </li>
+                                                                     <li>
+                                                                    <a href="@Url.Action("HSCodeSearch", "User")">
+                                                                        <strong>@Resources.Resource.HSCodeSearch</strong>
+                                                                    </a>
+                                                                </li>
+
+                                                @if (Session["AllowedMenus"] != null)
+                                                {
+                                                    if (Session["AllowedMenus"].ToString() != "")
+                                                    {
+                                                        String[] arr = Session["AllowedMenus"].ToString().Split(',').ToArray();
+                                                        for (int i = 0; i < arr.Length; i++)
+                                                        {
+                                                            if (arr[i] == "Declaration")
+                                                            {
+
+                                                                <li>
+                                                                    <a href="@Url.Action("DeclarationSearch", "User")">
+                                                                        <strong>@Resources.Resource.DeclarationSearch</strong>
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                            if (arr[i] == "Housebills")
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("HouseBillSearch", "User")">
+                                                                        <strong>@Resources.Resource.HousebillSearch</strong>
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                            if (arr[i] == "HsCode")
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("HSCodeSearch", "User")">
+                                                                        <strong>@Resources.Resource.HSCodeSearch</strong>
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                        }
+
+                                                    }
+                                                }
+
+
+
+                                    }*@
+
+                                    </ul>
+                                </li>
+
+                            }
+
+                            if (Session["isAdmin"] != null)//&& Session["LicenseNumber"]!=null)
+                            {
+                                if ((Session["isSubAdmin"].ToString() == "True" || Session["isAdmin"].ToString() == "True"))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("BrokerServiceRequestUpdates", "BrokerRenewal")">
+                                            <i class="glyphicon glyphicon-send"></i>
+                                            <strong>@Resources.Resource.subScriptionNew</strong>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                            if (Session["LegalEntity"] != null)
+                            {
+                                if (Session["LegalEntity"].ToString() == "2" && Convert.ToBoolean(Session["OrganizationServices"]))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("MyOrganizations", "User")">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                            <strong>@Resources.Resource.Menu2</strong>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                            <li>
+                                <a href="@Url.Action("RequestListfortheUser", "Request")">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <strong>@Resources.Resource.RequestsList</strong>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("MyAccount", "User")">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <strong>@Resources.Resource.MyAccount</strong>
+                                </a>
+                            </li>
+
+
+
+                            if (Session["isAdmin"] != null)//&& Session["LicenseNumber"]!=null)
+                            {
+                                if ((Session["isSubAdmin"].ToString() == "True" || Session["isAdmin"].ToString() == "True") && Session["LicenseNumber"].ToString() != "")
+                                {
+
+                                    <li>
+                                        <a href="#pageSubmennn" data-toggle="collapse" aria-expanded="false">
+                                            <i class="glyphicon glyphicon-link"></i>
+                                            <strong>@Resources.Resource.usersManagement</strong>
+                                        </a>
+                                        <ul class="collapse list-unstyled marginMenuFix" id="pageSubmennn">
+
+                                            <li>
+                                                <a href="@Url.Action("AdditionalUserRegistration", "registration")">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                    <strong>@Resources.Resource.addAdditionalUser</strong>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="@Url.Action("GETChildUsers", "registration")">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                    <strong>@Resources.Resource.existingUsers</strong>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                }
+                            }
+
+                            if (Session["LegalEntity"] != null)
+                            {
+                                if (Session["LegalEntity"].ToString() == "2")
+                                {
+
+                                    @*<li>
+                                    <a href="@Url.Action("payment", "User")">
+                                        <i class="fa fa-money-bill"></i>
+                                        <strong>@Resources.Resource.Menu4</strong>
+                                    </a>
+                                </li>*@
+
+
+
+                                    @*<li>
+                                    <a href="@Url.Action("Org_RequestStatus", "User")">
+                                        <i class="glyphicon glyphicon-tasks"></i>
+                                        <strong>@Resources.Resource.Menu3</strong>
+                                    </a>
+                                </li>*@
+
+                                    @*
+                                <li>
+                                    <a href="@Url.Action("payment", "User")">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        <strong>@Resources.Resource.Menu4</strong>
+                                    </a>
+                                </li>*@
+                                }
+                            }
+                        } // End  if(session[UserId] != null)
+                    }
+
+
+                    @{
+                        //if (Session["AllowedMenus"] != null)
+                        //{
+                        @*if (Session["LegalEntity"].ToString() == "2" && Convert.ToBoolean(Session["OrganizationServices"]))//Session["AllowedMenus"].ToString() != "" &&
+                    {
+                            <li>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                    <strong>@Resources.Resource.Search</strong>
+                                </a>
+
+                                <ul class="collapse list-unstyled marginMenuFix" id="pageSubmenu">
+                                    @if (Session["AllowedMenus"] != null)
+                                    {
+                                        if (Session["AllowedMenus"].ToString() != "")
+                                        {
+                                            String[] arr = Session["AllowedMenus"].ToString().Split(',').ToArray();
+                                            for (int i = 0; i < arr.Length; i++)
+                                            {
+                                                if (arr[i] == "Declaration")
+                                                {
+
+                                                    <li>
+                                                        <a href="@Url.Action("DeclarationSearch", "User")">
+                                                            <strong>@Resources.Resource.DeclarationSearch</strong>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                if (arr[i] == "Housebills")
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("HouseBillSearch", "User")">
+                                                            <strong>@Resources.Resource.HousebillSearch</strong>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                if (arr[i] == "HsCode")
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("HSCodeSearch", "User")">
+                                                            <strong>@Resources.Resource.HSCodeSearch</strong>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+
+                                        }
+                                    }
+
+
+                                </ul>
+
+                            </li>
+
+                        }*@
+                        @*}*@
+
+                    }
+
+                    @if (Session["UserId"] != null)
+                    {
+                        <li>
+                            <a href="@Url.Action("LogOut", "registration")">
+                                <i class="glyphicon glyphicon-off"></i>
+                                <strong>@Resources.Resource.Menu5</strong>
+                            </a>
+                        </li>
+
+                    }
+
+
+
+
+                    @*
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-paperclip"></i>
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-send"></i>
+                        Contact
+                    </a>
+                </li>*@
+                </ul>
+                @*<ul class="list-unstyled CTAs">
+                <li>
+                    <a href="@Url.Action(" Index", "registration" )" class="download">
+                        <strong>@Resources.Resource.Menu5</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="article">Extra</a>
+                </li>
+            </ul>*@
+            </nav>
+
+
+        <div class="col-lg-9">
+            @*col-centered*@
+
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span></span>
+                            </button>
+                        </div>
+
+
+                        <div class="text-center text-primary" style="width:100%;font-size:23px">
+
+
+                            @if (Session["ClearingAgentServices"] != null)
+                            {
+                                if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+                                {
+                                    <strong> @Resources.Resource.BrokerServices </strong>
+                                }
+                                else if (Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                                {
+
+                                    <strong> @Resources.Resource.OrganizationServices </strong>
+                                }
+                            }
+
+
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            @*Notification Here*@
+                            @{
+                                if (Session["UserId"] != null)
+                                {
+                                    <div class="dropdown" id="divNotificationContainer">
+                                        <a href="#dropdown" onclick="return false;"
+                                           role="button" data-toggle="dropdown"
+                                           id="notificationDropdownMenu"
+                                           data-target="#dropdown" aria-expanded="true">
+                                            <i class="fa fa-bell-o"
+                                               id="notificationBell">
+                                            </i>
+                                        </a>
+                                        <span class="badge badge-danger" id="notificationCount">0</span>
+                                        <ul class="@notificationDropdownClass" role="menu"
+                                            aria-labelledby="notificationDropdownMenu">
+                                            <li role="presentation">
+                                                <a href="../user/ShowNotifications" id="showAllNotificationsHeader" class="dropdown-menu-header">&nbsp;</a>
+
+                                            </li>
+                                            <ul class="timeline timeline-icons timeline-sm" id="listOfNotifications">
+                                                @*<li>
+                                                    <p>
+                                                        <i class="fa fa-bullhorn fa-flip-horizontal"></i>
+                                                        @Resources.Resource.examAnnoncementPublished
+                                                        &nbsp;
+                                                        <a class="notificationDetails" href="">
+                                                            @Resources.Resource.details
+                                                        </a>
+                                                        <span class="timeline-date">26/03/2019</span>
+                                                    </p>
+                                                </li>*@
+
+                                                @*<li>
+                                                    <p>
+                                                        <i class="fa fa-bullhorn fa-flip-horizontal"></i>
+                                                        @Resources.Resource.examAnnoncementMSG
+                                                        &nbsp;
+                                                        <a class="notificationDetails" href="">
+                                                            @Resources.Resource.details
+                                                        </a>
+
+                                                        <span class="timeline-date">26/03/2019</span>
+                                                    </p>
+                                                </li>
+
+                                                <li>
+                                                    <p>
+                                                        <i class="fa fa-bullhorn fa-flip-horizontal"></i>
+                                                        @Resources.Resource.examPassed
+                                                        &nbsp;
+                                                        <a class="notificationDetails" href="">
+                                                            @Resources.Resource.details
+                                                        </a>
+                                                        <span class="timeline-date">26/03/2019</span>
+                                                    </p>
+                                                </li>*@
+                                            </ul>
+                                            <li role="presentation">
+                                                <a href="../user/ShowNotifications" id="showAllNotifications" class="dropdown-menu-header">
+                                                    @Resources.Resource.showAll
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                }
+                            }
+
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                @{
+                                    String pageName = ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();
+                                    String contName = ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
+
+
+                                    string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+                                    //string url = Html.Encode(HttpContext.Current.Request.Url.PathAndQuery);
+                                    //string sc = Html.Encode(HttpContext.Current.Request.Url.AbsoluteUri);
+                                    string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+
+                                    var lang = langCookie.Value;
+                                    if (lang == "en")
+                                    {
+
+                                        <li>@Html.ActionLink("العربية", "ChangeLanguage", "registration", new { lang = "ar", pageName = pageName, ContName = contName, urlredirect = AbsolutePathAndQuery }, new { ID = "changeLangToEnglish", @class = "changeLang" })</li>
+
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("English", "ChangeLanguage", "registration", new { lang = "en", pageName = pageName, ContName = contName, urlredirect = AbsolutePathAndQuery }, new { ID = "changeLangToArabic", @class = "changeLang" }) </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+                @{
+                    if (Session["UserId"] != null)
+                    {
+                        String FirstName = Session["FirstName"].ToString();
+                        String LastName = Session["LastName"].ToString();
+
+                        if (langCookie.Value.Contains("ar"))
+                        {
+                            <div class="welcome">
+                                <span class="changeLang">
+                                    @Resources.Resource.welcome: @FirstName @LastName
+                                </span>
+                            </div>
+                        }
+
+
+                        else
+                        {
+                            <div class="welcome">
+                                <span class="changeLang">
+                                    @Resources.Resource.welcome: @FirstName @LastName
+                                </span>
+
+
+                            </div>
+                        }
+
+                    }
+                }
+
+
+                <div class="pageHeader">
+                    <span>@ViewBag.Title</span>
+                </div>
+
+                @RenderBody()
+
+            </div>
+        </div>
+
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" style="z-index:200;" role="button" title="@Resources.Resource.returnToTop" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+    </div>
+
+
+    <script src="~/Scripts/eServiceScript.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script>
+        //$('.mydate').attr("disabled", true)
+        //document.getElementsByClassName('mydate').attr('readonly', 'true');
+        $('.mydate').keypress(function () {
+            return false;
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+
+    <script>
+                                                        //$.fn.restrict = function (pattern, allowed) {
+                                                        //    // default to allow backspace, delete, tab, escape, enter
+                                                        //    allowed = allowed;//|| [0, 46, 8, 9, 27, 13];
+                                                        //    $(this).keypress(function (event) {
+                                                        //        if (event.which) {
+                                                        //            var key = event.which;
+                                                        //            if ($.inArray(key, allowed) > -1) {
+                                                        //                return true;
+                                                        //            }
+                                                        //            var character = String.fromCharCode(key);
+                                                        //            if (pattern.test(character)) {
+                                                        //                return true;
+                                                        //            }
+                                                        //            event.preventDefault();
+                                                        //            return false;
+                                                        //        };
+                                                        //    });
+                                                        //    return this;
+                                                        //};
+
+                                                        //$('.mydate').restrict();
+    </script>
+
+</body>
+</html>

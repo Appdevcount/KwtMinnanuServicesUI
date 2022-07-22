@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/CustomFont.css"  />
+    <title>@Resources.Resource.KuwaitCustoms</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+    <link rel="stylesheet" href="~/styles/bootstrap.css"  />
+    
+    <style type="text/css">
+        #mydiv {
+            overflow-y: auto !important;
+            width: 100%;
+            margin-top: 20px;
+            padding: 5px;
+        }
+        @@media only screen and (max-width: 450px) {
+            #Idmodalcontent {
+                position: relative;
+                background-color: #fff;
+                border: none;
+                border: none;
+                border-radius: unset;
+                outline: unset;
+                -webkit-box-shadow: unset;
+                box-shadow: unset;
+                background-clip: unset;
+                border-bottom: none;
+            }
+        }
+
+        #t1 {
+            margin-top: 20px;
+            width: 40%;
+        }
+
+        @@media only screen and (max-width: 600px) {
+            #t1 {
+                margin-top: 0px;
+                width: 100%;
+            }
+        }
+
+        @@media only screen and (min-width:481px) and (max-device-width: 1000px) {
+            #t1 {
+                margin-top: 0px;
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body style="font-family: myFirstFont !important;width:100%;position:fixed">
+        <div style="@Resources.Resource.div_direction">
+            <table id="t1" align="center">
+                <tr>
+                    <td width="50%" align="center">
+                        <div class="" id="Idmodalcontent">
+                            <div class="modal-header">
+                                <table id="t2" align="center">
+                                    <tr>
+                                        <td width="50%" align="center">
+                                            <img style="height:100px;" src="~/images/customs.png" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="modal-body" id="mydiv">
+                                <div style="padding:20px;">
+                                    <h3>
+                                        @Resources.Resource.error
+                                        
+                                    </h3>
+                                    <h4>
+                                       @Resources.Resource.notFoundpage
+                                        
+                                    </h4>
+                                    <h6>@Html.ActionLink(Resources.Resource.homePage, "Index", "registration")</h6>
+                                    <br />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</body>
+</html>

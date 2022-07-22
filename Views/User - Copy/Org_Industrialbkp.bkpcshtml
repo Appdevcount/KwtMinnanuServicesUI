@@ -1,0 +1,479 @@
+﻿@using System.Globalization;
+@model WebApplication1.Models.OrgGetIndustrialResult
+@{
+    ViewBag.Title = Resources.Resource.industrialOrganization;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+<div class="col-lg-12 col-centered" id="mydiv">
+    <table class="table table-striped center-block">
+        <tbody>
+            <tr>
+                <td colspan="1">
+
+                    <div class="well form-horizontal" dir="@Resources.Resource.dir">
+
+                        @using (Html.BeginForm("Org_Industrial", "User", FormMethod.Post, new { id = "OrgInd" }))
+                        {
+                            if (ViewData["data"] != null)
+                            {
+                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                {
+                                    foreach (var item in ViewData["data"] as List<WebApplication1.Models.OrgGetIndustrialResult>)
+                                    {
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Industrial_LicenseNumber</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"></i>
+                                                        </span>
+                                                        <input class="form-control textval" style="width:100%" placeholder="@Resources.Resource.Industrial_LicenseNumber" name="IndustrialLicenseNumber"
+                                                               value="@item.IndustrialLicenseNumber" type="text" id="inputLicenseno" maxlength="20" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                                        @Html.ValidationMessageFor(model => model.IndustrialLicenseNumber, "", new { @class = "text-danger inlineBlock" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Industrial_LicenseNumber</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"></i>
+                                                        </span>
+                                                        @{ string date2 = string.Empty;
+                                                            if (item.IssueDate != null)
+                                                            {
+                                                                date2 = item.IssueDate;
+                                                                if (date2.Length > 10)
+                                                                {
+                                                                    date2 = date2.Substring(0, 10);
+                                                                }
+                                                                if (date2.Length == 10)
+                                                                {
+                                                                    string[] format = date2.Split('-');
+                                                                    string[] format1 = date2.Split('/');
+                                                                    if (format.Length == 3 || format1.Length == 3)
+                                                                    {
+                                                                        //date2= DateTime.ParseExact(date2, "yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US")).ToString("MM/dd/yyyy");
+                                                                        //date2 = (Convert.ToDateTime(date2)).ToString("MM/dd/yyyy");
+                                                                        date2 = date2;
+                                                                    }
+                                                                }
+
+                                                            }
+                                                            <input class="form-control mydate textval " style="width:100%" placeholder="" value="@date2" name="IssueDate"
+                                                                   type="text" id="inputissuancedate" />
+                                                            @Html.ValidationMessageFor(model => model.IssueDate, "", new { @class = "text-danger inlineBlock" })
+
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Industrial_LicenseNumber</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"></i>
+                                                        </span>
+                                                        @{ string date1 = string.Empty;
+                                                            if (item.ExpiryDate != null)
+                                                            {
+                                                                date1 = item.ExpiryDate;
+                                                                if (date1.Length > 10)
+                                                                {
+                                                                    date1 = date1.Substring(0, 10);
+                                                                }
+                                                                if (date1.Length == 10)
+                                                                {
+                                                                    string[] format = date1.Split('-');
+                                                                    string[] format1 = date1.Split('/');
+                                                                    if (format.Length == 3 || format1.Length == 3)
+                                                                    {
+                                                                        //date1 = (Convert.ToDateTime(date1)).ToString("MM/dd/yyyy");
+                                                                        date1 = date1;
+                                                                    }
+
+                                                                }
+
+                                                            }
+
+                                                            <input class="form-control mydate textval" style="width:100%" placeholder="" value="@date1" name="ExpiryDate"
+                                                                   type="text" id="inputenddate" />
+
+                                                            @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger inlineBlock" })
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Industrial_LicenseNumber</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"></i>
+                                                        </span>
+                                                        <input class="form-control textval" style="width:100%" placeholder="@Resources.Resource.Industrial_RegNo" name="IndustrialRegistrationNumber"
+                                                               value="@item.IndustrialRegistrationNumber" type="text" id="inputregno" maxlength="20" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                                        @Html.ValidationMessageFor(model => model.IndustrialRegistrationNumber, "", new { @class = "text-danger inlineBlock" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Industrial_LicenseNumber</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-tag"></i>
+                                                        </span>
+                                                        @{ string date = string.Empty;
+                                                            if (item.IssuanceDate != null)
+                                                            {
+                                                                date = item.IssuanceDate;
+                                                                if (date.Length > 10)
+                                                                {
+                                                                    date = date.Substring(0, 10);
+                                                                }
+                                                                if (date.Length == 10)
+                                                                {
+                                                                    string[] format = date.Split('-');
+                                                                    string[] format1 = date.Split('/');
+                                                                    if (format.Length == 3 || format1.Length == 3)
+                                                                    {
+                                                                        //date = (Convert.ToDateTime(date)).ToString("MM/dd/yyyy");
+                                                                        date = date;
+                                                                    }
+
+                                                                }
+
+                                                            }
+                                                            <input class="form-control mydate textval" style="width:100%" placeholder="" value="@date" name="IssuanceDate"
+                                                                   type="text" id="inputissuancedate1" />
+                                                            @Html.ValidationMessageFor(model => model.IssuanceDate, "", new { @class = "text-danger inlineBlock" })
+
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="table table-striped center-block" align="center">
+                                                <tr>
+                                                    <td align="center">
+                                                        <div class="form-group">
+                                                            <input type="button" value="@Resources.Resource.Industrial_B_back" class="btn button button4" onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = item.OrganizationId })'" />
+                                                        </div>
+                                                    </td>
+                                                    <td align="center">
+                                                        <div class="form-group">
+                                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Industrial_B_next</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                    }
+                                }
+                            }
+                        }
+
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+
+
+
+    </table>
+</div>
+
+<div class="col-lg-12 col-centered">
+    @*class="col-lg-8 col-centered">*@
+
+    @using (Html.BeginForm("Org_Industrial", "User", FormMethod.Post, new { id = "OrgInd" }))
+    {
+        if (ViewData["data"] != null)
+        {
+            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+            {
+                foreach (var item in ViewData["data"] as List<WebApplication1.Models.OrgGetIndustrialResult>)
+                {
+                    @*<div style="@Resources.Resource.Header_withoutmenu">
+                            &nbsp;  <span onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = item.OrganizationId })'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Industrial_Header</span>
+                        </div>
+                        <div style="@Resources.Resource.Header_withoutmenu1;">
+                            &nbsp;  <span onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = item.OrganizationId })'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Industrial_Header</span>
+                        </div>*@
+
+
+
+                    <div id="mydiv" class="well">
+
+                        <table class="table table-striped center-block" align="center" id="maintbl">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="alert alert-success">
+                                        @{
+                                            if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                                            {
+                                                @Resources.Resource.Industrial_RequestNumber @ViewBag.reqno<br />
+                                            }
+                                        }
+                                        <input type="hidden" name="OrganizationId" value="@item.OrganizationId" />
+                                        @Resources.Resource.Industrial_CompanyNameinArabic @item.OrgAraName
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td style="width:100%" colspan="2">
+                                    <div class="form-group" style="margin-top:20px;">
+
+                                        <input class="form-control textval" style="width:100%" placeholder="@Resources.Resource.Industrial_LicenseNumber" name="IndustrialLicenseNumber"
+                                               value="@item.IndustrialLicenseNumber" type="text" id="inputLicenseno" maxlength="20" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                        @Html.ValidationMessageFor(model => model.IndustrialLicenseNumber, "", new { @class = "text-danger inlineBlock" })
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <table class="table table-striped center-block" align="center">
+                                            <tr>
+                                                <td align="@Resources.Resource.Industrial_Dt_style" style="width:31%;font-weight:bold">@Resources.Resource.IssueDate</td>
+                                                <td align="@Resources.Resource.Industrial_Dt_style" style="width:69%">
+                                                    <table style="width:100%" align="center">
+                                                        <tr>
+                                                            <td style="width:100%">
+                                                                @{ string date2 = string.Empty;
+                                                                    if (item.IssueDate != null)
+                                                                    {
+                                                                        date2 = item.IssueDate;
+                                                                        if (date2.Length > 10)
+                                                                        {
+                                                                            date2 = date2.Substring(0, 10);
+                                                                        }
+                                                                        if (date2.Length == 10)
+                                                                        {
+                                                                            string[] format = date2.Split('-');
+                                                                            string[] format1 = date2.Split('/');
+                                                                            if (format.Length == 3 || format1.Length == 3)
+                                                                            {
+                                                                                //date2= DateTime.ParseExact(date2, "yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US")).ToString("MM/dd/yyyy");
+                                                                                //date2 = (Convert.ToDateTime(date2)).ToString("MM/dd/yyyy");
+                                                                                date2 = date2;
+                                                                            }
+                                                                        }
+
+                                                                    }
+                                                                    <input class="form-control mydate textval " style="width:100%" placeholder="" value="@date2" name="IssueDate"
+                                                                           type="text" id="inputissuancedate" />
+                                                                    @Html.ValidationMessageFor(model => model.IssueDate, "", new { @class = "text-danger inlineBlock" })
+
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <table class="table table-striped center-block" align="center">
+                                            <tr>
+                                                <td align="@Resources.Resource.Industrial_Dt_style" style="width:31%;font-weight:bold">@Resources.Resource.Industrial_EndDate</td>
+                                                <td align="@Resources.Resource.Industrial_Dt_style" style="width:69%">
+                                                    <table style="width:100%" align="center">
+                                                        <tr>
+                                                            <td style="width:100%">
+                                                                @{ string date1 = string.Empty;
+                                                                    if (item.ExpiryDate != null)
+                                                                    {
+                                                                        date1 = item.ExpiryDate;
+                                                                        if (date1.Length > 10)
+                                                                        {
+                                                                            date1 = date1.Substring(0, 10);
+                                                                        }
+                                                                        if (date1.Length == 10)
+                                                                        {
+                                                                            string[] format = date1.Split('-');
+                                                                            string[] format1 = date1.Split('/');
+                                                                            if (format.Length == 3 || format1.Length == 3)
+                                                                            {
+                                                                                //date1 = (Convert.ToDateTime(date1)).ToString("MM/dd/yyyy");
+                                                                                date1 = date1;
+                                                                            }
+
+                                                                        }
+
+                                                                    }
+                                                                    <input class="form-control mydate textval" style="width:100%" placeholder="" value="@date1" name="ExpiryDate"
+                                                                           type="text" id="inputenddate" />
+
+                                                                    @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger inlineBlock" })
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:100%" colspan="2">
+                                    <div class="form-group">
+                                        <input class="form-control textval" style="width:100%" placeholder="@Resources.Resource.Industrial_RegNo" name="IndustrialRegistrationNumber"
+                                               value="@item.IndustrialRegistrationNumber" type="text" id="inputregno" maxlength="20" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                        @Html.ValidationMessageFor(model => model.IndustrialRegistrationNumber, "", new { @class = "text-danger inlineBlock" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <table class="table table-striped center-block" align="center">
+                                            <tr>
+                                                <td align="@Resources.Resource.Industrial_Dt_style" style="width:31%;font-weight:bold">@Resources.Resource.Industrial_IssuanceDate1</td>
+                                                <td align="@Resources.Resource.Industrial_Dt_style" style="width:69%">
+                                                    <table style="width:100%" align="center">
+                                                        <tr>
+                                                            <td style="width:100%">
+                                                                @{ string date = string.Empty;
+                                                                    if (item.IssuanceDate != null)
+                                                                    {
+                                                                        date = item.IssuanceDate;
+                                                                        if (date.Length > 10)
+                                                                        {
+                                                                            date = date.Substring(0, 10);
+                                                                        }
+                                                                        if (date.Length == 10)
+                                                                        {
+                                                                            string[] format = date.Split('-');
+                                                                            string[] format1 = date.Split('/');
+                                                                            if (format.Length == 3 || format1.Length == 3)
+                                                                            {
+                                                                                //date = (Convert.ToDateTime(date)).ToString("MM/dd/yyyy");
+                                                                                date = date;
+                                                                            }
+
+                                                                        }
+
+                                                                    }
+                                                                    <input class="form-control mydate textval" style="width:100%" placeholder="" value="@date" name="IssuanceDate"
+                                                                           type="text" id="inputissuancedate1" />
+                                                                    @Html.ValidationMessageFor(model => model.IssuanceDate, "", new { @class = "text-danger inlineBlock" })
+
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:100%" colspan="2">
+                                    <table class="table table-striped center-block" align="center">
+                                        <tr>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <input type="button" value="@Resources.Resource.Industrial_B_back" class="btn button button4" onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = item.OrganizationId })'" />
+                                                </div>
+                                            </td>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Industrial_B_next</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                }
+            }
+        }
+    }
+
+</div>
+
+@*@if (ViewBag.modelerror == "0")
+                {
+    <div class="modal fade" tabindex="-1" id="dialog"
+         data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+        <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <table>
+                        <tr>
+                            <td style="width:95%">@Resources.Resource.error</td>
+                            <td style="width:5%">
+                                <button type="button" style="color:black;opacity:unset" class="close" data-dismiss="modal">
+                                    ×
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-body">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+                }*@
+
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var ViewBagmodelerror='@ViewBag.modelerror';
+    var result='@ViewBag.dis';
+    if (result===null) {
+        result='';
+    }
+
+    //$().ready(function () {
+    //    if (ViewBagmodelerror != null) {
+    //        if (ViewBagmodelerror == "0") {
+    //            $("#dialog").modal('show');
+    //        }
+    //    }
+    //});
+</script>
+
+
+<script src="~/Scripts/JS_View/Industrial.js"></script>

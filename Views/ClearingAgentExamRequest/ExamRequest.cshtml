@@ -1,0 +1,126 @@
+﻿@using System.Configuration
+@using WebApplication1.Models;
+@{
+    ViewBag.Title = Resources.Resource.clearingAgentExamRequest;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<div id="modalDiv" class="modal" style="display:@ViewBag.display">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @ViewBag.message
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-lg-12 col-centered">
+    <table class="table table-striped center-block">
+        <caption>
+            <h3>
+                @Resources.Resource.chooseBrokerType
+            </h3>
+        </caption>
+        <tbody>
+            <tr>
+                <td colspan="1">
+
+                    @using (Html.BeginForm("ExamRequest", "ClearingAgentExamRequest", FormMethod.Post, new { @class = "well form-horizontal", enctype = "multipart/form-data", accept_charset = "utf-8", autocomplete = "off" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.BrokerType</label>
+                                <div class="col-md-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+                                        <select class="selectpicker form-control" 
+                                            name="brokerTypeSelected"    id="brokerTypeSelect">
+
+                                            @{
+                                                String generalBrokerTypeValue = ConfigurationManager.AppSettings["generalBroker"].ToString();
+                                                String subBrokerTypeValue = ConfigurationManager.AppSettings["subBroker"].ToString();
+                                                String subMessangerTypeValue = ConfigurationManager.AppSettings["subMessanger"].ToString();
+
+                                                String specialBrokerTypeValue = ConfigurationManager.AppSettings["specialBroker"].ToString();
+                                                String specialMessangerTypeValue = ConfigurationManager.AppSettings["specialMessanger"].ToString();
+                                                String directReleaseBrokerTypeValue = ConfigurationManager.AppSettings["directReleaseBroker"].ToString();
+
+                                                if (Session["LegalEntity"] != null)
+                                                {
+                                                    if (Session["LegalEntity"].ToString() == "1")
+                                                    {
+                                                        if (Session["LicenseNumberOfLoggedInUser"] != null && !String.IsNullOrEmpty(Session["LicenseNumberOfLoggedInUser"].ToString()))
+                                                        {
+                                                            <option value="@CommonFunctions.CsUploadEncrypt(subBrokerTypeValue)">@Resources.Resource.subBroker</option>
+                                                            <option value="@CommonFunctions.CsUploadEncrypt(subMessangerTypeValue)">@Resources.Resource.subMessanger</option>
+                                                        }
+
+                                                        else
+                                                        {
+                                                            <option value="@CommonFunctions.CsUploadEncrypt(generalBrokerTypeValue)">@Resources.Resource.generalBroker</option>
+                                                        }
+                                                    }
+
+                                                    else if (Session["LegalEntity"].ToString() == "2")
+                                                    {
+                                                        <option value="@CommonFunctions.CsUploadEncrypt(specialBrokerTypeValue)">@Resources.Resource.specialBroker</option>
+                                                        <option value="@CommonFunctions.CsUploadEncrypt(specialMessangerTypeValue)">@Resources.Resource.specialMessanger</option>
+                                                        @*<option value="@CommonFunctions.CsUploadEncrypt(directReleaseBrokerTypeValue)">@Resources.Resource.directReleaseBroker</option>*@
+                                                    }
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label marginTop15">&nbsp;</label>
+                                <div class="col-md-7 inputGroupContainer marginTop15">
+                                    <div class="input-group">
+
+                                        <button type="submit"
+                                        class="btn btn-info btn-block col-centered marginTop50 width50Percent"
+                                        causesvalidation="true" id="submitBrokerType">
+                                        <b>
+
+                                        <span class="glyphicon glyphicon-circle-arrow-up">
+                                        </span>&nbsp; @Resources.Resource.Commercial_B_next &nbsp;
+                                        </b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    }
+
+
+
+
+
+
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

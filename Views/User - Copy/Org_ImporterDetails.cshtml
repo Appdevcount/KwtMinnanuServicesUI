@@ -1,0 +1,370 @@
+﻿@model WebApplication1.Models.OrgGetImportLicenseResult
+@{
+    ViewBag.Title = Resources.Resource.ImporterDetails;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<div class="col-lg-11 col-centered marginTop15">
+    @*class="col-lg-8 col-centered">*@
+
+
+    @using (Html.BeginForm("Org_ImporterDetails", "User", FormMethod.Post, new { id = "OrgImp" }))
+    {
+        string url = "Org_Registration";
+        if (Session["returnurl1"] != null)
+        {
+            if (Session["returnurl1"].ToString().Trim() == "Org_Industrial")
+            {
+                url = "Org_Industrial";
+            }
+        }
+        if (ViewData["data"] != null)
+        {
+            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+            {
+                foreach (var item in ViewData["data"] as List<WebApplication1.Models.OrgGetImportLicenseResult>
+                    )
+                {
+                    @*<div style="@Resources.Resource.Header_withoutmenu">
+                            &nbsp;  <span onclick="location.href='@Url.Action(url, "User", new { Id = item.OrganizationId })'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Importer_Header</span>
+                        </div>
+                        <div style="@Resources.Resource.Header_withoutmenu1;">
+                            &nbsp;  <span onclick="location.href='@Url.Action(url, "User", new { Id = item.OrganizationId })'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Importer_Header</span>
+                        </div>*@
+
+
+
+                    <div id="mydiv" class="well form-horizontal">
+                        @*class="well"*@
+
+                        <table align="center" id="maintbl" class="table center-block">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="alert alert-success">
+                                        @{
+                                            if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                                            {
+                                                <p>
+                                                    <span class="inline-block">
+                                                        @Resources.Resource.Importer_RequestNumber
+                                                    </span>
+                                                    @ViewBag.reqno
+                                                </p>
+                                            }
+                                        }
+                                        <input type="hidden" name="OrganizationId" value="@item.OrganizationId" />
+                                        <p>
+                                            <span class="inline-block">
+                                                @Resources.Resource.Importer_CompanyNameinArabic
+                                            </span>
+                                            @item.OrgAraName
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td colspan="1">
+
+                                    <div class="well form-horizontal">
+
+                                        <fieldset>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Importer_Licensetype</label>
+                                                <div class="col-md-5 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-card-o"></i>
+                                                        </span>
+
+                                                        <label class="col-md-1 control-label">
+                                                            &nbsp; &nbsp;
+                                                        </label>
+
+                                                        <label class="col-md-3 control-label">
+                                                            @{
+                                                                if (item.ImpLicType == "permanent")
+                                                                {
+                                                            <input type="radio" id="permanentid" name="ImpLicType" value="permanent" checked>
+                                                                }
+                                                                else
+                                                                {
+                                                            <input type="radio" id="permanentid" name="ImpLicType" value="permanent">
+                                                                }
+
+                                                            }
+
+                                                            <span> @Resources.Resource.Importer_RB_permanent </span>
+                                                        </label>
+
+                                                        <label class="col-md-3 control-label">
+                                                            @{
+                                                                if (item.ImpLicType == "temporary")
+                                                                {
+                                                            <input type="radio" id="temporaryid" name="ImpLicType" value="temporary" checked>
+                                                                }
+                                                                else
+                                                                {
+                                                            <input type="radio" id="temporaryid" name="ImpLicType" value="temporary">
+                                                                }
+
+                                                            }
+                                                            <span>@Resources.Resource.Importer_RB_temporary </span>
+                                                        </label>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    @Resources.Resource.Importer_LicenseNumber
+                                                </label>
+                                                <div class="col-md-5 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-address-card-o"></i>
+                                                        </span>
+
+                                                        @{
+                                                            string display = "";
+                                                            if (item.ImpLicType == "temporary")
+                                                            {
+                                                                display = "";
+                                                            }
+                                                            else
+                                                            {
+                                                                display = "display: none";
+                                                            }
+
+                                                        <div class="">
+                                                            <input class="form-control textval numeric"
+                                                                   placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                   value="@item.ImpLicNo"
+                                                                   name="ImpLicNo"
+                                                                   type="text" id="inputLicenseno"
+                                                                   maxlength="5"
+                                                                   ondrop="return false;"
+                                                                   onpaste="return false;" />
+                                                        </div>
+
+                                                        <div class="" style="@display;" id="tempid">
+                                                            <input class="form-control textval numeric"
+                                                                   placeholder="@Resources.Resource.Commercial_year"
+                                                                   name="Year"
+                                                                   type="text"
+                                                                   id="inputyear"
+                                                                   maxlength="4"
+                                                                   value="@item.Year"
+                                                                   ondrop="return false;"
+                                                                   onpaste="return false;" />
+
+                                                        </div>
+                                                        }
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Importer_IssuanceDate</label>
+                                                <div class="col-md-5 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+
+                                                        @{ string date = string.Empty;
+                                                            if (item.IssueDate != null)
+                                                            {
+                                                                date = item.IssueDate;
+                                                                if (date.Length > 10)
+                                                                {
+                                                                    date = date.Substring(0, 10);
+                                                                }
+                                                                if (date.Length == 10)
+                                                                {
+                                                                    string[] format = date.Split('-');
+                                                                    string[] format1 = date.Split('/');
+                                                                    if (format.Length == 3 || format1.Length == 3)
+                                                                    {
+                                                                        //date = (Convert.ToDateTime(date)).ToString("MM/dd/yyyy");
+                                                                        date = date;
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        <input class="form-control mydate textval"
+                                                               placeholder="@Resources.Resource.Importer_IssuanceDate"
+                                                               value="@date" name="IssueDate"
+                                                               type="text" id="inputissuancedate" />
+
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">
+                                                    @Resources.Resource.Importer_EndDate
+                                                </label>
+                                                <div class="col-md-5 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+
+
+                                                        @{ string date1 = string.Empty;
+                                                            if (item.ExpiryDate != null)
+                                                            {
+                                                                date1 = item.ExpiryDate;
+                                                                if (date1.Length > 10)
+                                                                {
+                                                                    date1 = date1.Substring(0, 10);
+                                                                }
+                                                                if (date1.Length == 10)
+                                                                {
+                                                                    string[] format = date1.Split('-');
+                                                                    string[] format1 = date1.Split('/');
+                                                                    if (format.Length == 3 || format1.Length == 3)
+                                                                    {
+                                                                        //date1 = (Convert.ToDateTime(date1)).ToString("MM/dd/yyyy");
+                                                                        date1 = date1;
+                                                                    }
+
+                                                                }
+                                                            }
+                                                            <input class="form-control mydate textval" 
+                                                                   placeholder="@Resources.Resource.Importer_EndDate" 
+                                                                   value="@date1" name="ExpiryDate"
+                                                                   type="text" id="inputenddate" />
+                                                                @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger inlineBlock" })
+                                                        }
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-lg-10 col-centered">
+
+                                                    <div class="col-lg-5">
+                                                        @{
+                                                            if (url == "Org_Industrial")
+                                                            {
+                                                                @Html.ActionLink(@Resources.Resource.Commercial_B_back, url, "User", new { @class = "btn btn-info btn-block marginTop50" })
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="button" value="@Resources.Resource.Importer_B_back" class="btn btn-info btn-block marginTop50" onclick="location.href='@Url.Action(url, "User", new { Id = item.OrganizationId })'" />
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-lg-5">
+
+                                                        <button type="submit" id="btnsubmit" class="btn btn-info btn-block marginTop50">
+                                                            @Resources.Resource.Importer_B_next
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                            
+                        </table>
+
+
+
+                        
+
+
+
+
+
+                    </div>
+
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        }
+
+</div>
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var GotoReqList = '@ViewBag.GoToRequestStatus';
+    var ViewBagmodelerror='@ViewBag.modelerror';
+    var result='@ViewBag.dis';
+    if (result===null) {
+        result='';
+    }
+</script>
+
+
+<script type="text/javascript">
+    $("#permanentid").click(function () {
+        $("#tempid").hide();
+    });
+    $("#temporaryid").click(function () {
+        $("#tempid").show();
+    });
+</script>
+
+
+
+<script src="~/Scripts/JS_View/Importer.js"></script>
+
+<script>
+    //$().ready(function () {
+
+    //    $('#inputissuancedate').datepicker({
+    //        dateFormat: "dd/mm/yy",
+    //        changeMonth: true,
+    //        maxDate: new Date(),
+    //        changeYear: true,
+    //        yearRange: "-60:+10"
+    //    });
+    //})
+</script>

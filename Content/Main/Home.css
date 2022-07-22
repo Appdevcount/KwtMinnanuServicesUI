@@ -1,0 +1,63 @@
+.card1 {
+    color: black;
+    padding-left: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25), 0 2px 10px 0 rgba(0,0,0,0.25);
+    /*font-size: 1.3rem;*/
+    font-weight: normal;
+}
+
+.card {
+    line-height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#cardid {
+    margin: 0 0 3px;
+}
+
+.card21 {
+    color: black;
+    padding-right: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25), 0 2px 10px 0 rgba(0,0,0,0.25);
+    /*font-size: 1.3rem;*/
+    font-weight: normal;
+}
+
+.card2 {
+    line-height: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#editorg:hover {
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#tdorg:hover {
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#mydiv {
+    width: 100%;
+    margin-top: 20px;
+    height: 660px;
+}
+
+@media only screen and (max-width: 450px) {
+    #mydiv {
+        /*height: 100%;*/
+    }
+}
+
+#editorg:hover > .glyphicon {
+    font-style: oblique;
+}
+
+#editorg:hover > span {
+    color: brown;
+}

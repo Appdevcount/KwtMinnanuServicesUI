@@ -1,0 +1,279 @@
+﻿@model WebApplication1.Models.LogOnRequest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="loginHtml" dir="@Resources.Resource.dir">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+
+    <link rel="stylesheet" href="~/styles/font-awesome.min.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link rel="stylesheet" href="~/styles/theme.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    @*<link rel="stylesheet" href="~/styles/bootstrap.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+
+    <link href="~/styles/animate.min.css" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link href="~/styles/ModifiedStyles.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <title>@Resources.Resource.KuwaitCustoms</title>
+
+
+    <style>
+        #idpopup hover {
+            text-decoration: underline;
+        }
+
+
+        /*Remove space below heading - Siraj*/
+        .mb-3, .my-3 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        /*top bottom space removal siraj*/
+        .pb-5, .py-5 {
+            padding-bottom: 0.5rem !important;
+        }
+
+        .pt-5, .py-5 {
+            padding-top: 0.5rem !important;
+        }
+
+        /*reducing polymer-element container padding Siraj*/
+        .p-5 {
+            padding: 8px !important;
+        }
+        /*.col-10 {
+            flex: 0 0 83.33333%;
+            max-width: 99.33333%;
+        }*/
+
+
+
+        /*@@media (max-width: 450px) {
+
+            #loginPreForm {
+                background-image: url(../images/bg1.jpg);
+            }
+        }
+        @@media (min-width: 450px) {
+
+            #loginPreForm {
+                background-image: url(../images/bg.jpg);
+            }
+        }*/
+    </style>
+
+
+</head>
+<body id="loginPreForm" dir="@Resources.Resource.dir">
+    @*loginBody*@
+
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <input type="hidden" name="usageAgreement" id="usageAgreement" value="@Resources.Resource.usageAgreement" />
+    <input type="hidden" name="usageAgreementHeader" id="usageAgreementHeader" value="@Resources.Resource.termsOfUse" />
+
+
+
+
+    <div class="py-5 text-center" id="" style="margin-top:50px">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" id="col12Login" style="">
+
+                    <div class="mx-auto col-10 bg-gradient p-5 col-md-5">
+
+
+                        @{
+                            string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+                            bool EnglishCulture = culture.Contains("English");
+                            string floatdir = EnglishCulture ? "float-left" : "float-right";
+                            string floatdirOpp = !EnglishCulture ? "float-left" : "float-right";
+
+
+
+
+                            <div class="row">
+
+
+                                <div class=" col-md-12" style="height: 1px;">
+                                    <input type="hidden" name="errorMsg" value="" id="errorMsg" class="errorMsg" />
+                                    <input type="hidden" name="ServiceType" value="@ViewBag.ServiceType" id="ServiceType" class="errorMsg" />
+
+                                    @{ HttpCookie langCookie = Request.Cookies["culture"];
+                                        var lang = langCookie.Value;
+
+                                        string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+                                        string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+
+                                        if (lang == "en")
+                                        {
+
+                                            <img class="float-right" src="~/images/HomeIcons/Arabic.png" id="" style="height:30px;width:30px;margin-right: 10px; cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+                                        }
+                                        else
+                                        {
+                                            <img class="float-right" src="~/images/HomeIcons/English.png" id="" style="height:30px;width:30px; margin-right: 10px;cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+                                        }
+                                    }
+
+                                </div>
+
+
+                                <div class=" col-md-6" style="height: 1px;">
+
+                                </div>
+
+                            </div>
+
+                        }
+
+                        <img class="img-fluid d-block mx-auto" src="~/images/customs.png" width="120" style="" />
+
+                        <h5 class="mb-3">
+                            <b>
+
+                                <label style="color:black;font-size:20px">@Resources.Resource.KuwaitCustoms</label>
+                            </b>
+                            <br />
+
+                        </h5>
+
+
+
+                        <div class="form-group">
+
+                            <p>
+
+
+
+                                <div class="row">
+
+
+
+                                    <table style="" width="100%">
+
+                                        <tr>
+
+
+
+                                            <td width="50%" class="@floatdir">
+            <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Brokers.png" title="@Resources.Resource.BrokerServices" style="height:100px;width:100px; cursor:pointer; padding:2px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" onclick="window.location.href='@Url.Action("BrokerServices", "Registration")'" />
+            <br /> <label> @Resources.Resource.BrokerServices</label>
+        </td>
+
+
+        <td width="50%" class="@floatdirOpp">
+
+            <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Companies.png" id="RegisterForStakeholderServices" style="height:100px;width:100px; cursor:pointer; padding:2px" title="@Resources.Resource.OrganizationServices" onclick="window.location.href='@Url.Action("StakeholderServices", "Registration")'" />
+            <br /><label> @Resources.Resource.OrganizationServices</label>
+        </td>
+
+
+                                            
+                                                @*<td><div class="row">
+            <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+                <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Brokers.png" title="@Resources.Resource.BrokerServices" style="height:70px;width:70px; cursor:pointer; padding:1px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" onclick="window.location.href='@Url.Action("BrokerServices", "Registration")'" />
+                <br /> <label> @Resources.Resource.BrokerServices</label>
+            </div>
+            <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+                <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Companies.png" id="RegisterForStakeholderServices" style="height:70px;width:70px; cursor:pointer; padding:1px" title="@Resources.Resource.OrganizationServices" onclick="window.location.href='@Url.Action("StakeholderServices", "Registration")'" />
+                <br /><label> @Resources.Resource.OrganizationServices</label>
+            </div>
+            <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+                <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Companies.png" id="RegisterForStakeholderServices" style="height:70px;width:70px; cursor:pointer; padding:1px" title="@Resources.Resource.DRConsignee" onclick="window.location.href='../SelfService/Payment.aspx'" />
+                <br /><label> @Resources.Resource.DRConsignee</label>
+            </div>
+        </div>
+            </td>*@
+
+@*<td width="33%" class="@floatdir">
+            <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Brokers.png" title="@Resources.Resource.BrokerServices" style="height:64px;width:64px; cursor:pointer; padding:1px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" onclick="window.location.href='@Url.Action("BrokerServices", "Registration")'" />
+            <br /> <label> @Resources.Resource.BrokerServices</label>
+        </td>
+
+        <td width="33%" class="@floatdirOpp">
+
+            <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/DRConsignee.png" id="RegisterForStakeholderServices" style="height:64px;width:64px; cursor:pointer; padding:1px" title="@Resources.Resource.DRConsignee" onclick="window.location.href='../SelfService/Payment.aspx'" />
+            <br /><label>  @Resources.Resource.DRConsignee</label>
+        </td>
+
+        <td width="33%" class="@floatdirOpp">
+
+            <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Companies.png" id="RegisterForStakeholderServices" style="height:64px;width:64px; cursor:pointer; padding:1px" title="@Resources.Resource.OrganizationServices" onclick="window.location.href='@Url.Action("StakeholderServices", "Registration")'" />
+            <br /><label> @Resources.Resource.OrganizationServices</label>
+        </td>*@
+
+                                            
+
+                                        </tr>
+                                    </table>
+
+
+
+
+
+                                </div>
+                            </p>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript">
+
+    var ViewBagShowmsg = '@ViewBag.Showmsg';
+        var ViewBagMsg = '@ViewBag.Msg';
+        var CrossAccess = '@ViewBag.CrossAccess';
+
+    </script>
+
+
+    <script src="~/Scripts/jquery.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link type="text/css" rel="stylesheet" href="~/styles/jquery-ui.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link type="text/css" rel="stylesheet" href="~/styles/datepickercss.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/JS_View/Login.js"></script>
+
+    <script src="~/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+</body>
+</html>
+

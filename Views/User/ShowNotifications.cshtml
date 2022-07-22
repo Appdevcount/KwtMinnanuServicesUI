@@ -1,0 +1,54 @@
+﻿@model List<WebApplication1.Models.NotificationsList>
+@using WebApplication1.Models;
+@using System.Configuration;
+@{
+    ViewBag.Title = Resources.Resource.Notifications;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+@if (Model != null)
+{
+    int counter = 0;
+<div class="col-lg-12 col-centered marginTop15">
+
+
+    @foreach (var notification in Model)
+    {
+        counter = counter + 1;
+
+    <div class="col-md-8 shadow-lg col-centered">
+        <div class="card text-center marginBottom15 marginTop15">
+
+            <div class="card-header text-white" style="background: #3e7ead; font-weight: bold;">
+
+                <i class="fa fa-bullhorn" style="font-size:large;">
+
+                </i>
+
+                @*<span>
+                    @counter.ToString()
+                </span>*@
+            </div>
+            <div class="card-body">
+                @*<h4 class="card-title">@notification.msg</h4>*@
+                <p class="card-text">@notification.msg</p>
+                <p class="text-center">@notification.DateCreated</p>
+                @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+            </div>
+            @*<div class="card-footer text-white" style="background: #3e7ead; font-weight: bold;">
+                
+            </div>*@
+        </div>
+    </div>
+
+            
+
+            }
+
+
+        </div>
+
+    }
+
+

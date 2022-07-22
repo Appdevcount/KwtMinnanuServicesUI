@@ -1,0 +1,70 @@
+﻿
+@{
+
+    ViewBag.Title = ViewBag.PageTitle; // Resources.Resource.unAuthorizedAction;//  "Un Authorized Action";
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@*<h2>Un Authorized Action</h2>*@
+
+@*@if (Session["LegalEntity"] != null)
+    {
+        if (Session["LegalEntity"].ToString() == "1")
+        {
+            @Html.ActionLink(Resources.Resource.home, "BrokerRenewal", "BrokerRenewal", null, new { @class = "btn btn-primary" })
+        }
+        else if (Session["LegalEntity"].ToString() == "2")
+        {
+            @Html.ActionLink(Resources.Resource.home, "MyOrganizations", "User", null, new { @class = "btn btn-primary" })
+
+        }
+    }*@
+
+<div class="row" style="@Resources.Resource.Marginstart28px">
+    @if (ViewBag.FromOrgReqInitPage != null && Convert.ToBoolean(ViewBag.FromOrgReqInitPage))
+    {
+        if (ViewBag.ExistingRequest == "EserviceRequest")
+        {
+            <div class="col-lg-12 col-centered text-primary" >
+                <label>@ViewBag.UnAuthorizedPageMsg</label>
+            </div>
+        }
+        else if (ViewBag.ExistingRequest == "EtradeRequest")
+        {
+            
+            <div class="col-lg-12  text-primary">
+                <label>@ViewBag.UnAuthorizedPageMsg</label>
+                <br />
+                @{
+                    String phone = String.Empty;
+                    String fax = String.Empty;
+                    phone = "<b dir='ltr'> +965 24981234 </b>";
+                    fax = "<b dir='ltr'> +965 24981479 </b>";
+
+                }
+
+                <h4 style="display: inline-flex;">
+                    @Resources.Resource.supportTel:&nbsp;
+                    <a href="tel:+96524981234"> @Html.Raw(phone)</a>
+                </h4>
+               
+                <h4>
+                    @Resources.Resource.supportFax:&nbsp;
+                    <a href="tel:+96524981234"> @Html.Raw(fax)</a>
+                </h4>
+            
+                <h4>
+                    @Resources.Resource.Email:
+                    <a href="mailto:mcsupport@agility.com">mcsupport@agility.com</a>
+                </h4>
+
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-lg-12 text-center text-primary">
+            <label>@ViewBag.UnAuthorizedPageMsg</label>
+        </div>
+    }
+</div>

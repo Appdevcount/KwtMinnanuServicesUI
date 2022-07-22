@@ -1,0 +1,181 @@
+﻿@model IEnumerable<WebApplication1.Models.AvailableEServices>
+
+@using System.Configuration;
+
+@{
+    /**/
+
+    ViewBag.Title = Resources.Resource.AvailableServices1;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@functions {
+    public string GetServiceIcon(int ServiceId)
+    {
+
+
+        switch (ServiceId)
+        {//eServices Solution\eCUSTOMS - Rewrite\WebApplication1\images\HomeIcons
+         //case 0:
+         //    return "~/images/HomeIcons/Info Trans.png";
+         //case 1:
+         //    return "~/images/HomeIcons/Info Trans.png";
+            case 2:
+                return "../images/HomeIcons/Renewal.png";
+            case 3:
+                return "../images/HomeIcons/OrganizationRegistrationPNG.png";
+            case 7:
+                return "../images/ExamRequests.png";
+            case 8:
+                return "../images/HomeIcons/OnlinePayment.png";
+            case 9:
+                return "../images/HomeIcons/BayanSearch.png";
+            case 10:
+                return "../images/HomeIcons/HSCODESearch.png";
+            case 11:
+                return "../images/HomeIcons/HBSearch.png";
+            case 12:
+                return "../images/HomeIcons/Requestfordeactivatebrokerlicenseservice.PNG";
+            case 13:
+                return "../images/HomeIcons/Requestforcancellingbrokerlicenseservice.PNG";
+            case 14:
+                return "../images/HomeIcons/Requestforbrokertransferservice.png";
+            case 15:
+                return "../images/HomeIcons/Requestfortowhomitconcernsletterservice.PNG";
+            case 16:
+                return "../images/HomeIcons/Requestforprintingalostidentitycardservice.png";
+
+            case 17:
+                return "../images/HomeIcons/Requestforissuingbrokerlicenseservice.png";
+            case 20:
+                return "../images/HomeIcons/BRSPrintingServices.png";
+            case 34:
+                return "../images/HomeIcons/InspectionAppointments.png";
+            case 35:
+                return "../images/GCSKnet/Self PaymentMenu.png";
+
+            default:
+                return "";
+        }
+    }
+    public string GetServiceLink(int ServiceId)
+    {
+
+
+        switch (ServiceId)
+        {
+            //case 0:
+            //    return "~/images/HomeIcons/Info Trans.png";
+            //case 1:
+            //    return "~/images/HomeIcons/Info Trans.png";
+            case 2:
+                return Url.Action("BrokerRenewal", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+            case 3:
+                return Url.Action("Org_Registration", "User", new { NewRequest = true });
+            case 7:
+                return Url.Action("ExamRequest", "ClearingAgentExamRequest");
+            case 8:
+                return Url.Action("payment", "User");
+            case 9:
+                return Url.Action("DeclarationSearch", "User");
+            case 10:
+                return Url.Action("HSCodeSearch", "User");
+            case 11:
+                return Url.Action("HouseBillSearch", "User");
+            case 14:
+                return Url.Action("BrokerTransfer", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+
+            case 12:
+                return Url.Action("BrokerRenewal", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+            case 13:
+                return Url.Action("BrokerRenewal", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+            case 17:
+                return Url.Action("BrokerRenewal", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+            case 15:
+                return Url.Action("BrokerRenewal", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+            case 16:
+                return Url.Action("BrokerRenewal", "BrokerRenewal", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+
+            case 20:
+                return Url.Action("Index", "PrintingServices", new { ServiceId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(ServiceId.ToString()) });
+            case 34:
+                return Url.Action("InspectionAppointment", "Appointments");
+            case 35:
+                return "../SelfService/Payment.aspx";
+            case 123:
+                return Url.Action("OrganizationsDetail", "User");
+
+            default:
+                return "";
+        }
+    }
+}
+
+@if (Model != null)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            if (item.ServiceId > 20 && item.ServiceId != 34 && item.ServiceId != 35)
+            {
+                continue;
+            }
+
+
+            if (item.ServiceId == 20)
+            {
+                <div class="col-sm-4 col-xs-6 col-md-3 text-center ">
+                    <div onclick="window.location.href='@GetServiceLink(item.ServiceId)'">
+                        <img src="@GetServiceIcon(item.ServiceId)" style="cursor:pointer " class="btn btn-default btn-circle btn-xl img-responsive" />
+                    </div>
+                    <br />
+                    <label> @Resources.Resource.printingServices </label>
+                </div>
+
+                continue;
+            }
+
+            <div class="col-sm-4 col-xs-6 col-md-3 text-center ">
+                <div onclick="window.location.href='@GetServiceLink(item.ServiceId)'">
+                    @*style=" height:150px"*@
+                    @*<img src="@GetServiceIcon(item.ServiceId)" style=" height:100px;cursor:pointer " onclick="window.location.href='@GetServiceLink(item.ServiceId)'" />*@
+
+                    @*<button type="button" class="btn btn-default btn-circle btn-xl">*@
+                    <img src="@GetServiceIcon(item.ServiceId)" style="cursor:pointer " class="btn btn-default btn-circle btn-xl img-responsive" />
+                    @*height:100px*@
+                    @*</button>*@
+                </div>
+                <br />
+                <label> @item.ServiceName </label>
+            </div>
+
+        }
+
+
+    </div>
+}
+else
+{
+
+    // Added This to Check, if The User Has an Approved Company or Not
+    // If User Doesn't Have Approved Company, We will Prevent the User from using Services
+    if (Session["LegalEntity"].ToString() == "2" && Convert.ToBoolean(Session["ClearingAgentServices"]))
+    {
+
+        <p class="text-center">
+            @Resources.Resource.noApprovedOrganization
+        </p>
+
+    }
+
+    else
+    {
+        <label>Currently you don't have services to use </label>
+    }
+
+
+}
+
+
+

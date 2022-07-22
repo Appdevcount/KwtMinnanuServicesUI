@@ -1,0 +1,100 @@
+.alert-success {
+    margin-top: 20px;
+    color: white;
+    background-color: #2196f3;
+    border-color: #d6e9c6;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 3px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+    .alert:hover {
+        cursor: default;
+        color: white;
+    }
+
+.fa-caret-down {
+    color: black;
+    font-size: 30px;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+input[type=radio] + label {
+    color: black;
+    font-weight: normal;
+}
+
+input[type=radio]:checked + label {
+    color: #f00;
+    font-style: normal;
+    font-weight: normal;
+}
+
+input:checked {
+    border: 6px solid black;
+}
+
+page-upload-doc .inputfile + label {
+}
+
+.inputfile + label {
+    color: white;
+    background-color: #E3B2AD;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+label, input, select, textarea {
+    line-height: normal;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.myclass {
+    cursor: pointer;
+    color: white;
+}
+
+    .myclass:hover {
+        color: black;
+    }
+
+#mydiv {
+    height: 700px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 450px) {
+    #mydiv {
+        /*height:100%;*/
+    }
+}
+
+.glyphicon-trash:hover {
+    cursor: pointer;
+    font-style: italic;
+}

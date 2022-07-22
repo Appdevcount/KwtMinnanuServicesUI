@@ -1,0 +1,262 @@
+﻿@model WebApplication1.Models.OrgGetBasicResult
+@{
+    ViewBag.Title = "Organization Registration";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/Main/OrgReg.css" rel="stylesheet" />
+@{
+    string url = "MyOrganizations";
+    if (Session["returnurl"] != null)
+    {
+        if (Session["returnurl"].ToString().Trim() == "Org_RequestStatus")
+        {
+            url = "Org_RequestStatus";
+        }
+    }
+    <div style="@Resources.Resource.Header_withoutmenu">
+        &nbsp;  <span onclick="location.href='@Url.Action(url, "User", null)'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.OrgReg_Header</span>
+    </div>
+    <div style="@Resources.Resource.Header_withoutmenu1;">
+        &nbsp;  <span onclick="location.href='@Url.Action(url, "User", null)'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.OrgReg_Header</span>
+    </div>
+}
+@using (Html.BeginForm("Org_Registration", "User", FormMethod.Post, new { id = "OrgReg" }))
+{
+    <div class="form-group" align="center" style="width:90%">
+        <p style="text-align: left;">
+            <b>@Resources.Resource.OrgReg_Header1</b>
+        </p>
+    </div>
+    <div id="mydiv" onclick="w3_close()">
+        @{ if (ViewData["data"] != null)
+            {
+                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                {
+                    foreach (var item in ViewData["data"] as List<WebApplication1.Models.OrgGetBasicResult>)
+                    {
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_CompanyName" name="OrgEngName"
+                                               type="text" maxlength="120" value="@item.OrgEngName" id="inputCompanyName" /><input type="hidden" name="OrganizationId" value="@item.OrganizationId" />
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_Tradelicenceno" maxlength="15" name="TradeLicNumber"
+                                               type="text" value="@item.TradeLicNumber" id="inputTradelicenceno" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_CivilId" maxlength="12" name="CivilId"
+                                               type="text" value="@item.CivilId" id="inputCivilId" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_AuthorizedPerson" name="AuthPerson"
+                                               type="text" maxlength="120" value="@item.AuthPerson" id="inputAuthorizedPerson" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_CompanyNameinArabic" name="OrgAraName"
+                                               type="text" maxlength="240" value="@item.OrgAraName" id="inputCNameinArabic" ondrop="return true;" onpaste="return true;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval textval" placeholder="@Resources.Resource.OrgReg_POBoxNo" maxlength="15" name="POBoxNo"
+                                               type="text" value="@item.POBoxNo" id="inputPOBoxNo" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:white;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control" placeholder="@Resources.Resource.OrgReg_Address" name="Address"
+                                               type="text" maxlength="200" value="@item.Address" id="inputAddress" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_City" name="City"
+                                               type="text" maxlength="30" value="@item.City" id="inputCity" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:white;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control" placeholder="@Resources.Resource.OrgReg_State" name="State"
+                                               type="text" maxlength="30" value="@item.State" id="inputState" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:white;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control" placeholder="@Resources.Resource.OrgReg_PostalCode" maxlength="15" name="PostalCode"
+                                               type="text" value="@item.PostalCode" id="inputPostalCode" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_Kuwait" name="Kuwait"
+                                               type="text" value="@Resources.Resource.OrgReg_Kuwait" id="inputKuwait" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_BusinessNumber" maxlength="20" name="BusiNo"
+                                               type="text" value="@item.BusiNo" id="inputBusinessNumber" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_BusinessFaxNumber" maxlength="20" name="BusiFaxNo"
+                                               type="text" value="@item.BusiFaxNo" id="inputBusinessFaxNumber" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:white;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control" placeholder="@Resources.Resource.OrgReg_MobileNumber" name="MobileNo"
+                                               type="text" maxlength="15" value="@item.MobileNo" id="inputMobileNumber" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:white;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control" placeholder="@Resources.Resource.OrgReg_ResidenceNumber" name="ResidenceNo"
+                                               type="text" maxlength="20" value="@item.ResidenceNo" id="inputResidenceNumber" ondrop="return false;" onpaste="return false;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:red;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control textval" placeholder="@Resources.Resource.OrgReg_EmailID" name="EmailId"
+                                               type="text" value="@item.EmailId" id="inputEmailID" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table style="width:100%" align="center">
+                                <tr>
+                                    <td align="right"><span style="font-size:100%;color:white;">&bigstar;</span></td>
+                                    <td align="center">
+                                        <input class="form-control" placeholder="@Resources.Resource.OrgReg_WebPageAddress" name="WebPageAddress"
+                                               type="text" maxlength="50" value="@item.WebPageAddress" id="inputWebPageAddress" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group" align="@Resources.Resource.OrgReg_Industrial_style1" style="width:80%">
+                            @{
+                                if (@item.isIndustrial == true)
+                                {
+                                    @Html.CheckBoxFor(m => m.isIndustrial, new { @checked = "checked" })
+                                }
+                                else
+                                {
+                                    @Html.CheckBoxFor(m => m.isIndustrial)
+                                }
+                            }
+                            &nbsp;<label for="isIndustrial" style="font-weight:normal">@Resources.Resource.OrgReg_Industrial</label>
+                        </div>
+                                        }
+                                    }
+                                }
+        }
+        <div class="form-group">
+            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.OrgReg_B_Next</button>
+        </div>
+    </div>
+                                }
+<div id="myLoadingElement" class="modalprgs" style="display: none">
+    <div class="prgs">
+        <img src="~/Content/loader4.gif" />
+    </div>
+</div>
+<script type="text/javascript">
+    var ViewBagmodelerror=@ViewBag.modelerror;
+    var result=@ViewBag.dis;
+    if (result==null) {
+        result='';
+    }
+</script>
+<script src="~/Scripts/Main/popup_jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/Main/popup.js"></script>
+<script src="~/Scripts/JS_View/OrgReg.js"></script>

@@ -1,0 +1,189 @@
+﻿@model WebApplication1.Models.BrokerUpdateModel
+
+@{
+     //    ViewBag.Title = Resources.Resource.brokersManagement;
+    if (Session["ServiceId"].ToString()=="2")
+    {
+
+        ViewBag.Title = Resources.Resource.requestRenew;
+    }
+    if (Session["ServiceId"].ToString() == "12")
+    {
+
+        ViewBag.Title = Resources.Resource.requestDeactivate;
+    }
+
+    if (Session["ServiceId"].ToString() == "13")
+    {
+
+        ViewBag.Title = Resources.Resource.requestCancel;
+    }
+
+    if (Session["ServiceId"].ToString() == "17")
+    {
+
+        ViewBag.Title = Resources.Resource.requestIssue;
+    }
+
+    if (Session["ServiceId"].ToString() == "15")
+    {
+
+        ViewBag.Title = Resources.Resource.Requestletter;
+    }
+
+    if (Session["ServiceId"].ToString() == "16")
+    {
+
+        ViewBag.Title = Resources.Resource.RequestIdCard;
+    }
+    if (Session["ServiceId"].ToString() == "14")
+    {
+
+        ViewBag.Title = Resources.Resource.requestTransfer;
+    }
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+
+    
+
+
+<div class="col-lg-12 col-centered marginTop15">
+
+
+    @*<div class="bg-info mx-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 paddingRight15">
+                    <h3 class="text-center bg-info text-dark" id="expandSearch">
+                        <b>@Resources.Resource.searchCriteria</b>
+                        <i class="glyphicon glyphicon-plus" id="arrowUppp"></i>
+                        <i class="glyphicon glyphicon-minus" id="arrowDownnn"></i>
+                        <input type="hidden" name="lgHidden" id="lgHidden" value=@Resources.Resource.lG />
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="pt-1 bg-secondary mx-5" id="firstSectionSearch">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" id="status" class="form-control form-control-lg " placeholder=@Resources.Resource.Status />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" id="licenceNo" class="form-control form-control-lg " placeholder=@Resources.Resource.licenceNo />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-secondary mx-5" id="secondSectionSearch">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" id="civilIdNo" class="form-control form-control-lg " placeholder=@Resources.Resource.civilIdNo />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" id="BrokerType" class="form-control form-control-lg " placeholder=@Resources.Resource.BrokerType />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-secondary pt-2 pb-2 mx-5" id="thirdSectionSearch">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <a class="btn btn-info btn-block" href="#" id="btnSearchForm">
+                        <b class="text-dark">
+                            @Resources.Resource.Search
+                            <i class="glyphicon glyphicon-search"></i>
+                        </b>
+                    </a>
+                </div>
+
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+
+                <div class="col-md-5">
+                    <a class="btn btn-info btn-block" href="#" id="btnClearForm">
+                        <b class="text-dark">
+                            @Resources.Resource.clear
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </b>
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+    <div>
+        <div class="container containerMarginTop15">
+            @*<div class="row">
+                <div class="col-md-12 paddingRight15 pt-1" id="requestListDivExpand">
+                    <h3 class="text-dark ">
+                        @Resources.Resource.RequestsList
+                        <i class="glyphicon glyphicon-plus" id="arrowUpp"></i>
+                        <i class="glyphicon glyphicon-minus" id="arrowDownn"></i>
+
+
+                    </h3>
+                </div>
+            </div>*@
+        </div>
+        <div  id="requestListDiv">
+            <div class="container">
+                <div class="row" id="requests">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div>
+        @*<div class="container containerMarginTop15">
+            <div class="row">
+
+                <div class="col-md-12 paddingRight15 pt-1" id="brokersListDivExpand">
+
+                    <h3 class="text-dark ">
+                        <i class="glyphicon glyphicon-plus" id="arrowUp"></i>
+                        <i class="glyphicon glyphicon-minus" id="arrowDown"></i>
+                        @Resources.Resource.brokerList
+                       
+                    </h3>
+                </div>
+            </div>
+        </div>*@
+        <div  id="brokersListDiv">
+            <div class="container">
+                <div class="row" id="brokers">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+

@@ -1,0 +1,1015 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<head>
+    <title>@Resources.Resource.UserRegistration </title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="~/styles/font-awesome.min.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <link href="~/styles/animate.min.css" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+
+    <script src="~/Scripts/jquery.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link type="text/css" rel="stylesheet" href="~/styles/jquery-ui.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link type="text/css" rel="stylesheet" href="~/styles/datepickercss.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/datatables.min.css" rel="stylesheet" />
+    <script src="~/Scripts/datatables.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <link href="~/styles/Untitled.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    @{
+
+        HttpCookie langCookie = Request.Cookies["culture"];
+
+        if (langCookie != null)
+        {
+            if (langCookie.Value.Contains("ar"))
+            {
+                <link href="~/styles/bootstrapArabic.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+            }
+        }
+    }
+
+
+    <script src="~/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+</head>
+
+<body dir=@Resources.Resource.dir>
+
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    @{
+        if (Session["UserId"] != null)
+        {
+            <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                    <div class="navbar-collapse collapse" id="navDiv">
+                        <img src="../images/customs.png" width="60" alt="" />
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li><a href="#" id="linktoExit">@Resources.Resource.Logout</a></li>
+                            <li><a href="#" id="linktoNotifications">@Resources.Resource.Notifications</a></li>
+
+                            <li><a href="#" id="linkToBrokersManagement">@Resources.Resource.brokersManagement</a></li>
+
+                            @{
+                                var lang = langCookie.Value;
+                                if (lang == "en")
+                                {
+                                    <li>@Html.ActionLink("العربية", "ChangeLanguage", "registration", new { lang = "ar", pageName = "UserRegistration" }, new { ID = "changeLangToEnglish", @class = "btn btn-info btn-lg" }) <text>&nbsp;</text></li>
+
+                                }
+                                else
+                                {
+
+                                    <li>@Html.ActionLink("English", "ChangeLanguage", "registration", new { lang = "en", pageName = "UserRegistration" }, new { ID = "changeLangToArabic", @class = "btn btn-info btn-lg" }) <text>&nbsp;</text></li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+        else
+        {
+            <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="navDiv">
+                        <img src="../images/customs.png" width="60" alt="" />
+                        <ul class="nav navbar-nav navbar-right">
+
+
+                            @{
+                                var lang = langCookie.Value;
+                                if (lang == "en")
+                                {
+
+                                    <li>@Html.ActionLink("العربية", "ChangeLanguage", "registration", new { lang = "ar", pageName = "UserRegistration" }, new { ID = "changeLangToEnglish", @class = "btn btn-info btn-lg" }) <text>&nbsp;</text></li>
+
+                                }
+                                else
+                                {
+
+                                    <li>@Html.ActionLink("English", "ChangeLanguage", "registration", new { lang = "en", pageName = "UserRegistration" }, new { ID = "changeLangToArabic", @class = "btn btn-info btn-lg" }) <text>&nbsp;</text></li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
+
+
+
+
+    <input type="hidden" name="usageAgreement" id="usageAgreement" value="@Resources.Resource.usageAgreement" />
+    <input type="hidden" name="usageAgreementHeader" id="usageAgreementHeader" value="@Resources.Resource.termsOfUse" />
+
+    <!-- The Modal -->
+    <div id="modalDiv" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeError">&times;</span>
+                <h6 id="modelHeaderTitle">&nbsp;</h6>
+            </div>
+            <div class="modal-body">
+                <h5 id="modalMessage">
+                </h5>
+            </div>
+            <div class="modal-footer">
+                <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="formContainer">
+
+        <div class="col-lg-8 col-centered">
+
+            <table class="table table-striped center-block">
+                <caption>
+
+                    <h3>@Resources.Resource.Registration_Title1</h3>
+
+                    <h4> @Resources.Resource.Registration_Title2</h4>
+                </caption>
+
+                <tbody>
+                    <tr>
+                        <td colspan="1">
+
+                            @using (Ajax.BeginForm("UserRegistration", "Registration", null,
+
+new AjaxOptions
+{
+OnSuccess = "RegSuccess",
+OnFailure = "RegFailure"
+}, new { autocomplete = "off" }))
+
+                            {
+
+                                <div class="well form-horizontal" dir="@Resources.Resource.dir">
+                                    <fieldset>
+
+
+
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger inlineBlock" })
+                                        @Html.HiddenFor(M => M.ParentID)
+                                        @Html.HiddenFor(M => M.SubUser)
+                                        @Html.HiddenFor(M => M.SelectedServices)
+                                        @Html.HiddenFor(M => M.SelectedOrganizations)
+
+
+
+                                        @if (!Model.SubUser)//(bool)ViewBag.SubUser)
+                                        {
+
+                                            <div class="form-group">
+                                                @Html.Label(Resources.Resource.LegalEntity, new { @class = "col-md-3 control-label" })
+                                                <div class="col-md-5 ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                                        </span>
+                                                        @Html.DropDownListFor(m => m.LegalEntity, new SelectList(ViewBag.UserType, "LegalEntityID", "LegalEntityName"), new { @class = "selectpicker form-control  select2" })
+
+                                                        @Html.ValidationMessageFor(model => model.LegalEntity, "", new { @class = "text-danger inlineBlock" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group ClearingAgentP">
+                                                <label class="col-md-3 control-label">&nbsp;</label>
+                                                <div class="col-md-5">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-user"></i>
+                                                        </span>
+                                                        @Html.CheckBoxFor(m => m.ExistingUser, new { @class = "col-md-2 control-label" })  @Html.Label(@Resources.Resource.ExistingUser, new { @class = "col-md-9 control-label" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+
+
+                                        <div class="form-group ClearingAgentPOPT">
+                                            @Html.Label(Resources.Resource.FirstName, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.FirstName, new { @class = "form-control ClearingAgent" })
+                                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger inlineBlock" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group ClearingAgentPOPT">
+                                            @Html.Label(Resources.Resource.LastName, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.LastName, new { @class = "form-control ClearingAgent" })
+                                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger inlineBlock" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        @if (!Model.SubUser)//(bool)ViewBag.SubUser)
+                                        {
+
+                                            <div class="form-group ClearingAgentP ClearingAgentExistingUser">
+                                                @Html.Label(Resources.Resource.GeneralBrokerLicense, new { @class = "col-md-3 control-label" })
+                                                <div class="col-md-5 ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(Model => Model.GeneralBrokerLicenseNumber, new { @class = "form-control ClearingAgent" })
+                                                        @Html.ValidationMessageFor(model => model.GeneralBrokerLicenseNumber, "", new { @class = "text-danger inlineBlock" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group OrgP">
+                                                @Html.Label(Resources.Resource.TradingLicense, new { @class = "col-md-3 control-label" })
+                                                <div class="col-md-5 ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(Model => Model.TradeLicenseNumber, new { @class = "form-control Org" })
+                                                        @Html.ValidationMessageFor(model => model.TradeLicenseNumber, "", new { @class = "text-danger inlineBlock" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+
+
+                                        @if (!Model.SubUser)//(bool)ViewBag.SubUser)
+                                        {
+
+                                            <div class="form-group ClearingAgentP ClearingAgentExistingUser">
+                                                @Html.Label(Resources.Resource.MCUserName, new { @class = "col-md-3 control-label" })
+                                                <div class="col-md-5">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(Model => Model.MCUserID, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.MCUserID, "", new { @class = "text-danger inlineBlock" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group ClearingAgentP ClearingAgentExistingUser">
+                                                @Html.Label(Resources.Resource.MCPassword, new { @class = "col-md-3 control-label", autocomplete = "off" })
+                                                <div class="col-md-5">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                                        </span>
+                                                        @Html.PasswordFor(Model => Model.MCPassword, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.MCPassword, "", new { @class = "text-danger inlineBlock" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+
+                                        @if (Model.SubUser)//(bool)ViewBag.SubUser)
+                                        {
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">&nbsp;</label>
+
+                                                <div class="col-md-5">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                                        </span>
+                                                        @Html.CheckBoxFor(m => m.IsAdmin, new { @class = "col-md-2 control-label" })    @Html.Label(@Resources.Resource.IsAdminUser, new { @class = "col-md-6 control-label" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        <div class="form-group">
+                                            @Html.Label(Resources.Resource.CivilId, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.CivilId, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.Label(Resources.Resource.MobileNumber, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.MobileTelNumber, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.MobileTelNumber, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.Label(Resources.Resource.Email, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.EmailId, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        @if (Model.SubUser)//(bool)ViewBag.SubUser)
+                                        {
+                                            <p class="contact AdminF">
+                                                @Html.Label(Resources.Resource.AvailableServices)
+                                            </p>
+                                            <p class="contact AdminF " id="AvailableEServices">
+
+                                                <table id="example" class="display select table table-sm table-bordered " cellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr class="boldc">
+                                                            <th class="text-center fcwidth">
+                                                                <input type="checkbox" class="text-center SELECTALLCHECKBOX" name="select_all" value="1" id="example-select-all" style="margin-left: 10px;">
+                                                            </th>
+                                                            <th></th>
+
+                                                            <th class="text-center ">@Resources.Resource.ServiceName</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{ foreach (WebApplication1.Models.EService ES in Model.AvailableEServices)
+                                                            {
+                                                                <tr>
+                                                                    <td class="text-center">
+
+                                                                        <input type="checkbox" name=@ES.ServiceID class="activateselectedservice text-center" id=@ES.ServiceID />
+                                                                    </td>
+                                                                    <td class="text-center">
+
+                                                                        @ES.ServiceID
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @{
+
+                                                                            string lang = langCookie.Value;
+                                                                            if (lang == "en")
+                                                                            {
+                                                                                @ES.ServiceNameEng
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @ES.ServiceNameAra
+                                                                            }
+                                                                        }
+
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+
+                                                </table>
+                                            </p>
+                                            <p class="contact AdminF">
+
+                                                @Html.Label(Resources.Resource.AvailableOrganizations)
+
+                                            </p>
+                                            <p class="contact  AdminF" id="AvailableOrganizations">
+
+                                                <table id="exampleO" class="display select table table-sm table-bordered " cellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr class="boldc">
+                                                            <th class="text-center fcwidth">
+                                                                <input type="checkbox" class="text-center SELECTALLCHECKBOXO" name="select_allO" value="1" id="example-select-allO" style="margin-left: 10px;">
+                                                            </th>
+                                                            <th></th>
+                                                            <th class="text-center">@Resources.Resource.OrganizationName</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{ foreach (WebApplication1.Models.Organization ES in Model.AvailableOrganizations)
+                                                            {
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        <input type="checkbox" name=@ES.OrganizationId class="activateselectedserviceO text-center" id=@ES.OrganizationId />
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @ES.OrganizationId
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @{
+
+                                                                            String lang = langCookie.Value;
+                                                                            if (lang == "en")
+                                                                            {
+                                                                                @ES.OrgNameEng
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @ES.OrgNameAra
+                                                                            }
+                                                                        }
+
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+
+                                                </table>
+
+
+
+                                            </p>
+
+                                            <p id="DTVald" class="contact AdminF">
+                                            </p>
+                                        }
+
+
+                                        <div class="form-group">
+                                            @Html.Label(Resources.Resource.Password, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.PasswordFor(Model => Model.Pass, new { @class = "form-control", autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.Label(Resources.Resource.ConfirmPassword, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.PasswordFor(Model => Model.ConfirmPass, new { @class = "form-control", autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">&nbsp;</label>
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                    </span>
+                                                    @Html.CheckBoxFor(m => m.Term_conditions, new { @class = "col-md-1 control-label" })   @Html.Label(@Resources.Resource.Agree_for, new { @class = "col-md-3 control-label" }) &nbsp;
+                                                    <a id="AEF">
+                                                        @Resources.Resource.Agree_for1
+                                                    </a>
+                                                    <br />
+                                                    @Html.ValidationMessageFor(model => model.Term_conditions, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.Label(Resources.Resource.EnterCaptcha, new { @class = "col-md-3 control-label" })
+                                            <img id="m_imgCaptcha" src="/registration/GetCaptchaImage" class="text-center" style="width: 140px; height: 57px;" align="middle" />
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+
+                                                    @Html.TextBoxFor(Model => Model.CaptchaValue, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.CaptchaValue, "", new { @class = "text-danger inlineBlock" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@ViewBag.Status</label>
+                                            <div class="col-md-5 ">
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <p class="text-center">
+                                            <input type="submit" class="btn btn-info text-center" id="SubmitUserDetails" value="@Resources.Resource.Submit" onclick="SetSelectedServices()" />
+                                        </p>
+
+                                    </fieldset>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        @*<td colspan="2">
+                                <button type="button" class="btn btn-info btn-block col-centered" causesvalidation="true" id="saveBtn">
+                                    <b>
+                                        <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Save &nbsp;
+                                    </b>
+                                </button>
+                            </td>*@
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" style="z-index:200;" role="button" title="@Resources.Resource.returnToTop" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+
+
+
+    <script>
+function loadCaptcha() {
+    //console.log("clicked");
+    $("#m_imgCaptcha").removeAttr("src").attr('src', "/registration/GetCaptchaImage?Refreshforce=" + Math.floor(Math.random() * 1000));
+    //$.ajax({
+    //    type: 'GET',
+    //    url: 'registration/GetCaptchaImage',
+    //    contentType: "application/json; charset=utf-8",
+    //    dataType: "json",
+    //    cache: false,
+    //    success: function (data) {
+    //        console.log(data);
+    //        $("#m_imgCaptcha").attr('src', data);
+    //    },
+    //    error: function (data) { alert("Error while loading captcha image") }
+    //});
+
+
+
+}
+$().ready(function () {
+    $("#CaptchaInputText").before("</br>");
+    $("#CaptchaInputText").addClass("");
+    $("#CaptchaInputText").css({ "border-bottom-color": "chocolate" });
+    //$("#CaptchaInputText").attr('data-val', true);
+    //$("#CaptchaInputText").attr('data-val-required', 'Please enter the Captcha');
+    //$("#CaptchaInputText").after("<span class='field-validation-valid text-danger' data-valmsg-for='CaptchaInputText' data-valmsg-replace='true'></span>");
+
+
+
+                                                @*$("p.contact:contains('Input symbols')").html(function(_, html) {
+                        return html.replace(/(Input symbols)/g, '@Html.Label(Resources.Resource.EnterCaptcha)')
+                                                });*@
+    $("#CaptchaDIV:contains('Input symbols')").html(function (_, html) {
+        return html.replace(/(Input symbols)/g, '@Html.Label(Resources.Resource.EnterCaptcha)');
+    });
+
+
+    $("#example_previous a").first().text("<<");
+    $("#example_next a").first().text(">>");
+    $("#exampleO_previous a").first().text("<<");
+    $("#exampleO_next a").first().text(">>");
+}
+);
+
+$("#IsAdmin").change(function () {
+    if (this.checked) {
+        $(".AdminF").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+        $("#example_wrapper").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+        $("#exampleO_wrapper").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+    } else {
+        $(".AdminF").removeClass('ClearingAgentP').addClass('ClearingAgentNP');
+        $("#example_wrapper").removeClass('ClearingAgentP').addClass('ClearingAgentNP');
+        $("#exampleO_wrapper").removeClass('ClearingAgentP').addClass('ClearingAgentNP');
+
+    }
+});
+$("#ExistingUser").change(function () {
+    if (this.checked) {
+        $(".ClearingAgentPOPT").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+        $(".ClearingAgentExistingUser").removeClass('ClearingAgentP').addClass('ClearingAgentNP');
+        $('.ClearingAgent').attr('data-val', false);
+
+    } else {
+        $(".ClearingAgentPOPT").removeClass('ClearingAgentP').addClass('ClearingAgentNP');
+        $(".ClearingAgentExistingUser").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+        $('.ClearingAgent').attr('data-val', false);
+
+    }
+});
+$('#LegalEntity').change(function () {
+    var val = this.value;
+    if (val === "1") {
+        //$('.ClearingAgentP').show(); // Shows
+        //$('.OrgP').hide(); // hides
+
+        //$('.ClearingAgentP').css({'display':''}); // Shows
+        //$('.OrgP').css({ 'display': 'none' }); // hides
+        $("#ExistingUser").prop("checked", false);
+
+        $(".ClearingAgentP").removeClass('ClearingAgentP').addClass('ClearingAgentNP');
+        $(".OrgNP").removeClass('OrgNP').addClass('OrgP');
+
+        //Special handling for existing user field , adding display none again
+        $(".ClearingAgentExistingUser").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+
+
+        $('.ClearingAgent').attr('data-val', true);
+        $('.Org').attr('data-val', false);
+
+    } else if (val === "2") {
+        //$('.ClearingAgentP').hide(); // Shows
+        //$('.OrgP').show(); // hides
+
+        //$('.ClearingAgentP').css({ 'display': 'none' }); // Shows
+        //$('.OrgP').css({ 'display': '' }); // hides
+
+        $(".OrgP").removeClass('OrgP').addClass('OrgNP');
+        $(".ClearingAgentNP").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+
+        $('.ClearingAgent').attr('data-val', false);
+        $('.Org').attr('data-val', true);
+    } else if (val === "0") {
+        //$('.ClearingAgentP').hide(); // Shows
+        //$('.OrgP').hide(); // hides
+
+        //$('.ClearingAgentP').css({ 'display': 'none' }); // Shows
+        //$('.OrgP').css({ 'display': 'none' }); // hides
+
+        $(".ClearingAgentNP").removeClass('ClearingAgentNP').addClass('ClearingAgentP');
+        $(".OrgNP").removeClass('OrgNP').addClass('OrgP');
+
+        $('.ClearingAgent').attr('data-val', true);
+        $('.Org').attr('data-val', true);
+    }
+
+});
+
+$("#example_paginate ,#exampleO_paginate").bind('contentchanged',function () {
+    $("#example_previous a").first().text("<<");
+    $("#example_next a").first().text(">>");
+    $("#exampleO_previous a").first().text("<<");
+    $("#exampleO_next a").first().text(">>");
+}
+);
+    </script>
+    <script>
+        // extend jquery range validator to work for required checkboxes
+        var defaultRangeValidator = $.validator.methods.range;
+        $.validator.methods.range = function (value, element, param) {
+            if (element.type === 'checkbox') {
+                // if it's a checkbox return true if it is checked
+                return element.checked;
+            } else {
+                // otherwise run the default validation function
+                return defaultRangeValidator.call(this, value, element, param);
+            }
+        };
+
+        function RegSuccess(data) {
+            //$('#ddd').show();
+            loadCaptcha();
+            //window.location.href = "Accountverification?";
+            //alert(data.message);
+            if (data.StatusCode === 0) {
+                window.location.href = data.URL;
+            }
+            else {
+                alert(data.message);
+            }
+            ////StatusCode
+
+            console.log(JSON.stringify(data));
+            //console.log(data.result);
+        }
+        function RegFailure(data) {
+            loadCaptcha();
+            //alert('Some issue has occured. Please try again');
+            alert(data.message);
+        }
+
+        var SVCARRAY = new Array();
+        var ORGARRAY = new Array();
+
+
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                //'ajax': {
+                //    'url': '/lab/articles/jquery-datatables-how-to-add-a-checkbox-column/ids-arrays.txt'
+                //},
+                "bPaginate": true,
+                "bFilter": false,
+                "bInfo": false,
+                "pageLength": 5,
+                "pagingType": 'numbers',
+                "bLengthChange": false,
+                'columnDefs': [{
+                    'targets': 0,
+                    'searchable': false,
+                    'orderable': false,
+                    'className': 'dt-body-center'
+                    //,'render': function (data, type, full, meta) {
+                    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+                    //}
+                },
+                {
+                    "targets": 1,
+                    "visible": false
+                }],
+                'order': [[2, 'asc']]
+            });
+            var table1 = $('#exampleO').DataTable({
+                //'ajax': {
+                //    'url': '/lab/articles/jquery-datatables-how-to-add-a-checkbox-column/ids-arrays.txt'
+                //},
+                "bPaginate": true,
+                "bFilter": false,
+                "bInfo": false,
+                "pageLength": 5,
+                "pagingType": 'numbers',
+                "bLengthChange": false,
+                'columnDefs': [{
+                    'targets': 0,
+                    'searchable': false,
+                    'orderable': false,
+                    'className': 'dt-body-center'
+                    //,'render': function (data, type, full, meta) {
+                    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+                    //}
+                },
+                {
+                    "targets": 1,
+                    "visible": false
+                }],
+                'order': [[2, 'asc']]
+            });
+
+            // Handle click on "Select all" control
+            $('#example-select-all').on('click', function () {
+                // Get all rows with search applied
+                var rows = table.rows({ 'search': 'applied' }).nodes();
+                // Check/uncheck checkboxes for all rows in the table
+                $('input[type="checkbox"]', rows).prop('checked', this.checked);
+                if (this.checked) {
+                    SVCARRAY = table
+                        .column(1)
+                        .data()
+                        .toArray();
+                    console.log(SVCARRAY);
+                } else {
+                    SVCARRAY.length = 0;
+                }
+                //$(".activateselectedservice").prop('checked', $(this).prop('checked'));
+            });
+            $('#example-select-allO').on('click', function () {
+                // Get all rows with search applied
+                var rows = table1.rows({ 'search': 'applied' }).nodes();
+                // Check/uncheck checkboxes for all rows in the table
+                $('input[type="checkbox"]', rows).prop('checked', this.checked);
+                if (this.checked) {
+                    ORGARRAY = table1
+                        .column(1)
+                        .data()
+                        .toArray();
+                    console.log(ORGARRAY);
+                } else {
+                    ORGARRAY.length = 0;
+                }
+                //$(".activateselectedserviceO").prop('checked', $(this).prop('checked'));
+            });
+            // Handle click on checkbox to set state of "Select all" control
+            $('#example tbody').on('change', 'input[type="checkbox"]', function () {
+                // If checkbox is not checked
+                if (!this.checked) {
+                    $('#example-select-all').prop('checked', false);
+                    var svcindx = SVCARRAY.indexOf(this.name);
+                    SVCARRAY.splice(svcindx, 1);
+                    console.log(SVCARRAY);
+                }
+                else {
+                    if (SVCARRAY.indexOf(this.name) === -1) SVCARRAY.push(this.name);
+                    if (SVCARRAY.length === table.column(1).data().length) {
+                        $('#example-select-all').prop('checked', true);
+                    }
+                    console.log(SVCARRAY);
+                }
+                if ($('.activateselectedservice:checked').length > 0 && $("#Datatablevalidation").length > 0) {
+                    $("#Datatablevalidation").remove();
+                }
+
+            });
+            $('#exampleO tbody').on('change', 'input[type="checkbox"]', function () {
+                // If checkbox is not checked
+                if (!this.checked) {
+                    $('#example-select-allO').prop('checked', false);
+                    var svcindx = ORGARRAY.indexOf(this.name);
+                    //console.log(svcindx);
+                    ORGARRAY.splice(svcindx, 1);
+                    console.log(ORGARRAY);
+                }
+                else {
+                    if (ORGARRAY.indexOf(this.name) === -1) ORGARRAY.push(this.name);
+                    if (ORGARRAY.length === table1.column(1).data().length) {
+                        $('#example-select-allO').prop('checked', true);
+                    }
+                    //console.log(ORGARRAY.length + "  " + table1.column(1).data().length);
+                    console.log(ORGARRAY);
+                }
+                if ($('.activateselectedserviceO:checked').length > 0 && $("#Datatablevalidation").length > 0) {
+                    $("#Datatablevalidation").remove();
+                }
+
+            });
+
+
+
+            $('#example_wrapper , #exampleO_wrapper').css({ "width": "90%" });
+
+            //$("#SubmitRequest").on("click", function () {
+
+
+            //    // Iterate over all checkboxes in the table
+            //    table1.$('input[type="checkbox"]').each(function () {
+            //        // If checkbox doesn't exist in DOM
+            //        if (!$.contains(document, this)) {
+            //            // If checkbox is checked
+            //            if (this.checked) {
+            //                console.log(this.name);
+
+            //            }
+            //        }
+            //    });
+            //        });
+
+        });
+
+
+
+        function SetSelectedServices() // Handle form submission event
+        {
+            $("#SelectedOrganizations").val(ORGARRAY.join(','));
+            $("#SelectedServices").val(SVCARRAY.join(','));
+
+
+            console.log(SVCARRAY.join(','));
+            console.log(ORGARRAY.join(','));
+
+
+            if ($("#IsAdmin").prop("checked") === false)
+            //if ($(".AdminF").length > 0)
+            {
+
+                if ($('.activateselectedservice:checkbox:checked').length <= 0 || $('.activateselectedserviceO:checkbox:checked').length <= 0) {
+
+                    if ($("#Datatablevalidation").length <= 0) {
+                        $("#DTVald").after('<p class="contact" id="Datatablevalidation"><span class="text-danger field-validation-error" data-valmsg-for="Pass" data-valmsg-replace="true"><span for="Pass" class="">@Resources.Resource.selectOneServiceMsg</span></span></p>');
+                        //$('<p class="contact" id="Datatablevalidation"><span class="text-danger field-validation-error" data-valmsg-for="Pass" data-valmsg-replace="true"><span for="Pass" class="">Please ensure to select minimum one Service and one Organization for the Additional user</span></span></p>').insertAfter($("#DTVald"));
+                    }
+                    event.preventDefault();
+                }
+                else {
+                    $("#Datatablevalidation").remove();
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+    <script>
+
+        $(function () {
+
+            jQuery.validator.addMethod('checkgeneralbrokerlicense', function (value, element, params) {
+
+                //console.log(value);
+                if (value.length >= 6) {
+                    var Firstchar = value.substr(0, 1);
+                    var SixthChar = value.substr(5, 1);
+                    if (Firstchar === "1" && SixthChar === "1") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+
+
+            }, '');
+
+            jQuery.validator.unobtrusive.adapters.add('checkgeneralbrokerlicense', function (options) {
+                options.rules['checkgeneralbrokerlicense'] = {};
+                options.messages['checkgeneralbrokerlicense'] = options.message;
+            });
+
+        }(jQuery));
+    </script>
+
+
+</body>
+
+
+
+

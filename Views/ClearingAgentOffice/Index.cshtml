@@ -1,0 +1,365 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link href="~/styles/Untitled.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/scripts/jquery.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <script src="~/scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/Scripts/jquery-ui.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link href="~/styles/datepickercss.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/Scripts/eServiceScript.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <title>@Resources.Resource.BrokerOfficeDetails</title>
+
+</head>
+<body dir="@Resources.Resource.dir">
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse" id="navDiv">
+                <img src="../images/customs.png" width="60" alt="" />
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="#" id="linktoExit">@Resources.Resource.Logout</a></li>
+                    <li><a href="#" id="linktoNotifications">@Resources.Resource.Notifications</a></li>
+
+                    <li><a href="#" id="linkToBrokersManagement">@Resources.Resource.brokersManagement</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="formContainer" id="brokerOfficeDetailsContainer">
+
+        <div class="col-lg-8 col-centered">
+
+            <table class="table table-striped center-block">
+                <caption>@Resources.Resource.BrokerOfficeDetails</caption>
+
+                <tbody>
+                    <tr>
+                        <td colspan="1">
+                            <form class="well form-horizontal" dir="@Resources.Resource.dir">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_CompanyNameinArabic</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                <input id="companyArabicName" name="companyArabicName" placeholder="@Resources.Resource.OrgReg_CompanyNameinArabic" class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_OrganizationCode</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-file"></i>
+                                                </span>
+                                                <input id="companyCode" name="companyCode" placeholder="@Resources.Resource.OrgReg_OrganizationCode"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_CivilId</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-file"></i>
+                                                </span>
+                                                <input id="companyCivilId" name="CompanyCivilId" placeholder="@Resources.Resource.OrgReg_CivilId"
+                                                       class="form-control" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_State</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                                <select class="selectpicker form-control" id="companyState">
+                                                    <option>الجهراء Al Jahra</option>
+                                                    <option>الفروانية Farwaniya </option>
+                                                    <option>حولي Hawally</option>
+                                                    <option>الأحمدي Al Ahmadi</option>
+                                                    <option>مدينة الكويت Kuwait City </option>
+                                                    <option>مبارك الكبير Mubarak Al-Kabeer </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_City</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                </span>
+                                                <input id="companyCity" name="companyCity" placeholder="@Resources.Resource.OrgReg_City"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.officialAddress</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                </span>
+                                                <input id="companyAddress" name="companyAddress" placeholder="@Resources.Resource.OrgReg_Address"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_POBoxNo</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span>
+                                                <input id="companyPOBoxNo" name="companyPOBoxNo" placeholder="@Resources.Resource.OrgReg_POBoxNo"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_PostalCode</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span>
+                                                <input id="companyPostalCode" name="companyPostalCode" placeholder="@Resources.Resource.OrgReg_PostalCode"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </fieldset>
+                            </form>
+                        </td>
+
+                        <td colspan="1">
+                            <form class="well form-horizontal">
+                                <fieldset>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_CompanyName</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                <input id="companyEnglishName" name="companyEnglishName" placeholder="@Resources.Resource.OrgReg_CompanyName"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_Tradelicenceno</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-file"></i>
+                                                </span>
+                                                <input id="companyTradelicenceno" name="companyTradelicenceno" placeholder="@Resources.Resource.OrgReg_Tradelicenceno"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_BusinessNumber</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-phone-alt"></i>
+                                                </span>
+                                                <input id="companyBusinessNumber" name="companyBusinessNumber" placeholder="@Resources.Resource.OrgReg_BusinessNumber"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_BusinessFaxNumber</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-earphone"></i>
+                                                </span>
+                                                <input id="companyBusinessFaxNumber" name="companyBusinessFaxNumber" placeholder="@Resources.Resource.OrgReg_BusinessFaxNumber"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_MobileNumber</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-phone"></i>
+                                                </span>
+                                                <input id="companyMobileNumber" name="companyMobileNumber" placeholder="@Resources.Resource.OrgReg_MobileNumber"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_EmailID</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span>
+                                                <input id="companyEmailID" name="companyEmailID" placeholder="@Resources.Resource.OrgReg_EmailID"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.OrgReg_WebPageAddress</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-globe"></i>
+                                                </span>
+                                                <input id="companyWebPageAddress" name="companyWebPageAddress" placeholder="@Resources.Resource.OrgReg_WebPageAddress"
+                                                       class="form-control" required="required" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">@Resources.Resource.remarks</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-edit"></i>
+                                                </span>
+                                                <textarea id="companyRemarks" name="companyRemarks" placeholder="@Resources.Resource.remarks" class="form-control" required="required" value="" type="text"></textarea>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    @*<div class="form-group">
+                                            <label class="col-md-4 control-label">@Resources.Resource.OrgReg_ResidenceNumber</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-flag"></i>
+                                                    </span>
+                                                    <input id="companyResidenceNumber" name="companyResidenceNumber" placeholder="@Resources.Resource.OrgReg_ResidenceNumber"
+                                                           class="form-control" required="required" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>*@
+
+                                    @*<div class="form-group">
+                                            <label class="col-md-4 control-label">@Resources.Resource.OrgReg_AuthorizedPerson</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                    </span>
+                                                    <input id="authorizedPerson" name="authorizedPerson" placeholder="@Resources.Resource.OrgReg_AuthorizedPerson"
+                                                           class="form-control" required="required" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>*@
+
+                                </fieldset>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-info btn-block col-centered" causesvalidation="true" id="saveBtn">
+                                <b>
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Save &nbsp;
+                                </b>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" style="z-index:200;" role="button" title="@Resources.Resource.returnToTop" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+</body>
+</html>

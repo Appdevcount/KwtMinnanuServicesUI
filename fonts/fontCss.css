@@ -1,0 +1,18 @@
+﻿@font-face {
+    font-family: 'Droid Arabic Kufi';
+    font-style: normal;
+    font-weight: 400;
+    src: url(majalla.eot);
+    src: url(majalla.eot?#iefix) format('embedded-opentype'), url(majalla.woff2) format('woff2'), url(majalla.woff) format('woff'), url(majalla.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Droid Arabic Kufi';
+    font-style: normal;
+    font-weight: bold;
+    src: url(majallab.eot);
+    src: url(majallab.eot?#iefix) format('embedded-opentype'), url(majallab.woff2) format('woff2'), url(majallab.woff) format('woff'), url(majallab.ttf) format('truetype');
+}
+
+
+

@@ -1,0 +1,563 @@
+﻿@model WebApplication1.Models.LogOnRequest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="loginHtml" dir="@Resources.Resource.dir">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+
+    @*<link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+
+    <link rel="stylesheet" href="~/styles/font-awesome.min.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link rel="stylesheet" href="~/styles/theme.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    @*<link rel="stylesheet" href="~/styles/bootstrap.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+
+    <link href="~/styles/animate.min.css" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link href="~/styles/ModifiedStyles.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <title>@Resources.Resource.KuwaitCustoms</title>
+
+
+    <style>
+        #idpopup hover {
+            text-decoration: underline;
+        }
+
+
+        /*Remove space below heading - Siraj*/
+        .mb-3, .my-3 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        /*top bottom space removal siraj*/
+        .pb-5, .py-5 {
+            padding-bottom: 0.5rem !important;
+        }
+
+        .pt-5, .py-5 {
+            padding-top: 0.5rem !important;
+        }
+
+        /*reducing polymer-element container padding Siraj*/
+        .p-5 {
+            padding: 8px !important;
+        }
+        /*.col-10 {
+            flex: 0 0 83.33333%;
+            max-width: 99.33333%;
+        }*/
+
+
+        /*@@media (max-width: 450px) {
+
+            #loginPreForm {
+                background-image: url(../images/bg1.jpg);
+            }
+        }
+
+        @@media (min-width: 450px) {
+
+            #loginPreForm {
+                background-image: url(../images/bg.jpg);
+            }
+        }*/
+    </style>
+
+
+</head>
+<body id="loginPreForm" dir="@Resources.Resource.dir">
+    @*loginBody*@
+
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <input type="hidden" name="usageAgreement" id="usageAgreement" value="@Resources.Resource.usageAgreement" />
+    <input type="hidden" name="usageAgreementHeader" id="usageAgreementHeader" value="@Resources.Resource.termsOfUse" />
+
+    <!-- The Modal -->
+    <div id="modalDiv" class="modal" style="display:@ViewBag.showMessageStyle;">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeError">&times;</span>
+                <h6 id="modelHeaderTitle">
+                    &nbsp;   @Resources.Resource.genericErrorPageSorry
+                </h6>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">
+                    @ViewBag.Msg
+                </p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+            </div>
+        </div>
+
+    </div>
+
+    @using (Html.BeginForm("Index", "registration", FormMethod.Post, new { id = "myform", enctype = "multipart/form-data" }))
+    {
+        //, onKeyPress = "NoDefaultSubmit(event)"
+        @Html.AntiForgeryToken()
+
+        <div class="py-5 text-center" id="" style="margin-top:50px">
+            @*loginPreForm*@
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" id="col12Login" style="">
+
+                        <div class="mx-auto col-10 bg-gradient p-5 col-md-5">
+                            @*col-md-6*@
+                            @*bg-white*@
+
+                            @{
+                                string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+                                bool EnglishCulture = culture.Contains("English");
+                                string floatdir = EnglishCulture ? "float-left" : "float-right";
+                                string floatdirOpp = !EnglishCulture ? "float-left" : "float-right";
+
+
+
+                                @*<div class="col-2 col-md-2" style="height: 1px;">*@
+                                <div class="row">
+
+
+                                    <div class=" col-md-12" style="height: 1px;">
+                                        <input type="hidden" name="errorMsg" value="" id="errorMsg" class="errorMsg" />
+                                        <input type="hidden" name="ServiceType" value="@ViewBag.ServiceType" id="ServiceType" class="errorMsg" />
+
+                                        @{ HttpCookie langCookie = Request.Cookies["culture"];
+                                            var lang = langCookie.Value;
+
+                                            string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+                                            string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+                                            @*@Html.ActionLink(Resources.Resource.Language, "ChangeLanguage", "registration", new { lang = Resources.Resource.Lan, pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery }, new { ID = "", @class = "btn btn-info text-center", @style =  }) *@
+
+                                        if (lang == "en")
+                                        {
+
+                                            @*@Html.ActionLink("العربية", "ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery }, new { ID = "changeLangToEnglish", @class = "btn btn-info text-center", @style = "font-size:12px" })*@
+                                            @*<img class="@floatdir" src="~/images/HomeIcons/Arabic.png" id="" style="height:20px;width:20px; cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />*@
+                                            <img class="float-right" src="~/images/HomeIcons/Arabic.png" id="" style="height:30px;width:30px;margin-right: 10px; cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+                                        }
+                                        else
+                                        {
+                                            @*@Html.ActionLink("English", "ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery }, new { ID = "changeLangToArabic", @class = "btn btn-info text-center", @style = "font-size:12px" })*@
+
+                                            @*<img class="@floatdir" src="~/images/HomeIcons/English.png" id="" style="height:20px;width:20px; cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />*@
+                                            <img class="float-right" src="~/images/HomeIcons/English.png" id="" style="height:30px;width:30px; margin-right: 10px;cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+                                        }
+                                        }
+                                        <img class="float-right" src="~/images/HomeIcons/Home.png" id="" style="height:30px;width:30px;margin-right: 10px; cursor:pointer;" onclick="window.location.href='/eSOnePPIA/Registration/Start'" />
+
+                                    </div>
+
+
+                                    <div class=" col-md-6" style="height: 1px;">
+                                        @*<button class="@floatdirOpp">zsdvsd</button>*@
+                                        @*  <img class="@floatdirOpp" src="~/images/HomeIcons/Home.png" id="" style="height:20px;width:20px; cursor:pointer;" onclick="window.location.href='/Eservices/Registration/Start'" />*@
+
+                                    </div>
+
+                                </div>
+
+                            }
+
+                            <img class="img-fluid d-block mx-auto" src="~/images/customs.png" width="120" style="" /> @*150 ->120*@
+                            @*<br />*@
+                            <h5 class="mb-3">
+                                <b>
+
+                                    @*@Resources.Resource.eServiceHeader*@
+                                    @if (Session["ClearingAgentServices"] != null)
+                                    {
+                                        if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+                                        {
+
+                                            @Resources.Resource.KuwaitCustomsBrokereServices
+                                        }
+                                        if (Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                                        {
+                                            @Resources.Resource.KuwaitCustomsOrganizationeServices
+                                        }
+                                    }
+                                </b>
+                                <br />
+                                @*@Html.ActionLink(Resources.Resource.ServiceSelection, "Start", "registration", null, new { ID = "changeLangToEnglish", @class = "btn btn-info text-center", @style = "font-size:12px" })*@
+
+                                @*<br />
+
+                                    @Resources.Resource.Login<br />*@
+                            </h5>
+
+                            <div class="form-group" style="padding-left: 19%;
+    padding-right: 19%;">
+                                @if (Session["tempEmail"] != null)
+                                {
+                                    <input type="text"
+                                           ID="Username"
+                                           name="Username"
+                                           class="form-control animated"
+                                           maxlength="150"
+                                           placeholder="@Resources.Resource.UserName"
+                                           value="@ViewBag.TempEmail" autocomplete="off"
+                                           style="direction:LTR">
+                                }
+                                else
+
+                                {
+                                    <input type="text"
+                                           ID="Username"
+                                           name="Username"
+                                           class="form-control animated"
+                                           maxlength="150"
+                                           placeholder="@Resources.Resource.UserName"
+                                           value="@ViewBag.TempEmail" autocomplete="off" style="direction:LTR">
+
+                                }
+
+
+
+                                <p id="userNameErrorMsg" class="errorMsg">
+                                    @Resources.Resource.validemail
+                                </p>
+
+                            </div>
+                            <div class="form-group mb-3" style="padding-left: 19%;
+    padding-right: 19%;    margin-bottom: 1.0rem !important;">
+                                <input type="password"
+                                       ID="password"
+                                       name="password"
+                                       class="form-control"
+                                       maxlength="150"
+                                       placeholder="@Resources.Resource.Password"
+                                       value=""
+                                       autocomplete="off" style="direction:LTR">
+
+
+                                <p id="PasswordErrorMsg" class="errorMsg">
+                                    @Resources.Resource.requiredPasswordMsg
+                                </p>
+
+                                @*<br />*@
+                                @*<small class="form-text text-muted">
+                                        <a href="@Url.Action("ResetPassword", "registration")" class="text-info">
+
+                                            <b>
+                                                <b class="" contenteditable="true" style="color:#012b73">
+                                                    @Resources.Resource.forgetPassowrd
+                                                </b>
+                                            </b>
+
+                                        </a>
+                                    </small>*@
+                            </div>
+
+                            <div class="form-group mb-3" style="    padding-left: 19%;
+    padding-right: 19%;">
+                                <input class="form-control"
+                                       placeholder="@Resources.Resource.Forgot_input2"
+                                       name="CaptchaValue"
+                                       type="text" id="inputCaptcha" autocomplete="off" style="direction:LTR" />
+
+
+                                <p id="captchaErrorMsg" class="errorMsg">
+                                    @Resources.Resource.EntercorrectCaptcha
+                                </p>
+                            </div>
+
+                            <div class="form-group mb-3" style="padding-left: 19%;
+    padding-right: 19%;">
+                                <table style="width: 100%;border-style: solid;
+    border-color: white;" class="">
+
+                                    <tr>
+                                        <td width="80%">
+                                            <img id="m_imgCaptcha" src="../registration/GetCaptchaImage"
+                                                 class="text-center captcha" style="width:100%;    max-height: 34px;" />
+                                        </td>
+                                        <td width="20%">
+                                            @*<span id="Regreshcaptch"
+                                                      class="glyphicon glyphicon-refresh">
+                                                </span>*@
+                                            <img id="Regreshcaptch" onclick="RefreshCptcha()" src="~/images/Buttons/refresh.png" style="height:34px;width:38px;cursor:pointer" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <p id="captchaErrorMsg" class="errorMsg">
+                                    @Resources.Resource.EntercorrectCaptcha
+                                </p>
+                                <br />
+                                <small class="form-text text-muted">
+                                    <b class="" contenteditable="false" style="color:#012b73; ">
+                                        <a href="@Url.Action("ResetPassword", "registration")" class="text-info1" style="color:#012b73; font-weight:bolder">@Resources.Resource.forgetPassowrd</a>
+                                    </b>
+                                </small>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+
+                                <p>
+
+
+                                    @*@{
+                                            if (lang == "en")
+                                            {
+                                                <input type="submit" ID="loginBtn" class="btn btn-info text-center width9em" value="@Resources.Resource.B_Login" />
+                                            }
+
+                                            else
+                                            {
+                                                <input type="submit" ID="loginBtn" class="btn btn-info text-center" value="@Resources.Resource.B_Login" />
+                                            }
+
+                                        }
+
+                                        <input type="button" ID="registerationBtn" class="btn btn-info text-center" onclick="location.href='@Url.Action("UserRegistration", "registration")'" value="@Resources.Resource.B_Signup" />*@
+
+                                    <div class="row">
+                                        @*<div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-xs-6  text-center " style="padding-left: 0px;padding-right: 0px;">
+
+                                                        <input class="LoginImg btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/BrokersLoginTrans.PNG" title="@Resources.Resource.LoginForBrokerServices" style="height: 75px;width:70px; cursor:pointer; padding:2px" alt="submit" name="LoginForBrokerServices" value="@Resources.Resource.LoginForBrokerServices" />
+                                                        <br /> <br /> <label> @Resources.Resource.LoginForBrokerServices</label>
+                                                    </div>
+                                                    <div class="col-xs-6  text-center" style="padding-left: 0px;padding-right: 0px;">
+
+                                                        <img class=" btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/BrokersregistrationTrans.png" id="RegisterForBrokerServices" style="height: 75px;width:70px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForBrokerServices" onclick="window.location.href='/Eservices/Registration/RegisterForBrokerServices'" />
+                                                        <br /> <br /> <label> @Resources.Resource.RegisterForBrokerServices</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-xs-6  text-center" style="padding-left: 0px;padding-right: 0px;">
+                                                        <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Company login Trans.png" title="@Resources.Resource.LoginForStakeholderServices" style="height: 75px;width:70px; cursor:pointer; padding:2px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" />
+                                                        <br /><br /> <label> @Resources.Resource.LoginForStakeholderServices</label>
+                                                    </div>
+
+                                                    <div class="col-xs-6  text-center" style="padding-left: 0px;padding-right: 0px;">
+
+                                                        <img class="IMH  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/CompanyRegistrationTrans.png" id="RegisterForStakeholderServices" style="height:75px;width:70px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForStakeholderServices" onclick="window.location.href='/Eservices/Registration/RegisterForStakeholderServices'" />
+                                                        <br /><br />  <label> @Resources.Resource.RegisterForStakeholderServices</label>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+
+
+                                        @*<div class="col-md-3  text-center " style="padding-left: 0px;padding-right: 0px;">
+
+                                                <input class="LoginImg btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Brokers Login Trans.PNG" title="@Resources.Resource.LoginForBrokerServices" style="height: 75px;width:70px; cursor:pointer; padding:2px" alt="submit" name="LoginForBrokerServices" value="@Resources.Resource.LoginForBrokerServices" />
+                                                <br /> <br /> <label> @Resources.Resource.LoginForBrokerServices</label>
+                                            </div>
+                                            <div class="col-md-3  text-center" style="padding-left: 0px;padding-right: 0px;">
+
+                                                <img class=" btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Brokers registration Trans.png" id="RegisterForBrokerServices" style="height: 75px;width:70px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForBrokerServices" onclick="window.location.href='/Eservices/Registration/RegisterForBrokerServices'" />
+                                                <br /> <br /> <label> @Resources.Resource.RegisterForBrokerServices</label>
+                                            </div>
+                                            <div class="col-md-3  text-center" style="padding-left: 0px;padding-right: 0px;">
+                                                <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Company login Trans.png" title="@Resources.Resource.LoginForStakeholderServices" style="height: 75px;width:70px; cursor:pointer; padding:2px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" />
+                                                <br /><br /> <label> @Resources.Resource.LoginForStakeholderServices</label>
+                                            </div>
+
+                                            <div class="col-md-3  text-center" style="padding-left: 0px;padding-right: 0px;">
+
+                                                <img class="IMH  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Company Registration Trans.png" id="RegisterForStakeholderServices" style="height:75px;width:70px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForStakeholderServices" onclick="window.location.href='/Eservices/Registration/RegisterForStakeholderServices'" />
+                                                <br /><br />  <label> @Resources.Resource.RegisterForStakeholderServices</label>
+                                            </div>*@
+
+                                        @*@if (Session["ClearingAgentServices"] != null)
+                                                                                {
+                                                                                    if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+                                                                                    {
+                                                                                        <div class="col-md-6  text-center " style=" padding-left: 30px;
+                                            padding-right: 30px; ">
+                                                                                            <input class="LoginImg btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Brokers Login Trans.PNG" title="@Resources.Resource.LoginForBrokerServices" style="height: 60px;width:60px; cursor:pointer; padding:2px" alt="submit" name="LoginForBrokerServices" value="@Resources.Resource.LoginForBrokerServices" />
+                                                                                            <br />  <label style="font-size: 14px;"> @Resources.Resource.B_Login</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-6  text-center" style="padding-left: 30px;
+                                            padding-right: 30px;">
+
+                                                                                            <img class=" btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Registration.png" id="RegisterForBrokerServices" style="height: 60px;width:60px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForBrokerServices" onclick="window.location.href='/Eservices/Registration/RegisterForBrokerServices'" />
+                                                                                            <br /> <label style="font-size: 14px;"> @Resources.Resource.B_Signup</label>
+                                                                                        </div>
+                                                                                    }
+                                                                                    if (Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                                                                                    {
+                                                                                        <div class="col-md-6  text-center" style="padding-left: 30px;
+                                            padding-right: 30px;">
+                                                                                            <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/Company login Trans.png" title="@Resources.Resource.LoginForStakeholderServices" style="height: 60px;width:60px; cursor:pointer; padding:2px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" />
+                                                                                            <br /> <label style="font-size: 14px;"> @Resources.Resource.B_Login</label>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-6  text-center" style="padding-left: 30px;
+                                            padding-right: 30px;">
+
+                                                                                            <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Registration.png" id="RegisterForStakeholderServices" style="height:60px;width:60px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForStakeholderServices" onclick="window.location.href='/Eservices/Registration/RegisterForStakeholderServices'" />
+                                                                                            <br /><label style="font-size: 14px;"> @Resources.Resource.B_Signup</label>
+                                                                                        </div>
+                                                                                    }
+
+
+
+                                                                                }*@
+
+                                        @if (Session["ClearingAgentServices"] != null)
+                                        {
+                                            <table style="" width="100%">
+                                                @*border-color:black;border-style:double*@
+                                                <tr>
+
+
+                                                    @if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+                                                    {
+
+                                                        <td width="50%" class="@floatdir">
+                                                            <input class="LoginImg btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/BrokersLoginTrans.PNG" title="@Resources.Resource.LoginForBrokerServices" style="height: 60px;width:60px; cursor:pointer; padding:2px" alt="submit" name="LoginForBrokerServices" value="@Resources.Resource.LoginForBrokerServices" />
+                                                            <br />  <label> @Resources.Resource.B_Login</label>
+                                                        </td>
+                                                        @*<td width="10%"></td>*@
+                                                        <td width="50%" class="@floatdirOpp">
+
+                                                            <img class="btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Registration.png" id="RegisterForBrokerServices" style="height: 60px;width:60px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForBrokerServices" onclick="window.location.href='/eSOnePPIA/Registration/RegisterForBrokerServices'" />
+                                                            <br /> <label>@Resources.Resource.SignUp</label>
+                                                        </td>
+                                                    }
+
+                                                    @if (Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                                                    {
+                                                        <td width="50%" class="@floatdir">
+                                                            <input class="LoginImg  btn btn-default btn-circleLogin btn-xl" type="image" src="~/images/HomeIcons/CompanyloginTrans.png" title="@Resources.Resource.LoginForStakeholderServices" style="height: 60px;width:60px; cursor:pointer; padding:2px" alt="submit" name="LoginForStakeholderServices" value="@Resources.Resource.LoginForStakeholderServices" />
+                                                            <br /> <label> @Resources.Resource.B_Login</label>
+                                                        </td>
+                                                        @*<td width="10%"></td>*@
+                                                        <td width="50%" class="@floatdirOpp">
+
+                                                            <img class="  btn btn-default btn-circleLogin btn-xl" src="~/images/HomeIcons/Registration.png" id="RegisterForStakeholderServices" style="height:60px;width:60px; cursor:pointer; padding:2px" title="@Resources.Resource.RegisterForStakeholderServices" onclick="window.location.href='/eSOnePPIA/Registration/RegisterForStakeholderServices'" />
+                                                            <br /><label> @Resources.Resource.SignUp</label>
+                                                        </td>
+                                                    }
+
+                                                </tr>
+                                            </table>
+
+                                        }
+
+
+
+                                    </div>
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="form-group " style="font-size:11px;">
+                                <span>
+                                    @*@Resources.Resource.Terms_of_Use1*@
+
+                                    @Resources.Resource.TermsPart1
+                                    <br />
+                                    @Resources.Resource.TermsPart2
+
+                                    <a id="idpopup" style="cursor: pointer; font-weight:bold;color:#012b73">@Resources.Resource.Terms_of_Use2</a>
+                                </span>
+                                @*text-decoration:underline;*@
+                            </div>
+
+
+                            @*<div class="form-group marginTop15 " style="font-size:11px;">
+
+                                    <span>
+                                        <a href="~/images/EServices-QuickReference.pdf" target="_blank"
+                                           style="font-weight:bold;color:black;cursor: pointer;font-size: 11px;color:#012b73">
+
+                                            <img src="~/images/HomeIcons/InfoTrans.png" id="QuickReference" style="height: 25px; cursor:pointer" title="@Resources.Resource.Quickreference" />
+                                            @Resources.Resource.Quickreference
+                                        </a>
+
+
+                                    </span>
+
+                                </div>*@
+
+
+
+                            @*text-decoration:underline;*@
+
+
+                            @*<div class="form-group">
+                                    <p>
+                                        <input type="button" ID="registerationBtn" class="btn btn-info text-center" onclick="location.href='@Url.Action("UserRegistration", "registration")'" value="@Resources.Resource.B_Signup" />
+                                    </p>
+
+                                </div>*@
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                                            }
+
+
+    <script type="text/javascript">
+
+    var ViewBagShowmsg = '@ViewBag.Showmsg';
+        var ViewBagMsg = '@ViewBag.Msg';
+        var CrossAccess = '@ViewBag.CrossAccess';
+
+
+
+        function RefreshCptcha() {
+            //alert();
+            $("#m_imgCaptcha").removeAttr("src").attr('src', "../registration/GetCaptchaImage?Refreshforce=" + Math.floor(Math.random() * 1000));
+
+        }
+
+    </script>
+
+
+    <script src="~/Scripts/jquery.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link type="text/css" rel="stylesheet" href="~/styles/jquery-ui.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link type="text/css" rel="stylesheet" href="~/styles/datepickercss.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/JS_View/Login.js"></script>
+
+    <script src="~/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+
+
+
+</body>
+</html>

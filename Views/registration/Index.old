@@ -1,0 +1,248 @@
+﻿@model WebApplication1.Models.LogOnRequest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CustomFont.css" rel="stylesheet" />
+    <title>@Resources.Resource.KuwaitCustoms</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://10.138.70.224/Etrade/Content/images/favicon.ico" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/jquerydatepicker/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/Main/login.css" rel="stylesheet" />
+</head>
+<body style="font-family: myFirstFont !important;width:100%;position:fixed">
+    
+    @using (Html.BeginForm("Index", "registration", FormMethod.Post, new { id = "myform" }))
+    {
+
+        <div style="@Resources.Resource.div_direction">
+            <table id="t1" align="center">
+                <tr>
+                    <td width="50%" align="center">
+                        <div class="modal-content" id="Idmodalcontent">
+                            <div class="modal-header">
+                                <table id="t2" align="center">
+                                    <tr>
+                                        <td width="50%" align="center">
+                                            <img style="height:90%" src="@Resources.Resource.Logo" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="modal-body" id="mydiv">
+
+                                @{
+                                    string style = "background-color: #ccc;border-top-left-radius: 40px;border-bottom-left-radius: 40px;";
+                                    if (Resources.Resource.div_direction == "direction:rtl")
+                                    {
+                                        style = "background-color: #ccc;border-top-right-radius: 40px;border-bottom-right-radius: 40px;";
+                                        <div class="form-group input-group" style="width:80%;margin-top:20px;">
+                                            <span class="input-group-addon" style="@style">
+                                                <i class="glyphicon glyphicon-user">
+                                                </i>
+                                            </span>
+                                            <input class="form-control textval" type="text" name="email"
+                                                   value="@ViewBag.UserName" placeholder="@Resources.Resource.UserName" id="inputUserName" style="border-top-left-radius:40px;border-bottom-left-radius:40px;border-top-right-radius:0px;border-bottom-right-radius:0px;" />
+                                        </div>
+                                        <div class="form-group input-group" style="width:80%;">
+                                            <span class="input-group-addon" style="@style">
+                                                <i class="glyphicon glyphicon-lock">
+                                                </i>
+                                            </span>
+                                            <input class="form-control textval" placeholder="@Resources.Resource.Password" name="pwd"
+                                                   type="password" id="inputPassword" value="@ViewBag.Pwd" style="border-top-left-radius:40px;border-bottom-left-radius:40px;border-top-right-radius:0px;border-bottom-right-radius:0px;" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group input-group" style="width:80%;margin-top:20px;">
+                                            <span class="input-group-addon" style="@style">
+                                                <i class="glyphicon glyphicon-user">
+                                                </i>
+                                            </span>
+                                            <input class="form-control textval" type="text" name="email"
+                                                   value="@ViewBag.UserName" placeholder="@Resources.Resource.UserName" id="inputUserName" />
+                                        </div>
+                                        <div class="form-group input-group" style="width:80%">
+                                            <span class="input-group-addon" style="@style">
+                                                <i class="glyphicon glyphicon-lock">
+                                                </i>
+                                            </span>
+                                            <input class="form-control textval" placeholder="@Resources.Resource.Password" name="pwd"
+                                                   type="password" id="inputPassword" value="@ViewBag.Pwd" />
+                                        </div>
+                                    }
+
+                                }
+                                <div class="form-group" align="@Resources.Resource.L_term_of_use_style1" style="width:80%">
+                                    @Html.CheckBoxFor(m => m.RememberMe)&nbsp;&nbsp;<label for="RememberMe" style="font-weight:normal">@Resources.Resource.RememberMe</label>
+                                </div>
+                                <div class="form-group" align="@Resources.Resource.L_term_of_use_style1" style="width:80%">
+                                    <span>@Resources.Resource.Terms_of_Use1 <a id="idpopup" style="text-decoration:underline;cursor: pointer;" class="">@Resources.Resource.Terms_of_Use2</a></span>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" id="btnsubmit" disabled class="btn button button4">@Resources.Resource.B_Login</button>
+                                </div>
+                                <div class="form-group">
+                                    @Html.ActionLink(@Resources.Resource.B_Signup, "Registration", "registration", new { @class = "btn button button4" })
+                                </div>
+                                <table align="center" style="border:none">
+                                    <tr>
+                                        <td align="center" style="border:none;color:brown;font-size:16px"><span id="forgotpwd" onclick="location.href='@Url.Action("Forgot_Password", "registration")'">@Resources.Resource.Forgot_header </span></td>
+                                        <td align="center" style="border:none;font-size:16px">
+                                            &nbsp;&nbsp;
+                                            @{    HttpCookie langCookie = Request.Cookies["culture"];
+                                                var lang = langCookie.Value;
+                                                if (lang == "en")
+                                                {
+                                                    @Html.ActionLink("العربية", "ChangeLanguage", "registration", new { lang = "ar" }, null) <text>&nbsp;</text>
+                                                }
+                                                else
+                                                {
+                                                    @Html.ActionLink("English", "ChangeLanguage", "registration", new { lang = "en" }, null) <text>&nbsp;</text>
+
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="2" align="center" style="border:none;color:brown;font-size:16px"><div style="margin-top:20px;margin-bottom:20px"><span id="forgotpwd" onclick="aa();">@Resources.Resource.Quickreference </span></div></td></tr>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="hidden" name="gln"
+               id="inputgln" />
+                                                }
+    <div class="modal fade" tabindex="-1" id="loginModal"
+         data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+        <div class="modal-dialog modal-lg" style="width:300px;margin-top:15%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <table>
+                        <tr>
+                            <td style="width:95%">@Resources.Resource.Terms_of_Use3</td>
+                            <td style="width:5%">
+                                <button type="button" style="color:black;opacity:unset" class="close" data-dismiss="modal">
+                                    ×
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-body">
+                    @Resources.Resource.Terms_of_Use4
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @{
+        if (ViewBag.modelerror != null)
+        {
+            if (ViewBag.modelerror == "0")
+            {
+                <div class="modal fade" tabindex="-1" id="dialog"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:15%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <table>
+                                    <tr>
+                                        <td style="width:95%">@Resources.Resource.error</td>
+                                        <td style="width:5%">
+                                            <button type="button" style="color:black;opacity:unset" class="close" data-dismiss="modal">
+                                                ×
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-body">
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "5")
+            {
+
+                <div class="modal fade" tabindex="-1" id="modelcommon"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:15%;">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <table align="center">
+                                    <tr><td align="center" style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                    <tr><td align="center"><p style="margin-top:15px">@ViewBag.Msg</p></td></tr>
+                                    <tr>
+                                        <td align="center">
+                                            <div class="form-group" style="text-align:center">
+                                                @{ if (ViewBag.ok == null)
+                                                    {
+                                                        ViewBag.ok = "";
+                                                    }
+                                                    if (ViewBag.ok == "1")
+                                                    {<table align="center">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group" style="text-align:center">
+                                                                @Html.ActionLink(@Resources.Resource.Ok, "ResetPassword", "registration", new { @class = "btn button button4", @Style = "width:auto" })
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="text-align:center">
+                                                                <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Cancel" Style="width:auto" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Ok" Style="width:auto" />
+                                                    }
+                                                }
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                        }
+                                                    }
+    }
+    <div id="myLoadingElement" class="modalprgs" style="display: none">
+        <div class="prgs">
+            <img src="~/Content/loader4.gif" />
+        </div>
+    </div>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>*@
+    <script src="~/Scripts/Main/popup_jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Main/popup.js"></script>
+    <script type="text/javascript">
+        var ViewBagmodelerror=@ViewBag.modelerror;
+        var ViewBagmodelstatus=@ViewBag.modelerror;
+        if (ViewBagmodelstatus==null) {
+            ViewBagmodelstatus='';
+        }
+    </script>
+    <script src="~/Scripts/JS_View/Login.js"></script>
+</body>
+</html>

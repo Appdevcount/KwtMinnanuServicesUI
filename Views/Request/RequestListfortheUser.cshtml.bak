@@ -1,0 +1,772 @@
+﻿@model WebApplication1.Models.GroupedRequests
+@using WebApplication1.Models;
+@using System.Configuration;
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@{
+    HttpCookie lang = Request.Cookies["culture"];
+    if (lang.Value.Contains("ar"))
+    {
+        ViewBag.Title = Resources.Resource.requestsList1;
+    }
+
+    else
+    {
+        ViewBag.Title = Resources.Resource.RequestsList;
+    }
+
+
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.4.85/css/materialdesignicons.css" rel="stylesheet" />
+
+
+<div class="container marginTop50">
+    <div class="row" id="requests">
+
+        <div class="col-md-push-3 col-md-6 col-md-pull-4 text-center">
+
+            @*<h3 class="marginBottom30">
+                    @Resources.Resource.EServiceSubscriptionRequests
+                </h3>*@
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="container">
+    @if (Model != null)
+    {
+
+        string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+        bool EnglishCulture = culture.Contains("English");
+        string floatdir = EnglishCulture ? "float-right" : "float-left";
+        string floatdirOpp = !EnglishCulture ? "float-right" : "float-left";
+
+
+        <div class="panel-group" id="faqAccordion">
+            @*<div class="panel panel-default marginBottom15">
+                <div class="panel-heading accordion-toggle question-toggle collapsed" style="cursor:pointer" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+                    <h4 class="panel-title text-center">
+                        <b><i class="mdi mdi-chevron-down @floatdir"></i></b>
+                        @Resources.Resource.ServiceSubscriptionRequests (@Model.MultiSubscription.Count)
+
+                    </h4>
+                </div>
+                <div id="question0" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row" id="MultiSubscription">
+                            @if (@Model.MultiSubscription.Count > 0)
+                            {
+                                foreach (RequestList item in Model.MultiSubscription)
+                                {
+                                    <div class="col-md-4 shadow-lg">
+                                        <div class="card text-white bg-info mb-3">
+                                            <div class="card-header text-center bg-secondary">
+                                                <ul class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                                                    <li class="nav-item">
+                                                        <b class="text-dark">@item.EServiceRequestNumber</b>
+                                                    </li>
+                                                    <br />
+                                                    <li class="nav-item"><b class="text-dark">@item.DateCreated</b></li>
+                                                    <br />
+
+                                                    @{
+                                                        if (lang != null)
+                                                        {
+                                                            if (lang.Value.Contains("ar"))
+                                                            {
+                                                                <li class="nav-item"><b class="bg-light">@item.StatusArabic</b></li>
+                                                                <br />
+                                                            }
+                                                            else
+                                                            {
+                                                                <li class="nav-item"><b class="bg-light">@item.Status</b></li>
+                                                                <br />
+                                                            }
+
+
+                                                        }
+                                                    }
+
+                                                </ul>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        
+                                                        <a class="marginTop15">
+                                                            <b>
+                                                                @Html.ActionLink(Resources.Resource.details, "RequestDetailsfortheRequest", new { EServiceRequestNumber = CommonFunctions.CsUploadEncrypt(@item.EServiceRequestNumber) }, new { @class = "btn btn-info btn-block col-centered  width50Percent", style = "text-decoration:none;" })
+                                                                
+                                                            </b>
+                                                        </a>
+                                                       
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="col-lg-12  text-center ">
+                                    @Resources.Resource.NoRequests
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            @if (Session["LegalEntity"] != null)
+            {
+                if (Session["LegalEntity"].ToString() == "2" && Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                {
+
+                    <div class="panel panel-default marginBottom15">
+                        <div class="panel-heading accordion-toggle question-toggle collapsed" style="cursor:pointer" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
+                            <h4 class="panel-title text-center">
+
+                                <i class="mdi mdi-chevron-down @floatdir"></i>
+                                @Resources.Resource.OrganizationRegistrationRequests (@Model.OrganizationRegistrationRequests.Count)
+
+                            </h4>
+                        </div>
+                        <div id="question1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row" id="OrganizationRegistrationRequests">
+                                    @if (@Model.OrganizationRegistrationRequests.Count > 0)
+                                    {
+                                        foreach (RequestList item in Model.OrganizationRegistrationRequests)
+                                        {
+
+                                            <div class="col-md-4 shadow-lg">
+                                                <div class="card text-white bg-info mb-3">
+                                                    <div class="card-headerFixHeight282 text-center bg-secondary">
+                                                        <ul class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                                                            <li class="nav-item text-center">
+
+                                                                <b class=" text-center text-dark requestNoLargeFont">   @Resources.Resource.OrgStatus_OrganizationName  @item.Name</b>
+                                                            </li>
+                                                            <li class="nav-item marginTop15">
+                                                                @if (item.IsMainCompany == "1")
+                                                                {
+                                                                    <label class="label-success text-center padding3PX">@Resources.Resource.mainCompany</label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label class="label-primary text-center padding3PX">@Resources.Resource.subcompany</label>
+                                                                }
+
+                                                            </li>
+                                                            <li class="nav-item marginTop15">
+                                                                <b class="text-dark requestNoLargeFont">@item.EServiceRequestNumber</b>
+                                                            </li>
+                                                            <br />
+                                                            <li class="nav-item">
+
+                                                                <b class="text-dark">@item.DateCreated</b>
+                                                            </li>
+                                                            <br />
+
+                                                            <li class="nav-item"><b class="bg-light">@item.Status</b></li>
+                                                            <br />
+                                                        </ul>
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+
+
+                                                                <b>
+                                                                    @{
+                                                                        @*<span class="glyphicon glyphicon-info-sign"></span>&nbsp;*@
+
+                                                                        String puposeedit = WebApplication1.Models.encrypt.Encode("edit");
+                                                                        String id = item.OrganizationRequestId;
+                                                                        String encodedid = WebApplication1.Models.encrypt.Encode(id);
+                                                                        String encodedtype = WebApplication1.Models.encrypt.Encode("Status");
+                                                                        String reqnum = WebApplication1.Models.encrypt.Encode(item.EServiceRequestNumber);
+
+                                                                        @*@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype, purpose = puposeedit, reqnum = reqnum })*@
+                                                                        @Html.ActionLink(Resources.Resource.details, "Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype, purpose = puposeedit, reqnum = reqnum }, new { @class = "btn btn-info btn-block col-centered  width50Percent", style = "text-decoration:none;" })
+                                                                        //marginTop50
+                                                                    }
+
+                                                                </b>
+
+
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                @*<div class="col-md-12 ">*@
+                                                                @if (item.StateId != null)
+                                                                {
+                                                                    if (item.StateId.Contains("OrganizationRequestCreatedState"))//("OrganizationRequestForCreateState") || item.StateId.Contains("OrganizationRequestForUpdateState")) //(row["StateId"].ToString().Trim() == "OrganizationRequestCreatedState")
+                                                                    {
+
+                                                                        String encodedidn = WebApplication1.Models.encrypt.Encode(item.OrganizationRequestId);
+                                                                        @*<i id="btndelete" class="glyphicon glyphicon-trash clsorgdelete @id" style="border:none;color: red;" onclick="location.href='@Url.Action("OrgDelete", "User", new { Id = encodedid })'"></i>*@
+
+                                                                        <button class="btn btn-info btn-block col-centered  width50Percent" style="text-decoration:none;" onclick="Delete(event,'@encodedidn')">@Resources.Resource.delete</button>
+                                                                        //marginTop50
+                                                                        @*@Html.ActionLink(Resources.Resource.delete, "OrgDelete", "User", new { OrgReqId = encodedidn }, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", style = "text-decoration:none;", @onclick = "stop(event)" })*@
+                                                                    }
+                                                                }
+                                                                @*</div>*@
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-12  text-center ">
+                                            @Resources.Resource.NoRequests
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            @if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+            {
+                <div class="panel panel-default marginBottom15">
+                    <div class="panel-heading accordion-toggle question-toggle collapsed" style="cursor:pointer" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
+                        <h4 class="panel-title text-center">
+
+                            <i class="mdi mdi-chevron-down @floatdir"></i>
+                            @Resources.Resource.ClearingAgentExamRequests (@Model.ExamRequests.Count)
+                        </h4>
+                    </div>
+                    <div id="question2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row" id="ExamRequests">
+                                @if (@Model.ExamRequests.Count > 0)
+                                {
+                                    foreach (RequestList item in Model.ExamRequests)
+                                    {
+
+                                        <div class="col-md-4 shadow-lg">
+                                            <div class="card text-white bg-info mb-3">
+                                                <div class="card-headerFixHeight352 text-center bg-secondary">
+                                                    <ul class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                                                        <li class="nav-item">
+                                                            <b class="text-dark requestNoLargeFont">@item.EServiceRequestNumber</b>
+                                                        </li>
+                                                        <br />
+                                                        <li class="nav-item">
+                                                            <b class="text-dark">@item.DateCreated</b>
+                                                        </li>
+
+                                                        <br />
+                                                        @{
+                                                            System.Data.DataTable examDetails = new System.Data.DataTable();
+                                                            Dataclass objdataclass = new Dataclass();
+                                                            EservicesRequests request = new EservicesRequests();
+                                                            request.EserviceRequestId = item.EServiceRequestID;
+                                                            examDetails = objdataclass.getExamDetailsByEservicesRequestId(request);
+
+
+                                                            String confirmationState = ConfigurationManager.AppSettings["ExamAttendanceConfirmedState"].ToString();
+
+                                                            String examSentState = ConfigurationManager.AppSettings["ExamCandidateInfoExamSentState"].ToString();
+
+
+                                                            String RequestCreatedState = ConfigurationManager.AppSettings["EServiceRequestCreatedState"].ToString();
+                                                            String RequestAcceptedState = ConfigurationManager.AppSettings["EServiceRequestAcceptedState"].ToString();
+                                                            String RequestSubmittedState = ConfigurationManager.AppSettings["EServiceRequestSubmittedState"].ToString();
+
+                                                            String passedExam = ConfigurationManager.AppSettings["passedExam"].ToString();
+                                                            String didNotPass = ConfigurationManager.AppSettings["notPassExam"].ToString();
+                                                            String didNotAttened = ConfigurationManager.AppSettings["notAttended"].ToString();
+
+                                                            String ExamCandidateInfoApprovedState = ConfigurationManager.AppSettings["ExamCandidateInfoApprovedState"].ToString();
+
+
+                                                            if (item.Status.ToLower().Contains("approved"))
+                                                            {
+                                                                <li class="nav-item">
+                                                                    <b class="bg-light">
+                                                                        @Resources.Resource.approvedStatusMsgExam
+                                                                    </b>
+                                                                </li>
+                                                                <br />
+                                                            }
+
+                                                            else
+                                                            {
+                                                                if (lang.Value.Contains("ar"))
+                                                                {
+                                                                    <li class="nav-item">
+                                                                        <b class="bg-light">
+                                                                            @item.StatusArabic
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+                                                                }
+
+
+                                                                else
+                                                                {
+                                                                    <li class="nav-item">
+                                                                        <b class="bg-light">
+                                                                            @item.Status
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+                                                                }
+
+
+                                                            }
+
+                                                            @*else
+                                                                {
+
+                                                                    if (item.Status.ToLower().Contains("approved"))
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="bg-light">
+                                                                                @Resources.Resource.approvedStatusMsgExam
+                                                                            </b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+
+
+                                                                    else
+                                                                    {
+                                                                        <li class="nav-item"><b class="bg-light">@item.Status</b></li>
+                                                                        <br />
+                                                                    }
+                                                                }*@
+
+
+
+                                                            if (examDetails.Rows.Count > 0)
+                                                            {
+                                                                if (examDetails.Rows[0]["ExamResult"] != null
+                                                                    && !String.IsNullOrWhiteSpace(examDetails.Rows[0]["ExamResult"].ToString()))
+                                                                {
+                                                                    if (examDetails.Rows[0]["ExamResult"].ToString() == passedExam && examDetails.Rows[0]["StateId"].ToString() == ExamCandidateInfoApprovedState)
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="redColor">
+                                                                                @Resources.Resource.examPassed
+                                                                            </b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+
+                                                                    else if (examDetails.Rows[0]["ExamResult"].ToString() == didNotPass && examDetails.Rows[0]["StateId"].ToString() == ExamCandidateInfoApprovedState)
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="redColor">
+                                                                                @Resources.Resource.examNotPass
+                                                                            </b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+
+                                                                    else if (examDetails.Rows[0]["ExamResult"].ToString() == didNotAttened && examDetails.Rows[0]["StateId"].ToString() == ExamCandidateInfoApprovedState)
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="redColor">
+                                                                                @Resources.Resource.notAttend
+                                                                            </b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+
+                                                                    else
+                                                                    {
+                                                                        if (examDetails.Rows[0]["ExamResult"].ToString() == confirmationState)
+                                                                        {
+                                                                            <li class="nav-item">
+                                                                                <b class="redColor">@Resources.Resource.examAnnoncementPublished @Resources.Resource.examAnnoncementMSG</b>
+                                                                            </li>
+                                                                            <br />
+                                                                        }
+
+                                                                        else
+                                                                        {
+                                                                            <li class="nav-item">
+                                                                                <b class="redColor">@Resources.Resource.examConfirmStatus</b>
+                                                                            </li>
+                                                                            <br />
+                                                                        }
+                                                                    }
+                                                                } // End ExamResult != null
+                                                                else
+                                                                {
+                                                                    if (examDetails.Rows[0]["StateId"].ToString() == examSentState)
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="redColor">@Resources.Resource.examAnnoncementPublished @Resources.Resource.examAnnoncementMSG</b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+
+                                                                    else if (examDetails.Rows[0]["StateId"].ToString() == confirmationState)
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="redColor">@Resources.Resource.examConfirmStatus</b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+
+                                                                    else
+                                                                    {
+                                                                        <li class="nav-item">
+                                                                            <b class="redColor">@Resources.Resource.examWillPublishedSoon</b>
+                                                                        </li>
+                                                                        <br />
+                                                                    }
+                                                                }
+
+                                                            } // End examDetails.Rows.Count
+
+                                                            else
+                                                            {
+
+                                                                if (item.Status.Contains("Creation in Progress")) /*(item.Status == RequestCreatedState)*/
+                                                                {
+                                                                    <li class="nav-item">
+                                                                        <b class="redColor">
+                                                                            @Resources.Resource.requestStillCreated
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+                                                                }
+
+                                                                else if (item.Status.Contains("Submitted"))
+                                                                {
+
+                                                                    <li class="nav-item">
+                                                                        <b class="redColor">
+                                                                            @Resources.Resource.requestReceivedUnderReview
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+                                                                }
+
+                                                                else if (item.Status.Contains("Approved"))
+                                                                {
+                                                                    <li class="nav-item">
+                                                                        <b class="redColor">
+                                                                            @Resources.Resource.examWillPublishedSoon
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+                                                                }
+
+                                                                else if (item.Status.ToLower().Contains("rejected"))
+                                                                {
+                                                                    <li class="nav-item">
+                                                                        <b class="redColor">
+                                                                            @Resources.Resource.rejectedStatusMsgExam
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+                                                                }
+
+                                                                else if (item.Status.ToLower().Contains("final"))
+                                                                {
+                                                                    <li class="nav-item">
+                                                                        <b class="redColor">
+                                                                            @Resources.Resource.rejectedFinalStatusMsgExam
+                                                                        </b>
+                                                                    </li>
+                                                                    <br />
+
+
+                                                                }
+                                                            }
+
+                                                            <li class="nav-item">
+
+                                                                <b class="bg-light">
+
+
+                                                                    @if (item.Status == "Request Creation in Progress" || item.Status == "Rejected")
+                                                                    {
+                                                                        @*@Html.ActionLink("Edit","BrokerUpdate","BrokerRenewal",new { RequestNumber= CommonFunctions.CsUploadEncrypt(item.EServiceRequestNumber) })*@
+
+                                                                        //var urll = "../ClearingAgentExamRequest/Index?RequestNumber=" + Server.UrlEncode(CommonFunctions.CsUploadEncrypt(item.EServiceRequestNumber));
+                                                                        Session["RequestNumberToEdit"] = item.EServiceRequestNumber;
+                                                                        @Html.ActionLink(Resources.Resource.editRequest, "Index", "ClearingAgentExamRequest", new { EServiceRequestNumber = HttpUtility.HtmlEncode(CommonFunctions.CsUploadEncrypt(HttpUtility.HtmlEncode(@item.EServiceRequestNumber))) }, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", style = "text-decoration:none;" })
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <b>
+                                                                            @Html.ActionLink(Resources.Resource.details, "RequestDetailsfortheRequest", new { EServiceRequestNumber = CommonFunctions.CsUploadEncrypt(@item.EServiceRequestNumber) }, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", style = "text-decoration:none;" })
+                                                                        </b>
+                                                                    }
+                                                                </b>
+                                                            </li>
+
+                                                        }
+                                                    </ul>
+                                                    @*<div class="row">*@
+                                                    @*<div class="col-md-6">
+                                                            <div class="col-md-12">
+
+
+                                                            </div>
+                                                        </div>*@
+
+                                                    @*@{
+                                                        System.Data.DataTable examDetails = new System.Data.DataTable();
+                                                        Dataclass objdataclass = new Dataclass();
+                                                        EservicesRequests request = new EservicesRequests();
+                                                        request.EserviceRequestId = item.EServiceRequestID;
+                                                        examDetails = objdataclass.getExamDetailsByEservicesRequestId(request);
+
+                                                        if (examDetails.Rows.Count > 0)
+                                                        {
+                                                        <div class="col-md-6">
+                                                            <div class="col-md-12">
+                                                                <b>
+                                                                    @Html.ActionLink(Resources.Resource.examConfirmAttendance, "ConfirmAttendance", new { eServiceRequestId = CommonFunctions.CsUploadEncrypt(@item.EServiceRequestID.ToString()) }, new { @class = "btn btn-info btn-block col-centered marginTop50", style = "text-decoration:none;" })
+                                                                </b>
+                                                            </div>
+                                                        </div>
+                                                        }
+
+                                                        }*@
+
+                                                    @*</div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-lg-12  text-center ">
+                                        @Resources.Resource.NoRequests
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default marginBottom15">
+                    <div class="panel-heading accordion-toggle question-toggle collapsed" style="cursor:pointer" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+                        <h4 class="panel-title text-center">
+
+                            <i class="mdi mdi-chevron-down @floatdir"></i>
+                            @Resources.Resource.BrokerRenewalRequests (@Model.BrokerRenewalRequests.Count)
+                        </h4>
+                    </div>
+
+                    <div id="question3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row" id="BrokerRenewalRequests">
+                                @if (@Model.BrokerRenewalRequests.Count > 0)
+                                {
+                                    foreach (RequestList item in Model.BrokerRenewalRequests)
+                                    {
+
+                                        <div class="col-md-4 shadow-lg">
+                                            <div class="card text-white bg-info mb-3">
+                                                <div class="card-header text-center bg-secondary">
+                                                    <ul class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                                                        <li class="nav-item">
+                                                            <b class="text-dark requestNoLargeFont">@item.EServiceRequestNumber</b>
+                                                        </li>
+                                                        <br />
+
+                                                        <li class="nav-item"><b class="text-dark">@item.DateCreated</b></li>
+                                                        <br />
+
+                                                        @{
+                                                            //if (lang != null)
+                                                            //{
+                                                            @*if (lang.Value.Contains("ar"))
+                                                                                                                   {
+                                                                                                                           <li class="nav-item">
+
+                                                                                                                               <b class="bg-light">
+
+                                                                                                                                   @if (item.Status.ToLower().Contains("approved"))
+                                                                                                                                   {
+                                                                                                                                       @Resources.Resource.approvedStatusMsgRenew
+                                                                                                                                   }
+
+                                                                                                                                   else if (item.Status.ToLower().Contains("submitted"))
+                                                                                                                                   {
+                                                                                                                                       @Resources.Resource.requestReceivedUnderReview
+                                                                                                                                   }
+                                                                                               else if (item.Status.ToLower().Contains("Rejected"))
+                                                                                                                                   {
+                                                                                                                                       @Resources.Resource.requestReceivedUnderReview
+                                                                                                                                   }
+                                                                else if (item.Status.ToLower().Contains("Completed"))
+                                                                                               {
+                                                                                                   @Resources.Resource.Completed
+                                                                                               }
+
+								else if (item.Status.ToLower().Contains("proceed"))
+                                                                    {
+                                                                        @Resources.Resource.requestReceivedUnderReview
+                                                                    }                                                                                                                                 
+  										else
+                                                                                                                                   {
+                                                                                                                                       @Resources.Resource.requestStillCreated
+                                                                                                                                   }
+
+                                                                                                                                   <br />
+                                                                                                                                   @if (item.Status == "Request Creation in Progress" || item.Status == "Rejected")
+                                                                                                                                   {
+
+                                                                                                                                   var urll = "../BrokerRenewal/BrokerUpdate?RequestNumber=" + CommonFunctions.CsUploadEncrypt(item.EServiceRequestNumber);
+
+                                                                                                                                   <a href="@urll" class="btn btn-info btn-block col-centered marginTop50 width50Percent" style="text-decoration:none;">@Resources.Resource.editRequest</a>
+                                                                                                                                   }
+
+                                                                                                                               </b>
+                                                                                                                           </li>
+
+                                                                                                                       }*@
+                                                            //else
+                                                            //{
+                                                            <li class="nav-item">
+                                                                <b class="bg-light">
+
+                                                                    @if (item.Status.ToLower().Contains("approved"))
+
+                                                                    {
+                                                                        @Resources.Resource.approvedStatusMsgRenew
+
+                                                                    }
+
+                                                                    else if (item.Status.ToLower().Contains("submitted"))
+                                                                    {
+                                                                        @Resources.Resource.requestReceivedUnderReview
+                                                                    }
+
+                                                                    else if (item.Status.ToLower().Contains("rejected"))
+                                                                    {
+                                                                        @Resources.Resource.rejectedStatusMsgRenew
+                                                                    }
+                                                                    else if (item.Status.ToLower().Contains("completed"))
+                                                                    {
+                                                                        @Resources.Resource.Completed
+                                                                    }
+     									                            else if (item.Status.ToLower().Contains("proceed"))
+                                                                    {
+                                                                        @Resources.Resource.requestReceivedUnderReview
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Resources.Resource.requestStillCreated
+                                                                    }
+
+                                                                    <br />
+                                                                    @if (item.Status == "Request Creation in Progress" || item.Status == "Rejected")
+                                                                    {
+                                                                        @*@Html.ActionLink("Edit","BrokerUpdate","BrokerRenewal",new { RequestNumber= CommonFunctions.CsUploadEncrypt(item.EServiceRequestNumber) })*@
+
+                                                                        var urll = "../BrokerRenewal/BrokerUpdate?RequestNumber=" + CommonFunctions.CsUploadEncrypt(item.EServiceRequestNumber);
+
+                                                                        <a href="@urll" class="btn btn-info btn-block col-centered marginTop15 width50Percent" style="text-decoration:none;">@Resources.Resource.editRequest</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <b>
+                                                                            @Html.ActionLink(Resources.Resource.details, "RequestDetailsfortheRequest", new { EServiceRequestNumber = CommonFunctions.CsUploadEncrypt(@item.EServiceRequestNumber) }, new { @class = "btn btn-info btn-block col-centered marginTop15 width50Percent", style = "text-decoration:none;" })
+                                                                            @*marginTop50*@
+                                                                        </b>
+                                                                    }
+
+
+
+                                                                </b>
+                                                            </li>
+
+                                                        }
+
+
+                                                        @*//}
+                                                            }*@
+                                                    </ul>
+
+
+                                                    @*<div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="col-md-12 ">
+
+                                                                    <b>
+                                                                        @Html.ActionLink(Resources.Resource.details, "RequestDetailsfortheRequest", new { EServiceRequestNumber = CommonFunctions.CsUploadEncrypt(@item.EServiceRequestNumber) }, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", style = "text-decoration:none;" })
+                                                                    </b>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>*@
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-lg-12 text-center ">
+                                        @Resources.Resource.NoRequests
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+
+<script>
+
+</script>
+
+<!-- The Modal -->
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+                @Resources.Resource.DeleteRequest
+            </p>
+        </div>
+        <div class="modal-footer">
+            @*<input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />*@
+            <a id="OrgReqDelete" href="../User/OrgDelete?OrgReqId=" class="btn btn-info btn-block col-centered  " style="text-decoration:none;width: 80px;">@Resources.Resource.yes</a>
+            @*@Html.ActionLink(Resources.Resource.delete, "OrgDelete", "User", new { OrgReqId = encodedidn }, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", style = "text-decoration:none;", @onclick = "stop(event)" })*@
+        </div>
+    </div>
+
+</div>
+

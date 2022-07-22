@@ -1,0 +1,24 @@
+.myclass {
+    cursor: pointer;
+    color: white;
+}
+
+    .myclass:hover {
+        color: black;
+    }
+
+.form-control {
+    width: 90%;
+}
+
+#mydiv {
+    height: 640px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    #mydiv {
+        /*height: 100%;*/
+    }
+}

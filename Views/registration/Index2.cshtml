@@ -1,0 +1,655 @@
+﻿@model WebApplication1.Models.LogOnRequest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" id="loginHtml" dir="@Resources.Resource.dir">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+
+
+
+    <link href="~/styles/newStyle/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link href="~/styles/newStyle/icons.css" rel="stylesheet" id="">
+
+    <script src="~/styles/newStyle/jquery.min.js"></script>
+    <script src="~/styles/newStyle/bootstrap.min.js"></script>
+    <link href="~/styles/newStyle/style.css" rel="stylesheet" id="">
+
+
+    <title>@Resources.Resource.KuwaitCustoms</title>
+
+
+
+
+</head>
+
+
+<body class="bg-image-v2-dark">
+
+    <div id="logoDiv">
+        <img src="~/images/customs.png" width="150" />
+    </div>
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <input type="hidden" name="usageAgreement" id="usageAgreement" value="@Resources.Resource.usageAgreement" />
+    <input type="hidden" name="usageAgreementHeader" id="usageAgreementHeader" value="@Resources.Resource.termsOfUse" />
+
+    <!-- The Modal -->
+    <div id="modalDiv" class="modal" style="display:@ViewBag.showMessageStyle;">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<span class="close" id="closeError">&times;</span>*@
+                <h6 id="modelHeaderTitle">
+                    @Resources.Resource.genericErrorPageSorry
+                </h6>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage" style="text-align: center;">
+                    @ViewBag.Msg
+                </p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+            </div>
+        </div>
+
+    </div>
+
+    @{
+
+
+
+        HttpCookie langCookie = Request.Cookies["culture"];
+        var lang = langCookie.Value;
+
+        string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+        string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+
+        if (lang == "en")
+        {
+            using (Html.BeginForm("Index", "registration", FormMethod.Post, new { id = "myform", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+
+                <input type="hidden" name="errorMsg" value="" id="errorMsg" class="errorMsg" />
+                <input type="hidden" name="ServiceType" value="@ViewBag.ServiceType" id="ServiceType" class="errorMsg" />
+
+                <div class="container login-container login-containerFix">
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+                            <div class="col-md-6 login-form-2 fixLoginStyleEn">
+                                @*<h4>
+            <img src="~/images/HomeIcons/Arabic.png" id=""
+                 onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'"
+                 style="height:25px;width:25px;cursor:pointer;" />
+
+
+
+
+            <i class="fas fa-home" id="goHome" style="color:#00a4e4;cursor:pointer;"></i>
+        </h4>*@
+
+                                @if (Session["ClearingAgentServices"] != null)
+                                {
+                                    if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+                                    {
+
+                                        <h4 style="margin-bottom: 3%;" class="hideInMobileView">
+                                            <img src="~/images/HomeIcons/Arabic.png" id=""
+                                                 onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index2", urlredirect = AbsolutePathAndQuery })'"
+                                                 style="height:25px;width:25px;cursor:pointer; margin-top: -7px;" />
+
+
+                                            <i class="fas fa-home" id="goHome" style="color:#00a4e4;cursor:pointer;"></i>
+
+                                        </h4>
+
+                                        <h6 class="hideInMobileView">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            @Resources.Resource.KuwaitCustomsBrokereServices
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" style="width: 0%;" />
+                                        </h6>
+
+                                        <h6 class="hideInMobileView">
+                                            @Resources.Resource.KuwaitCustomsBrokereServices
+                                        </h6>
+
+
+
+
+                                    }
+                                    if (Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                                    {
+
+                                        <h4 style="margin-bottom: 3%;" class="hideInMobileView">
+                                            <img src="~/images/HomeIcons/Arabic.png" id=""
+                                                 onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index2", urlredirect = AbsolutePathAndQuery })'"
+                                                 style="height:25px;width:25px;cursor:pointer; margin-top: -7px;" />
+
+
+                                            <i class="fas fa-home" id="goHome" style="color:#00a4e4;cursor:pointer;"></i>
+
+
+
+                                        </h4>
+
+
+                                        <h6 class="hideInMobileView">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            @Resources.Resource.KuwaitCustomsOrganizationeServices
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" style="width: 0%;" />
+                                        </h6>
+
+                                        <h6 class="hideInMobileView">
+                                            @Resources.Resource.KuwaitCustomsOrganizationeServices
+                                        </h6>
+
+                                    }
+                                }
+
+
+                                <form>
+                                    <div class="form-group">
+
+                                        @if (Session["tempEmail"] != null)
+                                        {
+                                            <input type="email"
+                                                   ID="Username"
+                                                   name="Username"
+                                                   class="form-control animated"
+                                                   maxlength="150"
+                                                   placeholder="@Resources.Resource.UserName"
+                                                   value="@ViewBag.TempEmail" autocomplete="off"
+                                                   style="direction:LTR">
+                                        }
+                                        else
+
+                                        {
+                                            <input type="email"
+                                                   ID="Username"
+                                                   name="Username"
+                                                   class="form-control animated"
+                                                   maxlength="150"
+                                                   placeholder="@Resources.Resource.UserName"
+                                                   value="@ViewBag.TempEmail" autocomplete="off" style="direction:LTR">
+
+                                        }
+
+                                        <p id="userNameErrorMsg" class="errorMsg">
+                                            @Resources.Resource.validemail
+                                        </p>
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password"
+                                               ID="password"
+                                               name="password"
+                                               class="form-control"
+                                               maxlength="150"
+                                               placeholder="@Resources.Resource.Password"
+                                               value=""
+                                               autocomplete="off" style="direction:LTR">
+
+
+                                        <p id="PasswordErrorMsg" class="errorMsg">
+                                            @Resources.Resource.requiredPasswordMsg
+                                        </p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control"
+                                               placeholder="@Resources.Resource.Forgot_input2"
+                                               name="CaptchaValue"
+                                               type="text" id="inputCaptcha"
+                                               autocomplete="off" style="direction:LTR"
+                                               maxlength="6" />
+
+                                        <p id="captchaErrorMsg" class="errorMsg">
+                                            @Resources.Resource.EntercorrectCaptcha
+                                        </p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <img id="m_imgCaptcha" src="../registration/GetCaptchaImage"
+                                             class="text-center captcha" />
+                                        @*<img id="Regreshcaptch" onclick="RefreshCptcha()" src="~/images/Buttons/refresh.png" style="height:34px;width:38px;cursor:pointer" />*@
+
+                                        <i class="fas fa-sync" id="refreshCaptcha" style="color:#00a4e4;padding: 10px; cursor: pointer;"></i>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <!--<a href="#" class="ForgetPwd" value="Login">Forget Password?</a>-->
+                                        <a href="@Url.Action("ResetPassword", "registration")"
+                                           style="color:#f3f3f3; ">
+                                            @Resources.Resource.forgetPassowrd
+
+                                            @*هل نسيت كلمة المرور؟*@
+                                        </a>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <!--<a href="#" class="ForgetPwd" value="Login">Forget Password?</a>-->
+
+                                        <span style="color:#f3f3f3;">
+
+
+                                            @Resources.Resource.TermsPart1
+
+                                            @Resources.Resource.TermsPart2
+
+                                            <a id="idpopup" style="cursor: pointer;">
+                                                @Resources.Resource.Terms_of_Use2
+                                            </a>
+                                        </span>
+
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6 hoverDiv login">
+                                                <i class="fas fa-sign-in-alt fa-3x login" style="color:#00a4e4;"></i>
+                                                <br />
+                                                <label class="login">
+                                                    @*تسجيل الدخول لحسابك*@
+
+                                                    @Resources.Resource.B_Login
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6 hoverDiv">
+
+
+                                                <i class="fas fa-user-plus fa-3x signUp" style="color:#00a4e4;"></i>
+                                                <br />
+                                                <label class="signUp">
+                                                    @*تسجيل حساب جديد*@
+
+                                                    @Resources.Resource.B_Signup
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </form>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        @*<div class="col-md-6 login-form-1">
+                                <h3 class="hideInMobile">&nbsp;</h3>
+
+                                <div class="form-group" style="text-align:center;">
+                                    <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+
+                                </div>
+
+
+                            </div>*@
+
+
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+
+
+
+            using (Html.BeginForm("Index", "registration", FormMethod.Post, new { id = "myform", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+
+                <input type="hidden" name="errorMsg" value="" id="errorMsg" class="errorMsg" />
+                <input type="hidden" name="ServiceType" value="@ViewBag.ServiceType" id="ServiceType" class="errorMsg" />
+
+                <div class="container login-container login-containerFix">
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+                            <div class="col-md-6 login-form-2 fixLoginStyleAr">
+
+
+
+
+                                @if (Session["ClearingAgentServices"] != null)
+                                {
+                                    if (Convert.ToBoolean(Session["ClearingAgentServices"].ToString()))
+                                    {
+
+                                        <h4 style="margin-bottom: 3%;" class="hideInMobileView">
+                                            <img src="~/images/HomeIcons/English.png" id=""
+                                                 onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'"
+                                                 style="height:25px;width:25px;cursor:pointer; margin-top: -7px;" />
+
+
+                                            <i class="fas fa-home" id="goHome" style="color:#00a4e4; cursor:pointer;"></i>
+
+                                        </h4>
+
+                                        <h6 class="hideInMobileView">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            @Resources.Resource.KuwaitCustomsBrokereServices
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" style="width: 0%;" />
+                                        </h6>
+
+                                        <h6 class="hideInMobileView">
+                                            @Resources.Resource.KuwaitCustomsBrokereServices
+                                        </h6>
+
+                                    }
+                                    if (Convert.ToBoolean(Session["OrganizationServices"].ToString()))
+                                    {
+
+                                        <h4 style="margin-bottom: 3%;" class="hideInMobileView">
+                                            <img src="~/images/HomeIcons/English.png" id=""
+                                                 onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'"
+                                                 style="height:25px;width:25px;cursor:pointer;margin-top: -7px;" />
+
+                                            <i class="fas fa-home" id="goHome" style="color:#00a4e4; cursor:pointer;"></i>
+
+                                        </h4>
+                                        <h6 class="hideInMobileView">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            @Resources.Resource.KuwaitCustomsOrganizationeServices
+                                        </h6>
+
+                                        <h6 class="logoAlternative">
+                                            <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" style="width: 0%;" />
+                                        </h6>
+
+                                        <h6 class="hideInMobileView">
+                                            @Resources.Resource.KuwaitCustomsOrganizationeServices
+                                        </h6>
+
+                                    }
+                                }
+
+
+                                <form>
+                                    <div class="form-group">
+
+                                        @if (Session["tempEmail"] != null)
+                                        {
+                                            <input type="email"
+                                                   ID="Username"
+                                                   name="Username"
+                                                   class="form-control animated"
+                                                   maxlength="150"
+                                                   placeholder="@Resources.Resource.UserName"
+                                                   value="@ViewBag.TempEmail" autocomplete="off"
+                                                   style="direction:LTR">
+                                        }
+                                        else
+
+                                        {
+                                            <input type="email"
+                                                   ID="Username"
+                                                   name="Username"
+                                                   class="form-control animated"
+                                                   maxlength="150"
+                                                   placeholder="@Resources.Resource.UserName"
+                                                   value="@ViewBag.TempEmail" autocomplete="off" style="direction:LTR">
+
+                                        }
+
+                                        <p id="userNameErrorMsg" class="errorMsg">
+                                            @Resources.Resource.validemail
+                                        </p>
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password"
+                                               ID="password"
+                                               name="password"
+                                               class="form-control"
+                                               maxlength="150"
+                                               placeholder="@Resources.Resource.Password"
+                                               value=""
+                                               autocomplete="off" style="direction:LTR">
+
+
+                                        <p id="PasswordErrorMsg" class="errorMsg">
+                                            @Resources.Resource.requiredPasswordMsg
+                                        </p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control"
+                                               placeholder="@Resources.Resource.Forgot_input2"
+                                               name="CaptchaValue"
+                                               type="text" id="inputCaptcha"
+                                               autocomplete="off" style="direction:LTR"
+                                               maxlength="6" />
+
+                                        <p id="captchaErrorMsg" class="errorMsg">
+                                            @Resources.Resource.EntercorrectCaptcha
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <img id="m_imgCaptcha" src="../registration/GetCaptchaImage"
+                                             class="text-center captcha" />
+                                        @*<img id="Regreshcaptch" onclick="RefreshCptcha()" src="~/images/Buttons/refresh.png" style="height:34px;width:38px;cursor:pointer" />*@
+
+                                        <i class="fas fa-sync" id="refreshCaptcha" style="color:#00a4e4;padding: 10px; cursor: pointer;"></i>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <!--<a href="#" class="ForgetPwd" value="Login">Forget Password?</a>-->
+                                        <a href="@Url.Action("ResetPassword", "registration")"
+                                           style="color:#f3f3f3; ">
+                                            @Resources.Resource.forgetPassowrd
+
+                                            @*هل نسيت كلمة المرور؟*@
+                                        </a>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <!--<a href="#" class="ForgetPwd" value="Login">Forget Password?</a>-->
+
+                                        <span style="color:#f3f3f3;">
+
+
+                                            @Resources.Resource.TermsPart1
+
+                                            @Resources.Resource.TermsPart2
+
+                                            <a id="idpopup" style="cursor: pointer; ">
+                                                @Resources.Resource.Terms_of_Use2
+                                            </a>
+                                        </span>
+
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6 hoverDiv login">
+
+
+                                                <i class="fas fa-sign-in-alt fa-3x login" style="color:#00a4e4;"></i>
+                                                <br />
+                                                <label class="login">
+                                                    @*تسجيل الدخول لحسابك*@
+
+                                                    @Resources.Resource.B_Login
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6 hoverDiv">
+
+
+                                                <i class="fas fa-user-plus fa-3x signUp" style="color:#00a4e4;"></i>
+                                                <br />
+                                                <label class="signUp">
+                                                    @*تسجيل حساب جديد*@
+
+                                                    @Resources.Resource.B_Signup
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </form>
+                            </div>
+
+                        </div>
+
+
+
+
+                        @*<div class="col-md-6 login-form-1">
+                                <h3 class="hideInMobile">&nbsp;</h3>
+
+                                <div class="form-group" style="text-align:center;">
+                                    <img src="~/styles/newStyle/customsLogo.png" alt="customs Logo" class="customsLogo" />
+
+                                </div>
+
+
+                            </div>*@
+
+                    </div>
+                </div>
+
+            }
+
+        }
+    }
+
+
+
+
+
+    <script type="text/javascript">
+
+        $(".login").click(function ()
+        {
+
+
+            if (!validateForm()) {
+                event.preventDefault();
+            }
+
+            if (validateForm()) {
+                $('form#myform').submit();
+            }
+        });
+
+        $("#refreshCaptcha").click(function () {
+           $("#m_imgCaptcha").removeAttr("src").attr('src', "../registration/GetCaptchaImage?Refreshforce=" + Math.floor(Math.random() * 1000));
+        });
+
+        $("#goHome").click(function () {
+            window.location = '@Url.Action("Start2", "registration")';
+        });
+
+        $(".signUp").click(function () {
+            window.location = '@Url.Action("UserRegistration", "registration")';//"loginOrganizations.html";
+        });
+
+
+
+        $(document).ready(function ()
+        {
+            $(document).keypress(function (e) {
+
+                if (e.which == 13)
+                {
+                    if (!validateForm())
+                    {
+                        event.preventDefault();
+                        return;
+                    }
+                    else
+                    {
+                        $('form#myform').submit();
+                    }
+
+                }
+            });
+
+
+            $('html, body').animate({
+                scrollTop: $("#password").offset().top
+            }, 2500);
+
+
+            //$('.login-container').animate({ marginTop: '18%', opacity: 0.5 }, 2000);
+
+           
+
+        });
+
+
+
+
+
+    </script>
+
+
+
+    <script src="~/Scripts/JS_View/Login.js"></script>
+
+    <script src="~/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+</body>
+
+</html>

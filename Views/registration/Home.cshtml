@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    <div>
+        Parent user home
+  
+        <img id="m_imgCaptcha" src="/registration/GetCaptchaImage" />
+        <input type="text" id="captchatext" />
+        <input type="button" onclick="loadCaptcha()" />
+
+    </div>
+
+
+    <script type="text/javascript" language="javascript">
+     $(document).ready(function () {
+         loadCaptcha();
+     });
+        function loadCaptcha() {
+            console.log("clicked");
+            $("#m_imgCaptcha").removeAttr("src").attr('src', "/registration/GetCaptchaImage?ForceRefresh=" + Math.floor(Math.random() * 1000));
+         //$.ajax({
+         //    type: 'GET',
+         //    url: 'registration/GetCaptchaImage',
+         //    contentType: "application/json; charset=utf-8",
+         //    dataType: "json",
+         //    cache: false,
+         //    success: function (data) {
+         //        console.log(data);
+         //        $("#m_imgCaptcha").attr('src', data);
+         //    },
+         //    error: function (data) { alert("Error while loading captcha image") }
+         //});
+
+
+
+     }
+    </script>
+</body>
+</html>

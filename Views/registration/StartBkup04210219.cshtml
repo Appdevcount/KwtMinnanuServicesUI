@@ -1,0 +1,87 @@
+﻿
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html dir="@Resources.Resource.dir">
+<head>
+    <title>@Resources.Resource.KuwaitCustoms</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link rel="stylesheet" type="text/css" href="~/styles/Startcss/util.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/Startcss/main.css">
+</head>
+<body  dir="@Resources.Resource.dir">
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image:url(/EServices/images/bkImage.jpg)">
+            <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                <form class="login100-form validate-form flex-sb flex-w">
+                  
+
+                    <div style="float:right">
+                      
+                    </div>
+                    <div class=" login100-form-title p-b-53">
+                        <img class="" src="~/images/customs.png" width="150" style="padding-left: 43px;" />
+                        @{ HttpCookie langCookie = Request.Cookies["culture"];
+            var lang = langCookie.Value;
+
+            string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+            string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+            if (lang == "en")
+            {
+
+                <img class="" src="~/images/HomeIcons/Arabic.png" id="" style="height:30px;width:30px; cursor:pointer;float:right " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+            }
+            else
+            {
+
+                <img class="" src="~/images/HomeIcons/English.png" id="" style="height:30px;width:30px; cursor:pointer;float:right " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+            }
+        }
+                        <br />
+
+                        <label style="color:black;font-size:20px">@Resources.Resource.KuwaitCustoms</label>
+
+                    </div>
+
+                    @{
+                        string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+                        bool EnglishCulture = culture.Contains("English");
+                        string floatdir = EnglishCulture ? "float-left" : "float-right";
+                        string floatdirOpp = !EnglishCulture ? "float-left" : "float-right";
+
+
+
+
+                        <a href="@Url.Action("BrokerServices", "Registration")" class="btn-face m-b-20" style="background:none;cursor:pointer">
+                            <img class="" src="~/images/HomeIcons/Brokers.png" id="" style="height:70px;width:70px; cursor:pointer; " />
+                            <br />
+                            <label style="color:black;font-size:20px;cursor:pointer" class="text-center">@Resources.Resource.BrokerServices</label>
+                        </a>
+
+                        <a href="@Url.Action("StakeholderServices", "Registration")" class="btn-face m-b-20" style="background:none;cursor:pointer">
+                            <img class="" src="~/images/HomeIcons/Companies.png" id="" style="height:70px;width:70px; cursor:pointer; " />
+                            <br />
+                            <label style="color:black;font-size:20px;cursor:pointer" class="text-center">@Resources.Resource.OrganizationServices</label>
+                        </a>
+
+                    }
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+  .btn {
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            width: 90%;
+        }
+
+        .modalprgs {
+            position: fixed;
+            z-index: 999;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        @media only screen and (max-width: 450px) {
+            #Idmodalcontent {
+                position: relative;
+                background-color: #fff;
+                border: none;
+                border: none;
+                border-radius: unset;
+                outline: unset;
+                -webkit-box-shadow: unset;
+                box-shadow: unset;
+                background-clip: unset;
+                border-bottom: none;
+            }
+        }
+
+        .prgs {
+            z-index: 1000;
+            margin: 300px auto;
+            width: 100px;
+            background-color: White;
+            border-radius: 10px;
+        }
+
+            .prgs img {
+                height: 100px;
+                width: 100px;
+            }
+
+        #Resenddiv a {
+            color: red;
+        }
+
+        #Resenddiv1 a {
+            color: red;
+        }
+
+        #t1 {
+            margin-top: 20px;
+            width: 40%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #t1 {
+                margin-top: 0px;
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width:481px) and (max-device-width: 1000px) {
+            #t1 {
+                margin-top: 0px;
+                width: 60%;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+            .dropdown-menu {
+                width: 80%;
+                position: absolute;
+                top: 9%;
+                left: 20px;
+            }
+        }

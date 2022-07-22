@@ -1,0 +1,114 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = Resources.Resource.Verification;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+            </p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+
+</div>
+
+
+<div class="col-lg-11 col-centered">
+    @using (Ajax.BeginForm("EmailVerification", "registration", new AjaxOptions { HttpMethod = "POST" }))
+    {
+        <table id="t1" align="center">
+            <tr>
+                <td width="50%" align="center">
+                    <h4 class="marginTop30">  @Resources.Resource.codeHasBeenSent </h4>
+                    <div class="well form-horizontal marginTop30">
+
+                        <form autocomplete="off">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.emailCode</label>
+                                <div class="col-md-5 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-qrcode"></i>
+                                        </span>
+
+                                        <input class="form-control"
+                                               placeholder="@Resources.Resource.emailCode"
+                                               name="Email" value=""
+                                               type="text" id="inputEmailCode"
+                                               autocomplete="off" required="required" />
+
+                                        <p id="emailIdErrorMsg" class="errorMsg">
+                                            @Resources.Resource.EmailCodeMandatory1
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    &nbsp;
+                                </label>
+                                <div class="col-md-5 inputGroupContainer">
+                                    <div class="input-group">
+                                        @*<span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-qrcode"></i>
+                                            </span>*@
+
+                                        @Html.ActionLink(@Resources.Resource.ResendMail, "EmailVerificationResend", "registration", null, new { @class = "btn btn-info btn-block" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    &nbsp;
+                                </label>
+                                <div class="col-md-5 inputGroupContainer">
+                                    <div class="input-group">
+                                        @*<span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-qrcode"></i>
+                                            </span>*@
+
+
+                                        <button type="submit" id="btnsubmitVerification"
+                                                class="btn btn-info btn-block">
+                                            @Resources.Resource.Verify
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" value="@ViewBag.ParentID" name="ParentID" />
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+
+
+
+<script type="text/javascript">
+    var msg = '@ViewBag.msg';
+    var success = '@ViewBag.success';
+</script>
+
+<script src="~/Scripts/Emailvery.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>

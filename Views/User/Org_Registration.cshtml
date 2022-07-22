@@ -1,0 +1,657 @@
+﻿
+@model WebApplication1.Models.OrgGetBasicResult
+@{
+    ViewBag.Title = Resources.Resource.OrgReg_Header2;// "";//Resources.Resource.;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+<div class="">
+
+    @using (Html.BeginForm("Org_Registration", "User", FormMethod.Post, new { id = "OrgReg", @class = "" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+        <div class="col-lg-11 col-centered marginTop15">
+
+
+            <div class="well form-horizontal" dir="@Resources.Resource.dir">
+
+                <div class="well" style="margin-bottom: 3px;padding: 5px;border: 0px;border-bottom: 1px solid #e3e3e3;">
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            @*@if (Model.CompanyType == "Main")
+                {
+                    <label class="text-success marginBottom15"> @Resources.Resource.MainCompanymsg </label>
+                }
+                else
+                {
+                    <label class="text-primary marginBottom15"> @Resources.Resource.SubCompanymsg</label>
+                }*@
+                            <input type="hidden" runat="server" name="CompanyType" value="@ViewBag.CompanyType" />
+                        </div>
+                    </div>
+
+
+
+                    @if (Model.OrganizationRequestId != 0)
+                    {
+                        <div class="alert alert-success">
+
+                            <span class="inline-block">
+                                @Resources.Resource.Importer_RequestNumber
+                            </span>
+                            @ViewBag.reqno
+
+                        </div>
+
+                    }
+                    <p class="redColor text-center"> @Resources.Resource.mandatoryFieldsMsg </p>
+                </div>
+
+                <div class="well" dir="@Resources.Resource.dir">
+                    <div id="mydiv">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">@Resources.Resource.OrgReg_CompanyName</label>
+                            <div class="col-md-7 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-bank"></i>
+                                    </span>
+                                    @*<input id="OrgEngName" name="OrgEngName" placeholder="* @Resources.Resource.OrgReg_CompanyName"
+                        class="form-control lettersOnly" maxlength="200" value="@item.OrgEngName" type="text" />*@ @*required="required"  id="inputCompanyName"*@
+
+                        @Html.TextBoxFor(m=>m.OrgEngName,new
+                   {
+                       @id = "OrgEngName",
+                       @placeholder = "" + @Resources.Resource.OrgReg_CompanyName,
+                       @class="form-control lettersOnly", @maxlength="100",
+                   })
+
+                        <input type="hidden" runat="server" name="OrganizationId" value="@Model.OrganizationId" />
+                        <input type="hidden" runat="server" name="OrganizationRequestId" value="@Model.OrganizationRequestId" />
+                    </div>
+                    @Html.ValidationMessageFor(model => model.OrgEngName, "", new { @class = "text-danger" })
+
+                </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_CompanyNameinArabic</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-bank"></i>
+                            </span>
+                            @*<input id="inputCNameinArabic" name="OrgAraName" placeholder="* @Resources.Resource.OrgReg_CompanyNameinArabic"
+                class="form-control lettersOnly" maxlength="200"
+                value="@item.OrgAraName" type="text" />*@  @*required="required"*@
+                @Html.TextBoxFor(m=>m.OrgAraName, new
+           {
+               @id="inputCNameinArabic",
+               @placeholder = "* " + @Resources.Resource.OrgReg_CompanyNameinArabic,
+               @class="form-control lettersOnly", @maxlength="100"
+           })
+
+                </div>  @Html.ValidationMessageFor(model => model.OrgAraName, "", new { @class = "text-danger" })
+
+                </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Tradelicenceno</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-credit-card"></i>
+                            </span>
+                            @{string disabledfield = "";
+                                //string TradeLicOfMain = "";
+                                if (ViewBag.CompanyType == "Main")
+                                {
+                                    disabledfield = "readonly";
+                                    //TradeLicOfMain = Session["LicenseNumber"].ToString();
+                                }
+                            }
+                            @*<input id="inputTradelicenceno" name="TradeLicNumber" placeholder="* @Resources.Resource.OrgReg_Tradelicenceno"
+                class="form-control numericOnly" value="@item.TradeLicNumber"
+                @disabledfield type="text"
+                maxlength="12"
+                ondrop="return false;"
+                onpaste="return false;" />*@ @*required="required"*@
+                @if (ViewBag.CompanyType == "Main")
+                {
+                    @Html.TextBoxFor(m=>m.TradeLicNumber, new
+               {
+                   @id = "inputTradelicenceno",
+                   @placeholder = "* " + @Resources.Resource.OrgReg_Tradelicenceno,
+                   @class = "form-control numericOnly",
+                   @maxlength = "15",
+                   @readonly = @disabledfield, @ondrop = "return false;" ,@onpaste = "return false;"
+               })
+                }
+
+                else
+
+                {
+                    @Html.TextBoxFor(m => m.TradeLicNumber, new
+               {
+                   @id = "inputTradelicenceno",
+                   @placeholder = "* " + @Resources.Resource.OrgReg_Tradelicenceno,
+                   @class = "form-control numericOnly",
+                   @maxlength = "15",
+                   //@disabledfield = @disabledfield,
+                   @ondrop = "return false;",
+                   @onpaste = "return false;"
+               })
+
+                }
+
+
+                </div>    @Html.ValidationMessageFor(model => model.TradeLicNumber, "", new { @class = "text-danger" })
+
+                </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.CompanyCivilId</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-tag"></i>
+                            </span>
+                            @*<input id="inputResidenceNumber" name="ResidenceNo" placeholder="@Resources.Resource.OrgReg_ResidenceNumber"
+                class="form-control numericOnly" value="@item.ResidenceNo" type="text" />*@
+                            @Html.TextBoxFor(m=>m.ResidenceNo, new
+                       {
+                           @id="inputResidenceNumber",
+                           @placeholder = @Resources.Resource.CompanyCivilId,
+                           @class = "form-control numericOnly",
+                           @maxlength = "15",
+                           @readonly=true
+                       })
+
+                        </div>  @Html.ValidationMessageFor(model => model.ResidenceNo, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_AuthorizedPerson</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            @*<input id="inputAuthorizedPerson"
+                name="AuthPerson" placeholder="* @Resources.Resource.OrgReg_AuthorizedPerson"
+                class="form-control lettersOnly"
+                value="@item.AuthPerson" maxlength="200"
+                type="text" />*@  @*required="required"*@
+
+                @Html.TextBoxFor(m=>m.AuthPerson, new
+           {
+               @id="inputAuthorizedPerson",
+               @placeholder = "* " +  @Resources.Resource.OrgReg_AuthorizedPerson,
+               @class = "form-control lettersOnly", @maxlength="100"
+           })
+
+                </div>  @Html.ValidationMessageFor(model => model.AuthPerson, "", new { @class = "text-danger" })
+
+                </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_CivilId</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-address-card-o"></i>
+                            </span>
+                            @*<input id="inputCivilId" name="CivilId" placeholder="* @Resources.Resource.OrgReg_CivilId"
+                class="form-control numericOnly" value="@item.CivilId" type="text" maxlength="12"
+                ondrop="return false;" onpaste="return false;" />*@  @*required="required"*@
+                @Html.TextBoxFor(m=>m.CivilId, new
+           {
+               @id="inputCivilId",
+               @placeholder = "* " +  @Resources.Resource.OrgReg_CivilId,
+               @class = "form-control numericOnly" ,@ondrop = "return false;" ,@onpaste = "return false;",
+               @maxlength = "12"
+           })
+
+
+                </div>   @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger" })
+
+                </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_POBoxNo</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-flag"></i>
+                            </span>
+                            @*<input id="inputPOBoxNo" name="POBoxNo" placeholder="* @Resources.Resource.OrgReg_PostalCode"
+                class="form-control" value="@item.POBoxNo" type="text" />*@
+                            @Html.TextBoxFor(m=>m.POBoxNo, new
+                       {
+                           @id="inputPOBoxNo",
+                           @placeholder = "* " + @Resources.Resource.OrgReg_POBoxNo,
+                           @class = "form-control",
+                           @maxlength = "12"
+                       })
+
+                        </div>    @Html.ValidationMessageFor(model => model.POBoxNo, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_State</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                            </span>
+                            @*<input id="inputAddress" name="Address" placeholder="@Resources.Resource.OrgReg_Address"
+                class="form-control" value="@item.Address" maxlength = "100" readonly type="text" />*@
+                            @Html.TextBoxFor(m=>m.StateBiling, new
+                       {
+                           @id="inputAddress",
+                           @placeholder = @Resources.Resource.OrgReg_State,
+                           @class = "form-control",
+                           @maxlength = "200",
+                           @readonly=true
+                       })
+
+                        </div>  @Html.ValidationMessageFor(model => model.StateBiling, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_City</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-screenshot"></i>
+                            </span>
+                            @*<input id="inputCity" name="City" placeholder="* @Resources.Resource.OrgReg_City"
+                class="form-control" value="@item.City" type="text" />*@
+
+                            @Html.TextBoxFor(m=>m.CityBiling, new
+                       {
+                           @id="inputCity",
+                           @placeholder = "* " + @Resources.Resource.OrgReg_City,
+                           @class = "form-control",
+                           //@maxlength = "15",
+                           @readonly = true
+                       })
+
+
+                        </div>   @Html.ValidationMessageFor(model => model.CityBiling, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_PostalCode</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                            </span>
+                            @*<input id="inputAddress" name="Address" placeholder="@Resources.Resource.OrgReg_Address"
+                class="form-control" value="@item.Address" type="text" />*@
+                            @Html.TextBoxFor(m=>m.PostalCode, new
+                       {
+                           @id="inputAddress",
+                           @placeholder = @Resources.Resource.OrgReg_PostalCode,
+                           @class = "form-control",
+                           @maxlength = "100",
+                           @readonly = true
+                       })
+
+                        </div>  @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Address</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                            </span>
+
+                            @if (Session["mypurpose"].ToString() == "edit")
+                            {
+                                @Html.TextBoxFor(m => m.Address, new
+                           {
+                               @id = "inputAddress",
+                               @placeholder = @Resources.Resource.OrgReg_Address,
+                               @class = "form-control",
+                               @maxlength = "200",
+                               @readonly = false
+                           })
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(m => m.Address, new
+                           {
+                               @id = "inputAddress",
+                               @placeholder = @Resources.Resource.OrgReg_Address,
+                               @class = "form-control",
+                               @maxlength = "200"
+                                ,
+                               @readonly = true
+                           })
+                            }
+                        </div>  @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.Block</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                            </span>
+                            @*<input id="inputAddress" name="Address" placeholder="@Resources.Resource.OrgReg_Address"
+                class="form-control" value="@item.Address" type="text" />*@
+                            @if (Session["mypurpose"].ToString() == "edit")
+                            {
+
+                                @Html.TextBoxFor(m=>m.Block, new
+                               {
+                                   @id="inputAddress",
+                                   @placeholder = @Resources.Resource.Block,
+                                   @class = "form-control",
+                                   @maxlength = "100"
+
+                               })
+                            }
+                            else
+
+                            {
+                                @Html.TextBoxFor(m => m.Block, new
+                            {
+                                @id = "inputAddress",
+                                @placeholder = @Resources.Resource.Block,
+                                @class = "form-control",
+                                @maxlength = "100",
+                                @readonly = true
+                            })
+                            }
+
+                        </div>  @Html.ValidationMessageFor(model => model.Block, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.Street</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                            </span>
+                            @*<input id="inputAddress" name="Address" placeholder="@Resources.Resource.OrgReg_Address"
+                class="form-control" value="@item.Address" type="text" />*@
+                            @if (Session["mypurpose"].ToString() == "edit")
+                            {
+
+                                @Html.TextBoxFor(m => m.Street, new
+                           {
+                               @id = "inputAddress",
+                               @placeholder = @Resources.Resource.Street,
+                               @class = "form-control",
+                               @maxlength = "100"
+                           })
+                            }
+                            else
+
+                            {
+
+                                @Html.TextBoxFor(m => m.Street, new
+                       {
+                           @id = "inputAddress",
+                           @placeholder = @Resources.Resource.Street,
+                           @class = "form-control",
+                           @maxlength = "100",
+                           @readonly = true
+                       })
+
+                            }
+
+                        </div>  @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_BusinessNumber</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-phone-alt"></i>
+                            </span>
+                            @*<input id="inputBusinessNumber" name="BusiNo" placeholder="* @Resources.Resource.OrgReg_BusinessNumber"
+                class="form-control numericOnly" value="@item.BusiNo" type="text" />*@
+                            @Html.TextBoxFor(m=>m.BusiNo, new
+                       {
+                           @id="inputBusinessNumber",
+                           @placeholder = "* " +  @Resources.Resource.OrgReg_BusinessNumber,
+                           @class = "form-control numericOnly",
+
+                           @maxlength = "30"
+                       })
+
+
+                        </div>  @Html.ValidationMessageFor(model => model.BusiNo, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_BusinessFaxNumber</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fax"></i>
+                            </span>
+                            @*<input id="inputBusinessFaxNumber" name="BusiFaxNo" placeholder="* @Resources.Resource.OrgReg_BusinessFaxNumber"
+                class="form-control numericOnly" value="@item.BusiFaxNo" type="text" />*@
+                            @Html.TextBoxFor(m=>m.BusiFaxNo, new
+                       {
+                           @id="inputBusinessFaxNumber",
+                           @placeholder = @Resources.Resource.OrgReg_BusinessFaxNumber,
+                           @class = "form-control numericOnly",
+                           @maxlength = "30"
+                       })
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_MobileNumber</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-phone"></i>
+                            </span>
+                            @*<input id="inputMobileNumber" name="MobileNo" placeholder="@Resources.Resource.OrgReg_MobileNumber"
+                class="form-control numericOnly" value="@item.MobileNo" type="text" />*@
+                            @Html.TextBoxFor(m=>m.MobileNo, new
+                       {
+                           @id="inputMobileNumber",
+                           @placeholder = @Resources.Resource.OrgReg_MobileNumber,
+                           @class = "form-control numericOnly",
+                           @maxlength = "10"
+                       })
+
+                        </div>  @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_EmailID</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-at"></i>
+                            </span>
+                            @*<input id="inputEmailID" name="EmailId" placeholder="* @Resources.Resource.Email"
+                class="form-control" value="@item.EmailId" type="text" />*@
+                            @Html.TextBoxFor(m=>m.EmailId, new
+                       {
+                           @id="inputEmailID",
+                           @placeholder = "* " + @Resources.Resource.Email,
+                           @class = "form-control ",
+                           @maxlength = "40"
+                       })
+
+                        </div>  @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_WebPageAddress</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-bookmark-o"></i>
+                            </span>
+                            @*<input id="inputWebPageAddress" name="WebPageAddress" placeholder="@Resources.Resource.OrgReg_WebPageAddress"
+                class="form-control" value="@item.WebPageAddress" type="text" />*@
+                            @Html.TextBoxFor(m=>m.WebPageAddress, new
+                       {
+
+                           @id="inputWebPageAddress" ,@placeholder=@Resources.Resource.OrgReg_WebPageAddress,
+                           @class="form-control",
+                           @maxlength = "40"
+                       })
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Industrial</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            @if (Model.isIndustrial == true)
+                            {
+                                @Html.CheckBoxFor(m => m.isIndustrial, new { @checked = "checked", @readonly = true, @onclick = "return false;", @onkeydown = "return false;" })
+                            }
+                            else
+                            {
+                                @Html.CheckBoxFor(m => m.isIndustrial, new { @readonly = true, @onclick = "return false;", @onkeydown = "return false;" })
+                            }
+                            @*Just made the checkbox false to any key events.. as it will be read only field as the data is collected during registration itself*@
+
+                            @*<input type="hidden" name="isIndustrial" value="@Model.isIndustrial" />*@
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label ">&nbsp;</label>
+                    <div class="col-md-7 inputGroupContainer " style=" ">
+                        <div class="input-group">
+
+                            <button type="submit" class="btn btn-info btn-block col-centered  width50Percent" style="    " causesvalidation="true" id="btnsubmit">
+                                <b>
+                                    @Resources.Resource.OrgReg_B_Next
+                                </b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+                        }
+</div>
+                                <div id="modalDiv" class="modal" style="display:none;">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <span class="close" id="closeError">&times;</span>
+                                            <h6 id="modelHeaderTitle">&nbsp;</h6>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 id="modalMessage">
+                                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                                            </h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <script type="text/javascript">
+    var GotoReqList = '@ViewBag.GoToRequestStatus';
+var ViewBagmodelerror='@ViewBag.modelerror';
+var result='@ViewBag.dis';
+if (result===null) {
+    result='';
+}
+
+
+                                </script>
+                                <script src="~/Scripts/JS_View/OrgReg.js"></script>
+
+
+                             <style>
+                                 .hr {
+                                     border-top: 2px solid #e4e0e0;
+                                 }
+                             </style>

@@ -1,0 +1,320 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+
+
+    ViewBag.Title = Resources.Resource.Menu2;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+    //Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+@*<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+        <link href="~/styles/Untitled.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+        <link rel="stylesheet" href="~/styles/font-awesome.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+        <script src="~/scripts/jquery.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+        <script src="~/scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+        <link href="~/styles/font-awesome.min.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+        <script src="~/Scripts/jquery-ui.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+        <link href="~/styles/jquery-ui.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+        @{
+
+            HttpCookie langCookie = Request.Cookies["culture"];
+
+            if (langCookie != null)
+            {
+                if (langCookie.Value.Contains("ar"))
+                {
+                    <link href="~/styles/bootstrapArabic.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+                    <link rel="stylesheet" href="~/styles/style4Arabic.css">
+                }
+                else
+                {
+                    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+                    <link rel="stylesheet" href="~/styles/style4.css">
+                }
+            }
+        }
+
+
+        <title>@Resources.Resource.homePage</title>
+
+    </head>*@
+
+
+@*<body >
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>*@
+
+
+@*<div class="wrapper">*@
+
+<!-- Sidebar Holder -->
+@*<nav id="sidebar">
+        <div class="sidebar-header">
+            <h5 id="sidebarCollapsee">@Resources.Resource.eServiceHeader</h5>
+            <strong id="sidebarCollapseee">&nbsp;</strong>
+        </div>
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                    <i class="glyphicon glyphicon-home"></i>
+                    Home
+                </a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="#">Home 1</a></li>
+                    <li><a href="#">Home 2</a></li>
+                    <li><a href="#">Home 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="glyphicon glyphicon-briefcase"></i>
+                    About
+                </a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                    <i class="glyphicon glyphicon-duplicate"></i>
+                    Pages
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="glyphicon glyphicon-link"></i>
+                    Portfolio
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="glyphicon glyphicon-paperclip"></i>
+                    FAQ
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="glyphicon glyphicon-send"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <ul class="list-unstyled CTAs">
+            <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
+            <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+        </ul>
+    </nav>*@
+
+
+@*<div id="content">*@
+
+@*<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <i class="glyphicon glyphicon-align-left"></i>
+                    <span></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Page</a></li>
+                    <li><a href="#">Page</a></li>
+                    <li><a href="#">Page</a></li>
+                    <li><a href="#">Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>*@
+
+
+<div class="col-lg-11 col-centered marginTop50">
+
+
+
+    @*@{
+        if (Session["OrgRegistrationAllowed"] != null)
+        {
+
+
+            if (Convert.ToBoolean(Session["OrgRegistrationAllowed"]))
+            {
+                <p id="btnactionLink">
+                    <button id="CanCreateOrg" class="btn btn-info btn-block col-centered marginTop50 width50Percent">@Resources.Resource.B_AssociateOrganizations</button>
+                </p>
+            }
+
+        }
+    }*@
+    @*@Html.ActionLink(@Resources.Resource.B_AssociateOrganizations, "Org_Registration", "User", null, new { id="CanCreateOrg", @class = "btn btn-info btn-block col-centered marginTop50 width50PX"  })*@
+
+
+    @{
+
+        if (Model != null)
+        {
+            if (Model.Rows != null && Model.Rows.Count > 0)
+            {
+                foreach (DataRow row in Model.Rows)
+                {
+                    String puposeview = WebApplication1.Models.encrypt.Encode("view");
+                    String puposeedit = WebApplication1.Models.encrypt.Encode("edit");
+                    String id = row["OrganizationId"].ToString();
+                    String encodedid = WebApplication1.Models.encrypt.Encode(id);
+                    String encodedtype = WebApplication1.Models.encrypt.Encode("created");
+
+                    //bool IsMainCompany = @row["IsMainCompany"].ToString() == "1" ? true : false;
+
+                    if (@row["OrganizationId"].ToString() != "")// if (@row["Name"].ToString() != "")//Orgname in english is sometimes null in db , causing that org not getting displayed
+                    {
+
+                        <div class="col-md-6 shadow-lg">
+                            <div class="card text-white bg-info mb-3">
+                                <div class="card-header text-center bg-secondary">
+                                    <ul class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                                        <li class="nav-item" id="tdorg">
+                                            @*onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype, purpose = puposeview, reqnum = "" })'"*@
+                                            <a class="nav-link text-light" id="editorg" style="cursor:pointer">
+                                                @*onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype, purpose = puposeedit, reqnum = "" })'"*@
+                                                <b class="text-dark requestNoLargeFont" onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype, purpose = puposeview, reqnum = "" })'">
+                                                    @*onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype, purpose = puposeedit, reqnum = "" })'"*@
+                                                    @row["Name"]
+                                                    &nbsp; &nbsp;
+
+
+                                                    @*<td style="width:80%;padding:10px" id="tdorg" onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype,purpose=puposeview,reqnum="" })'">
+                                                            <p id="cardid" style="width:100%;line-height: 1.5;float:left;">@row["Name"]</p>
+                                                        </td>
+                                                        <td id="editorg" align="center" style="font-size:20px;width:10%" onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype,purpose=puposeedit,reqnum="" })'">
+                                                            <span class="glyphicon glyphicon-edit" style="font-weight:normal;"></span>
+                                                        </td>*@
+
+
+                                                </b>
+                                                @*<b class="text-dark requestNoLargeFont">
+                                                        <span class="glyphicon glyphicon-edit" style="cursor:pointer" onclick="location.href='@Url.Action("Org_Registration", "User", new { Id = encodedid, Requesttype = encodedtype,purpose=puposeedit,reqnum="" })'"></span>
+
+                                                    </b>*@
+                                            </a>
+                                            <br />
+                                            @if (@row["IsMainCompany"].ToString() == "1")
+                                            {
+                                                <label class="label-success text-center padding7PX">
+                                                    <i class="glyphicon glyphicon-home"> </i>
+                                                    &nbsp;
+                                                    @Resources.Resource.mainCompany
+                                                </label>
+                                            }
+                                            else
+                                            {
+                                                <label class="label-primary text-center padding7PX">
+                                                    <i class="glyphicon glyphicon-briefcase"> </i>
+                                                    &nbsp;
+                                                    @Resources.Resource.subcompany
+                                                </label>
+                                            }
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                }
+            }
+        }
+    }
+
+
+
+</div>
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="OrgmodalMessage">
+                @Resources.Resource.CanCreateOrg
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+
+
+@*</div>
+    </div>*@
+
+@*<script src="~/Scripts/eServiceScript.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@
+
+@*<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" style="z-index:200;" role="button" title="@Resources.Resource.returnToTop" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+    </body>*@
+
+
+
+@*<div class="@Resources.Resource.MenuHeader_cssclass">
+        <strong style="width:100px;color:white;"><span id="menuid" onclick="w3_open()" style="@Resources.Resource.menuiconstyle" class="glyphicon glyphicon-menu-hamburger"></span><span id="menuheader">@Resources.Resource.home</span></strong>
+        <div class="@Resources.Resource.MenuHeader_cssclass1" onclick="w3_close()">
+
+            <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown" id="notifyidevent">
+                @{ if (Session["Nfcount"] != null)
+                    {
+                        if (Session["Nfcount"].ToString() == "0")
+                        {
+                            <i data-count="@Session["Nfcount"].ToString()" id="idcount" class="@Resources.Resource.MenuHeader_cssclassnotification1"></i>
+                        }
+                        else
+                        {
+                            <i data-count="@Session["Nfcount"].ToString()" id="idcount" class="@Resources.Resource.MenuHeader_cssclassnotification"></i>
+                        }
+
+                    }
+                    else
+                    {
+                        <i id="idcount" class="@Resources.Resource.MenuHeader_cssclassnotification1"></i>
+                    }
+                }
+
+            </a>
+            <ul class="dropdown-menu" id="myNotifyList" style="margin: -25px 0 0;"></ul>
+        </div>
+    </div>*@
+
+
+
+
+
+
+

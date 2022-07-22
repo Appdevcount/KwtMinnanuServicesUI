@@ -1,0 +1,1183 @@
+﻿@model WebApplication1.Models.BrokerUpdateModel
+@using WebApplication1.Models;
+
+@{
+    ViewBag.Title = Resources.Resource.OrgReg_Header + " - " + Resources.Resource.uploadDocuments;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+
+}
+@{
+    HttpCookie langCookie = Request.Cookies["culture"];
+
+    string TermsCheckBoxStyle = "";
+    string DocumentViewer = "";
+    if (langCookie != null)
+    {
+        if (langCookie.Value.Contains("ar"))
+        {
+
+            TermsCheckBoxStyle = "height:21px;    margin-right: -20px;";
+            DocumentViewer = "عارض المستند";
+        }
+        else
+        {
+
+            TermsCheckBoxStyle = " height:21px;    margin-left: -20px;";
+            DocumentViewer = "Document Viewer";
+        }
+    }
+    var DomainSite = "";//Prod//Localhost
+                                //var DomainSite = "/test";//Test environment -- /esonepp
+    var request = HttpContext.Current.Request;
+    var address = string.Format("{0}://{1}", request.Url.Scheme, request.Url.Authority) + DomainSite;
+
+}
+@if (Model != null)
+{
+    <div class="col-xs-11 col-centered marginTop30">
+        <div class="well">
+            <div class="well" style="margin-bottom: 3px;padding: 5px;border: 0px;border-bottom: 1px solid #e3e3e3;">
+
+
+                <input type="hidden" runat="server" id="Tid" />
+                <input type="hidden" runat="server" id="uid" />
+                <input type="hidden" runat="server" id="reqid1" />
+
+
+                <input type="hidden" name="lgHidden" id="lgHidden" value="@Resources.Resource.lG" />
+
+                @Html.HiddenFor(m => Model.Eservicerequestid, new { @id = "Eservicerequestid" })
+                @Html.HiddenFor(m => Model.Referenceprofile, new { @id = "Referenceprofile" })
+                @Html.HiddenFor(m => m.SelectedFileId)
+
+                <div class="alert alert-success">
+                    @{
+                        if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                        {
+
+                            <span class="inline-block">
+                                @Resources.Resource.Importer_RequestNumber
+                            </span>
+                            @ViewBag.ReqNumber
+
+                            <br />
+                        }
+                    }
+
+                    <span class="inline-block">
+                        @Resources.Resource.Importer_CompanyNameinArabic
+                    </span>
+
+                    @ViewBag.OrgAraName
+
+                </div>
+
+
+                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " id="test">
+                            <p class="redColor text-center">
+
+                                @Resources.Resource.uploadAllRequiredDocMSG
+                            </p>
+                            @*<label class="text-center control-label marginBottom15">@Resources.Resource.docTypesLabel</label>*@
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="well ">
+
+                <div class="row">
+
+                    @{
+                        List<OrgGetDocumentsResult> uplodedDocuments = new List<OrgGetDocumentsResult>();
+
+                        String docTypeLicenseCertificate = System.Configuration.ConfigurationManager.AppSettings["docTypeLicenseCertificate"].ToString();
+                        String docTypeMOCICertificate = System.Configuration.ConfigurationManager.AppSettings["docTypeMOCICertificate"].ToString();
+                        String docTypeCivilIDforAuthorizedSignaturePerson = System.Configuration.ConfigurationManager.AppSettings["docTypeCivilIDforAuthorizedSignaturePerson"].ToString();
+                        String docTypeImporterLicense = System.Configuration.ConfigurationManager.AppSettings["docTypeImporterLicense"].ToString();
+                        String docTypeAuthorizedSignatureChamberofCommerceCustoms = System.Configuration.ConfigurationManager.AppSettings["docTypeAuthorizedSignatureChamberofCommerceCustoms"].ToString();
+                        String docTypeOrganizationRegistrationForm = System.Configuration.ConfigurationManager.AppSettings["docTypeOrganizationRegistrationForm"].ToString();
+                        String docTypeOrganizationNameChangeDocument = System.Configuration.ConfigurationManager.AppSettings["docTypeOrganizationNameChangeDocument"].ToString();
+                        String docTypeIndustrialLicenseCertificate = System.Configuration.ConfigurationManager.AppSettings["docTypeIndustrialLicenseCertificate"].ToString();
+
+
+                        if (ViewData["OrgGetDocumentsResult"] != null)
+                        {
+                            uplodedDocuments = ViewData["OrgGetDocumentsResult"] as List<OrgGetDocumentsResult>;
+                        }
+
+                        int TotalUploadedDocs = uplodedDocuments.Count;
+
+
+                        int docTypeLicenseCertificateCount = uplodedDocuments.Where(d => d.DocumentType == docTypeLicenseCertificate).Count();
+                        int docTypeMOCICertificateCount = uplodedDocuments.Where(d => d.DocumentType == docTypeMOCICertificate).Count();
+                        int docTypeCivilIDforAuthorizedSignaturePersonCount = uplodedDocuments.Where(d => d.DocumentType == docTypeCivilIDforAuthorizedSignaturePerson).Count();
+                        int docTypeImporterLicenseCount = uplodedDocuments.Where(d => d.DocumentType == docTypeImporterLicense).Count();
+                        int docTypeAuthorizedSignatureChamberofCommerceCustomsCount = uplodedDocuments.Where(d => d.DocumentType == docTypeAuthorizedSignatureChamberofCommerceCustoms).Count();
+                        int docTypeOrganizationRegistrationFormCount = uplodedDocuments.Where(d => d.DocumentType == docTypeOrganizationRegistrationForm).Count();
+                        int docTypeOrganizationNameChangeDocumentCount = uplodedDocuments.Where(d => d.DocumentType == docTypeOrganizationNameChangeDocument).Count();
+                        int docTypeIndustrialLicenseCertificateCount = uplodedDocuments.Where(d => d.DocumentType == docTypeIndustrialLicenseCertificate).Count();
+
+                        int CurrentDocTypeDocCount = 0;
+
+                        string CurrentDocType = "";
+
+                        string DocTypeText = "DT_";// "DocType_";
+                        string FileText = "_F_";// "_File_";
+                        int DocTypeNumberExludeOrgRegForm = 0;
+
+
+                        foreach (var item in Model.ddlDocumentTypesitems)
+                        {
+
+                            DocTypeNumberExludeOrgRegForm = ++DocTypeNumberExludeOrgRegForm;
+
+                            int UniqueFileNumber = 0;
+
+                            string MissedDoc = "";
+                            string MissedDocText = "";
+
+                            List<string> MissedDocs = null;
+                            if (ViewData["Dataerror"] != null)
+                            {
+                                MissedDocs = (List<string>)ViewData["Dataerror"];
+
+                            }
+
+                            if (MissedDocs != null)
+                            {
+                                if (MissedDocs.Contains(item.Text))
+                                {
+                                    MissedDoc = "border-color:#ce7d7d;box-shadow: 2px 2px #ce7d7d;";
+                                    MissedDocText = "color:red";
+                                }
+                            }
+
+                            if (item.Text.Contains("عقد تأسيس") || item.Text.Contains("License Certificate"))
+                            {
+                                CurrentDocTypeDocCount = docTypeLicenseCertificateCount;
+                                CurrentDocType = docTypeLicenseCertificate;
+                            }
+                            else if (item.Text.Contains("ترخيص وزارة التجارة و الصناعة") || item.Text.Contains("MOCI Certificate"))
+                            {
+                                CurrentDocTypeDocCount = docTypeMOCICertificateCount;
+                                CurrentDocType = docTypeMOCICertificate;
+                            }
+                            else if (item.Text.Contains("صورة من البطاقة المدنية للمخول بالتوقيع") || item.Text.Contains("Civil ID for Authorized Signature Person"))
+                            {
+                                CurrentDocTypeDocCount = docTypeCivilIDforAuthorizedSignaturePersonCount;
+                                CurrentDocType = docTypeCivilIDforAuthorizedSignaturePerson;
+                            }
+                            else if (item.Text.Contains("ترخيص إستيراد") || item.Text.Contains("Importer License"))
+                            {
+                                CurrentDocTypeDocCount = docTypeImporterLicenseCount;
+                                CurrentDocType = docTypeImporterLicense;
+                            }
+                            else if (item.Text.Contains("إعتماد توقيع غرفة التجارة - الجمارك") || item.Text.Contains("Authorized Signature Chamber of Commerce (Customs)"))
+                            {
+                                CurrentDocTypeDocCount = docTypeAuthorizedSignatureChamberofCommerceCustomsCount;
+                                CurrentDocType = docTypeAuthorizedSignatureChamberofCommerceCustoms;
+                            }
+                            else if (item.Text.Contains("تغيير اسم المنظمة كتاب") || item.Text.Contains("Organization Name Change Document"))
+                            {
+                                CurrentDocTypeDocCount = docTypeOrganizationNameChangeDocumentCount;
+                                CurrentDocType = docTypeOrganizationNameChangeDocument;
+                            }
+                            else if (item.Text.Contains("للمنشأت الصناعة/الترخيص الصادر من الهيئة العامة للصناعة") || item.Text.Contains("Industrial Organizations/ License"))
+                            {
+                                CurrentDocTypeDocCount = docTypeIndustrialLicenseCertificateCount;
+                                CurrentDocType = docTypeIndustrialLicenseCertificate;
+                            }
+
+                            if (!item.Text.Contains("نموذج تسجيل شركة") && !item.Text.Contains("Organization Registration Form"))
+                            {
+
+
+                                if (CurrentDocTypeDocCount == 0 && (Session["purpose"].ToString().Trim() == Constantclass.number1))
+                                {
+                                    UniqueFileNumber = ++UniqueFileNumber;
+                                    string BaseUniqueID = DocTypeText + DocTypeNumberExludeOrgRegForm + FileText + UniqueFileNumber + "_";
+                                    string DocumentTypeId = BaseUniqueID + "DTID";
+                                    string FileControlId = BaseUniqueID + "FC";
+                                    string BrowseIconId = BaseUniqueID + "BI";
+                                    string DeleteId = BaseUniqueID + "DLT";
+                                    string DownloadId = BaseUniqueID + "DWL";
+                                    string SmallViewId = BaseUniqueID + "SV";
+                                    string DocumentId = BaseUniqueID + "DID";
+                                    string DocNameId = BaseUniqueID + "DNID";
+
+                                    string DocTypeBox = DocTypeText + DocTypeNumberExludeOrgRegForm;
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 " id="@DocTypeBox">
+
+                                        <div class="DocBorders " style="@MissedDoc">
+                                            <div class="row DocBoxHeader">
+                                                <div class="col-xs-2 text-center ">
+                                                    <div class="form-group">
+                                                        @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                        {
+                                                            <img id="@BrowseIconId" src="~/Images/UploadDocIcons/Browse.png"
+                                                                 onclick="BrowseFile(event)" class="iconstyle" style="margin-top: 8px;" title="@Resources.Resource.UploadDocument_Header"  />
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-10" style="font-weight: bolder;">
+
+                                                    <div class="form-group">
+                                                        <label style="@MissedDocText"> @item.Text</label>
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-group" style="margin-left: -122px;">
+                                                        <label id="@DocNameId" class="@DocNameId" style="float: left;font-weight: normal;padding-top: 5px;    margin-left: -96px;display:none"></label>
+                                                    </div>
+
+                                                    <input type="hidden" id="@DocumentTypeId" value="@item.Value" />
+                                                </div>
+
+                                            </div>
+                                            <div class="row DocBoxFile">
+                                                <div class="col-xs-2">  <div class="form-group"></div></div>
+                                                <div class="col-xs-10">
+                                                    <label id="@DocNameId" class="@DocNameId" style=""></label>
+                                                </div>
+                                            </div>
+                                            <div class="row DocBoxActions">
+                                                <div class="col-xs-2 text-center DocBoxButtons ">
+                                                    <div class="form-group">
+
+                                                        @*<img src="~/Images/UploadDocIcons/Save.png" id="DTF1S"
+                                                            onclick="SaveFile(event)" class="iconstyle" />*@
+
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <img src="~/Images/UploadDocIcons/Delete.png" id="@DeleteId"
+                                                             onclick="DeleteFile(event)" class="iconstyle @DeleteId" style="display:none"  title="@Resources.Resource.delete"/>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @*<img src="~/Images/UploadDocIcons/Download.png" id="@DownloadId"
+                                                            onclick="DownloadFile(event)" class="iconstyle @DownloadId" style="display:none" />*@
+                                                    </div>
+
+
+                                                    <input id='@FileControlId' type='file' name="sd" style='width:0px;height: 0px;'
+                                                           onchange="ShowFileChosen(event)" />
+                                                    <input type="hidden" id="@DocumentId" class="@DocumentId" value="" />
+                                                </div>
+                                                <div class="col-xs-10 DocBoxSmallView" style="    padding: 6px;">
+                                                    @{string ViewDoc = "";
+                                                        if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                        { ViewDoc = "ViewDoc(event,'')"; }
+                                                        else
+                                                        {
+                                                            ViewDoc = "";
+                                                        }
+                                                    }
+                                                    <div id="@SmallViewId"
+                                                         style=""
+                                                         onclick="@ViewDoc" class="btn btn-default SmallView FileSearch @SmallViewId"  title="@Resources.Resource.UploadDocument_Header"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    int FileNumber = 0;
+                                    foreach (var t in uplodedDocuments)
+                                    {
+
+                                        UniqueFileNumber = ++UniqueFileNumber;
+                                        string BaseUniqueID = DocTypeText + DocTypeNumberExludeOrgRegForm + FileText + UniqueFileNumber + "_";
+                                        string DocumentTypeId = BaseUniqueID + "DTID";
+                                        string FileControlId = BaseUniqueID + "FC";
+                                        string BrowseIconId = BaseUniqueID + "BI";
+                                        string DeleteId = BaseUniqueID + "DLT";
+                                        string DownloadId = BaseUniqueID + "DWL";
+                                        string SmallViewId = BaseUniqueID + "SV";
+                                        string DocumentId = BaseUniqueID + "DID";
+                                        string DocNameId = BaseUniqueID + "DNID";
+
+                                        string x = CommonFunctions.CsUploadEncrypt(t.OrganizationRequestDocumentId);
+
+
+                                        string DocId = HttpUtility.UrlEncode(x);
+
+                                        if (t.DocumentType == CurrentDocType)
+                                        {
+                                            FileNumber = ++FileNumber;
+
+                                            string DocTypeBox = DocTypeText + DocTypeNumberExludeOrgRegForm;
+
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 UploadedFileContainer" id="@DocTypeBox">
+
+                                                <div class="DocBorders">
+
+                                                    <div class="row DocBoxHeader">
+                                                        <div class="col-xs-2 text-center ">
+                                                            <div class="form-group">
+                                                                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                                {
+                                                                    <img id="@BrowseIconId" src="~/Images/UploadDocIcons/Browse.png"
+                                                                         onclick="BrowseFile(event)" class="iconstyle @BrowseIconId" style="margin-top: 8px;display:none"  title="@Resources.Resource.UploadDocument_Header"/>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-10  " style="font-weight: bolder;">
+
+                                                            <div class="form-group">
+                                                                @*<label style="float:right" class="numberCircle">@FileNumber</label>*@<label style=""> @item.Text &nbsp;  </label>
+                                                            </div>
+                                                            <br />
+                                                            <div class="form-group" style="margin-left: -122px;">
+                                                                @*<label id="@DocNameId" class="@DocNameId" style="float: left;font-weight: normal;padding-top: 5px;    margin-left: -96px;display:none"> @t.DocumentName</label>*@
+                                                            </div>
+
+                                                            <input type="hidden" class="@DocumentTypeId" id="@DocumentTypeId" value="@item.Value" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row DocBoxFile">
+                                                        <div class="col-xs-2">
+                                                            <div class="form-group"></div>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            @{string Dots = ""; if (t.DocumentName != null && t.DocumentName.Length > 15) { Dots = "..."; }
+                                                            }
+                                                            <label id="@DocNameId" class="@DocNameId" style=""> @t.DocumentName.Substring(0, t.DocumentName.Length > 15 ? 15 : t.DocumentName.Length)@Dots  </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row DocBoxActions">
+                                                        <div class="col-xs-2 text-center DocBoxButtons">
+                                                            <div class="form-group">
+                                                                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                                {
+                                                                    <img src="~/Images/UploadDocIcons/add.png"
+                                                                         onclick="AddNewFileControl(event)" id="@BaseUniqueID" class="iconstyle @BaseUniqueID"  title="@Resources.Resource.AddMore" />
+                                                                }
+                                                            </div>
+                                                            <div class="form-group">
+                                                                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                                {
+                                                                    @*<img src="~/Images/UploadDocIcons/Save.png" id="DTF1S"
+                                                                        onclick="SaveFile(event)" class="iconstyle" />*@
+                                                                }
+                                                            </div>
+                                                            <div class="form-group">
+                                                                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                                {
+                                                                    <img src="~/Images/UploadDocIcons/Delete.png" id="@DeleteId"
+                                                                         onclick="DeleteFile(event)" class="iconstyle @DeleteId"  title="@Resources.Resource.delete"/>
+                                                                }
+                                                            </div>
+                                                            <div class="form-group">
+                                                                @*<img src="~/Images/UploadDocIcons/Download.png" id="@DownloadId"
+                                                                    onclick="DownloadFile(event)" class="iconstyle @DownloadId" />*@
+                                                            </div>
+
+
+
+                                                            <input id='@FileControlId' class="@FileControlId" type='file' style='width:0px;height: 0px;'
+                                                                   onchange="ShowFileChosen(event)" />
+                                                            <input type="hidden" id="@DocumentId" class="@DocumentId" value="@DocId" />
+                                                        </div>
+                                                        <div class="col-xs-10 DocBoxSmallView" style="    padding: 6px;">
+                                                            @{
+                                                                string FileExtension = t.DocumentName.Substring(t.DocumentName.LastIndexOf('.') + 1);
+                                                                string backgroundimage = "";
+
+                                                                if (FileExtension.ToLower().Contains("pdf"))
+                                                                {
+                                                                    backgroundimage = "background-image:url(" + address + "/images/UploadDocIcons/pdficon.png" + ")";
+                                                                }
+                                                                else
+                                                                {
+                                                                    //backgroundimage = "background-image:url(" + "/images/UploadDocIcons/ImageIcon.png" + ")";
+                                                                    backgroundimage = "background-image:url(" + address + "/User/RenderDocument?DocumentId=" + DocId + ")";
+                                                                }
+                                                                string ViewDoc = "";
+                                                                if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                                { ViewDoc = "ViewDoc(event,'" + FileExtension.ToLower() + "')"; }
+                                                                else
+                                                                {
+                                                                    ViewDoc = "";
+                                                                }
+                                                            }
+
+                                                            <div id="@SmallViewId"
+                                                                 style="@backgroundimage"
+                                                                 onclick="@ViewDoc" class="btn btn-default SmallView @SmallViewId"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        }
+                                    }
+                                }
+
+                            }
+
+
+
+
+
+                        }
+                    }
+
+                </div>
+                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                {
+                    <div class="row" style="margin-bottom:8px">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " id="test">
+
+
+                            <p class="redColor text-center" style="display:inline;">
+                                @Resources.Resource.OrgReqHelpCreate
+                                <button type="button"
+                                        onclick="window.location.href='@Url.Action("OrgRequestprint", "User", new { OrgReqId = CommonFunctions.CsUploadEncrypt(Model.OrgReqId) })'"
+                                        class="btn btn-primary buttonStyle" id="PrintButtonDocs">
+                                    <b>
+                                        <span class="glyphicon glyphicon-print">  </span> &nbsp;
+                                        @Resources.Resource.PrintOrgReqForm
+                                    </b>
+                                </button>
+                            </p>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                }
+
+                <div class="row">
+
+
+                    @{
+                        string OrgRegFormName = "";
+                        string DocTypeIdOrgRegForm = "";
+                        DocTypeNumberExludeOrgRegForm = ++DocTypeNumberExludeOrgRegForm;
+                        foreach (var item in Model.ddlDocumentTypesitems)
+                        {
+                            if (item.Text.Contains("نموذج تسجيل شركة") || item.Text.Contains("Organization Registration Form"))
+                            {
+                                OrgRegFormName = item.Text;
+                                DocTypeIdOrgRegForm = item.Value;
+                                CurrentDocType = docTypeOrganizationRegistrationForm;
+                            }
+                        }
+                        int UniqueFileNumberOrgRegForm = 0;
+                        if (docTypeOrganizationRegistrationFormCount == 0 && (Session["purpose"].ToString().Trim() == Constantclass.number1))
+                        {
+                            UniqueFileNumberOrgRegForm = ++UniqueFileNumberOrgRegForm;
+                            string BaseUniqueID = DocTypeText + DocTypeNumberExludeOrgRegForm + FileText + UniqueFileNumberOrgRegForm + "_";
+                            string DocumentTypeId = BaseUniqueID + "DTID";
+                            string FileControlId = BaseUniqueID + "FC";
+                            string BrowseIconId = BaseUniqueID + "BI";
+                            string DeleteId = BaseUniqueID + "DLT";
+                            string DownloadId = BaseUniqueID + "DWL";
+                            string SmallViewId = BaseUniqueID + "SV";
+                            string DocumentId = BaseUniqueID + "DID";
+                            string DocNameId = BaseUniqueID + "DNID";
+
+                            string MissedDoc = "";
+                            string MissedDocText = "";
+                            List<string> MissedDocs = null;
+                            if (ViewData["Dataerror"] != null)
+                            {
+                                MissedDocs = (List<string>)ViewData["Dataerror"];
+                                if (MissedDocs.Contains(OrgRegFormName))
+                                {
+                                    MissedDoc = "border-color:#ce7d7d;box-shadow: 2px 2px #ce7d7d;";
+                                    MissedDocText = "color:red";
+                                }
+                            }
+
+                            string DocTypeBox = DocTypeText + DocTypeNumberExludeOrgRegForm;
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 " id="@DocTypeBox">
+
+                                <div class="DocBorders" style="@MissedDoc">
+                                    <div class="row DocBoxHeader">
+                                        <div class="col-xs-2 text-center ">
+                                            <div class="form-group">
+                                                @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                {
+                                                    <img id="@BrowseIconId" src="~/Images/UploadDocIcons/Browse.png"
+                                                         onclick="BrowseFile(event)" class="iconstyle" style="margin-top: 8px;"  title="@Resources.Resource.UploadDocument_Header" />
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-10  " style="font-weight: bolder;">
+
+                                            <div class="form-group">
+                                                <label style="@MissedDocText">@OrgRegFormName</label>
+                                            </div>
+                                            <br />
+                                            <div class="form-group" style="margin-left: -122px;">
+                                                <label id="@DocNameId" class="@DocNameId" style="float: left;font-weight: normal;padding-top: 5px;    margin-left: -96px;display:none"></label>
+                                            </div>
+
+                                            <input type="hidden" id="@DocumentTypeId" value="@DocTypeIdOrgRegForm" />
+                                        </div>
+
+                                    </div>
+                                    <div class="row DocBoxFile">
+                                        <div class="col-xs-2">  <div class="form-group"></div></div>
+                                        <div class="col-xs-10">
+                                            <label id="@DocNameId" class="@DocNameId" style=""></label>
+                                        </div>
+                                    </div>
+                                    <div class="row DocBoxActions">
+                                        <div class="col-xs-2 text-center DocBoxButtons">
+                                            <div class="form-group">
+                                                @*@if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                    {
+                                                                            <img src="~/Images/UploadDocIcons/add.png"
+                                                                                 onclick="AddNewFileControl(event)" id="Some" class="iconstyle"
+                                                                                 style="    margin: 0px;" />
+                                                                        }*@
+                                            </div>
+                                            <div class="form-group">
+
+                                                @*<img src="~/Images/UploadDocIcons/Save.png" id="DTF1S"
+                                                    onclick="SaveFile(event)" class="iconstyle" />*@
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <img src="~/Images/UploadDocIcons/Delete.png" id="@DeleteId"
+                                                     onclick="DeleteFile(event)" class="iconstyle @DeleteId" style="display:none"  title="@Resources.Resource.delete"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                @*<img src="~/Images/UploadDocIcons/Download.png" id="@DownloadId"
+                                                    onclick="DownloadFile(event)" class="iconstyle @DownloadId" style="display:none" />*@
+                                            </div>
+
+
+
+                                            <input id='@FileControlId' type='file' style='width:0px;height: 0px;'
+                                                   onchange="ShowFileChosen(event)" />
+                                            <input type="hidden" id="@DocumentId" class="@DocumentId" value="" />
+                                        </div>
+                                        <div class="col-xs-10 DocBoxSmallView" style="    padding: 6px;">
+                                            @{ string ViewDoc = "";
+                                                if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                { ViewDoc = "ViewDoc(event,'')"; }
+                                                else
+                                                {
+                                                    ViewDoc = "";
+                                                }
+                                            }
+
+                                            <div id="@SmallViewId"
+                                                 style=""
+                                                 onclick="@ViewDoc" class="btn btn-default SmallView FileSearch @SmallViewId"  title="@Resources.Resource.UploadDocument_Header"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            int FileNumber = 0;
+                            foreach (var t in uplodedDocuments)
+                            {
+                                FileNumber = ++FileNumber;
+                                UniqueFileNumberOrgRegForm = ++UniqueFileNumberOrgRegForm;
+                                string BaseUniqueID = DocTypeText + DocTypeNumberExludeOrgRegForm + FileText + UniqueFileNumberOrgRegForm + "_";
+                                string DocumentTypeId = BaseUniqueID + "DTID";
+                                string FileControlId = BaseUniqueID + "FC";
+                                string BrowseIconId = BaseUniqueID + "BI";
+                                string DeleteId = BaseUniqueID + "DLT";
+                                string DownloadId = BaseUniqueID + "DWL";
+                                string SmallViewId = BaseUniqueID + "SV";
+                                string DocumentId = BaseUniqueID + "DID";
+                                string DocNameId = BaseUniqueID + "DNID";
+
+
+                                string x = CommonFunctions.CsUploadEncrypt(t.OrganizationRequestDocumentId);
+
+
+                                string DocId = HttpUtility.UrlEncode(x);
+
+                                if (CurrentDocType == t.DocumentType)
+                                {
+                                    string DocTypeBox = DocTypeText + DocTypeNumberExludeOrgRegForm;
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 UploadedFileContainer" id="@DocTypeBox">
+
+                                        <div class="DocBorders">
+                                            <div class="row DocBoxHeader">
+                                                <div class="col-xs-2 text-center ">
+                                                    <div class="form-group">
+                                                        @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                        {
+                                                            <img id="@BrowseIconId" src="~/Images/UploadDocIcons/Browse.png"
+                                                                 onclick="BrowseFile(event)" class="iconstyle @BrowseIconId" style="margin-top: 8px;display:none"  title="@Resources.Resource.UploadDocument_Header"/>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-10  " style="font-weight: bolder;">
+
+                                                    <div class="form-group">
+                                                        <label style=""> @OrgRegFormName  &nbsp;  </label>
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-group" style="margin-left: -122px;">
+                                                        <label id="@DocNameId" class="@DocNameId" style="float: left;font-weight: normal;padding-top: 5px;    margin-left: -96px;display:none"> @t.DocumentName.ToLower()</label>
+                                                    </div>
+
+                                                    <input type="hidden" class="@DocumentTypeId" id="@DocumentTypeId" value="@DocTypeIdOrgRegForm" />
+                                                </div>
+
+                                            </div>
+                                            <div class="row DocBoxFile">
+                                                <div class="col-xs-2">  <div class="form-group"></div></div>
+                                                <div class="col-xs-10">
+                                                    @{string Dots = ""; if (t.DocumentName != null && t.DocumentName.Length > 15) { Dots = "..."; }
+                                                    }
+                                                    <label id="@DocNameId" class="@DocNameId" style=""> @t.DocumentName.Substring(0, t.DocumentName.Length > 15 ? 15 : t.DocumentName.Length)@Dots  </label>
+                                                </div>
+                                            </div>
+                                            <div class="row DocBoxActions">
+                                                <div class="col-xs-2 text-center DocBoxButtons">
+                                                    <div class="form-group">
+                                                        @*@if (Model.UploadDiv != "false")
+                                                            {
+                                                                <img src="~/Images/UploadDocIcons/add.png" id="@BaseUniqueID"
+                                                                     onclick="AddNewFileControl(event)" id="Some" class="iconstyle  @BaseUniqueID"
+                                                                     style="    margin: 0px;" />
+                                                            }*@
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                        {
+                                                            @*<img src="~/Images/UploadDocIcons/Save.png" id="DTF1S"
+                                                                onclick="SaveFile(event)" class="iconstyle" />*@
+                                                        }
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                        {
+                                                            <img src="~/Images/UploadDocIcons/Delete.png" id="@DeleteId"
+                                                                 onclick="DeleteFile(event)" class="iconstyle @DeleteId" style="margin-top: 18px;" title="@Resources.Resource.delete" />
+                                                        }
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @*<img src="~/Images/UploadDocIcons/Download.png" id="@DownloadId"
+                                                            onclick="DownloadFile(event)" class="iconstyle @DownloadId" />*@
+                                                    </div>
+
+
+
+                                                    <input id='@FileControlId' class="@FileControlId" type='file' style='width:0px;height: 0px;'
+                                                           onchange="ShowFileChosen(event)" />
+                                                    <input type="hidden" class="@DocumentId" id="@DocumentId" value="@DocId" />
+                                                </div>
+                                                <div class="col-xs-10 DocBoxSmallView" style="    padding: 6px;">
+                                                    @{
+                                                        string FileExtension = t.DocumentName.Substring(t.DocumentName.LastIndexOf('.') + 1);
+                                                        string backgroundimage = "";
+                                                        if (FileExtension.ToLower().Contains("pdf"))
+                                                        {
+                                                            backgroundimage = "background-image:url(" + address + "/images/UploadDocIcons/pdficon.png" + ")";
+                                                        }
+                                                        else
+                                                        {
+                                                            //backgroundimage = "background-image:url(" + "/images/UploadDocIcons/ImageIcon.png" + ")";
+                                                            backgroundimage = "background-image:url(" + address + "/User/RenderDocument?DocumentId=" + DocId + ")";
+                                                        }
+                                                        string ViewDoc = "";
+                                                        if (Session["purpose"].ToString().Trim() == Constantclass.number1)
+                                                        { ViewDoc = "ViewDoc(event,'" + FileExtension.ToLower() + "')"; }
+                                                        else
+                                                        {
+                                                            ViewDoc = "";
+                                                        }
+                                                    }
+
+                                                    <div id="@SmallViewId"
+                                                         style="@backgroundimage"
+                                                         onclick="@ViewDoc" class="btn btn-default SmallView @SmallViewId"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
+
+                </div>
+
+
+
+
+
+                <div class="row">
+
+
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " id="test">
+                        @if (Model.SubmitRequest != "false")
+                        {
+                            <div class="form-group">
+
+
+
+                                <div class="input-group">
+
+
+                                    <input type="checkbox" id="UserAcceptanceCheckBox" class="col-xs-2 control-label @TermsCheckBoxStyle">
+
+                                    @Html.Label("* " + Resources.Resource.Agree_for11, new { @class = "col-xs-10 control-label", @style = "margin-top: 0px;font-size:19px" })
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" style="display:none;">
+                                <label class="col-md-3 control-label">&nbsp;</label>
+                                <div class="col-md-7 inputGroupContainer marginTop15 boldc text-center" style="color:red;font-size:17px">
+                                    @Resources.Resource.OrgReqHelpCreate
+
+
+
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            String dateOfSubmit = String.Empty;
+
+                            if (Session["DateOfOrgSubmit"] != null)
+                            {
+                                dateOfSubmit = Session["DateOfOrgSubmit"].ToString();
+                            }
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">&nbsp;</label>
+                                <div class="col-md-7 inputGroupContainer marginTop15 boldc text-center" style="color:red;font-size:20px">
+
+
+                                    @Resources.Resource.OrgReqHelpSubmit1   @dateOfSubmit    @Resources.Resource.OrgReqHelpSubmit2
+
+
+                                    <input type="hidden" name="testAbd" value="@Resources.Resource.OrgReqHelpSubmit1   @dateOfSubmit    @Model.stateid  @Resources.Resource.OrgReqHelpSubmit2" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " id="test">
+
+
+                        @{
+                            if (ViewData["Dataerror"] != null)
+                            {
+                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                {
+                                    //string MissedDocs = "";
+                                    <p class='redColor text-center'> @Resources.Resource.uploadAllRequiredDocMSG </p>
+                                    //MissedDocs = "<p class='redColor text-center'>" + Resources.Resource.uploadAllRequiredDocMSG + "</p>";
+                                    foreach (var item in ViewData["Dataerror"] as List<string>)
+                                    {
+                                        <p class='redColor text-center'> @item</p>
+                                        //MissedDocs = MissedDocs + "<p class='redColor text-center'>" + item + "</p>";
+                                    }
+                                }
+                            }
+                        }
+
+
+
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " id="test">
+                        @using (Html.BeginForm("UploadDocument", "User", FormMethod.Post, new { enctype = "multipart/form-data", id = "bookform" }))
+                        {
+                            Html.AntiForgeryToken();
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            if (Model.SubmitRequest != "false")
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4   marginTop15">
+
+                                    <div class="input-group">
+                                        <button type="submit" class="btn btn-primary btn-block buttonStyle col-centered marginTop50 width150PX"
+                                                id="UploadSubmitRequest" onclick=" return GetUserAcceptance();">
+
+                                            <b>
+
+
+                                                @Resources.Resource.Send
+                                            </b>
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 marginTop15">
+                                    @*<div class="input-group">
+                                        <button type="button" onclick="window.location.href='@Url.Action("OrgRequestprint", "User", new { OrgReqId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.OrgReqId) })'"
+                                                class="btn btn-primary btn-block buttonStyle col-centered marginTop50 width150PX"
+                                                id="PrintButtonDC">
+                                            <b>
+                                                @Resources.Resource.PrintOrgReqForm
+                                            </b>
+                                        </button>
+                                    </div>*@
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 marginTop15">
+
+                                    <div class="input-group">
+
+                                        @*<input type="button"
+                                            value="@Resources.Resource.Industrial_B_back"
+                                            class="btn btn-primary btn-block buttonStyle col-centered marginTop50 width150PX"
+                                            onclick="location.href='@Url.Action("Org_Commercial", "User")'" />*@
+
+                                        <button type="button" onclick="location.href='@Url.Action("Org_Commercial", "User")'"
+                                                class="btn btn-primary btn-block buttonStyle col-centered marginTop50 width150PX"
+                                                id="PrintButtonDCBack">
+                                            <b>
+                                                @Resources.Resource.Industrial_B_back
+                                            </b>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 marginTop15">
+                                    <div class="input-group">
+                                        <button type="button" onclick="window.location.href='@Url.Action("OrgRequestprint", "User", new { OrgReqId = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.OrgReqId) })'"
+                                                class="btn btn-primary btn-block buttonStyle col-centered marginTop50 width35Percent"
+                                                id="PrintButtonDoc">
+                                            <b>
+
+
+                                                <span class="glyphicon glyphicon-ok-sign"></span>&nbsp;
+
+                                                @Resources.Resource.print &nbsp;
+                                            </b>
+
+
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 marginTop15">
+
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 marginTop15">
+
+                                    <div class="input-group">
+
+                                        <input type="button"
+                                               value="@Resources.Resource.Industrial_B_back"
+                                               class="btn btn-primary btn-block buttonStyle col-centered marginTop50 width35Percent" style="width: 80%;"
+                                               onclick="location.href='@Url.Action("Org_Commercial", "User")'" />
+
+
+                                    </div>
+                                </div>
+
+                            }
+                        }
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+else
+
+{
+
+
+}
+
+
+
+
+
+<!-- Modal content -->
+<div class="modal-content" style="display:none;">
+    <div class="modal-header">
+        <span class="close" id="closeError">&times;</span>
+        <h6 id="modelHeaderTitle">&nbsp;</h6>
+    </div>
+    <div class="modal-body">
+        <h5 id="modalMessage"></h5>
+    </div>
+    <div class="modal-footer">
+        <input type="button" ID="closeModal" onclick='window.location.href ="/Request/Requestlistfortheuser"' class="btn btn-primary" value="@Resources.Resource.Ok" />
+    </div>
+</div>
+
+<div id="msgmodalDiv" class="modal" style="display:none;z-index:888">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="msgmodelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="msgmodalMessage" class="boldc"></h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="msgcloseModal" onclick='HideMessageToUser()' class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+<div id="DocViewerModal" class="modal" style="display:none;z-index:888;padding-top: 64px;">
+    <!-- Modal content -->
+    <div class="modal-content DocViewerModalContent">
+        <div class="modal-header" style="height:8%">
+            <span class="close" id="closeError" onclick='HideMessageToUser()'>&times;</span>
+            <h6 id="msgmodelHeaderTitle" style="font-size: 15px;">@DocumentViewer</h6>
+        </div>
+        <div class="modal-body" style="height:84%">
+            <div id="DocRenderingContainer" style="width: 100%;height: 100%;" class="DocBorders embed-responsive ">
+
+                <iframe id="DocRenderingFrame" src=""
+                        style="
+        border-radius: 17px;width: 100%;height: 100%" class="embed-responsive-item embed-responsive-16by9"></iframe>
+                @*http://www.africau.edu/images/default/sample.pdf*@
+            </div>
+        </div>
+        <div class="modal-footer" style="height:8%">
+            <input type="button" ID="msgcloseModal" onclick='HideMessageToUser()' style="min-width: 200px;" class="btn btn-primary" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+<style>
+    /*.buttonStyle{
+        width:80%;
+    }*/
+    .btn-block {
+        width: 80%;
+    }
+
+    .DocViewerModalContent {
+        width: 90% !important;
+        height: 95% !important;
+    }
+
+    /*label.numberCircle {
+        background: #9a9393;
+        border-radius: 0.8em;
+        -moz-border-radius: 0.8em;
+        -webkit-border-radius: 0.8em;
+        color: #ffffff;
+        display: inline-block;
+        font-weight: bold;
+        line-height: 1.6em;
+        margin-right: 5px;
+        text-align: center;
+        width: 1.6em;
+        margin-top: 7px;
+        display: none;
+    }*/
+
+    .modal {
+        padding-top: 50px;
+    }
+
+    .DocBorders {
+        border-color: grey;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 17px;
+        margin-bottom: 9px;
+        box-shadow: 2px 2px #888888;
+        height: 250px;
+        margin-left: 4px;
+    }
+
+
+
+    .iconstyle {
+        height: 25px;
+        width: 25px;
+        /* margin-top: 15px; */
+        margin: 7px;
+        cursor: pointer;
+        border-color: grey;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 15px;
+        padding: 3px;
+        /*border-radius: 100px;
+        background: #000;
+        color: white;
+        padding: 10px 15px;*/
+        /*-moz-border-radius: 20px;
+        border-radius: 20px;
+        border-color: grey;
+        background-color: white;
+        color: white;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 1.3em;*/
+    }
+
+        .iconstyle:hover {
+            height: 27px;
+            width: 27px;
+            background-color: #afacac;
+        }
+
+    .FileSearch {
+         background-image:url(@address/images/UploadDocIcons/BrowseBoxed.png);
+    opacity: 0.2; 
+    }
+
+    .DocBoxHeader {
+        height: 47px;
+       /* border-bottom: 1px;
+        border-bottom-color: grey;
+        border-bottom-style: solid; */
+    }
+
+    .DocBoxFile {
+        height: 20px;
+    }
+
+        .DocBoxFile label {
+            font-weight: normal;
+        }
+
+    .DocBoxActions {
+        height: 170px
+    }
+
+    .DocBoxButtons {
+        width: 10%;
+    }
+
+    .DocBoxSmallView {
+        width: 90%;
+    }
+
+    .FileSelectedIcon {
+        background-color: cadetblue;
+        padding: 6px;
+        border-radius: 7px;
+        height: 30px;
+        width: 30px;
+        margin: 10px;
+    }
+
+    .SmallView {
+        /*background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 90%;
+        min-height: 180px;
+        font-weight: bolder;
+        margin-bottom: 11px;
+        text-align: center;*/
+        width: 100%;
+        height: 168px;
+        font-weight: bolder;
+        /*margin-bottom: 11px;*/
+        box-shadow: 1px 1px #888888;
+        /*margin-left: -13px;*/
+        padding: 10px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+        .SmallView:hover {
+            opacity: 0.4;
+        }
+
+    /*.SmallViewDefault {
+            width: 100%;
+            min-height: 180px;
+            font-weight: bolder;
+            margin-bottom: 11px;
+            box-shadow: 1px 1px #888888;
+            margin-left: -13px;
+            border-radius: 19px;
+        }*/
+
+    .form-group {
+        margin-bottom: -10px;
+    }
+
+    .hr {
+        border-top: 2px solid #e4e0e0;
+    }
+</style>
+
+
+
+
+
+<script>
+    var msgdocumentformatnote = '@Resources.Resource.UploadDocument_documentformatnote ';
+    var msguploadminimumonedocument = '@Resources.Resource.uploadminimumonedocument';
+
+
+    document.getElementById("Tid").value = '@ViewBag.TokenId';
+    document.getElementById("uid").value = '@ViewBag.UserId';
+    document.getElementById("reqid1").value = '@ViewBag.reqid1';
+
+    var msg = '@ViewBag.Msg';
+
+    var TermsandCondMsg = '@Resources.Resource.Agree_for3';
+
+    var UploadDocsURL = '@ViewBag.UploadDocsURL';
+    var UploadDocs_actioncall = '@ViewBag.UploadDocs_actioncall';
+    var ViewBagmodelstatus = '@ViewBag.modelerror';
+    var result = '@ViewBag.dis';
+
+    if (result === null) {
+        result = '';
+    }
+    var Tid = '@ViewBag.TokenId';
+    var uid = '@ViewBag.UserId';
+    var reqid1 = '@ViewBag.reqid1';
+    var UploadDocument_align_style = '@Resources.Resource.UploadDocument_align_style';
+
+
+    var RedirectToOrgStatus = '@ViewBag.RedirectToOrgStatus';
+
+    var msgSomeissuehasoccured = '@Resources.Resource.Someissuehasoccured';
+
+    //var SuccesfullySubmittedRedirection = applicationUrl+'/Request/Requestlistfortheuser';
+
+</script>
+
+@*<div id="adobe-dc-view" style="width: 800px;"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>*@
+<script src="~/Scripts/JS_View/OrgFileUpload.js"></script>

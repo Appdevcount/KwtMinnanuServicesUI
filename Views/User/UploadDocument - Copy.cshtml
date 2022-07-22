@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewBag.Title = @Resources.Resource.UploadDocument_Header;
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/Main/Upload.css" rel="stylesheet" />
+<div style="@Resources.Resource.Header_withoutmenu">
+    &nbsp;  <span onclick="location.href='@Url.Action("Org_Commercial", "User")'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.UploadDocument_Header</span>
+</div>
+<div style="@Resources.Resource.Header_withoutmenu1;">
+    &nbsp;  <span onclick="location.href='@Url.Action("Org_Commercial", "User")'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.UploadDocument_Header</span>
+</div>
+@using (Html.BeginForm("UploadDocument_Submit", "User", FormMethod.Post, new { enctype = "multipart/form-data", id = "bookform" }))
+{
+
+    <div id="mydiv">
+        <table align="center" id="maintbl">
+            @{
+                ViewBag.UploadDocsURL = System.Configuration.ConfigurationManager.AppSettings["UploadDocs"].ToString();
+                ViewBag.UploadDocs_actioncall = System.Configuration.ConfigurationManager.AppSettings["UploadDocs_actioncall"].ToString();
+                if (ViewBag.reqno != null && ViewBag.cname != null)
+                {
+                    <tr>
+                        <td colspan="2">
+                            <div class="alert alert-success">
+                                @{
+                                    if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                                    {
+                                        @Resources.Resource.UploadDocument_RequestNumber @ViewBag.reqno<br />
+                                    }
+                }
+                @Resources.Resource.UploadDocument_CompanyNameinArabic @ViewBag.cname
+            </div>
+                        </td>
+                    </tr>
+                                    }
+            }
+            @{
+                if (ViewData["OrgGetDocumentsResult"] != null)
+                {
+                    if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                    {
+                        foreach (var item in ViewData["OrgGetDocumentsResult"] as List<WebApplication1.Models.OrgGetDocumentsResult>)
+                        {
+                            <tr>
+                                <td align="@Resources.Resource.UploadDocument_align_style">
+                                    <div style="margin-top:20px" id="idattach">
+                                        @{
+                                            if (@item.DocumentName != "")
+                                            {
+                                                <table style="width:90%">
+                                                    <tr>
+                                                        <td style="width:5%" align="@Resources.Resource.UploadDocument_align_style"><span>&#128206;</span></td>
+                                                        <td style="width:90%" align="@Resources.Resource.UploadDocument_align_style"><span>@item.DocumentName</span></td>
+                                                        @{
+                                                            if (ViewBag.dis == "1")
+                                                            {
+                                                                <td style="width:5%" align="center"><i onclick="location.href='@Url.Action("UploadDocument1", "User", new { OrgReqDocId = item.OrganizationRequestDocumentId })'" class="glyphicon glyphicon-trash" style="border:none;color: red;"></i></td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td style="width:5%" align="center"><i class="glyphicon glyphicon-trash" style="border:none;color: red;"></i></td>
+                                                            }
+                                                        }
+
+                                                    </tr>
+                                                </table>
+                                                            }
+                                                            else
+                                                            {
+                                                                <table style="width:80%">
+                                                                    <tr>
+                                                                        <td align="left"><span>@item.DocumentName</span></td>
+                                                                    </tr>
+                                                                </table>
+                                                            }
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                <tr>
+                                                                    <td align="@Resources.Resource.UploadDocument_align_style">
+                                                                        <div style="margin-top:20px" id="idattach">
+
+                                                                            <table style="width:80%">
+                                                                                <tr>
+                                                                                    <td align="left">&nbsp;</td>
+                                                                                </tr>
+                                                                            </table>
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                }
+                                                            }
+            }
+            <tr>
+                <td colspan="2" align="center">
+                    <div style="margin-top:20px">
+                        <p>@Resources.Resource.UploadDocument_Header1</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <div id="Selectdocumenttype" style="margin-top:20px;border: 1px solid #ccc!important;cursor:pointer;border-radius: 16px;padding: 0.01em 0px;line-height:40px;font-weight:bold">
+                        <span id="spandtype">@Resources.Resource.UploadDocument_documenttype</span>&nbsp;&nbsp;<i class="arrow down"></i><input type="hidden" id="dtypeid" /><input type="hidden" id="dtypecode" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <div class="form-group" style="margin-top:20px">
+                        <input class="form-control" placeholder="@Resources.Resource.UploadDocument_documentname" name="DocumentName"
+                               type="text" id="inputuploadtype" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <div style="margin-top:20px;color:red">
+                        <span style="font-size:100%;color:red;">&bigstar;</span>   @Resources.Resource.UploadDocument_documentformatnote
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100%;" colspan="2">
+                    <table style="width:100%;margin-top:20px;" align="center">
+                        <tr>
+                            <td align="@Resources.Resource.UploadDocument_align_style">
+                                <div>
+                                    <input class="inputfile" id="file" name="fileUpload" accept=".pdf, .PDF, .jpg, .JPG" type="file" disabled>
+                                    <label for="file" id="lblfile" style="font-weight:normal">@Resources.Resource.UploadDocument_B_browse</label>
+                                </div>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100%;" colspan="2">
+                    <table style="width:100%;margin-top:20px;" align="center">
+                        <tr>
+                            <td align="center">
+                                <div class="form-group">
+                                    <button type="submit" class="btn button button4">@Resources.Resource.UploadDocument_B_submit</button>
+                                </div>
+                            </td>
+                            <td align="center">
+                                <div class="form-group">
+                                    @{
+                                        string url = "MyOrganizations";
+                                        if (Session["returnurl"] != null)
+                                        {
+                                            if (Session["returnurl"].ToString().Trim() == "Org_RequestStatus")
+                                            {
+                                                url = "Org_RequestStatus";
+                                            }
+                                        }
+                                        <input id="btncancel" type="button" value="@Resources.Resource.UploadDocument_B_cancel" class="btn button button4" onclick="location.href='@Url.Action(url, "User", null)'" />
+                                    }
+                                </div>
+                            </td>
+                            <td align="center">
+                                <div class="form-group">
+                                    @{ int id1 = ViewBag.reqid1;
+                                        string id = id1.ToString();
+                                        if (url == "Org_RequestStatus" && ViewBag.dis == "0" && ViewBag.reqno != "0")
+                                        {
+                                            <button type="button" style="width:90%" id="btnprintOrg" class="btn button button4 @id">@Resources.Resource.btnprint</button>
+                                        }
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+                                        }
+
+<div id="myLoadingElement" class="modalprgs" style="display: none">
+    <div class="prgs">
+        <img src="~/Content/loader4.gif" />
+    </div>
+</div>
+<script src="~/Scripts/Main/popup_jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var UploadDocsURL='@ViewBag.UploadDocsURL';
+    var UploadDocs_actioncall='@ViewBag.UploadDocs_actioncall';
+    var ViewBagmodelstatus=@ViewBag.modelerror;
+    var result=@ViewBag.dis;
+    if (result==null) {
+        result='';
+    }
+    var Tid='@ViewBag.TokenId';
+    var uid='@ViewBag.UserId';
+    var reqid1='@ViewBag.reqid1';
+    var UploadDocument_align_style='@Resources.Resource.UploadDocument_align_style';
+</script>
+<script src="~/Scripts/JS_View/Uploaddoc.js"></script>

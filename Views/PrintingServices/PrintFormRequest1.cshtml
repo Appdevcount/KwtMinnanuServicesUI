@@ -1,0 +1,930 @@
+﻿@using System.Configuration;
+@using WebApplication1.Models;
+
+@model WebApplication1.Models.BrokerUpdateModel
+
+@{
+
+    if (Model.Referenceprofile == "BRSPrintingCancelLicenseDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingCancelLicence;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingIssueLicenseDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingIssueLicence;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingChangeLicenseAddressDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingChangeLicenceAddress;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingChangeLicenseActivityDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingChangeLicenceActivity;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingReleaseBankGuaranteeDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingReleaseBankGuarantee;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingGoodBehaveDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingGoodBehave;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingRenewLicenseDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingRenewLicence;
+    }
+
+    else if (Model.Referenceprofile == "BRSPrintingChangeJobTitleAndRenewResidencyDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingChangeJobTitleAndRenewResidency;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingChangeJobTitleAndTransferResidencyDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingChangeJobTitleAndTransferResidency;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingRenewResidencyDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingRenewResidency;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingTransferResidencyDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingTransferResidency;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingChangeJobTitleDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingChangeJobTitle;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingChangeJobTitleWithCivilIdDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingChangeJobTitleWithCivilId;
+    }
+    else if (Model.Referenceprofile == "BRSPrintingDeActivateLicenseDeathDOCS")
+    {
+        ViewBag.Title = Resources.Resource.BRSPrintingDeActivateLicenceDeath;
+    }
+
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+
+    String service = String.Empty;
+
+    List<String> serviceIDs = new List<String>() { "27", "28", "31", "32" };
+
+    if (Session["Serviceid"] != null)
+    {
+        if (!String.IsNullOrWhiteSpace(Session["Serviceid"].ToString()))
+        {
+            service = Session["Serviceid"].ToString();
+        }
+    }
+
+}
+
+
+<div class="col-lg-10 col-centered marginTop30">
+
+    <div>
+        @*<input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdn" />
+        <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdn" />
+        <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdn" />
+        <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdnForvaildate" />
+        <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdnForvaildate" />
+        <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdnForvaildate" />*@
+
+        <input type="hidden" runat="server" id="Tid" />
+        <input type="hidden" runat="server" id="uid" />
+        <input type="hidden" runat="server" id="reqid1" />
+
+        @Html.HiddenFor(m => Model.Eservicerequestid, new { @id = "Eservicerequestid" })
+        @Html.HiddenFor(m => Model.Referenceprofile, new { @id = "Referenceprofile" })
+        @Html.HiddenFor(m => m.SelectedFileId)
+
+
+        <script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+    </div>
+    <div id="msgmodalDiv" class="modal" style="display:none;z-index:888">
+
+        <input type="hidden" runat="server" id="SubmitFlag" />
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeError">&times;</span>
+                <h6 id="msgmodelHeaderTitle">&nbsp;</h6>
+            </div>
+            <div class="modal-body">
+                <h5 id="msgmodalMessage" class="boldc"></h5>
+            </div>
+            <div class="modal-footer">
+                <input type="button" ID="msgcloseModal" onclick='HideMessageToUser()' class="btn btn-info" value="@Resources.Resource.Ok" />
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped center-block">
+
+        <tbody>
+
+
+
+            <tr>
+                <td colspan="1">
+
+                    <div id="requestListDiv" class="well">
+                        @using (Html.BeginForm("PrintFormRequest", "PrintingServices", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken();
+
+                            <div class="well form-horizontal" dir="@Resources.Resource.dir">
+
+                                <fieldset>
+
+                                    <div class="form-group">
+
+                                        <label class="col-md-3 control-label">@Resources.Resource.BrokerType</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.BrokerType, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.requestNo</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-barcode"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.RequestNumber, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @if (!String.IsNullOrWhiteSpace(Model.ParentBrokerName))
+                                    {
+                                        String label = label = Resources.Resource.generalBroker;//String.Empty;
+
+                                        if (Session["LegalEntity"] != null)
+                                        {
+                                            if (Session["LegalEntity"].ToString() == "2")
+                                            {
+                                                label = Resources.Resource.OrganizationName;
+                                            }
+                                        }
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@label</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.ParentBrokerName, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.brokerArabicNameLbl</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.BrokerArabicName, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.brokerEnglishNameLbl</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-tag"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.BrokerEnglishName, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @if (Model.RejectionReason != null && Model.RejectionReason != "")
+                                    {
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.RejectionReason</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-tag"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.RejectionReason, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.civilIdNo</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-file"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.CivilIdNo, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.civilIdExpiryDate</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>
+
+
+                                                @Html.TextBoxFor(Model => Model.CivilIdExpirydate, new { @readonly = "readonly", @id = "CivilIdExpirydatePicker", @class = "form-control dateClass" })
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.CivilIdExpirydate, "", new { @class = "text-danger" })
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.passportNo</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-book"></i>
+                                                </span>
+                                                @*@Html.TextBoxFor(Model => Model.passportNo, new { placeholder = @Resources.Resource.passportNo, @id = "passportNo", @class = "form-control inputBorder" })*@
+
+
+                                                @Html.TextBoxFor(Model => Model.passportNo, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.passportNo, @class = "form-control inputBorder", @id = "passportNo" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.passportNo, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.passportExpiryDate</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>
+
+
+                                                @Html.TextBoxFor(Model => Model.PassportExpirydate, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.passportExpiryDate, @id = "PassportExpirydatePicker", @class = "form-control dateClass" })
+
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.PassportExpirydate, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.tradeLicenseExpiryDat</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>
+
+                                                @Html.TextBoxFor(Model => Model.TempTradeLicenseExpiryDate, new { @readonly = "readonly", @class = "form-control NotEditable" })
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.MobileNumber</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-phone"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.MobileNumber, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.MobileNumber, @class = "form-control inputBorder" })
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.eMailAddress</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.MailAddress, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.eMailAddress, @class = "form-control inputBorder", @id = "MailAddresstxt" })
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.MailAddress, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    @if (service == "20")
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.Commercial_LicenseNumber</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-credit-card"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.CommercialLicenseNumber, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.Commercial_LicenseNumber, @class = "form-control inputBorder", @id = "CommercialLicenseNoTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.CommercialLicenseNumber, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                    @if (service == "23")
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.fromBusiness</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-folder-close"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.fromBusiness, new { placeholder = "* " + @Resources.Resource.fromBusiness, @class = "form-control inputBorder", @id = "fromBusiness" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.fromBusiness, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                    @if (service == "24")
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.bankGuaranteeNo</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-credit-card"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.BankGuaranteeNo, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.bankGuaranteeNo, @class = "form-control inputBorder", @id = "BankGuaranteeNoTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.BankGuaranteeNo, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.bankName</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-money-bill"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.BankName, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.bankName, @class = "form-control inputBorder", @id = "BankNameTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.bankGuaranteeIssuanceDate</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar-check-o"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.BankGuaranteeIssuanceDate, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.bankGuaranteeIssuanceDate, @class = "form-control inputBorder", @id = "BankGuaranteeIssuanceDateTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.BankGuaranteeIssuanceDate, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.bankGuaranteeExpiryeDate</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar-times-o"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.BankGuaranteeExpiryDate, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.bankGuaranteeExpiryeDate, @class = "form-control inputBorder", @id = "bankGuaranteeExpiryeDateTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.BankGuaranteeExpiryDate, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.bankGuaranteeStatus1</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-info-sign"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.BankGuaranteeStatus, new { @readonly = "readonly", placeholder = "* " + @Resources.Resource.bankGuaranteeStatus1, @class = "form-control inputBorder", @id = "BankGuaranteeStatusTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.BankGuaranteeStatus, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+                                    }
+
+
+
+                                    @if (serviceIDs.Contains(service))
+                                    {
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.ChangeJobTitleFrom</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-lock"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.ChangeJobTitleFrom, new { placeholder = "* " + @Resources.Resource.ChangeJobTitleFrom, @class = "form-control inputBorder", @id = "ChangeJobTitleFromTxt" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.ChangeJobTitleFrom, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.ChangeJobTitleTo</label>
+                                            @Html.HiddenFor(Model => Model.ChangeJobTitleTo, new { @id = "ChangeJobTitleToSelectedHidden" })
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-briefcase"></i></span>
+                                                    <select class="selectpicker form-control"
+                                                            name="brokerTypeSelected" id="brokerTypeSelect">
+
+
+
+                                                        @{
+                                                            String generalBrokerTypeValue = ConfigurationManager.AppSettings["generalBroker"].ToString();
+                                                            String subBrokerTypeValue = ConfigurationManager.AppSettings["subBroker"].ToString();
+                                                            String subMessangerTypeValue = ConfigurationManager.AppSettings["subMessanger"].ToString();
+
+                                                            String specialBrokerTypeValue = ConfigurationManager.AppSettings["specialBroker"].ToString();
+                                                            String specialMessangerTypeValue = ConfigurationManager.AppSettings["specialMessanger"].ToString();
+                                                            String directReleaseBrokerTypeValue = ConfigurationManager.AppSettings["directReleaseBroker"].ToString();
+
+                                                            if (Session["LegalEntity"] != null)
+                                                            {
+                                                                if (Session["LegalEntity"].ToString() == "1")
+                                                                {
+
+                                                                    <option value="@CommonFunctions.CsUploadEncrypt(subBrokerTypeValue)">
+                                                                        @Resources.Resource.subBroker
+                                                                    </option>
+
+                                                                    <option value="@CommonFunctions.CsUploadEncrypt(subMessangerTypeValue)">
+                                                                        @Resources.Resource.subMessanger
+                                                                    </option>
+                                                                }
+
+                                                                else if (Session["LegalEntity"].ToString() == "2")
+                                                                {
+                                                                    <option value="@CommonFunctions.CsUploadEncrypt(specialBrokerTypeValue)">
+                                                                        @Resources.Resource.specialBroker
+                                                                    </option>
+
+                                                                    <option value="@CommonFunctions.CsUploadEncrypt(specialMessangerTypeValue)">
+                                                                        @Resources.Resource.specialMessanger
+                                                                    </option>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    }
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.docTypesLabel</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                                                @Html.DropDownListFor(m => m.docsid, Model.ddlDocumentTypesitems, new
+                                               {
+                                                   @id = "ddlDocumentTypes",
+                                                   @class = "form-control "
+                                               })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">&nbsp;</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <div class="file-loading">
+                                                    <input id="fileUploadCtrl" type="file" data-min-file-count="0" data-theme="fas">
+                                                </div>
+                                            </div>
+
+                                            <p id="uploadFileErrorMsg" style="text-align:center;" class="errorMsg">
+                                                @Resources.Resource.uploadFileError
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <p class="redColor text-center"> @Resources.Resource.uploadFileMSG</p>
+                                        <label class="col-md-3 control-label marginTop15">@Resources.Resource.fileName</label>
+                                        <div class="col-md-7 inputGroupContainer marginTop15">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-file"></i>
+                                                </span>
+                                                <input id="NewFilename" name="NewFilename" placeholder="@Resources.Resource.fileName"
+                                                       class="form-control" value="" type="text">
+
+                                                <p id="fileNameError" class="errorMsg">
+                                                    @Resources.Resource.fileNameError
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label ">&nbsp;</label>
+                                        <div class="col-md-7 inputGroupContainer marginTop15">
+                                            <div class="input-group">
+
+                                                @if (Model.UploadDiv != "false")
+                                                {
+
+                                                    <button type="button" class="btn btn-info btn-block col-centered width50Percent" causesvalidation="false" id="uploadWindow1">
+                                                        <b>
+                                                            <span class="glyphicon glyphicon-file"></span>&nbsp; @Resources.Resource.UploadDocument_Header &nbsp;
+                                                        </b>
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="form-group">
+                                        <p class="redColor text-center"> @Resources.Resource.uploadedFileListMSG </p>
+
+                                        <label class="col-md-2 control-label">&nbsp;</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+
+                                                <table id="Uploadedfileslist"
+                                                       class=" table data-table table-striped table-bordered responsive nowrap"
+                                                       style="width:100%;">
+
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th class="all" style="max-width:100px">@Resources.Resource.fileName</th>
+                                                            <th class="desktop tablet-l tablet-p ">@Resources.Resource.docType</th>
+                                                            <th class="desktop tablet-l ">@Resources.Resource.uploadDate</th>
+                                                            <th class="desktop tablet-l tablet-p ">@Resources.Resource.ActionLabel&nbsp;</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model.ListOfUploadedFiles != null)
+                                                        {
+                                                            foreach (var item in Model.ListOfUploadedFiles)
+
+                                                            {
+                                                                <tr>
+
+                                                                    <td>
+                                                                        @item.NewFileName
+                                                                    </td>
+
+                                                                    <td>
+                                                                        @item.DocumentType
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.Createddate
+                                                                    </td>
+                                                                    <td class="text-center">
+
+                                                                        <a href="@Url.Action("DownloadFile", "BrokerRenewal",new { filename = @item.DocumentId })">
+                                                                            <img class="btnimg1" src="../images/Buttons/Download.png">
+                                                                        </a>
+                                                                        <img class="btnimg" onclick="DeleteFilewithDocIdForClearingExam(this)" id="@item.DocumentId" src="../images/Buttons/Delete.png" />
+
+                                                                    </td>
+                                                                </tr>
+
+                                                            }
+                                                        }
+                                                    </tbody>
+
+                                                </table>
+
+
+                                                <div>
+
+                                                </div>
+
+
+                                                <div>
+
+                                                </div>
+
+
+                                                @{
+                                                    ViewBag.UploadDocsURL = System.Configuration.ConfigurationManager.AppSettings["UploadDocs"].ToString();
+                                                    ViewBag.UploadDocs_actioncall = System.Configuration.ConfigurationManager.AppSettings["UploadDocs_actioncall"].ToString();
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label marginTop15">&nbsp;</label>
+                                        <div class="col-md-7 inputGroupContainer marginTop15">
+                                            <div class="input-group">
+                                                @if (Model.SubmitRequest != "false")
+                                                {
+                                                    //if (Model.stateid != "EservTranReqProceedState" && Model.stateid != "EservTranReqInitAcceptedState")
+                                                    //{
+
+                                                    <button type="submit" class="btn btn-info btn-block col-centered marginTop15 width50Percent" causesvalidation="true" id="SubmitRequest">
+                                                        <b>
+                                                            <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Send &nbsp;
+                                                        </b>
+                                                    </button>
+                                                    //}
+                                                    @*else
+                        {
+                            <button type="submit" class="btn btn-info btn-block col-centered marginTop15 width50Percent" causesvalidation="true" id="SubmitRequest">
+                                <b>
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Pay &nbsp;
+                                </b>
+                            </button>
+
+                        }*@
+
+                                                }
+                                                else
+                                                {
+                                                    <button type="button" onclick="window.history.go(-1)" class="btn btn-info btn-block col-centered marginTop50 width50Percent" id="BackButton">
+                                                        <b>
+                                                            <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Back &nbsp;
+                                                        </b>
+                                                    </button>
+                                                    <button type="button" onclick="window.location.href='@Url.Action("Requestprint", "User", new { RequestNumber = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.RequestNumber) })'" class="btn btn-info btn-block col-centered marginTop50 width50Percent" id="PrintButton">
+                                                        <b>
+                                                            <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.print &nbsp;
+                                                        </b>
+                                                    </button>
+
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+                            </div>
+
+                        }
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+@{
+    if (ViewData["OrgGetDocumentsResult"] != null)
+    // if (1==1)
+
+    {
+        if (ViewData.Values != null && ViewData.Values.Count() > 0)
+        {
+            foreach (var item in ViewData["OrgGetDocumentsResult"] as List<WebApplication1.Models.OrgGetDocumentsResult>)
+            {
+                <tr>
+                    <td align="@Resources.Resource.UploadDocument_align_style">
+                        <div style="margin-top:20px" id="idattach">
+                            @{
+                                if (@item.DocumentName != "")
+                                {
+                                    <table style="width:90%">
+                                        <tr>
+                                            <td style="width:5%" align="@Resources.Resource.UploadDocument_align_style"><span>&#128206;</span></td>
+                                            <td style="width:90%" align="@Resources.Resource.UploadDocument_align_style"><span>@item.DocumentName</span></td>
+                                            @{
+                                                if (ViewBag.dis == "1")
+                                                {
+                                                    <td style="width:5%" align="center"><i onclick="location.href='@Url.Action("UploadDocument1", "User", new { OrgReqDocId = item.OrganizationRequestDocumentId })'" class="glyphicon glyphicon-trash" style="border:none;color: red;"></i></td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="width:5%" align="center"><i class="glyphicon glyphicon-trash" style="border:none;color: red;"></i></td>
+                                                }
+                                            }
+
+                                        </tr>
+                                    </table>
+                                }
+                                else
+                                {
+                                    <table style="width:80%">
+                                        <tr>
+                                            <td align="left"><span>@item.DocumentName</span></td>
+                                        </tr>
+                                    </table>
+                                }
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td align="@Resources.Resource.UploadDocument_align_style">
+                    <div style="margin-top:20px" id="idattach">
+
+                        <table style="width:80%">
+                            <tr>
+                                <td align="left">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+}
+
+
+
+
+<script type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
+    document.getElementById("Tid").value='@ViewBag.TokenId';
+    document.getElementById("uid").value='@ViewBag.UserId';
+    document.getElementById("reqid1").value='@ViewBag.reqid1';
+
+
+
+    $("body").on("change", "#brokerTypeSelect", function () {
+        $("#ChangeJobTitleToSelectedHidden").val($(this).find("option:selected").val());
+    });
+
+
+    $("#fileUploadCtrl").click(function ()
+    {
+        $("#NewFilename").val($("#ddlDocumentTypes").find("option:selected").text())
+
+    });
+
+    $("#uploadWindow1").click(function ()
+    {
+
+        //alert($('#fileUploadCtrl').val());
+
+        let newFileName = $("#NewFilename").val();
+
+        if (newFileName)
+        {
+            $('#fileNameError').css('display', 'none');
+        }
+
+        else
+        {
+            event.preventDefault();
+            $('#fileNameError').css('display', 'block');
+            return;
+        }
+
+
+        let fileUp = $('#fileUploadCtrl').val();
+
+        if (fileUp)
+        {
+            $('#uploadFileErrorMsg').css('display', 'none');
+            up('PrintingServices');
+        }
+        else
+        {
+            event.preventDefault();
+            $('#uploadFileErrorMsg').css('display', 'block');
+        }
+    });
+
+
+
+    $("#SubmitRequest").click(function () {
+
+        //alert($('#fileUploadCtrl').val());
+
+        //var fileUp = $('#fileUploadCtrl').val();
+
+        //if (!fileUp)
+        //{
+        //    event.preventDefault();
+        //    $('#uploadFileErrorMsg').css('display', 'block');
+        //}
+
+
+        // Last 
+        //let uploadedFilesTable = $('#Uploadedfileslist').DataTable();
+
+        //let countOfRows = uploadedFilesTable.data().count();
+
+
+        ////alert(countOfRows);
+
+        //if (countOfRows < 1)
+        //{
+        //    event.preventDefault();
+        //    $('#uploadFileErrorMsg').css('display', 'block');
+        //}
+
+    });
+
+    //$(document).ready(function ()
+    //{
+    //    $('#Uploadedfileslist').css('width', 'auto');
+
+    //});
+
+
+    //$(document).load(function () {
+    //    $('#Uploadedfileslist').css('width', 'auto');
+    //});
+
+
+</script>
+
+@*<script src="~/Scripts/BrokerProcess.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@

@@ -1,0 +1,139 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = Resources.Resource.DeclarationSearch;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+        @using (Html.BeginForm("DeclarationSearch", "User", FormMethod.Post, new { @class = "marginTop50" }))
+        {
+
+            <div class="col-lg-8 col-centered well form-horizontal">
+
+                <table class="table table-striped center-block">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="1">
+                                <form class="well form-horizontal" dir="@Resources.Resource.dir">
+                                    <fieldset>
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">@Resources.Resource.TempDeclNumber</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-tag"></i>
+                                                    </span>
+                                                    <input id="DescSearch" name="tempDeclNumber" placeholder="@Resources.Resource.TempDeclNumber"
+                                                           class="form-control" value="" type="text">
+                                                    @*required="required"*@
+                                                    <p id="declarationErrorMsg" class="errorMsg">
+                                                        @Resources.Resource.tempDeclarationRequired
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                @*id="btnsubmit"*@
+                                <button type="submit" id="searchDeclaration" class="btn btn-info btn-block col-centered marginTop15 width9em" causesvalidation="true">
+                                    <b>
+                                        <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Search &nbsp;
+                                    </b>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="table table-striped center-block">
+
+                    @{ if (Model != null)
+                        {
+                            if (Model.Rows != null)
+                            {
+                                if (Model.Rows.Count > 0)
+                                {
+                                    foreach (DataRow row in Model.Rows)
+                                    {
+                                        <tr>
+                                            <td align="center">
+                                                <div style="width: 100%;">
+                                                    <table style="width:100%;margin-top:20px" align="center" class="table table-bordered">
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.TempDeclNumber</td>
+                                                            <td>&nbsp;@row["DeclarationTemporaryNumber"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.DeclarationNumber</td>
+                                                            <td>&nbsp;@row["DeclarationNumber"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.Declarationtype</td>
+                                                            <td>&nbsp;@row["DeclarationType"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.HousebillNumber</td>
+                                                            <td>&nbsp;@row["HouseBillNumber"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.DeliveryorderNumber</td>
+                                                            <td>&nbsp;@row["DeliveryOrderNumber"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.ExportCountry</td>
+                                                            <td>&nbsp;@row["PortofLoadingCountry"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.DestinationCountry</td>
+                                                            <td>&nbsp;@row["PortofDischargeCountry"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.Consignee</td>
+                                                            <td>&nbsp;@row["Consignee"]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight:bold">@Resources.Resource.Status</td>
+                                                            <td>&nbsp;@row["DeclarationStatus"]</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr><td align="center"><table align="center" style="margin-top:100px"><tr><td align="center"><h5 style="color:red">@Resources.Resource.noRecordsFound</h5></td></tr></table></td></tr>
+                                }
+                            }
+                        }
+                    }
+
+                </table>
+
+            </div>
+
+        }
+  
+
+   
+
+
+
+
+
+
+
+

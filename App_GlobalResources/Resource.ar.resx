@@ -1,0 +1,3981 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountConfirmationisunderprocessing" xml:space="preserve">
+    <value>تأكيد الحساب قيد التنفيذ</value>
+  </data>
+  <data name="AccountConfirmationisunderprocessing1" xml:space="preserve">
+    <value>تأكيد الحساب قيد التنفيذ</value>
+  </data>
+  <data name="AccountStatus" xml:space="preserve">
+    <value>حالة الحساب</value>
+  </data>
+  <data name="AccountStatus1" xml:space="preserve">
+    <value>حالة الحساب</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>الإجراء</value>
+  </data>
+  <data name="Action1" xml:space="preserve">
+    <value>الإجراء</value>
+  </data>
+  <data name="ActioncannotbeperformedPleasecontactadministrator" xml:space="preserve">
+    <value>تم ايقاف حساب المستخدم .يرجى الاتصال بالدعم الفني</value>
+  </data>
+  <data name="ActioncannotbeperformedPleasecontactadministrator1" xml:space="preserve">
+    <value>تم ايقاف حساب المستخدم .يرجى الاتصال بالدعم الفني</value>
+  </data>
+  <data name="ActioncannotbeperformedPleasecontactadministrator2" xml:space="preserve">
+    <value>تم ايقاف حساب المستخدم .يرجى الاتصال بالدعم الفني</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="addAdditionalUser" xml:space="preserve">
+    <value>اضافة مستخدم جديد</value>
+  </data>
+  <data name="addFilesLabel" xml:space="preserve">
+    <value>تحميل المستندات ...</value>
+  </data>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>ملاحظات المعلومات الإضافية</value>
+  </data>
+  <data name="AdditionalInfo1" xml:space="preserve">
+    <value>ملاحظات المعلومات الإضافية</value>
+  </data>
+  <data name="AdditionalUserRegistrationSuccessfull" xml:space="preserve">
+    <value>تم تسجيل مستخدم جديد بنجاح،  لقد تم ارسال رمز التحقق الى بريد المستخدم الالكتروني </value>
+  </data>
+  <data name="addressRequired" xml:space="preserve">
+    <value>الرجاء كتابة العنوان كاملاً</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>مستخدم عام</value>
+  </data>
+  <data name="AdminUsers" xml:space="preserve">
+    <value>المستخدمين الإداريين</value>
+  </data>
+  <data name="AdminUsers1" xml:space="preserve">
+    <value>المستخدمين الإداريين</value>
+  </data>
+  <data name="Agree_for" xml:space="preserve">
+    <value>الموافقة على</value>
+  </data>
+  <data name="Agree_for1" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+  </data>
+  <data name="Agree_for11" xml:space="preserve">
+    <value>أقر بصحة كافة البيانات والمستندات المقدمة دون أدنى مسئولية على الادارة العامة للجمارك</value>
+  </data>
+  <data name="Agree_for3" xml:space="preserve">
+    <value>الرجاء قم بالضغط على مربع الأقرار بصحة كافة البيانات والمستندات المقدمة دون أدنى مسئولية على الادارة العامة للجمارك</value>
+  </data>
+  <data name="Agree_for2" xml:space="preserve">
+    <value>الموافقة على</value>
+  </data>
+  <data name="align" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="align1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="AlphaNumeric" xml:space="preserve">
+    <value>يرجى كتابة  حروف أبجدية</value>
+  </data>
+  <data name="AlphaNumeric1" xml:space="preserve">
+    <value>يرجى كتابة حروف أبجدية</value>
+  </data>
+  <data name="AlreadyRegisteredCivilID" xml:space="preserve">
+    <value>الرقم المدني الذي قمت بإدخاله مسجل لدينا من قبل</value>
+  </data>
+  <data name="AlreadyRegisteredLicense" xml:space="preserve">
+    <value>رقم الرخصة التي قمت بإدخالها مسجلة لدينا من قبل، الرجاء الإتصال بالجمارك إدارة تسجيل الشركات</value>
+  </data>
+  <data name="AlreadyRegisteredOrgLicense" xml:space="preserve">
+    <value>رقم الرخصة التي قمت بإدخالها مسجلة لدينا من قبل، الرجاء الإتصال بإدارة الشركة</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>القيمة</value>
+  </data>
+  <data name="Amount1" xml:space="preserve">
+    <value>القيمة</value>
+  </data>
+  <data name="approvedStatusMsgExam" xml:space="preserve">
+    <value>لقد تم قبول طلب التسجيل في إختبارات التخليص الجمركي، سيتم إعلامك بتفاصيل الإختبار فور تحديده.</value>
+  </data>
+  <data name="approvedStatusMsgRenew" xml:space="preserve">
+    <value>تمت الموافقة على الطلب</value>
+  </data>
+  <data name="arrow" xml:space="preserve">
+    <value>&amp;rarr;</value>
+  </data>
+  <data name="arrow1" xml:space="preserve">
+    <value>&amp;rarr;</value>
+  </data>
+  <data name="assignment" xml:space="preserve">
+    <value>assignment</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>إرفاق</value>
+  </data>
+  <data name="AssociatedOrganization" xml:space="preserve">
+    <value>الشركات المتوفرة</value>
+  </data>
+  <data name="AssociatedServices" xml:space="preserve">
+    <value>الخدمات المتوفرة</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>في</value>
+  </data>
+  <data name="at1" xml:space="preserve">
+    <value>في</value>
+  </data>
+  <data name="AuthorizzedPersonName" xml:space="preserve">
+    <value>اسم المعتمد للتوقيع</value>
+  </data>
+  <data name="AvailableOrganizations" xml:space="preserve">
+    <value>لائحة المنظمات</value>
+  </data>
+  <data name="AvailableOrganizations1" xml:space="preserve">
+    <value>لائحة المنظمات</value>
+  </data>
+  <data name="AvailableServices" xml:space="preserve">
+    <value>الخدمات المتاحة</value>
+  </data>
+  <data name="DoMobileNumberVerification" xml:space="preserve">
+    <value>بمجرد تحديث رقم الهاتف بنجاح سيتم تحويلك الى شاشة الدخول مرة أخرى لاستكمال التحقق من رقم الهاتف، اضغط (موافق) للتأكيد أو (إلغاء) للإلغاء</value>
+  </data>
+  <data name="AvailableServices1" xml:space="preserve">
+    <value>خدماتي</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Back1" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="bahaini" xml:space="preserve">
+    <value>البحرين</value>
+  </data>
+  <data name="BankGuaranteeStatus" xml:space="preserve">
+    <value>حالة الضمان البنكي</value>
+  </data>
+  <data name="bankGurantee" xml:space="preserve">
+    <value>ضمان بنكي</value>
+  </data>
+  <data name="branchCompany" xml:space="preserve">
+    <value>شركة فرعية</value>
+  </data>
+  <data name="brokerArabicNameLbl" xml:space="preserve">
+    <value>اسم المخلص بالعربية</value>
+  </data>
+  <data name="brokerEnglishNameLbl" xml:space="preserve">
+    <value>اسم المخلص بالانجيليزية</value>
+  </data>
+  <data name="brokerExamRequestHeader" xml:space="preserve">
+    <value>الرجاء تعبئة المعلومات المطلوبة في النموذج ادناه، ثم الضغط على زر ارسال</value>
+  </data>
+  <data name="BrokerLicenseNo" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="brokerList" xml:space="preserve">
+    <value>قائمة المخلصين</value>
+  </data>
+  <data name="BrokerName" xml:space="preserve">
+    <value>اسم المخلص</value>
+  </data>
+  <data name="BrokerOfficeDetails" xml:space="preserve">
+    <value>معلومات مكتب الخاص</value>
+  </data>
+  <data name="BrokerRenewalRequests" xml:space="preserve">
+    <value>طلبات تجديد رخص المخلصين الجمركين</value>
+  </data>
+  <data name="brokersManagement" xml:space="preserve">
+    <value>ادارة المخلصين</value>
+  </data>
+  <data name="BrokerStatus" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="BrokerType" xml:space="preserve">
+    <value>نوع المخلص</value>
+  </data>
+  <data name="brokerUpdatation" xml:space="preserve">
+    <value>تحديث معلومات المخلص</value>
+  </data>
+  <data name="btnprint" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="btnprint1" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="BusinessFaxNumRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم الفاكس</value>
+  </data>
+  <data name="BusinessNumberRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم الهاتف</value>
+  </data>
+  <data name="by" xml:space="preserve">
+    <value>بواسطة</value>
+  </data>
+  <data name="by1" xml:space="preserve">
+    <value>بواسطة</value>
+  </data>
+  <data name="B_AssociateOrganizations" xml:space="preserve">
+    <value>ارفاق شركات</value>
+  </data>
+  <data name="B_AssociateOrganizations1" xml:space="preserve">
+    <value>ارفاق شركات</value>
+  </data>
+  <data name="B_Login" xml:space="preserve">
+    <value>تسجيل الدخول لحسابك</value>
+  </data>
+  <data name="B_Login1" xml:space="preserve">
+    <value>تسجيل الدخول لحسابك</value>
+  </data>
+  <data name="B_Signup" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="B_Signup1" xml:space="preserve">
+    <value>تسجيل المستخدم</value>
+  </data>
+  <data name="B_Submit" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="B_Submit1" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Cancel1" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="CancelLicense" xml:space="preserve">
+    <value>إلغاء الترخيص</value>
+  </data>
+  <data name="CancelLicense1" xml:space="preserve">
+    <value>إلغاء الترخيص</value>
+  </data>
+  <data name="CanCreateOrg" xml:space="preserve">
+    <value>الشركة الرئيسية لم يتم الموافقة عليها بعد. لهذا لا يمكنك إنشاء شركة جديدة</value>
+  </data>
+  <data name="CannotprocessPleasecontactadministrator" xml:space="preserve">
+    <value>لا يمكن تنفيذ الإجراء.يرجى الاتصال بالدعم الفني</value>
+  </data>
+  <data name="CannotprocessPleasecontactadministrator1" xml:space="preserve">
+    <value>لا يمكن تنفيذ الإجراء.يرجى الاتصال بالدعم الفني</value>
+  </data>
+  <data name="CannotprocessPleasecontactadministrator2" xml:space="preserve">
+    <value>لا يمكن تنفيذ الإجراء.يرجى الاتصال بالدعم الفني</value>
+  </data>
+  <data name="CannotprocessPleasetryagainlater" xml:space="preserve">
+    <value>لا يمكن الاستمرار.الرجاء المحاولة في وقت لاحق</value>
+  </data>
+  <data name="CannotprocessPleasetryagainlater1" xml:space="preserve">
+    <value>لا يمكن الاستمرار.الرجاء المحاولة في وقت لاحق</value>
+  </data>
+  <data name="CannotprocessPleasetryagainlater2" xml:space="preserve">
+    <value>لا يمكن الاستمرار.الرجاء المحاولة في وقت لاحق</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>ادخل نص الصورة</value>
+  </data>
+  <data name="Captcha1" xml:space="preserve">
+    <value>ادخل نص الصورة</value>
+  </data>
+  <data name="CaptchaCode" xml:space="preserve">
+    <value>الرجاء إدخال الرمز في الصورة</value>
+  </data>
+  <data name="CaptchaCode1" xml:space="preserve">
+    <value>الرجاء كتابة الرمز في الصورة</value>
+  </data>
+  <data name="Carrier" xml:space="preserve">
+    <value>الناقل</value>
+  </data>
+  <data name="Carrier1" xml:space="preserve">
+    <value>الناقل</value>
+  </data>
+  <data name="checkcredentials" xml:space="preserve">
+    <value>يرجى التحقق من معلومات الدخول</value>
+  </data>
+  <data name="checkcredentials1" xml:space="preserve">
+    <value>يرجى التحقق من معلومات الدخول</value>
+  </data>
+  <data name="chooseBrokerType" xml:space="preserve">
+    <value>الرجاء اختيار نوع وكيل التخليص الذي سوف يتقدم للأختبار</value>
+  </data>
+  <data name="ChooseDocName" xml:space="preserve">
+    <value>الرجاء اختيار اسم المستند</value>
+  </data>
+  <data name="ChooseDocName1" xml:space="preserve">
+    <value>الرجاء اختيار اسم المستند</value>
+  </data>
+  <data name="ChooseDOcNameType" xml:space="preserve">
+    <value>الرجاء اختيار نوع المستند واسم المستند</value>
+  </data>
+  <data name="ChooseDOcNameType1" xml:space="preserve">
+    <value>الرجاء اختيار نوع المستند واسم المستند</value>
+  </data>
+  <data name="chooseDocType" xml:space="preserve">
+    <value>الرجاء اختيار نوع المستند</value>
+  </data>
+  <data name="chooseDocType1" xml:space="preserve">
+    <value>الرجاء اختيار نوع المستند</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>الرجاء كتابة اسم المدينة</value>
+  </data>
+  <data name="CivilId" xml:space="preserve">
+    <value>الرقم المدني</value>
+  </data>
+  <data name="CivilId1" xml:space="preserve">
+    <value>الرقم المدني</value>
+  </data>
+  <data name="civilIdExpiryDate" xml:space="preserve">
+    <value>تاريخ انتهاء البطاقة المدنية</value>
+  </data>
+  <data name="civilIdNo" xml:space="preserve">
+    <value>الرقم المدني</value>
+  </data>
+  <data name="CivilIdValid" xml:space="preserve">
+    <value>يجب أن يتكون حقل الرقم المدني من 12 رقم</value>
+  </data>
+  <data name="CivilIdValid1" xml:space="preserve">
+    <value>يجب أن يتكون حقل الرقم المدني من 12 رقم</value>
+  </data>
+  <data name="CivilIdValidationFail" xml:space="preserve">
+    <value>الرجاء كتابة رقم مدني صحيح</value>
+  </data>
+  <data name="CivilIdValidationFail1" xml:space="preserve">
+    <value>الرجاء كتابة رقم مدني صحيح</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="ClearingAgent" xml:space="preserve">
+    <value>وكيل التخليص</value>
+  </data>
+  <data name="ClearingAgent1" xml:space="preserve">
+    <value>مخلص جمركي</value>
+  </data>
+  <data name="ClearingAgentAdditonalUserCriteria" xml:space="preserve">
+    <value>الرجاء التأكد من اختيار خدمة واحدة علي الأقل</value>
+  </data>
+  <data name="clearingAgentCancelRequest" xml:space="preserve">
+    <value>طلب الغاء شهادة وكيل تخليص</value>
+  </data>
+  <data name="clearingAgentExamRequest" xml:space="preserve">
+    <value>طلب التقدم لأختبار وكيل تخليص</value>
+  </data>
+  <data name="ClearingAgentExamRequests" xml:space="preserve">
+    <value>طلب التقدم لأختبار وكيل تخليص</value>
+  </data>
+  <data name="clearingAgentExamService" xml:space="preserve">
+    <value>طلب التقدم للأختبار وكيل تخليص</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>الرمز</value>
+  </data>
+  <data name="Code1" xml:space="preserve">
+    <value>الرمز</value>
+  </data>
+  <data name="codeHasBeenSent" xml:space="preserve">
+    <value>لقد تم ارسال رمز التحقق الى بريدك الالكتروني، و رقم  هاتفك الجوال اللذان تم ادخالهما عند التسجيل</value>
+  </data>
+  <data name="codeVerification" xml:space="preserve">
+    <value>رمز التحقق</value>
+  </data>
+  <data name="codeVerification1" xml:space="preserve">
+    <value>رمز التحقق</value>
+  </data>
+  <data name="CommercialLicenseissuedyearRequired" xml:space="preserve">
+    <value>الرجاء كتابة تاريخ اصدار الرخصة التجارية</value>
+  </data>
+  <data name="CommercialLicensenumberRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم اصدار الرخصة التجارية</value>
+  </data>
+  <data name="CommercialLicensetypeRequired" xml:space="preserve">
+    <value>الرجاء اختيار نوع الرخصة التجارية</value>
+  </data>
+  <data name="commercialRegistrationNo" xml:space="preserve">
+    <value>رقم الرخصة البتجارية</value>
+  </data>
+  <data name="Commercial_B_back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Commercial_B_back1" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Commercial_B_next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Commercial_B_next1" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Commercial_CompanyNameinArabic" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="Commercial_CompanyNameinArabic1" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="Commercial_Dt_style" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="Commercial_Dt_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="Commercial_EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Commercial_EndDate1" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Commercial_Header" xml:space="preserve">
+    <value>تفاصيل الرخصة التجارية</value>
+  </data>
+  <data name="Commercial_Header1" xml:space="preserve">
+    <value>تفاصيل الرخصة التجارية</value>
+  </data>
+  <data name="Commercial_IssuanceDate" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Commercial_IssuanceDate1" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Commercial_LicenseNo" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="Commercial_LicenseNo1" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="Commercial_LicenseNumber" xml:space="preserve">
+    <value>رقم الترخيص التجاري</value>
+  </data>
+  <data name="Commercial_LicenseNumber1" xml:space="preserve">
+    <value>رقم الترخيص التجاري</value>
+  </data>
+  <data name="Commercial_Licensetype" xml:space="preserve">
+    <value>نوع الرخصة التجارية</value>
+  </data>
+  <data name="Commercial_Licensetype1" xml:space="preserve">
+    <value>نوع الرخصة التجارية</value>
+  </data>
+  <data name="Commercial_RB_Corporation" xml:space="preserve">
+    <value>مساهمة</value>
+  </data>
+  <data name="Commercial_RB_Corporation1" xml:space="preserve">
+    <value>مساهمة</value>
+  </data>
+  <data name="Commercial_RB_Industrial" xml:space="preserve">
+    <value>شركات اشخاص</value>
+  </data>
+  <data name="Commercial_RB_Industrial1" xml:space="preserve">
+    <value>شركات اشخاص</value>
+  </data>
+  <data name="Commercial_RB_Personal" xml:space="preserve">
+    <value>فردي</value>
+  </data>
+  <data name="Commercial_RB_Personal1" xml:space="preserve">
+    <value>فردي</value>
+  </data>
+  <data name="Commercial_RD_style" xml:space="preserve">
+    <value>radio1 inline1</value>
+  </data>
+  <data name="Commercial_RD_style1" xml:space="preserve">
+    <value>radio1 inline1</value>
+  </data>
+  <data name="Commercial_RequestNumber" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="Commercial_RequestNumber1" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="Commercial_selectsubtype" xml:space="preserve">
+    <value>حدد الخيار</value>
+  </data>
+  <data name="Commercial_selectsubtype1" xml:space="preserve">
+    <value>حدد الخيار</value>
+  </data>
+  <data name="Commercial_selectsubtype2" xml:space="preserve">
+    <value>حدد الخيار</value>
+  </data>
+  <data name="Commercial_year" xml:space="preserve">
+    <value>سنة</value>
+  </data>
+  <data name="Commercial_year1" xml:space="preserve">
+    <value>سنة</value>
+  </data>
+  <data name="companynamearabic" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية</value>
+  </data>
+  <data name="companynamearabic1" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية</value>
+  </data>
+  <data name="companynameinenglish" xml:space="preserve">
+    <value>الرجاء كتابة أسم الشركة بالإنجيليزي</value>
+  </data>
+  <data name="companynameinenglish1" xml:space="preserve">
+    <value>الرجاء كتابة أسم الشركة بالإنجيليزي</value>
+  </data>
+  <data name="CompanyRegistrationMsg" xml:space="preserve">
+    <value>عملية تسجيل الشركات خاضعة للوائح و الضوابط الشركة لذلك و حسب ما تحدده الإدارة العامة للجمارك.</value>
+  </data>
+  <data name="CompanyRegistrationMsg1" xml:space="preserve">
+    <value>عملية تسجيل الشركات خاضعة للوائح و الضوابط الشركة لذلك و حسب ما تحدده الإدارة العامة للجمارك.</value>
+  </data>
+  <data name="completeDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="completelicensedetails" xml:space="preserve">
+    <value>الرجاء كتابة معلومات الرخصة كاملة</value>
+  </data>
+  <data name="completelicensedetails1" xml:space="preserve">
+    <value>الرجاء كتابة معلومات الرخصة كاملة</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>إعادة كتابة كلمة المرور</value>
+  </data>
+  <data name="ConfirmPassword1" xml:space="preserve">
+    <value>إعادة كتابة كلمة المرور</value>
+  </data>
+  <data name="Consignee" xml:space="preserve">
+    <value>المستفيد</value>
+  </data>
+  <data name="Consignee1" xml:space="preserve">
+    <value>المستفيد</value>
+  </data>
+  <data name="ConsigneeName" xml:space="preserve">
+    <value>إسم المستفيد</value>
+  </data>
+  <data name="ConsigneeName1" xml:space="preserve">
+    <value>إسم المستفيد</value>
+  </data>
+  <data name="ConsolidatedShipment" xml:space="preserve">
+    <value>شحنة مجمعة</value>
+  </data>
+  <data name="ConsolidatedShipment1" xml:space="preserve">
+    <value>شحنة مجمعة</value>
+  </data>
+  <data name="dashBoadrRejectedRequests" xml:space="preserve">
+    <value>الطلبات المرفوضة</value>
+  </data>
+  <data name="dashBoard" xml:space="preserve">
+    <value>لوحتي</value>
+  </data>
+  <data name="dashBoardAllRequests" xml:space="preserve">
+    <value>طلباتي</value>
+  </data>
+  <data name="dashBoardApprovedRequests" xml:space="preserve">
+    <value>الطلبات الموافق عليها</value>
+  </data>
+  <data name="dashBoardExamRequests" xml:space="preserve">
+    <value>طلبات الاشتراك في اختبار المخلص الجمركي</value>
+  </data>
+  <data name="DashBoardOrganizationRequests" xml:space="preserve">
+    <value>طلبات تسجيل شركة</value>
+  </data>
+  <data name="DashBoardRenewalRequests" xml:space="preserve">
+    <value>طلبات تجديد رخصة المخلص الجمركي</value>
+  </data>
+  <data name="dashBoardSubmittedRequests" xml:space="preserve">
+    <value>الطلبات المرسلة</value>
+  </data>
+  <data name="dashBoardSubscriptionRequests" xml:space="preserve">
+    <value>طلبات الاشتراك في الخدمات</value>
+  </data>
+  <data name="DashBoardYourSerivces" xml:space="preserve">
+    <value>خدماتي</value>
+  </data>
+  <data name="databind_class" xml:space="preserve">
+    <value>card2 card21</value>
+  </data>
+  <data name="databind_class1" xml:space="preserve">
+    <value>card2 card21</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>الرجاء كتابة التاريخ</value>
+  </data>
+  <data name="DateFormat1" xml:space="preserve">
+    <value>الرجاء كتابة التاريخ</value>
+  </data>
+  <data name="DeActivate" xml:space="preserve">
+    <value>إلغاء تفعيل</value>
+  </data>
+  <data name="DeActivate1" xml:space="preserve">
+    <value>إلغاء تفعيل</value>
+  </data>
+  <data name="DeclarationNumber" xml:space="preserve">
+    <value>رقم البيان الجمركي</value>
+  </data>
+  <data name="DeclarationNumber1" xml:space="preserve">
+    <value>رقم البيان الجمركي</value>
+  </data>
+  <data name="DeclarationSearch" xml:space="preserve">
+    <value>تتبع البيان الجمركي</value>
+  </data>
+  <data name="DeclarationSearch1" xml:space="preserve">
+    <value>تتبع البيان الجمركي</value>
+  </data>
+  <data name="Declarationtype" xml:space="preserve">
+    <value>نوع البيان الجمركي</value>
+  </data>
+  <data name="Declarationtype1" xml:space="preserve">
+    <value>نوع البيان الجمركي</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="deleteAllFiles" xml:space="preserve">
+    <value>حذف كل المستندات</value>
+  </data>
+  <data name="deleteFile" xml:space="preserve">
+    <value>ازالة المستندات</value>
+  </data>
+  <data name="DeleteRequest" xml:space="preserve">
+    <value>هل تريد الإستمرار في حذف طلب تسجيل الشركة؟</value>
+  </data>
+  <data name="DeleteRequest1" xml:space="preserve">
+    <value>هل تريد الإستمرار في حذف الطلب ؟   لا يمكن استرجاع الطلب بعد حذفه</value>
+  </data>
+  <data name="DeliveryorderNumber" xml:space="preserve">
+    <value>رقم إذن التسليم</value>
+  </data>
+  <data name="DeliveryorderNumber1" xml:space="preserve">
+    <value>رقم إذن التسليم</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+  <data name="Denied1" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+  <data name="Deposits" xml:space="preserve">
+    <value>التأمينات</value>
+  </data>
+  <data name="Deposits1" xml:space="preserve">
+    <value>التأمينات</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="Description1" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="DestinationCountry" xml:space="preserve">
+    <value>جهة المقصد</value>
+  </data>
+  <data name="DestinationCountry1" xml:space="preserve">
+    <value>جهة المقصد</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="dir" xml:space="preserve">
+    <value>RTL</value>
+  </data>
+  <data name="directReleaseBroker" xml:space="preserve">
+    <value>مخلص تصفية فورية</value>
+  </data>
+  <data name="DisAssociate" xml:space="preserve">
+    <value>فصل</value>
+  </data>
+  <data name="div_direction" xml:space="preserve">
+    <value>direction:rtl</value>
+  </data>
+  <data name="div_direction1" xml:space="preserve">
+    <value>direction:rtl</value>
+  </data>
+  <data name="docType" xml:space="preserve">
+    <value>نوع الوثيقة</value>
+  </data>
+  <data name="docTypesLabel" xml:space="preserve">
+    <value>نوع المستندات</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>عرض</value>
+  </data>
+  <data name="Duties" xml:space="preserve">
+    <value>الرسوم</value>
+  </data>
+  <data name="Duties1" xml:space="preserve">
+    <value>الرسوم</value>
+  </data>
+  <data name="Dutieslist" xml:space="preserve">
+    <value>قائمة الرسوم</value>
+  </data>
+  <data name="Dutieslist1" xml:space="preserve">
+    <value>قائمة الرسوم</value>
+  </data>
+  <data name="DutyID" xml:space="preserve">
+    <value>رمز الرسم</value>
+  </data>
+  <data name="DutyID1" xml:space="preserve">
+    <value>رمز الرسم</value>
+  </data>
+  <data name="DutyName" xml:space="preserve">
+    <value>إسم الضريبة</value>
+  </data>
+  <data name="DutyName1" xml:space="preserve">
+    <value>إسم الضريبة</value>
+  </data>
+  <data name="editRequest" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Email1" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="eMailAddress" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="emailCode" xml:space="preserve">
+    <value>رمز تحقق البريد الألكترونى</value>
+  </data>
+  <data name="emailCode1" xml:space="preserve">
+    <value>رمز التحقق من البريد الالكتروني</value>
+  </data>
+  <data name="EmailCodeMandatory" xml:space="preserve">
+    <value>ادخل رمز تحقق البريد الألكترونى</value>
+  </data>
+  <data name="EmailCodeMandatory1" xml:space="preserve">
+    <value>يجب كتابة رمز التحقق من البريد الإلكتروني</value>
+  </data>
+  <data name="emailExist" xml:space="preserve">
+    <value>البريد الالكتروني المدخل مسجل لدينا مسبقا</value>
+  </data>
+  <data name="emailExist1" xml:space="preserve">
+    <value>البريد الالكتروني المدخل مسجل لدينا مسبقا</value>
+  </data>
+  <data name="Emailidisnotavailble" xml:space="preserve">
+    <value>معرف البريد الإلكتروني غير متوفر</value>
+  </data>
+  <data name="Emailidisnotavailble1" xml:space="preserve">
+    <value>معرف البريد الإلكتروني غير متوفر</value>
+  </data>
+  <data name="EmailIdMobileNumberverificationpending" xml:space="preserve">
+    <value>رمز التحقق للإميل الإلكتروني \\رقم الهاتف معلق</value>
+  </data>
+  <data name="EmailIdMobileNumberverificationpending1" xml:space="preserve">
+    <value>رمز التحقق للإميل الإلكتروني \\رقم الهاتف معلق</value>
+  </data>
+  <data name="EmailIdorMobileNumber" xml:space="preserve">
+    <value>البريد الإلكتروني او رقم الجوال</value>
+  </data>
+  <data name="EmailIdorMobileNumber1" xml:space="preserve">
+    <value>البريد الإلكتروني او رقم الجوال</value>
+  </data>
+  <data name="EmailMobileCode" xml:space="preserve">
+    <value>رمز تحقق البريد الإلكتروني او رمز تحقق الجوال</value>
+  </data>
+  <data name="EmailMobileCode1" xml:space="preserve">
+    <value>رمز تحقق البريد الإلكتروني او رمز تحقق الجوال</value>
+  </data>
+  <data name="emailRequired" xml:space="preserve">
+    <value>الرجاء كتابة البريد الالكتروني</value>
+  </data>
+  <data name="emirati" xml:space="preserve">
+    <value>الامارات</value>
+  </data>
+  <data name="EnterCaptcha" xml:space="preserve">
+    <value>ادخل نص الصورة</value>
+  </data>
+  <data name="EnterCaptcha1" xml:space="preserve">
+    <value>ادخل نص الصورة</value>
+  </data>
+  <data name="EntercorrectCaptcha" xml:space="preserve">
+    <value>أدخل الرمز في الصورة بالشكل الصحيح</value>
+  </data>
+  <data name="EntercorrectCaptcha1" xml:space="preserve">
+    <value>أدخل الرمز في الصورة بالشكل الصحيح</value>
+  </data>
+  <data name="EnterMobileEmail" xml:space="preserve">
+    <value>الرجاء كتابة  البريد الإلكتروني المسجل</value>
+    <comment>الرجاء كتابة رقم الجوال أو البريد الإلكتروني المسجل</comment>
+  </data>
+  <data name="EnterMobileEmail1" xml:space="preserve">
+    <value>الرجاء كتابة  البريد الإلكتروني للشركة</value>
+  </data>
+  <data name="enterPassword" xml:space="preserve">
+    <value>الرجاء كتابة كلمة المرور</value>
+  </data>
+  <data name="enterPassword1" xml:space="preserve">
+    <value>الرجاء كتابة كلمة المرور</value>
+  </data>
+  <data name="EnterTexttoSearch" xml:space="preserve">
+    <value>ادخل نص للبحث</value>
+  </data>
+  <data name="EnterTexttoSearch1" xml:space="preserve">
+    <value>نص البحث</value>
+  </data>
+  <data name="EntertheCaptcha" xml:space="preserve">
+    <value>يرجى كتابة كلمة التحقق</value>
+  </data>
+  <data name="EntertheCaptcha1" xml:space="preserve">
+    <value>يرجى كتابة كلمة التحقق</value>
+  </data>
+  <data name="Enterthecharactershownabove" xml:space="preserve">
+    <value>يرجى كتابة الحرف الموضح أعلاه</value>
+  </data>
+  <data name="Enterthecharactershownabove1" xml:space="preserve">
+    <value>يرجى كتابة الحرف الموضح أعلاه</value>
+  </data>
+  <data name="EPayment" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="EPayment1" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="EPaymentRequests" xml:space="preserve">
+    <value>طلبات الدفع الإلكتروني</value>
+  </data>
+  <data name="EPaymentRequests1" xml:space="preserve">
+    <value>طلبات الدفع الإلكتروني</value>
+  </data>
+  <data name="Epayment_Header" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="Epayment_Header1" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="Epayment_RequestNumber" xml:space="preserve">
+    <value>رقم الطلب:</value>
+  </data>
+  <data name="Epayment_RequestNumber1" xml:space="preserve">
+    <value>رقم الطلب:</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="error1" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="eServiceHeader" xml:space="preserve">
+    <value>بوابة الخدمات الالكترونية للجمارك</value>
+  </data>
+  <data name="EServiceSubscriptionRequests" xml:space="preserve">
+    <value>طلبات الاشتراك</value>
+  </data>
+  <data name="examAnnoncementMSG" xml:space="preserve">
+    <value>الرجاء تأكيد الحضور</value>
+  </data>
+  <data name="examAnnoncementPublished" xml:space="preserve">
+    <value>تم تحديد موعد ومكان إنعقاد إختبارات التخليص الجمركي، يجب  تأكيد حضور الإختبار خلال 5 أيام من تاريخ هذه الرسالة و إلا سيتم إستبعاد طلبك</value>
+  </data>
+  <data name="examConfirmAttendance" xml:space="preserve">
+    <value>تأكيد حضور الاختبار</value>
+  </data>
+  <data name="examConfirmStatus" xml:space="preserve">
+    <value>تم تأكيد حضور الاختبار</value>
+  </data>
+  <data name="examDate" xml:space="preserve">
+    <value>تاريخ الاختبار</value>
+  </data>
+  <data name="examDetails" xml:space="preserve">
+    <value>تفاصيل الاختبار</value>
+  </data>
+  <data name="examNotPass" xml:space="preserve">
+    <value>لقد رسبت في إجتياز إختبار التخليص الجمركي، يمكنك إرسال طلب جديد للتسجيل في الإختبارات القادمة</value>
+  </data>
+  <data name="examNumber" xml:space="preserve">
+    <value>رقم الاختبار</value>
+  </data>
+  <data name="examParticipate" xml:space="preserve">
+    <value>(  بيانات المتقدم للاختبار )</value>
+  </data>
+  <data name="examPassed" xml:space="preserve">
+    <value>لقد قمت بإجتياز إختبار التخليص الجمركي بنجاح، يمكنك الان  التقدم بطلب اصدار رخصة تخليص من خلال خدمة اصدار رخصة التخليص الجمركي</value>
+  </data>
+  <data name="ExamRequestDuplicated" xml:space="preserve">
+    <value>لا يمكن انشاء اكثر من طلب اشتراك لهذا المستخدم</value>
+  </data>
+  <data name="examTime" xml:space="preserve">
+    <value>وقت الاختبار</value>
+  </data>
+  <data name="examWillPublishedSoon" xml:space="preserve">
+    <value>سيتم نشر تفاصيل الاختبار قريبا</value>
+  </data>
+  <data name="ExistingUser" xml:space="preserve">
+    <value>نعم، يوجد لدي حساب في النظام الجمركي الالي</value>
+  </data>
+  <data name="existingUsers" xml:space="preserve">
+    <value>المستخدمين الحاليين</value>
+  </data>
+  <data name="expiryDate" xml:space="preserve">
+    <value>تاريخ انتهائه</value>
+  </data>
+  <data name="ExpiryDateisRequired" xml:space="preserve">
+    <value>الرجاء اختيار تاريخ الانتهاء</value>
+  </data>
+  <data name="expiryDateRequired" xml:space="preserve">
+    <value>الرجاء اختيار تاريخ الانتهاء</value>
+  </data>
+  <data name="ExportCountry" xml:space="preserve">
+    <value>بلد التصدير</value>
+  </data>
+  <data name="ExportCountry1" xml:space="preserve">
+    <value>بلد التصدير</value>
+  </data>
+  <data name="female" xml:space="preserve">
+    <value>انثى</value>
+  </data>
+  <data name="fileName" xml:space="preserve">
+    <value>اسم المستند</value>
+  </data>
+  <data name="fileNameError" xml:space="preserve">
+    <value>الرجاء كتابة أسم للمستند المراد رفعه</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الأسم الأول</value>
+  </data>
+  <data name="FirstName1" xml:space="preserve">
+    <value>الأسم الأول</value>
+  </data>
+  <data name="firstNamePart" xml:space="preserve">
+    <value>الإسم الأول</value>
+  </data>
+  <data name="FirstNamerDA" xml:space="preserve">
+    <value>الرجاء كتابة الاسم الأول</value>
+  </data>
+  <data name="FirstNamerDA1" xml:space="preserve">
+    <value>الرجاء كتابة الاسم الأول</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>لـ</value>
+  </data>
+  <data name="For1" xml:space="preserve">
+    <value>لـ</value>
+  </data>
+  <data name="forgetPassowrd" xml:space="preserve">
+    <value>هل نسيت كلمة المرور؟</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>هل نسيت كلمة المرور؟</value>
+  </data>
+  <data name="ForgotPassword1" xml:space="preserve">
+    <value>هل نسيت كلمة المرور؟</value>
+  </data>
+  <data name="Forgot_B_generateotpbutton" xml:space="preserve">
+    <value>إنشاء كلمة مرور مؤقتة</value>
+  </data>
+  <data name="Forgot_B_generateotpbutton1" xml:space="preserve">
+    <value>إنشاء كلمة مرور مؤقتة</value>
+  </data>
+  <data name="Forgot_B_resetpwd" xml:space="preserve">
+    <value>إعادة ضبط كلمة المرور</value>
+  </data>
+  <data name="Forgot_B_resetpwd1" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="Forgot_B_rgpwd" xml:space="preserve">
+    <value>إعادة إنشاء كلمة المرور المؤقتة</value>
+  </data>
+  <data name="Forgot_B_rgpwd1" xml:space="preserve">
+    <value>إعادة إنشاء كلمة المرور المؤقتة</value>
+  </data>
+  <data name="Forgot_header" xml:space="preserve">
+    <value>هل نسيت كلمة المرور؟</value>
+  </data>
+  <data name="Forgot_header1" xml:space="preserve">
+    <value>يرجى كتابة عنوان البريد الإلكتروني المسجل لدينا، سيتم ارسال رمز التحقق لك ، للتمكن من إعادة ضبط كلمة المرور</value>
+  </data>
+  <data name="Forgot_header11" xml:space="preserve">
+    <value>يرجى كتابة عنوان البريد الإلكتروني أو رقم الهاتف الجوال، سوف نرسل لك رموز التحقق لإعادة تعيين كلمة المرور الخاصة بك</value>
+  </data>
+  <data name="Forgot_header2" xml:space="preserve">
+    <value>هل نسيت كلمة المرور؟</value>
+  </data>
+  <data name="Forgot_input" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+    <comment>البريد الإلكتروني او رقم الجوال</comment>
+  </data>
+  <data name="Forgot_input1" xml:space="preserve">
+    <value>البريد الإلكتروني </value>
+    <comment>البريد الإلكتروني او رقم الجوال</comment>
+  </data>
+  <data name="Forgot_input2" xml:space="preserve">
+    <value>ادخل نص الصورة</value>
+  </data>
+  <data name="Forgot_input21" xml:space="preserve">
+    <value>ادخل نص الصورة</value>
+  </data>
+  <data name="Forgot_inputcode" xml:space="preserve">
+    <value>رمز تحقق البريد الإلكتروني</value>
+  </data>
+  <data name="Forgot_inputcode1" xml:space="preserve">
+    <value>رمز تحقق البريد الإلكتروني</value>
+  </data>
+  <data name="Forgot_inputcpwd" xml:space="preserve">
+    <value>إعادة كتابة كلمة المرور</value>
+  </data>
+  <data name="Forgot_inputcpwd1" xml:space="preserve">
+    <value>إعادة كتابة كلمة المرور</value>
+  </data>
+  <data name="Forgot_inputnewpwd" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="Forgot_inputnewpwd1" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="fullName" xml:space="preserve">
+    <value>الاسم الكامل</value>
+  </data>
+  <data name="gender" xml:space="preserve">
+    <value>الجنس</value>
+  </data>
+  <data name="GenderRequired" xml:space="preserve">
+    <value>الرجاء اختيار الجنس</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>عام</value>
+  </data>
+  <data name="generalBroker" xml:space="preserve">
+    <value>المخلص العام</value>
+  </data>
+  <data name="generalBrokerInf" xml:space="preserve">
+    <value>معلومات المخلص العام</value>
+  </data>
+  <data name="GeneralBrokerLicense" xml:space="preserve">
+    <value>رقم الترخيص للمخلص العام</value>
+  </data>
+  <data name="generalBrokerlicenseNo" xml:space="preserve">
+    <value>رقم الترخيص للمخلص العام</value>
+  </data>
+  <data name="GeneralBrokerLicenseRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم ترخيص صحيح للمخلص العام</value>
+  </data>
+  <data name="generalBrokerMobilenumber" xml:space="preserve">
+    <value>رقم الجوال للمخلص العام</value>
+  </data>
+  <data name="generalBrokerName" xml:space="preserve">
+    <value>اسم المخلص العام</value>
+  </data>
+  <data name="GenerateOTP" xml:space="preserve">
+    <value>إنشاء كلمة مرور مؤقتة</value>
+  </data>
+  <data name="GenerateOTP1" xml:space="preserve">
+    <value>إنشاء كلمة مرور مؤقتة</value>
+  </data>
+  <data name="genericErrorPageNotFoundPart1" xml:space="preserve">
+    <value>الصفحة غير موجودة</value>
+  </data>
+  <data name="genericErrorPageNotFoundPart2" xml:space="preserve">
+    <value>الصفحة التي طلبتها غير موجودة ، الرجاء التأكد من أسم الصفحة</value>
+  </data>
+  <data name="genericErrorPageSorry" xml:space="preserve">
+    <value>المعذرة</value>
+  </data>
+  <data name="Header_withoutmenu" xml:space="preserve">
+    <value>text-align:right;color:white;background-color: #BD3B2E;display: none;</value>
+  </data>
+  <data name="Header_withoutmenu1" xml:space="preserve">
+    <value>text-align:right;color:white;background-color: #BD3B2E;display: block;</value>
+  </data>
+  <data name="Header_withoutmenu11" xml:space="preserve">
+    <value>text-align:right;color:white;background-color: #BD3B2E;display: block;</value>
+  </data>
+  <data name="Header_withoutmenu2" xml:space="preserve">
+    <value>text-align:right;color:white;background-color: #BD3B2E;display: none;</value>
+  </data>
+  <data name="hideInformation" xml:space="preserve">
+    <value>اخفاء المعلومات</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="homePage" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Home_Header" xml:space="preserve">
+    <value>شركاتي المسجلة</value>
+  </data>
+  <data name="Home_Header1" xml:space="preserve">
+    <value>الشركات المدرجة في حسابي</value>
+  </data>
+  <data name="HousebillAutoNumber" xml:space="preserve">
+    <value>الرقم الآلي لبوليصة الشحن</value>
+  </data>
+  <data name="HousebillAutoNumber1" xml:space="preserve">
+    <value>الرقم الآلي لبوليصة الشحن</value>
+  </data>
+  <data name="HousebillNumber" xml:space="preserve">
+    <value>رقم البوليصة</value>
+  </data>
+  <data name="HousebillNumber1" xml:space="preserve">
+    <value>رقم البوليصة</value>
+  </data>
+  <data name="houseBillRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم بوليصة الشحن</value>
+  </data>
+  <data name="HousebillSearch" xml:space="preserve">
+    <value>بحث بوليصة الشحن</value>
+  </data>
+  <data name="HousebillSearch1" xml:space="preserve">
+    <value>بحث بوليصة الشحن</value>
+  </data>
+  <data name="HSCode" xml:space="preserve">
+    <value>رمز النظام المنسق</value>
+  </data>
+  <data name="HSCode1" xml:space="preserve">
+    <value>رمز النظام المنسق</value>
+  </data>
+  <data name="HSCodeSearch" xml:space="preserve">
+    <value>بحث رمز النظام المنسق</value>
+  </data>
+  <data name="HSCodeSearch1" xml:space="preserve">
+    <value>بحث رمز النظام المنسق</value>
+  </data>
+  <data name="ImporterDetails" xml:space="preserve">
+    <value>تفاصيل رخصة الاستيراد</value>
+  </data>
+  <data name="ImporterDetails1" xml:space="preserve">
+    <value>تفاصيل رخصة الاستيراد</value>
+  </data>
+  <data name="ImporterLicensenumberRequired" xml:space="preserve">
+    <value>الرجاء إدخال رقم رخصة الأستيراد</value>
+  </data>
+  <data name="ImporterLicensetypeRequired" xml:space="preserve">
+    <value>الرجاء إختيار نوع رخصة الأستيراد</value>
+  </data>
+  <data name="Importer_B_back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Importer_B_back1" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Importer_B_next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Importer_B_next1" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Importer_CompanyNameinArabic" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="Importer_CompanyNameinArabic1" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="Importer_Dt_style" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="Importer_Dt_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="Importer_EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Importer_EndDate1" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Importer_Header" xml:space="preserve">
+    <value>تفاصيل رخصة الاستيراد</value>
+  </data>
+  <data name="Importer_Header1" xml:space="preserve">
+    <value>تفاصيل رخصة الاستيراد</value>
+  </data>
+  <data name="Importer_IssuanceDate" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Importer_IssuanceDate1" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Importer_LicenseNo" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="Importer_LicenseNo1" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="Importer_LicenseNumber" xml:space="preserve">
+    <value>رقم رخصة الأستيراد</value>
+  </data>
+  <data name="Importer_LicenseNumber1" xml:space="preserve">
+    <value>رقم رخصة الاستيراد</value>
+  </data>
+  <data name="Importer_Licensetype" xml:space="preserve">
+    <value>نوع رخصة الأستيراد</value>
+  </data>
+  <data name="Importer_Licensetype1" xml:space="preserve">
+    <value>نوع رخصة الاستيراد</value>
+  </data>
+  <data name="Importer_RB_permanent" xml:space="preserve">
+    <value>دائم</value>
+  </data>
+  <data name="Importer_RB_permanent1" xml:space="preserve">
+    <value>دائم</value>
+  </data>
+  <data name="Importer_RB_temporary" xml:space="preserve">
+    <value>مؤقت</value>
+  </data>
+  <data name="Importer_RB_temporary1" xml:space="preserve">
+    <value>مؤقت</value>
+  </data>
+  <data name="Importer_RD_style" xml:space="preserve">
+    <value>radio1 inline1</value>
+  </data>
+  <data name="Importer_RD_style1" xml:space="preserve">
+    <value>radio1 inline1</value>
+  </data>
+  <data name="Importer_RequestNumber" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="Importer_RequestNumber1" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="IndustrialLicenseNumberRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم الترخيص الصناعي</value>
+  </data>
+  <data name="industrialOrganization" xml:space="preserve">
+    <value>تفاصيل الرخصة الصناعية</value>
+  </data>
+  <data name="IndustrialRegistrationNumberRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم الترخيص الصناعي</value>
+  </data>
+  <data name="Industrial_B_back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Industrial_B_back1" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Industrial_B_next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Industrial_B_next1" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Industrial_CompanyNameinArabic" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="Industrial_CompanyNameinArabic1" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="Industrial_Dt_style" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="Industrial_Dt_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="Industrial_EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Industrial_EndDate1" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Industrial_Header" xml:space="preserve">
+    <value>تفاصيل الرخصة الصناعية</value>
+  </data>
+  <data name="Industrial_Header1" xml:space="preserve">
+    <value>تفاصيل الرخصة الصناعية</value>
+  </data>
+  <data name="Industrial_IssuanceDate" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Industrial_IssuanceDate1" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Industrial_IssuanceDate11" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Industrial_IssuanceDate2" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+  </data>
+  <data name="Industrial_LicenseNumber" xml:space="preserve">
+    <value>رقم الترخيص الصناعي</value>
+  </data>
+  <data name="Industrial_LicenseNumber1" xml:space="preserve">
+    <value>رقم الترخيص الصناعي</value>
+  </data>
+  <data name="Industrial_RegNo" xml:space="preserve">
+    <value>رقم السجل الصناعي</value>
+  </data>
+  <data name="Industrial_RegNo1" xml:space="preserve">
+    <value>رقم السجل الصناعي</value>
+  </data>
+  <data name="Industrial_RequestNumber" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="Industrial_RequestNumber1" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="information" xml:space="preserve">
+    <value>معلومات</value>
+  </data>
+  <data name="InvalidMCDeatils" xml:space="preserve">
+    <value>الرجاء كتابة معلومات الدخول الصحيحة على النظام الآلي الجمركي</value>
+  </data>
+  <data name="Is" xml:space="preserve">
+    <value>وحالته</value>
+  </data>
+  <data name="Is1" xml:space="preserve">
+    <value>وحالته</value>
+  </data>
+  <data name="IsAdminUser" xml:space="preserve">
+    <value>مستخدم عام ؟</value>
+    <comment>مدير للنظام ؟</comment>
+  </data>
+  <data name="IssuancedateofIndustrialRegistrationNumber" xml:space="preserve">
+    <value>الرجاء اختيار تاريخ اصدار شهادة الترخيص الصناعي</value>
+  </data>
+  <data name="IssuancegreaterthanEnddate" xml:space="preserve">
+    <value>يجب ألا يكون تاريخ الإصدار أكبر من تاريخ الانتهاء</value>
+  </data>
+  <data name="IssuancegreaterthanEnddate1" xml:space="preserve">
+    <value>يجب ألا يكون تاريخ الإصدار أكبر من تاريخ الانتهاء</value>
+  </data>
+  <data name="IssueDate" xml:space="preserve">
+    <value>تاريخ الاصدار</value>
+  </data>
+  <data name="IssueDateRequired" xml:space="preserve">
+    <value>الرجاء اختيار تاريخ الاصدار </value>
+  </data>
+  <data name="KGACOnlinePayment" xml:space="preserve">
+    <value>الدفع عبر الإنترنت</value>
+  </data>
+  <data name="KGACOnlinePayment1" xml:space="preserve">
+    <value>الدفع عبر الإنترنت</value>
+  </data>
+  <data name="KNETOnlinePayment" xml:space="preserve">
+    <value>يرجى عدم إغلاق أو تحديث هذه الصفحة أثناء تحويلك إلى صفحة كي نت للدفع عبر الإنترنت!</value>
+  </data>
+  <data name="KNETOnlinePayment1" xml:space="preserve">
+    <value>يرجى عدم إغلاق أو تحديث هذه الصفحة أثناء تحويلك إلى صفحة كي نت للدفع عبر الإنترنت!</value>
+  </data>
+  <data name="kuwait" xml:space="preserve">
+    <value>الكويت</value>
+  </data>
+  <data name="kuwait1" xml:space="preserve">
+    <value>الكويت</value>
+  </data>
+  <data name="KuwaitCustoms" xml:space="preserve">
+    <value>بوابة الخدمات الالكترونية للجمارك  الكويتية</value>
+  </data>
+  <data name="KuwaitCustoms1" xml:space="preserve">
+    <value>بوابة الخدمات الالكترونية للجمارك</value>
+  </data>
+  <data name="kuwaiti" xml:space="preserve">
+    <value>الكويت</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>الأسم الأخير</value>
+  </data>
+  <data name="LastName1" xml:space="preserve">
+    <value>الأسم الأخير</value>
+  </data>
+  <data name="lastNamePart" xml:space="preserve">
+    <value>الإسم الرابع</value>
+  </data>
+  <data name="LastNamerDA" xml:space="preserve">
+    <value>الرجاء كتابة الاسم الأخير</value>
+  </data>
+  <data name="LastNamerDA1" xml:space="preserve">
+    <value>الرجاء كتابة الاسم الأخير</value>
+  </data>
+  <data name="LegalEntity" xml:space="preserve">
+    <value>الكيان القانوني</value>
+  </data>
+  <data name="LegalEntity1" xml:space="preserve">
+    <value>الكيان القانوني</value>
+  </data>
+  <data name="lG" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="licenceNo" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="LicenseFieldCannotbeempty" xml:space="preserve">
+    <value>حقل الرخصة لا يجب ان يكون فارغ</value>
+  </data>
+  <data name="LicenseFieldCannotbeempty1" xml:space="preserve">
+    <value>حقل الرخصة لا يجب ان يكون فارغ</value>
+  </data>
+  <data name="Licenselessthandigits" xml:space="preserve">
+    <value>يجب ألا يقل رقم الترخيص عن 3 أرقام</value>
+  </data>
+  <data name="Licenselessthandigits1" xml:space="preserve">
+    <value>يجب ألا يقل رقم الترخيص عن 3 أرقام</value>
+  </data>
+  <data name="Licenselessthandigits4" xml:space="preserve">
+    <value>يجب ألا يقل رقم الترخيص عن 4 أرقام</value>
+  </data>
+  <data name="Licenselessthandigits41" xml:space="preserve">
+    <value>يجب ألا يقل رقم الترخيص عن 4 أرقام</value>
+  </data>
+  <data name="LicenseNO" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="LicenseNO1" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="LicenseNumber" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="LicenseNumber1" xml:space="preserve">
+    <value>رقم الرخصة</value>
+  </data>
+  <data name="ListofAdminUsers" xml:space="preserve">
+    <value>قائمة المستخدمين الإداريين</value>
+  </data>
+  <data name="ListofAdminUsers1" xml:space="preserve">
+    <value>قائمة المستخدمين الإداريين</value>
+  </data>
+  <data name="ListofAvailableOrganizations" xml:space="preserve">
+    <value>لائحة الشركات المضافة</value>
+  </data>
+  <data name="ListofAvailableOrganizations1" xml:space="preserve">
+    <value>لائحة الشركات المضافة</value>
+  </data>
+  <data name="LocalDescription" xml:space="preserve">
+    <value>الوصف المحلي</value>
+  </data>
+  <data name="LocalDescription1" xml:space="preserve">
+    <value>الوصف المحلي</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل الدخول لحسابك</value>
+  </data>
+  <data name="login1" xml:space="preserve">
+    <value>تسجيل الدخول لحسابك</value>
+  </data>
+  <data name="Login2" xml:space="preserve">
+    <value>تسجيل الدخول لحسابك</value>
+  </data>
+  <data name="loginPageWelcomeMsg" xml:space="preserve">
+    <value>مرحبا بكم في خدمة المخلصين الجمركيين</value>
+  </data>
+  <data name="loginwithyourcredentials" xml:space="preserve">
+    <value>لقد تم التحقق من الرمز بنجاح، شكرا لك، يرجى تسجيل الدخول بإستخدام بيانات الدخول الخاصة بك لإستكمال طلب التسجيل.</value>
+  </data>
+  <data name="loginwithyourcredentials1" xml:space="preserve">
+    <value>لقد تم التحقق من الرمز بنجاح، شكرا لك، يرجى تسجيل الدخول بإستخدام بيانات الدخول الخاصة بك لإستكمال طلب التسجيل.</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logo1" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logo11" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logo2" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="logOut1" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="Logout2" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="L_term_of_use_style" xml:space="preserve">
+    <value>margin-right:100px;width:200px</value>
+  </data>
+  <data name="L_term_of_use_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="L_term_of_use_style11" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="L_term_of_use_style2" xml:space="preserve">
+    <value>margin-right:100px;</value>
+  </data>
+  <data name="L_term_of_use_style21" xml:space="preserve">
+    <value>margin-right:100px;</value>
+  </data>
+  <data name="L_term_of_use_style3" xml:space="preserve">
+    <value>margin-right:100px;width:200px</value>
+  </data>
+  <data name="mainCompany" xml:space="preserve">
+    <value>الشركة رئيسية</value>
+  </data>
+  <data name="MainCompanymsg" xml:space="preserve">
+    <value>انت بصدد تسجيل الشركة الرئيسية للحساب</value>
+  </data>
+  <data name="male" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="MCPassword" xml:space="preserve">
+    <value>كلمة المرور على النظام الجمركي الآلي</value>
+  </data>
+  <data name="MCPasswordRequired" xml:space="preserve">
+    <value>الرجاء كتابة كلمة المرور على النظام الجمركي الآلي</value>
+  </data>
+  <data name="MCUserName" xml:space="preserve">
+    <value>هوية المستخدم علي النظام الجمركي الآلي</value>
+  </data>
+  <data name="MCUserNameRequired" xml:space="preserve">
+    <value>الرجاء كتابة اسم المستخدم  على النظام الجمركي الآلي</value>
+  </data>
+  <data name="Menu1" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Menu11" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Menu2" xml:space="preserve">
+    <value>شركاتي المسجلة</value>
+  </data>
+  <data name="Menu21" xml:space="preserve">
+    <value>الشركات المدرجة في حسابي</value>
+  </data>
+  <data name="Menu3" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="Menu31" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="Menu4" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="Menu41" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="Menu5" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="Menu51" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="MenuHeader_cssclass" xml:space="preserve">
+    <value>topnav1</value>
+  </data>
+  <data name="MenuHeader_cssclass1" xml:space="preserve">
+    <value>topnav-right1</value>
+  </data>
+  <data name="MenuHeader_cssclass11" xml:space="preserve">
+    <value>topnav-right1</value>
+  </data>
+  <data name="MenuHeader_cssclass2" xml:space="preserve">
+    <value>num1</value>
+  </data>
+  <data name="MenuHeader_cssclass21" xml:space="preserve">
+    <value>num1</value>
+  </data>
+  <data name="MenuHeader_cssclass3" xml:space="preserve">
+    <value>topnav1</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification" xml:space="preserve">
+    <value>glyphicon glyphicon-bell notification-icon1</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification1" xml:space="preserve">
+    <value>glyphicon glyphicon-bell</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification11" xml:space="preserve">
+    <value>glyphicon glyphicon-bell</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification2" xml:space="preserve">
+    <value>glyphicon glyphicon-bell notification-icon1</value>
+  </data>
+  <data name="MenuHeader_notifycssclass" xml:space="preserve">
+    <value>notifyheader1</value>
+  </data>
+  <data name="MenuHeader_notifycssclass1" xml:space="preserve">
+    <value>closebtn1</value>
+  </data>
+  <data name="MenuHeader_notifycssclass11" xml:space="preserve">
+    <value>closebtn1</value>
+  </data>
+  <data name="MenuHeader_notifycssclass2" xml:space="preserve">
+    <value>notifyheader1</value>
+  </data>
+  <data name="MenuHeader_notifyHeader" xml:space="preserve">
+    <value>إشعارات</value>
+  </data>
+  <data name="MenuHeader_notifyHeader1" xml:space="preserve">
+    <value>إشعارات</value>
+  </data>
+  <data name="MenuHeader_Style" xml:space="preserve">
+    <value>text-align:right;color:white;background-color: #f53d3d;height:40px;line-height:40px</value>
+  </data>
+  <data name="MenuHeader_style1" xml:space="preserve">
+    <value>padding-right:20px;</value>
+  </data>
+  <data name="MenuHeader_style11" xml:space="preserve">
+    <value>padding-right:20px;</value>
+  </data>
+  <data name="MenuHeader_Style2" xml:space="preserve">
+    <value>text-align:right;color:white;background-color: #f53d3d;height:40px;line-height:40px</value>
+  </data>
+  <data name="menuiconstyle" xml:space="preserve">
+    <value>padding-left: 16px;padding-right:10px;top: 3px;</value>
+  </data>
+  <data name="menuiconstyle1" xml:space="preserve">
+    <value>padding-left: 16px;padding-right:10px;top: 3px;</value>
+  </data>
+  <data name="Menu_style" xml:space="preserve">
+    <value>menunew menunew-style1</value>
+  </data>
+  <data name="Menu_style1" xml:space="preserve">
+    <value>background-color:brown;text-align:right;color:white;font-weight: normal;</value>
+  </data>
+  <data name="Menu_style11" xml:space="preserve">
+    <value>background-color:brown;text-align:right;color:white;font-weight: normal;</value>
+  </data>
+  <data name="Menu_style2" xml:space="preserve">
+    <value>menunew menunew-style1</value>
+  </data>
+  <data name="MobileCode" xml:space="preserve">
+    <value>رمز تحقق الهاتف الجوال</value>
+  </data>
+  <data name="MobileCode1" xml:space="preserve">
+    <value>رمز تحقق الهاتف الجوال</value>
+  </data>
+  <data name="MobileCodeMandatory" xml:space="preserve">
+    <value>ادخل رمز تحقق الهاتف الجوال</value>
+  </data>
+  <data name="MobileCodeMandatory1" xml:space="preserve">
+    <value>ادخل رمز تحقق الهاتف الجوال</value>
+  </data>
+  <data name="MobileCodeMandatory2" xml:space="preserve">
+    <value>ادخل رمز تحقق الهاتف الجوال</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>رقم الهاتف الجوال الكويتي</value>
+  </data>
+  <data name="mobileNumber1" xml:space="preserve">
+    <value>رقم الهاتف الجوال الكويتي</value>
+  </data>
+  <data name="MobileNumber2" xml:space="preserve">
+    <value>رقم الهاتف الجوال الكويتي</value>
+  </data>
+  <data name="MobileNumberDA" xml:space="preserve">
+    <value>رقم الهاتف الجوال الكويتي</value>
+  </data>
+  <data name="MobileNumberDA1" xml:space="preserve">
+    <value>رقم الهاتف الجوال الكويتي</value>
+  </data>
+  <data name="MobileNumberValid" xml:space="preserve">
+    <value>الرجاء كتابة رقم جوال صحيح من 8 ارقام</value>
+  </data>
+  <data name="mobileRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم الهاتف الجوال</value>
+  </data>
+  <data name="MobileVerified" xml:space="preserve">
+    <value>تم التحقق من صحة رقم الهاتف الجوال الجديد بنجاح</value>
+  </data>
+  <data name="MobileVerified1" xml:space="preserve">
+    <value>تم التحقق من صحة رقم الهاتف الجوال الجديد بنجاح</value>
+  </data>
+  <data name="msgSaved" xml:space="preserve">
+    <value>Reviewes saved successfully</value>
+  </data>
+  <data name="msgSelectADocument" xml:space="preserve">
+    <value>الرجاء اختيار مستند للتحميل</value>
+  </data>
+  <data name="Multipleinvalidpassword" xml:space="preserve">
+    <value>تم إجراء عدة محاولات تسجيل دخول غير صالحة. يرجى تغيير كلمة المرور</value>
+  </data>
+  <data name="Multipleinvalidpassword1" xml:space="preserve">
+    <value>تم إجراء عدة محاولات تسجيل دخول غير صالحة. يرجى تغيير كلمة المرور</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>حسابي</value>
+  </data>
+  <data name="MyAccount1" xml:space="preserve">
+    <value>حسابي</value>
+  </data>
+  <data name="MyAccount2" xml:space="preserve">
+    <value>حسابي</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Name1" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="nameFirstRequiredMSG" xml:space="preserve">
+    <value>الرجاء كتابة المقطع الأول من الاسم</value>
+  </data>
+  <data name="nameLastRequiredMSG" xml:space="preserve">
+    <value>الرجاء كتابة المقطع الأخير من الاسم</value>
+  </data>
+  <data name="nameRequiredMSG" xml:space="preserve">
+    <value>الرجاء كتابة الأسم من اربع مقاطع</value>
+  </data>
+  <data name="nationailityRequired" xml:space="preserve">
+    <value>الرجاء اختيار الجنسية</value>
+  </data>
+  <data name="nationality" xml:space="preserve">
+    <value>الجنسية</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="NewPassword1" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="NewPasswordSameasOld" xml:space="preserve">
+    <value>لا  يمكن استخدام كلمة المرور الحالية ككلمة مرور جديدة</value>
+  </data>
+  <data name="noLicenceNumberError" xml:space="preserve">
+    <value>الرجاء ، كتابة رقم الرخصة التجارية</value>
+  </data>
+  <data name="NoPaymentRequests" xml:space="preserve">
+    <value>لا يوجد طلبات للدفع</value>
+  </data>
+  <data name="NoPaymentRequests1" xml:space="preserve">
+    <value>لا يوجد طلبات للدفع</value>
+  </data>
+  <data name="noRecordsFound" xml:space="preserve">
+    <value>لا يوجد سجلات</value>
+  </data>
+  <data name="noRecordsFound1" xml:space="preserve">
+    <value>لا يوجد سجلات</value>
+  </data>
+  <data name="Norequestatthemoment" xml:space="preserve">
+    <value>لا يوجد طلبات تسجيل</value>
+  </data>
+  <data name="Norequestatthemoment1" xml:space="preserve">
+    <value>لا يوجد طلبات تسجيل</value>
+  </data>
+  <data name="NoRequests" xml:space="preserve">
+    <value>لا يوجد طلبات</value>
+  </data>
+  <data name="NoServicesAvailableToRequest" xml:space="preserve">
+    <value>لا يوجد لديك خدمات متاحة للإشتراك</value>
+  </data>
+  <data name="notAttend" xml:space="preserve">
+    <value>لم يتم الحضور و المشاركة في الاختبار، يمكنك ارسال طلب جديد</value>
+  </data>
+  <data name="notFoundpage" xml:space="preserve">
+    <value>المعذرة، الصفحة غير موجودة</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>إشعارات</value>
+  </data>
+  <data name="notifications1" xml:space="preserve">
+    <value>التنبيهات</value>
+  </data>
+  <data name="Notifications2" xml:space="preserve">
+    <value>إشعارات</value>
+  </data>
+  <data name="notifications_style" xml:space="preserve">
+    <value>Notification2 Notification21</value>
+  </data>
+  <data name="notifications_style1" xml:space="preserve">
+    <value>Notification2 Notification21</value>
+  </data>
+  <data name="notsuccessfull" xml:space="preserve">
+    <value>غير ناجح</value>
+  </data>
+  <data name="notsuccessfull1" xml:space="preserve">
+    <value>غير ناجح</value>
+  </data>
+  <data name="NumbersAndSpecialCharactersNotAllowed" xml:space="preserve">
+    <value>الرجاء إدخال إسم صالح  (الأرقام و الرموز غير مسموح بها)</value>
+  </data>
+  <data name="NumbersOnly" xml:space="preserve">
+    <value>الرجاء ادخال ارقام فقط</value>
+  </data>
+  <data name="officialAddress" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="Ok1" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="omani" xml:space="preserve">
+    <value>عَمان</value>
+  </data>
+  <data name="onefieldtogetpasswordrecovery" xml:space="preserve">
+    <value>الرجاء تعبئة أي من الحقول أدناه لأعادة كلمة المرور</value>
+  </data>
+  <data name="onefieldtogetpasswordrecovery1" xml:space="preserve">
+    <value>الرجاء تعبئة أي من الحقول أدناه لأعادة كلمة المرور</value>
+  </data>
+  <data name="onefieldtogetpasswordrecovery2" xml:space="preserve">
+    <value>الرجاء تعبئة أي من الحقول أدناه لأعادة كلمة المرور</value>
+  </data>
+  <data name="OnlinePaymentConfirmation" xml:space="preserve">
+    <value>تأكيد الدفع عبر الإنترنت</value>
+  </data>
+  <data name="OnlinePaymentConfirmation1" xml:space="preserve">
+    <value>تأكيد الدفع عبر الإنترنت</value>
+  </data>
+  <data name="OnlinePaymentConfirmation2" xml:space="preserve">
+    <value>تأكيد الدفع عبر الإنترنت</value>
+  </data>
+  <data name="OnlyPDFJPG" xml:space="preserve">
+    <value>صيغ المستندات المسموح برفعها PDF و JPG فقط. و يجب ان لا يتجاوز حجم المستند 1 ميغابايت</value>
+  </data>
+  <data name="OnlyPDFJPG1" xml:space="preserve">
+    <value>صيغ المستندات المسموح برفعها PDF و JPG فقط. و يجب ان لا يتجاوز حجم المستند 1 ميغابايت</value>
+  </data>
+  <data name="OnlyPDFJPG2" xml:space="preserve">
+    <value>صيغ المستندات المسموح برفعها PDF و JPG فقط. و يجب ان لا يتجاوز حجم المستند 1 ميغابايت</value>
+  </data>
+  <data name="OR" xml:space="preserve">
+    <value>أو</value>
+  </data>
+  <data name="OR1" xml:space="preserve">
+    <value>أو</value>
+  </data>
+  <data name="OR2" xml:space="preserve">
+    <value>أو</value>
+  </data>
+  <data name="OrgAdditonalUserCriteria" xml:space="preserve">
+    <value>الرجاء التأكد من اختيار خدمة واحدة على الاقل ، و اختيار شركة واحدة على الاقل</value>
+  </data>
+  <data name="OrganisationsRequestStatus" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="OrganisationsRequestStatus1" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="OrganisationsRequestStatus2" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>الشركة</value>
+  </data>
+  <data name="Organization1" xml:space="preserve">
+    <value>الشركة</value>
+  </data>
+  <data name="OrganizationEmailpending" xml:space="preserve">
+    <value>رمز التحقق الخاص بالإميل الإلكتروني للمؤسسه معلق</value>
+  </data>
+  <data name="OrganizationEmailpending1" xml:space="preserve">
+    <value>رمز التحقق الخاص بالإميل الإلكتروني للمؤسسه معلق</value>
+  </data>
+  <data name="OrganizationEmailpending2" xml:space="preserve">
+    <value>رمز التحقق الخاص بالإميل الإلكتروني للمؤسسه معلق</value>
+  </data>
+  <data name="OrganizationName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="OrganizationName1" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfully" xml:space="preserve">
+    <value>تم إرسال الطلب بنجاح</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfully1" xml:space="preserve">
+    <value>تم إرسال الطلب بنجاح</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfully2" xml:space="preserve">
+    <value>تم إرسال الطلب بنجاح</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfullyNew" xml:space="preserve">
+    <value>يرجى طباعة النموذج ومراجعة فريق المشروع بالادارة العامة للجمارك الشويخ منطقة (3) مرفق به كافة المستندات التي تم تحميلها اثناء عملية التسجيل</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfullyNew1" xml:space="preserve">
+    <value>يرجى طباعة النموذج ومراجعة فريق المشروع بالادارة العامة للجمارك الشويخ منطقة (3) مرفق به كافة المستندات التي تم تحميلها اثناء عملية التسجيل</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfullyNew2" xml:space="preserve">
+    <value>يرجى طباعة النموذج ومراجعة فريق المشروع بالادارة العامة للجمارك الشويخ منطقة (3) مرفق به كافة المستندات التي تم تحميلها اثناء عملية التسجيل</value>
+  </data>
+  <data name="OrganizationRegistrationRequests" xml:space="preserve">
+    <value>طلبات تسجيل شركات</value>
+  </data>
+  <data name="OrgAraNameRequired" xml:space="preserve">
+    <value>الرجاء كتابة اسم الشركة باللغة العربية</value>
+  </data>
+  <data name="OrgEngNameRequired" xml:space="preserve">
+    <value>الرجاء كتابة اسم الشركة باللغة الانجيليزية</value>
+  </data>
+  <data name="OrgNameAra" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية</value>
+  </data>
+  <data name="OrgNameEng" xml:space="preserve">
+    <value>اسم الشركة  باللغة الانجيليزية</value>
+  </data>
+  <data name="OrgReg_Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="OrgReg_Address1" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="OrgReg_AuthorizedPerson" xml:space="preserve">
+    <value>اسم المعتمد للتوقيع</value>
+  </data>
+  <data name="OrgReg_AuthorizedPerson1" xml:space="preserve">
+    <value>اسم المعتمد للتوقيع</value>
+  </data>
+  <data name="OrgReg_BusinessFaxNumber" xml:space="preserve">
+    <value>رقم فاكس المكتب</value>
+  </data>
+  <data name="OrgReg_BusinessFaxNumber1" xml:space="preserve">
+    <value>رقم فاكس المكتب</value>
+  </data>
+  <data name="OrgReg_BusinessNumber" xml:space="preserve">
+    <value>هاتف المكتب</value>
+  </data>
+  <data name="OrgReg_BusinessNumber1" xml:space="preserve">
+    <value>هاتف المكتب</value>
+  </data>
+  <data name="OrgReg_B_Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="OrgReg_B_Next1" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="OrgReg_City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="OrgReg_City1" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="OrgReg_CivilId" xml:space="preserve">
+    <value>الرقم المدني</value>
+  </data>
+  <data name="OrgReg_CivilId1" xml:space="preserve">
+    <value>الرقم المدني</value>
+  </data>
+  <data name="OrgReg_CompanyName" xml:space="preserve">
+    <value>اسم الشركة باللغة الإنجليزية</value>
+  </data>
+  <data name="OrgReg_CompanyName1" xml:space="preserve">
+    <value>اسم الشركة باللغة الإنجليزية</value>
+  </data>
+  <data name="OrgReg_CompanyNameinArabic" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية</value>
+  </data>
+  <data name="OrgReg_CompanyNameinArabic1" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية</value>
+  </data>
+  <data name="OrgReg_EmailID" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="OrgReg_EmailID1" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="OrgReg_Header" xml:space="preserve">
+    <value>تسجيل الشركات</value>
+  </data>
+  <data name="OrgReg_Header1" xml:space="preserve">
+    <value>عملية تسجيل الشركات خاضعة للوائح و الضوابط الشركة لذلك و حسب ما تحدده الإدارة العامة للجمارك.</value>
+  </data>
+  <data name="OrgReg_Header11" xml:space="preserve">
+    <value>عملية تسجيل الشركات خاضعة للوائح و الضوابط الشركة لذلك و حسب ما تحدده الإدارة العامة للجمارك.</value>
+  </data>
+  <data name="OrgReg_Header2" xml:space="preserve">
+    <value>تسجيل  الشركات</value>
+  </data>
+  <data name="OrgReg_Industrial" xml:space="preserve">
+    <value>تفاصيل الرخصة الصناعية</value>
+  </data>
+  <data name="OrgReg_Industrial1" xml:space="preserve">
+    <value>تفاصيل الرخصة الصناعية</value>
+  </data>
+  <data name="OrgReg_Industrial_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="OrgReg_Industrial_style11" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="OrgReg_Industrial_style2" xml:space="preserve">
+    <value>margin-right:100px;</value>
+  </data>
+  <data name="OrgReg_Industrial_style21" xml:space="preserve">
+    <value>margin-right:100px;</value>
+  </data>
+  <data name="OrgReg_Kuwait" xml:space="preserve">
+    <value>البلد</value>
+  </data>
+  <data name="OrgReg_Kuwait1" xml:space="preserve">
+    <value>البلد</value>
+  </data>
+  <data name="OrgReg_MobileNumber" xml:space="preserve">
+    <value>رقم الهاتف الجوال</value>
+  </data>
+  <data name="OrgReg_MobileNumber1" xml:space="preserve">
+    <value>رقم الهاتف الجوال</value>
+  </data>
+  <data name="OrgReg_OrganizationCode" xml:space="preserve">
+    <value>رمز الشركة</value>
+  </data>
+  <data name="OrgReg_POBoxNo" xml:space="preserve">
+    <value>رقم صندوق البريد</value>
+  </data>
+  <data name="OrgReg_POBoxNo1" xml:space="preserve">
+    <value>رقم صندوق البريد</value>
+  </data>
+  <data name="OrgReg_PostalCode" xml:space="preserve">
+    <value>الرمز البريدي</value>
+  </data>
+  <data name="OrgReg_PostalCode1" xml:space="preserve">
+    <value>الرمز البريدي</value>
+  </data>
+  <data name="OrgReg_ResidenceNumber" xml:space="preserve">
+    <value>رقم الجهة المدنى</value>
+  </data>
+  <data name="OrgReg_ResidenceNumber1" xml:space="preserve">
+    <value>رقم الجهة المدنى</value>
+  </data>
+  <data name="OrgReg_State" xml:space="preserve">
+    <value>المحافظة</value>
+  </data>
+  <data name="OrgReg_State1" xml:space="preserve">
+    <value>المحافظة</value>
+  </data>
+  <data name="OrgReg_Tradelicenceno" xml:space="preserve">
+    <value>رقم السجل التجاري</value>
+  </data>
+  <data name="OrgReg_Tradelicenceno1" xml:space="preserve">
+    <value>رقم السجل التجاري</value>
+  </data>
+  <data name="OrgReg_WebPageAddress" xml:space="preserve">
+    <value>عنوان صفحة الإنترنت</value>
+  </data>
+  <data name="OrgReg_WebPageAddress1" xml:space="preserve">
+    <value>عنوان صفحة الإنترنت</value>
+  </data>
+  <data name="OrgStatus_header" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="OrgStatus_header1" xml:space="preserve">
+    <value>حالة طلب تسجيل الشركة</value>
+  </data>
+  <data name="OrgStatus_OrganizationName" xml:space="preserve">
+    <value>اسم الشركة:</value>
+  </data>
+  <data name="OrgStatus_OrganizationName1" xml:space="preserve">
+    <value>اسم الشركة:</value>
+  </data>
+  <data name="OrgStatus_RequestNumber" xml:space="preserve">
+    <value>رقم الطلب:</value>
+  </data>
+  <data name="OrgStatus_RequestNumber1" xml:space="preserve">
+    <value>رقم الطلب:</value>
+  </data>
+  <data name="passportExpiryDate" xml:space="preserve">
+    <value>تاريخ انتهاء جواز السفر</value>
+  </data>
+  <data name="passportNo" xml:space="preserve">
+    <value>رقم جواز السفر</value>
+  </data>
+  <data name="passportNoRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم جواز السفر</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="Password1" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="PasswordCriteriadoesntmet" xml:space="preserve">
+    <value>يجب أن لا تقل كلمة المرور عن 8 خانات و يجب ان تحتوي على حروف كبيرة و صغيرة و ارقام  و رموز</value>
+  </data>
+  <data name="Passwordsarenotmatching" xml:space="preserve">
+    <value>كلمة المرور غير متطابقة</value>
+  </data>
+  <data name="Passwordsarenotmatching1" xml:space="preserve">
+    <value>كلمة المرور غير متطابقة</value>
+  </data>
+  <data name="paymentdeclined" xml:space="preserve">
+    <value>تم رفض الدفع</value>
+  </data>
+  <data name="paymentdeclined1" xml:space="preserve">
+    <value>تم رفض الدفع</value>
+  </data>
+  <data name="paymentInitiatedError" xml:space="preserve">
+    <value>لا يمكن الاستمرار لعملية الدفغ ، الرجاء المحاولة بعر 10 دقائق</value>
+  </data>
+  <data name="PendingEmailIdVerification" xml:space="preserve">
+    <value>التحقق من حساب البريد الإلكتروني لم يكتمل بعد، هل تريد الأستمرار عن طريق التحقق من الهاتف المحمول؟</value>
+  </data>
+  <data name="PendingEmailIdVerification1" xml:space="preserve">
+    <value>التحقق من حساب البريد الإلكتروني لم يكتمل بعد، هل تريد الأستمرار عن طريق التحقق من الهاتف المحمول؟</value>
+  </data>
+  <data name="PendingMobileVerification" xml:space="preserve">
+    <value>التحقق من صحة رقم الهاتف المحمول لم يكتمل بعد، هل تريد الأستمرار عن طريق التحقق من حساب البريد الإلكتروني؟</value>
+  </data>
+  <data name="PendingMobileVerification1" xml:space="preserve">
+    <value>التحقق من صحة رقم الهاتف المحمول لم يكتمل بعد، هل تريد الأستمرار عن طريق التحقق من حساب البريد الإلكتروني؟</value>
+  </data>
+  <data name="PermissionAuthority" xml:space="preserve">
+    <value>جهة المنع أو القيد</value>
+  </data>
+  <data name="PermissionAuthority1" xml:space="preserve">
+    <value>جهة المنع أو القيد</value>
+  </data>
+  <data name="placeOfExam" xml:space="preserve">
+    <value>موقع الاختبار</value>
+  </data>
+  <data name="PleaseEntertheCorrectCaptcha" xml:space="preserve">
+    <value>يرجى كتابة كلمة التحقق الصحيحة</value>
+  </data>
+  <data name="PleaseEntertheCorrectCaptcha1" xml:space="preserve">
+    <value>يرجى كتابة كلمة التحقق الصحيحة</value>
+  </data>
+  <data name="PleaseselectaLegalEntity" xml:space="preserve">
+    <value>الكيان القانوني الذي تمثله</value>
+  </data>
+  <data name="PleaseselectaLegalEntity1" xml:space="preserve">
+    <value>يرجى تحديد الكيان القانوني</value>
+  </data>
+  <data name="PleaseSelectatleastOneOrganization" xml:space="preserve">
+    <value>الرجاء اختيار شركة واحدة على الأقل</value>
+  </data>
+  <data name="PleaseSelectatleastOneOrganization1" xml:space="preserve">
+    <value>الرجاء اختيار شركة واحدة على الأقل</value>
+  </data>
+  <data name="PleaseSelectAtleastOneServices" xml:space="preserve">
+    <value>الرجاء اختيار خدمة واحدة على الأقل</value>
+  </data>
+  <data name="PleaseSelectAtleastOneServices1" xml:space="preserve">
+    <value>الرجاء اختيار خدمة واحدة على الأقل</value>
+  </data>
+  <data name="Pleasetryagainlater" xml:space="preserve">
+    <value>يرجى إعادة المحاولة في وقت لاحق</value>
+  </data>
+  <data name="Pleasetryagainlater1" xml:space="preserve">
+    <value>يرجى إعادة المحاولة في وقت لاحق</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>يرجى الانتظار</value>
+  </data>
+  <data name="PleaseWait1" xml:space="preserve">
+    <value>يرجى الانتظار</value>
+  </data>
+  <data name="PostBoxNumberRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم صندوق  البريد</value>
+  </data>
+  <data name="print" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="print1" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>الاستمرار</value>
+  </data>
+  <data name="Proceed1" xml:space="preserve">
+    <value>الاستمرار</value>
+  </data>
+  <data name="ProcessincompleteinRegistration" xml:space="preserve">
+    <value>الإجراء غير مكتمل في التسجيل</value>
+  </data>
+  <data name="ProcessincompleteinRegistration1" xml:space="preserve">
+    <value>الإجراء غير مكتمل في التسجيل</value>
+  </data>
+  <data name="ProfileInfo" xml:space="preserve">
+    <value>التعريف الشخصي و معلومات الإتصال</value>
+  </data>
+  <data name="ProfileInfo1" xml:space="preserve">
+    <value>التعريف الشخصي و معلومات الإتصال</value>
+  </data>
+  <data name="ProvideMobileOTP" xml:space="preserve">
+    <value>يجب كتابة الـ OTP الذي تم إرساله إلى رقم الهاتف الجوال الجديد لإكمال عملية التحقق</value>
+  </data>
+  <data name="ProvideMobileOTP1" xml:space="preserve">
+    <value>يجب كتابة الـ OTP الذي تم إرساله إلى رقم الهاتف الجوال الجديد لإكمال عملية التحقق</value>
+  </data>
+  <data name="ProvideRealInfo" xml:space="preserve">
+    <value>يرجى تزويد معلومات حقيقية و صحيحة بما فيها معلومات الإتصال</value>
+  </data>
+  <data name="ProvideRealInfo1" xml:space="preserve">
+    <value>يرجى تزويد معلومات حقيقية و صحيحة بما فيها معلومات الإتصال</value>
+  </data>
+  <data name="qatari" xml:space="preserve">
+    <value>قطر</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>الكمية</value>
+  </data>
+  <data name="Quantity1" xml:space="preserve">
+    <value>الكمية</value>
+  </data>
+  <data name="Quickreference" xml:space="preserve">
+    <value>دليل تسجيل حساب جديد</value>
+  </data>
+  <data name="Quickreference1" xml:space="preserve">
+    <value>دليل تسجيل حساب جديد</value>
+  </data>
+  <data name="Readtermsconditions" xml:space="preserve">
+    <value>إقرء الشروط و الأحكام</value>
+  </data>
+  <data name="Readtermsconditions1" xml:space="preserve">
+    <value>إقرء الشروط و الأحكام</value>
+  </data>
+  <data name="Readtermsconditions2" xml:space="preserve">
+    <value>إقرء الشروط و الأحكام</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+  <data name="Reason1" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+  <data name="RegenerateOTP" xml:space="preserve">
+    <value>إعادة إنشاء كلمة المرور المؤقتة</value>
+  </data>
+  <data name="RegenerateOTP1" xml:space="preserve">
+    <value>إعادة إنشاء كلمة المرور المؤقتة</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="Register1" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="registerationContactInfoWarning" xml:space="preserve">
+    <value>معلومات الاتصال، سوف تستخدم للتحقق من هوية المستخدم و للتواصل، يرجى كتابة معلومات صحيحة و دقيقة</value>
+  </data>
+  <data name="Registration_Title" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="Registration_Title1" xml:space="preserve">
+    <value>التعريف الشخصي و معلومات الإتصال</value>
+  </data>
+  <data name="Registration_Title11" xml:space="preserve">
+    <value>التعريف الشخصي و معلومات الإتصال</value>
+  </data>
+  <data name="Registration_Title2" xml:space="preserve">
+    <value>يجب كتابة معلومات حقيقية و صحيحة بما فيها معلومات الإتصال</value>
+  </data>
+  <data name="Registration_Title21" xml:space="preserve">
+    <value>يرجى تزويد معلومات حقيقية و صحيحة بما فيها معلومات الإتصال</value>
+  </data>
+  <data name="Registration_Title3" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="RejectionReason" xml:space="preserve">
+    <value>سبب الرفض</value>
+  </data>
+  <data name="RejectionReason1" xml:space="preserve">
+    <value>سبب الرفض</value>
+  </data>
+  <data name="remarks" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="RememberMe1" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="renewalRequests" xml:space="preserve">
+    <value>طلبات التجديد</value>
+  </data>
+  <data name="ReqNotDeleted" xml:space="preserve">
+    <value>لا يمكن حذف الطلب حيث أنه قيد المراجعة</value>
+  </data>
+  <data name="ReqNotDeleted1" xml:space="preserve">
+    <value>لا يمكن حذف الطلب حيث أنه قيد المراجعة</value>
+  </data>
+  <data name="requestNo" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="Requestnotavailable" xml:space="preserve">
+    <value>الطلب غير متاح للعرض / الدفع.</value>
+  </data>
+  <data name="Requestnotavailable1" xml:space="preserve">
+    <value>الطلب غير متاح للعرض / الدفع.</value>
+  </data>
+  <data name="requestNumber" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="requestReceivedUnderReview" xml:space="preserve">
+    <value>الطلب قيد المراجعة</value>
+  </data>
+  <data name="requestRenew" xml:space="preserve">
+    <value>طلب تجديد رخصة مخلص جمركي</value>
+  </data>
+  <data name="RequestsList" xml:space="preserve">
+    <value>طلباتي</value>
+  </data>
+  <data name="requestsList1" xml:space="preserve">
+    <value>طلباتي</value>
+    <comment>قائمة طلبات التسجيل</comment>
+  </data>
+  <data name="RequestsList2" xml:space="preserve">
+    <value>قائمة طلبات التسجيل</value>
+  </data>
+  <data name="requestStillCreated" xml:space="preserve">
+    <value>لم يتم ارسال الطلب</value>
+  </data>
+  <data name="requestSubmittedAlert" xml:space="preserve">
+    <value>تم ارسال طلبك بنجاح، </value>
+  </data>
+  <data name="RequesttoIssueNewIdentityCard" xml:space="preserve">
+    <value>طلب إصدار بطاقة هوية جديدة</value>
+  </data>
+  <data name="RequesttoIssueNewIdentityCard1" xml:space="preserve">
+    <value>طلب إصدار بطاقة هوية جديدة</value>
+  </data>
+  <data name="RequesttoTransferBroker" xml:space="preserve">
+    <value>طلب تحويل مخلص</value>
+  </data>
+  <data name="RequesttoTransferBroker1" xml:space="preserve">
+    <value>طلب تحويل مخلص</value>
+  </data>
+  <data name="requestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>حقل الإدخال هذا مطلوب</value>
+  </data>
+  <data name="requiredPasswordMsg" xml:space="preserve">
+    <value>الرجاء كتابة كلمة المرور</value>
+  </data>
+  <data name="requiredUserNameMsg" xml:space="preserve">
+    <value>الرجاء كتابة اسم المستخدم</value>
+  </data>
+  <data name="ResendMail" xml:space="preserve">
+    <value>إعادة إرسال رمز تحقق جديد الى بريدي الإلكتروني</value>
+  </data>
+  <data name="ResendMail1" xml:space="preserve">
+    <value>إعادة إرسال رمز التحقق من البريد الإلكتروني</value>
+  </data>
+  <data name="ResendMobile" xml:space="preserve">
+    <value>إعادة إرسال رمز التحقق الى الهاتف الجوال</value>
+  </data>
+  <data name="ResendMobile1" xml:space="preserve">
+    <value>إعادة إرسال رمز التحقق الى الهاتف الجوال</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="ResetPassword1" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="ResetPasswordSuccess" xml:space="preserve">
+    <value>تمت اعادة ضبط كلمة المرور بنجاح</value>
+  </data>
+  <data name="Restrictionlevel" xml:space="preserve">
+    <value>مستوى القيد</value>
+  </data>
+  <data name="Restrictionlevel1" xml:space="preserve">
+    <value>مستوى القيد</value>
+  </data>
+  <data name="RestrictionsProhibitions" xml:space="preserve">
+    <value>قائمة المقيد والممنوع</value>
+  </data>
+  <data name="RestrictionsProhibitions1" xml:space="preserve">
+    <value>قائمة المقيد والممنوع</value>
+  </data>
+  <data name="RestrictionsProhibitions2" xml:space="preserve">
+    <value>قائمة المقيد والممنوع</value>
+  </data>
+  <data name="RestrictsType_C" xml:space="preserve">
+    <value>الفصل</value>
+  </data>
+  <data name="RestrictsType_C1" xml:space="preserve">
+    <value>الفصل</value>
+  </data>
+  <data name="RestrictsType_E" xml:space="preserve">
+    <value>تصدير</value>
+  </data>
+  <data name="RestrictsType_E1" xml:space="preserve">
+    <value>تصدير</value>
+  </data>
+  <data name="RestrictsType_H" xml:space="preserve">
+    <value>البند الرئيسي</value>
+  </data>
+  <data name="RestrictsType_H1" xml:space="preserve">
+    <value>البند الرئيسي</value>
+  </data>
+  <data name="RestrictsType_I" xml:space="preserve">
+    <value>إستيراد</value>
+  </data>
+  <data name="RestrictsType_I1" xml:space="preserve">
+    <value>إستيراد</value>
+  </data>
+  <data name="RestrictsType_P" xml:space="preserve">
+    <value>ممنوع</value>
+  </data>
+  <data name="RestrictsType_P1" xml:space="preserve">
+    <value>ممنوع</value>
+  </data>
+  <data name="RestrictsType_R" xml:space="preserve">
+    <value>مقيد</value>
+  </data>
+  <data name="RestrictsType_R1" xml:space="preserve">
+    <value>مقيد</value>
+  </data>
+  <data name="RestrictsType_T" xml:space="preserve">
+    <value>بند التعريفة</value>
+  </data>
+  <data name="RestrictsType_T1" xml:space="preserve">
+    <value>بند التعريفة</value>
+  </data>
+  <data name="Resultnotfound" xml:space="preserve">
+    <value>لا يوجد نتائج</value>
+  </data>
+  <data name="Resultnotfound1" xml:space="preserve">
+    <value>لا يوجد نتائج</value>
+  </data>
+  <data name="returnToTop" xml:space="preserve">
+    <value>اضغط للرجوع لبداية الصفحة</value>
+  </data>
+  <data name="reviewInformationCaption" xml:space="preserve">
+    <value>الرجاء مراجعة المعلومات في النموذج ادناه، ثم الضغط على زر ارسال</value>
+  </data>
+  <data name="RewritePassword" xml:space="preserve">
+    <value>إعادة كتابة كلمة المرور</value>
+  </data>
+  <data name="RewritePassword1" xml:space="preserve">
+    <value>إعادة كتابة كلمة المرور</value>
+  </data>
+  <data name="saudi" xml:space="preserve">
+    <value>السعودية</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Save1" xml:space="preserve">
+    <value>Save your Review</value>
+  </data>
+  <data name="Save2" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="SaveVerify" xml:space="preserve">
+    <value>حفظ و تحقق</value>
+  </data>
+  <data name="SaveVerify1" xml:space="preserve">
+    <value>حفظ و تحقق</value>
+  </data>
+  <data name="scrollbk" xml:space="preserve">
+    <value>scrollleft.png</value>
+  </data>
+  <data name="scrollfd" xml:space="preserve">
+    <value>scrollright.png</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="search1" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Search2" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>البحث بواسطة</value>
+  </data>
+  <data name="SearchBy1" xml:space="preserve">
+    <value>البحث بواسطة</value>
+  </data>
+  <data name="searchCriteria" xml:space="preserve">
+    <value>معايير البحث</value>
+  </data>
+  <data name="searchResult" xml:space="preserve">
+    <value>نتيجة البحث</value>
+  </data>
+  <data name="SearchType" xml:space="preserve">
+    <value>نوع البحث</value>
+  </data>
+  <data name="SearchType1" xml:space="preserve">
+    <value>نوع البحث</value>
+  </data>
+  <data name="secondNamePart" xml:space="preserve">
+    <value>الإسم الثاني</value>
+  </data>
+  <data name="selectDocument" xml:space="preserve">
+    <value>اختيار</value>
+  </data>
+  <data name="SelectDocumentType" xml:space="preserve">
+    <value>اختر نوع المستند</value>
+  </data>
+  <data name="SelectDocumentType1" xml:space="preserve">
+    <value>اختر نوع المستند</value>
+  </data>
+  <data name="SelectDocumentType2" xml:space="preserve">
+    <value>اختر نوع المستند</value>
+  </data>
+  <data name="selectOneServiceMsg" xml:space="preserve">
+    <value>الرجاء اختيار خدمة واحدة على الأقل، و شركة واحدة على الأقل</value>
+  </data>
+  <data name="SelectOption" xml:space="preserve">
+    <value>حدد الخيار</value>
+  </data>
+  <data name="SelectOption1" xml:space="preserve">
+    <value>حدد الخيار</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="Send1" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="sentDate" xml:space="preserve">
+    <value>تاريخ الارسال</value>
+  </data>
+  <data name="Servernotresponding" xml:space="preserve">
+    <value>الخادم لا يستجيب. الرجاء المحاولة لاحقا</value>
+  </data>
+  <data name="Servernotresponding1" xml:space="preserve">
+    <value>الخادم لا يستجيب. الرجاء المحاولة لاحقا</value>
+  </data>
+  <data name="ServiceName" xml:space="preserve">
+    <value>اسم الخدمة </value>
+  </data>
+  <data name="ServiceName1" xml:space="preserve">
+    <value>اسم الخدمة</value>
+  </data>
+  <data name="ServiceNameAra" xml:space="preserve">
+    <value>اسم  الخدمة باللغة العربية</value>
+  </data>
+  <data name="ServiceNameEng" xml:space="preserve">
+    <value>اسم الخدمة باللغة الانجليزية</value>
+  </data>
+  <data name="ServicesNotAvailableToSubscribe" xml:space="preserve">
+    <value>لقد قمت برفع طلب الخدمة لجميع الخدمات</value>
+  </data>
+  <data name="ServiceSubscriptionRequests" xml:space="preserve">
+    <value>طلبات الاشتراك بالخدمات الجمركية</value>
+  </data>
+  <data name="Sessionexpired" xml:space="preserve">
+    <value>لقد انتهى وقت الاتصال بالنظام، يمكنك اعادة الدخول</value>
+  </data>
+  <data name="Sessionexpired1" xml:space="preserve">
+    <value>لقد انتهى وقت الاتصال بالنظام، يمكنك اعادة الدخول</value>
+  </data>
+  <data name="ShortDescription" xml:space="preserve">
+    <value>وصف قصير</value>
+  </data>
+  <data name="ShortDescription1" xml:space="preserve">
+    <value>وصف قصير</value>
+  </data>
+  <data name="showAll" xml:space="preserve">
+    <value>اظهار الكل</value>
+  </data>
+  <data name="showInformation" xml:space="preserve">
+    <value>اظهار المعلومات</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="SignUp1" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="SignUpFailedMessage" xml:space="preserve">
+    <value>سوف ترسل رسالة إلى عنوان البريد الإلكتروني الخاص بك و رقم هاتفك النقال، يرجى مراجعة بريدك الإلكتروني الخاص بك و أرقام الهواتف النقالة لإستكمال عملية التسجيل</value>
+  </data>
+  <data name="SignUpFailedMessage1" xml:space="preserve">
+    <value>سوف ترسل رسالة إلى عنوان البريد الإلكتروني الخاص بك ، يرجى مراجعة بريدك الإلكتروني الخاص بك  لإستكمال عملية التسجيل</value>
+  </data>
+  <data name="SignUPTermeConditions" xml:space="preserve">
+    <value>يجب الموافقة على الشروط و الاحكام</value>
+  </data>
+  <data name="SignUPTermeConditions1" xml:space="preserve">
+    <value>يجب الموافقة على الشروط و الاحكام</value>
+  </data>
+  <data name="Someerrorhasoccured" xml:space="preserve">
+    <value>حدوث بعض الأخطاء</value>
+  </data>
+  <data name="Someissuehasoccured" xml:space="preserve">
+    <value>حدوث بعض المشاكل</value>
+  </data>
+  <data name="somethingwentwrong" xml:space="preserve">
+    <value>هناك شئ خاطئ، يرجى المحاولة فى وقت لاحق.</value>
+  </data>
+  <data name="somethingwentwrong1" xml:space="preserve">
+    <value>هناك شئ خاطئ، يرجى المحاولة فى وقت لاحق.</value>
+  </data>
+  <data name="specialBroker" xml:space="preserve">
+    <value>مخلص خاص</value>
+  </data>
+  <data name="specialMessanger" xml:space="preserve">
+    <value>مندوب خاص</value>
+  </data>
+  <data name="stampNumber" xml:space="preserve">
+    <value>stampNumber</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>البدء</value>
+  </data>
+  <data name="Started1" xml:space="preserve">
+    <value>البدء</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="status1" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Status2" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="subBroker" xml:space="preserve">
+    <value>مخلص تابع</value>
+  </data>
+  <data name="subcompany" xml:space="preserve">
+    <value>الشركة الإضافية</value>
+  </data>
+  <data name="SubCompanymsg" xml:space="preserve">
+    <value>سيتم اضافة هذه الشركة باعتبارها شركة إضافية</value>
+  </data>
+  <data name="SubEpayment_B_back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="SubEpayment_B_back1" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="SubEpayment_B_decline" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+  <data name="SubEpayment_B_decline1" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+  <data name="SubEpayment_B_pay" xml:space="preserve">
+    <value>ادفع</value>
+  </data>
+  <data name="SubEpayment_B_pay1" xml:space="preserve">
+    <value>ادفع</value>
+  </data>
+  <data name="SubEpayment_Certificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="SubEpayment_Certificates1" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="SubEpayment_Customsaccount" xml:space="preserve">
+    <value>حساب الجمارك</value>
+  </data>
+  <data name="SubEpayment_Customsaccount1" xml:space="preserve">
+    <value>حساب الجمارك</value>
+  </data>
+  <data name="SubEpayment_CustomsDuty" xml:space="preserve">
+    <value>الضريبة الجمركية</value>
+  </data>
+  <data name="SubEpayment_CustomsDuty1" xml:space="preserve">
+    <value>الضريبة الجمركية</value>
+  </data>
+  <data name="SubEpayment_DutyAmount" xml:space="preserve">
+    <value>مبلغ الرسوم</value>
+  </data>
+  <data name="SubEpayment_DutyAmount1" xml:space="preserve">
+    <value>مبلغ الرسوم</value>
+  </data>
+  <data name="SubEpayment_Guarantees" xml:space="preserve">
+    <value>تأمينات</value>
+  </data>
+  <data name="SubEpayment_Guarantees1" xml:space="preserve">
+    <value>تأمينات</value>
+  </data>
+  <data name="SubEpayment_HandlingCharges" xml:space="preserve">
+    <value>رسوم تفريغ</value>
+  </data>
+  <data name="SubEpayment_HandlingCharges1" xml:space="preserve">
+    <value>رسوم تفريغ</value>
+  </data>
+  <data name="SubEpayment_Header" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="SubEpayment_Header1" xml:space="preserve">
+    <value>طلبات الدفع الإلكتروني</value>
+  </data>
+  <data name="SubEpayment_Header11" xml:space="preserve">
+    <value>طلبات الدفع الإلكتروني</value>
+  </data>
+  <data name="SubEpayment_Header2" xml:space="preserve">
+    <value>الدفع الالكتروني</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptDt" xml:space="preserve">
+    <value>تاريخ إيصال الدفع الإلكتروني</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptDt1" xml:space="preserve">
+    <value>تاريخ إيصال الدفع الإلكتروني</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptNo" xml:space="preserve">
+    <value>رقم إيصال الدفع الإلكتروني</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptNo1" xml:space="preserve">
+    <value>رقم إيصال الدفع الإلكتروني</value>
+  </data>
+  <data name="SubEpayment_Others" xml:space="preserve">
+    <value>إيصالات أُخرى</value>
+  </data>
+  <data name="SubEpayment_Others1" xml:space="preserve">
+    <value>إيصالات أُخرى</value>
+  </data>
+  <data name="SubEpayment_payby" xml:space="preserve">
+    <value>تم الدفع عن طريق</value>
+  </data>
+  <data name="SubEpayment_payby1" xml:space="preserve">
+    <value>تم الدفع عن طريق</value>
+  </data>
+  <data name="SubEpayment_PayFor" xml:space="preserve">
+    <value>دفع ل</value>
+  </data>
+  <data name="SubEpayment_PayFor1" xml:space="preserve">
+    <value>دفع ل</value>
+  </data>
+  <data name="SubEpayment_PaymentID" xml:space="preserve">
+    <value>مرجع الدفع</value>
+  </data>
+  <data name="SubEpayment_PaymentID1" xml:space="preserve">
+    <value>مرجع الدفع</value>
+  </data>
+  <data name="SubEpayment_paymethod" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+  <data name="SubEpayment_paymethod1" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+  <data name="SubEpayment_Paytype" xml:space="preserve">
+    <value>نوع الدفع</value>
+  </data>
+  <data name="SubEpayment_Paytype1" xml:space="preserve">
+    <value>نوع الدفع</value>
+  </data>
+  <data name="SubEpayment_Penalties" xml:space="preserve">
+    <value>الغرامات</value>
+  </data>
+  <data name="SubEpayment_Penalties1" xml:space="preserve">
+    <value>الغرامات</value>
+  </data>
+  <data name="SubEpayment_Printing" xml:space="preserve">
+    <value>المطبوعات</value>
+  </data>
+  <data name="SubEpayment_Printing1" xml:space="preserve">
+    <value>المطبوعات</value>
+  </data>
+  <data name="SubEpayment_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="SubEpayment_Status1" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="SubEpayment_Storage" xml:space="preserve">
+    <value>رسوم الأرضيات</value>
+  </data>
+  <data name="SubEpayment_Storage1" xml:space="preserve">
+    <value>رسوم الأرضيات</value>
+  </data>
+  <data name="SubEpayment_style" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="SubEpayment_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="SubEpayment_totalamount" xml:space="preserve">
+    <value>المبلغ الإجمالي</value>
+  </data>
+  <data name="SubEpayment_totalamount1" xml:space="preserve">
+    <value>المبلغ الإجمالي</value>
+  </data>
+  <data name="subMessanger" xml:space="preserve">
+    <value>مندوب</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="Submit1" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="SubmitRequest" xml:space="preserve">
+    <value>ارسال الطلب</value>
+  </data>
+  <data name="SubmittedDate" xml:space="preserve">
+    <value>تاريخ الارسال</value>
+  </data>
+  <data name="subScriptionNew" xml:space="preserve">
+    <value>الاشتراك بالخدمات</value>
+  </data>
+  <data name="SubscriptionRequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>نجاح</value>
+  </data>
+  <data name="success1" xml:space="preserve">
+    <value>نجاح</value>
+  </data>
+  <data name="SuccessfullySubscribed" xml:space="preserve">
+    <value>تم الاشتراك بالخدمة بنجاح</value>
+  </data>
+  <data name="tempDeclarationRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم البيان المؤقت</value>
+  </data>
+  <data name="TempDeclNo" xml:space="preserve">
+    <value>الرقم المؤقت للبيان</value>
+  </data>
+  <data name="TempDeclNo1" xml:space="preserve">
+    <value>الرقم المؤقت للبيان</value>
+  </data>
+  <data name="TempDeclNumber" xml:space="preserve">
+    <value>رقم البيان المؤقت</value>
+  </data>
+  <data name="TempDeclNumber1" xml:space="preserve">
+    <value>رقم البيان المؤقت</value>
+  </data>
+  <data name="TemporaryDeclarationNumber" xml:space="preserve">
+    <value>رقم البيان/الرقم البيان المؤقت</value>
+  </data>
+  <data name="TemporaryDeclarationNumber1" xml:space="preserve">
+    <value>رقم البيان/الرقم البيان المؤقت</value>
+  </data>
+  <data name="termsOfUse" xml:space="preserve">
+    <value>اتفاقية الاستخدام</value>
+  </data>
+  <data name="Terms_of_Use1" xml:space="preserve">
+    <value>ان دخولك للنظام يعني اطلاعك وموافقتك على</value>
+  </data>
+  <data name="Terms_of_Use11" xml:space="preserve">
+    <value>ان دخولك للنظام يعني اطلاعك وموافقتك على</value>
+  </data>
+  <data name="Terms_of_Use2" xml:space="preserve">
+    <value>اتفاقية الاستخدام</value>
+  </data>
+  <data name="Terms_of_Use21" xml:space="preserve">
+    <value>اتفاقية الاستخدام</value>
+  </data>
+  <data name="Terms_of_Use3" xml:space="preserve">
+    <value>اتفاقية الاستخدام</value>
+  </data>
+  <data name="Terms_of_Use31" xml:space="preserve">
+    <value>اتفاقية الاستخدام</value>
+  </data>
+  <data name="Terms_of_Use4" xml:space="preserve">
+    <value>هذة الخدمات هى نسخ تجريبية لحين إصدار التعليمات الشركة للإستخدام والشروط الشركة لكل خدمة  و الإجراءات الرسمية للإستفادة من الخدمة بموجب إتفاقية الخدمات الإلكترونية</value>
+  </data>
+  <data name="Terms_of_Use41" xml:space="preserve">
+    <value>هذة الخدمات هى نسخ تجريبية لحين إصدار التعليمات الشركة للإستخدام والشروط الشركة لكل خدمة  و الإجراءات الرسمية للإستفادة من الخدمة بموجب إتفاقية الخدمات الإلكترونية</value>
+  </data>
+  <data name="textalign" xml:space="preserve">
+    <value>text-align: right;</value>
+  </data>
+  <data name="textalign1" xml:space="preserve">
+    <value>text-align: right;</value>
+  </data>
+  <data name="thirdNamePart" xml:space="preserve">
+    <value>الإسم الثالث</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="To1" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="topPage" xml:space="preserve">
+    <value> اضغط هنا للرجوع الى أول الصفحة</value>
+  </data>
+  <data name="ToWhomItMayConcernsRequest" xml:space="preserve">
+    <value>طلب خطاب الى من يهمه الامر</value>
+  </data>
+  <data name="tradeLicenseExpiryDat" xml:space="preserve">
+    <value>تاريخ انتهاء الرخصة</value>
+  </data>
+  <data name="TradeLicenseRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم الرخصة</value>
+  </data>
+  <data name="TradingLicense" xml:space="preserve">
+    <value>رقم السجل التجاري للشركة</value>
+  </data>
+  <data name="TradingLicenseRequired" xml:space="preserve">
+    <value>الرجاء كتابة رقم السجل التجاري للشركة</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>تحويل</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="Type1" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="unAuthorizedAction" xml:space="preserve">
+    <value>انت غير مخول باستخدام هذه الصلاحيات</value>
+  </data>
+  <data name="UnknownStatusinRegistration" xml:space="preserve">
+    <value>الحالة غير معروفة في التسجيل</value>
+  </data>
+  <data name="UOM" xml:space="preserve">
+    <value>وحدة القياس</value>
+  </data>
+  <data name="UOM1" xml:space="preserve">
+    <value>وحدة القياس</value>
+  </data>
+  <data name="updatedSuccess" xml:space="preserve">
+    <value>تم التحديث بنجاح</value>
+  </data>
+  <data name="updatedSuccess1" xml:space="preserve">
+    <value>تم التحديث بنجاح</value>
+  </data>
+  <data name="uploadAllRequiredDocMSG" xml:space="preserve">
+    <value>( يرجى تحميل جميع المستندات المطلوبة، كلُّ على حدا )</value>
+  </data>
+  <data name="uploadDate" xml:space="preserve">
+    <value>تاريخ التحميل</value>
+  </data>
+  <data name="uploadDoc" xml:space="preserve">
+    <value>الرجاء إرفاق انواع المستندات أدناه</value>
+  </data>
+  <data name="uploadDoc1" xml:space="preserve">
+    <value>الرجاء إرفاق انواع المستندات أدناه</value>
+  </data>
+  <data name="uploadDocuments" xml:space="preserve">
+    <value>تحميل المستندات</value>
+  </data>
+  <data name="UploadDocument_align_style" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="UploadDocument_align_style1" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="UploadDocument_B_browse" xml:space="preserve">
+    <value>تصفح</value>
+  </data>
+  <data name="UploadDocument_B_browse1" xml:space="preserve">
+    <value>تصفح</value>
+  </data>
+  <data name="UploadDocument_B_cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="UploadDocument_B_cancel1" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="UploadDocument_B_submit" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="UploadDocument_B_submit1" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="UploadDocument_CompanyNameinArabic" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="UploadDocument_CompanyNameinArabic1" xml:space="preserve">
+    <value>اسم الشركة باللغة العربية : </value>
+  </data>
+  <data name="UploadDocument_documentformatnote" xml:space="preserve">
+    <value>صيغ المستندات المسموح برفعها PDF و JPG فقط. و يجب ان لا يتجاوز حجم المستند 1 ميغابايت</value>
+  </data>
+  <data name="UploadDocument_documentformatnote1" xml:space="preserve">
+    <value>صيغ المستندات المسموح برفعها PDF و JPG فقط. و يجب ان لا يتجاوز حجم المستند 1 ميغابايت</value>
+  </data>
+  <data name="UploadDocument_documentname" xml:space="preserve">
+    <value>اسم المستند</value>
+  </data>
+  <data name="UploadDocument_documentname1" xml:space="preserve">
+    <value>اسم المستند</value>
+  </data>
+  <data name="UploadDocument_documenttype" xml:space="preserve">
+    <value>اختر نوع المستند</value>
+  </data>
+  <data name="UploadDocument_documenttype1" xml:space="preserve">
+    <value>اختر نوع المستند</value>
+  </data>
+  <data name="UploadDocument_Header" xml:space="preserve">
+    <value>تحميل المستند</value>
+  </data>
+  <data name="UploadDocument_Header1" xml:space="preserve">
+    <value>يرجى تزويد المعلومات المطلوبة وتحميل وثائق الشركة الخاصة بك.</value>
+  </data>
+  <data name="UploadDocument_Header11" xml:space="preserve">
+    <value>يرجى تزويد المعلومات المطلوبة وتحميل وثائق الشركة الخاصة بك.</value>
+  </data>
+  <data name="UploadDocument_Header2" xml:space="preserve">
+    <value>تحميل المستند</value>
+  </data>
+  <data name="UploadDocument_POP_cancelbtn" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="UploadDocument_POP_cancelbtn1" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="UploadDocument_POP_OKbtn" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="UploadDocument_POP_OKbtn1" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="UploadDocument_POP_RDlist_style" xml:space="preserve">
+    <value>text-align:right;overflow-y: auto !important;</value>
+  </data>
+  <data name="UploadDocument_POP_RDlist_style1" xml:space="preserve">
+    <value>text-align:right;overflow-y: auto !important;</value>
+  </data>
+  <data name="UploadDocument_RequestNumber" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="UploadDocument_RequestNumber1" xml:space="preserve">
+    <value>رقم الطلب : </value>
+  </data>
+  <data name="uploadedFileListMSG" xml:space="preserve">
+    <value>( ستظهر المستندات التي تم تحميلها، في الجدول ادناه )</value>
+  </data>
+  <data name="uploadFileError" xml:space="preserve">
+    <value>الرجاء اختيار المستند للتحميل</value>
+  </data>
+  <data name="uploadFileMSG" xml:space="preserve">
+    <value>( لسهولة التعرف على المستند، يمكن إعادة تسميته )</value>
+  </data>
+  <data name="UploadMessage" xml:space="preserve">
+    <value>يرجى تزويد المعلومات المطلوبة وتحميل وثائق الشركة الخاصة بك.</value>
+  </data>
+  <data name="UploadMessage1" xml:space="preserve">
+    <value>يرجى تزويد المعلومات المطلوبة وتحميل وثائق الشركة الخاصة بك.</value>
+  </data>
+  <data name="uploadminimumonedocument" xml:space="preserve">
+    <value>الرجاء إرفاق مستند واحد على الأقل</value>
+  </data>
+  <data name="uploadminimumonedocument1" xml:space="preserve">
+    <value>الرجاء إرفاق مستند واحد على الأقل</value>
+  </data>
+  <data name="uploadminimumonedocument2" xml:space="preserve">
+    <value>الرجاء إرفاق مستند واحد على الأقل</value>
+  </data>
+  <data name="usageAgreement" xml:space="preserve">
+    <value>تطبق الشروط والأحكام حسب القوانين والتعليمات واللوائح الجمركية</value>
+  </data>
+  <data name="UserBasicDetails" xml:space="preserve">
+    <value>معلومات المستخدم</value>
+  </data>
+  <data name="Userdoesnotexist" xml:space="preserve">
+    <value>الرجاء إدخال اسم مستخدم أو كلمة مرور صالحة</value>
+  </data>
+  <data name="InValidUsername" xml:space="preserve">
+    <value>الرجاءادخال اسم مستخدم صحيح</value>
+  </data>
+  <data name="Userdoesnotexist1" xml:space="preserve">
+    <value>المستخدم غير موجود</value>
+  </data>
+  <data name="Userhasbeendeactivated" xml:space="preserve">
+    <value>تم  حذف المستخدم بنجاح</value>
+  </data>
+  <data name="Userhasbeendeactivated1" xml:space="preserve">
+    <value>تم إلغاء تفعيل المستخدم</value>
+  </data>
+  <data name="userID" xml:space="preserve">
+    <value>رقم المستخدم</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="userName1" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="UserName2" xml:space="preserve">
+    <value>هوية المستخدم</value>
+  </data>
+  <data name="UserOrganizationDetails" xml:space="preserve">
+    <value>معلومات الشركة</value>
+  </data>
+  <data name="UserRegistration" xml:space="preserve">
+    <value>تسجيل المستخدم</value>
+  </data>
+  <data name="UserRegistration1" xml:space="preserve">
+    <value>تسجيل المستخدم</value>
+  </data>
+  <data name="UserServiceDetails" xml:space="preserve">
+    <value>معلومات الخدمات</value>
+  </data>
+  <data name="userSessionIsActive" xml:space="preserve">
+    <value>لقد قمت بالدخول مسبقاَ،  للالغاء الدخول المسبق و الدخول الان، الرجاء اغلاق هذه الرسالة ، ثم اعادة المحاولة</value>
+  </data>
+  <data name="usersList" xml:space="preserve">
+    <value>لائحة المستخدمين</value>
+  </data>
+  <data name="usersManagement" xml:space="preserve">
+    <value>ادارة المستخدمين</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>نوع المستخدم</value>
+  </data>
+  <data name="UserType1" xml:space="preserve">
+    <value>نوع المستخدم</value>
+  </data>
+  <data name="validateYear" xml:space="preserve">
+    <value>يجب ان تكون سنة اصدار الترخيص التجاري مطابقة لسنة اصدار شهادة الاستيراد</value>
+    <comment>Importer License year should be same as issue year</comment>
+  </data>
+  <data name="validateYear1" xml:space="preserve">
+    <value>قم بكتابة السنة على الصيغة التالية (YYYY)</value>
+  </data>
+  <data name="validemail" xml:space="preserve">
+    <value>الرجاء كتابة بريد إلكتروني صحيح</value>
+  </data>
+  <data name="validemail1" xml:space="preserve">
+    <value>الرجاء كتابة بريد إلكتروني صحيح</value>
+  </data>
+  <data name="validpassword" xml:space="preserve">
+    <value>يجب أن لا تقل كلمة المرور عن 8 خانات و يجب ان تحتوي على حروف كبيرة و صغيرة و ارقام  و رموز</value>
+  </data>
+  <data name="validpassword1" xml:space="preserve">
+    <value>يجب أن لا تقل كلمة المرور عن 8 خانات و يجب ان تحتوي على حروف كبيرة و صغيرة و ارقام</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>التحقق</value>
+  </data>
+  <data name="Verification1" xml:space="preserve">
+    <value>التحقق</value>
+  </data>
+  <data name="verificationCode" xml:space="preserve">
+    <value>الرجاء كتابة رمز التحقق</value>
+  </data>
+  <data name="verificationCode1" xml:space="preserve">
+    <value>الرجاء كتابة رمز التحقق</value>
+  </data>
+  <data name="VerificationFail" xml:space="preserve">
+    <value>رمز التحقق غير متطابق</value>
+  </data>
+  <data name="VerificationFail1" xml:space="preserve">
+    <value>رمز التحقق غير متطابق</value>
+  </data>
+  <data name="VerificationMessage" xml:space="preserve">
+    <value>يرجى كتابة عنوان البريد الإلكتروني أو رقم الهاتف الجوال، سوف نرسل لك رموز التحقق لإعادة تعيين كلمة المرور الخاصة بك</value>
+  </data>
+  <data name="VerificationMessage1" xml:space="preserve">
+    <value>يرجى كتابة عنوان البريد الإلكتروني أو رقم الهاتف الجوال، سوف نرسل لك رموز التحقق لإعادة تعيين كلمة المرور الخاصة بك</value>
+  </data>
+  <data name="VerificationsenttoyourEmail" xml:space="preserve">
+    <value>تم ارسال رمز التحقق الى بريدك اللإلكتروني</value>
+  </data>
+  <data name="VerificationsenttoyourEmail1" xml:space="preserve">
+    <value>تم ارسال رمز التحقق الى بريدك اللالكتروني</value>
+  </data>
+  <data name="Verificationsenttoyourmobile" xml:space="preserve">
+    <value>تم ارسال رمز التحقق الى بريدك رقم الهاتف الجوال</value>
+  </data>
+  <data name="Verificationsenttoyourmobile1" xml:space="preserve">
+    <value>تم ارسال رمز التحقق الى بريدك رقم الهاتف الجوال</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>تحقق</value>
+  </data>
+  <data name="Verify1" xml:space="preserve">
+    <value>تحقق</value>
+  </data>
+  <data name="verifyEmailID" xml:space="preserve">
+    <value>الرجاء التحقق من بريدك الإلكتروني</value>
+  </data>
+  <data name="verifyEmailID1" xml:space="preserve">
+    <value>الرجاء التحقق من بريدك الإلكتروني</value>
+  </data>
+  <data name="VisitRemarks" xml:space="preserve">
+    <value>طلب الحصول على ملاحظات الزيارة</value>
+  </data>
+  <data name="VisitRemarks1" xml:space="preserve">
+    <value>طلب الحصول على ملاحظات الزيارة</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>الوزن</value>
+  </data>
+  <data name="Weight1" xml:space="preserve">
+    <value>الوزن</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>اهلاً بك</value>
+  </data>
+  <data name="wrongcredentials" xml:space="preserve">
+    <value>يرجى التحقق من معلومات الدخول</value>
+  </data>
+  <data name="wrongcredentials1" xml:space="preserve">
+    <value>يرجى التحقق من معلومات الدخول</value>
+  </data>
+  <data name="WrongOTPPleasetryagain" xml:space="preserve">
+    <value>تحقق من الرمز المرسل اليك وأعد المحاولة</value>
+  </data>
+  <data name="WrongOTPPleasetryagain1" xml:space="preserve">
+    <value>تحقق من الرمز المرسل اليك وأعد المحاولة</value>
+  </data>
+  <data name="wrongUserNamePassword" xml:space="preserve">
+    <value>خطأ في اسم المستخدم و كلمة المرور، الرجاء التأكد من اسم المستخدم و كلمة المرور</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>سنة</value>
+  </data>
+  <data name="Year1" xml:space="preserve">
+    <value>سنة</value>
+  </data>
+  <data name="DatePastNotAllowed" xml:space="preserve">
+    <value>يجب أن يكون التاريخ المحدد أكبر من اليوم</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="rejectedFinalStatusMsgExam" xml:space="preserve">
+    <value>تم رفض طلب التقدم للاختبار، رفضاَ نهائياَ، لا يمكن اعادة ارسال الطلب</value>
+  </data>
+  <data name="rejectedStatusMsgExam" xml:space="preserve">
+    <value>تم رفض طلب التقدم للاختبار، يمكنك تعديل الطلب و اعادة ارساله</value>
+  </data>
+  <data name="rejectedStatusMsgRenew" xml:space="preserve">
+    <value>تم رفض طلب التجديد، يمكنك تعديل الطلب و اعادة ارساله</value>
+  </data>
+  <data name="requestForVisit" xml:space="preserve">
+    <value>طلب زيارة مبنى الجمارك</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="Permissiondenied" xml:space="preserve">
+    <value>ليس لديك إذن للوصول إلى هذه الميزة</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>أكتمل</value>
+  </data>
+  <data name="RegisterForBrokerServices" xml:space="preserve">
+    <value>تسجيل حساب لخدمات المخلصين</value>
+  </data>
+  <data name="RegisterForStakeholderServices" xml:space="preserve">
+    <value>تسجيل حساب لخدمات الشركات</value>
+  </data>
+  <data name="LoginForBrokerServices" xml:space="preserve">
+    <value>دخول خدمات المخلصين</value>
+  </data>
+  <data name="LoginForStakeholderServices" xml:space="preserve">
+    <value>دخول خدمات الشركات</value>
+  </data>
+  <data name="OrgServicesNotAllowed" xml:space="preserve">
+    <value>هذا الإختيار خاص بخدمات الشركات</value>
+  </data>
+  <data name="BrokerServices" xml:space="preserve">
+    <value>خدمات المخلصين</value>
+  </data>
+  <data name="OrganizationServices" xml:space="preserve">
+    <value>الخدمات الالكترونية للشركات</value>
+  </data>
+  <data name="Pleaseenterpassword" xml:space="preserve">
+    <value>يرجي إدخال كلمة المرور</value>
+  </data>
+  <data name="HSCodeRequired" xml:space="preserve">
+    <value>الرجاء كتابة رمز النظام المنسق</value>
+  </data>
+  <data name="KuwaitCustomsBrokereServices" xml:space="preserve">
+    <value>الخدمات الإلكترونية للمخلص الجمركي</value>
+  </data>
+  <data name="KuwaitCustomsOrganizationeServices" xml:space="preserve">
+    <value>الخدمات الإلكترونية للشركات</value>
+  </data>
+  <data name="Lan" xml:space="preserve">
+    <value>ar</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  <data name="ServiceSelection" xml:space="preserve">
+    <value>Change the Service</value>
+  </data>
+  <data name="TermsPart1" xml:space="preserve">
+    <value>ان دخولك للنظام</value>
+  </data>
+  <data name="TermsPart2" xml:space="preserve">
+    <value>يعني اطلاعك وموافقتك على</value>
+  </data>
+  <data name="mandatoryFieldsMsg" xml:space="preserve">
+    <value>الحقول التي تحمل علامة " * " إلزامية الإدخال</value>
+  </data>
+  <data name="saveDraft" xml:space="preserve">
+    <value>حفظ كمسودة</value>
+  </data>
+  <data name="MandatoryFields" xml:space="preserve">
+    <value>الحقول التي تحمل علامة " * " إلزامية الإدخال</value>
+  </data>
+  <data name="WrongEmailOTPPleasetryagain2" xml:space="preserve">
+    <value>تحقق من رمز البريد الإلكتروني المرسل إليك وحاول مرة أخرى</value>
+  </data>
+  <data name="WrongSMSOTPPleasetryagain" xml:space="preserve">
+    <value>تحقق من رمز الجوال المرسل إليك وحاول مرة أخرى</value>
+  </data>
+  <data name="CompanyDocuments" xml:space="preserve">
+    <value>وثائق الشركة</value>
+  </data>
+  <data name="ManageCompanyDocuments" xml:space="preserve">
+    <value>إدارة مستندات الشركة</value>
+  </data>
+  <data name="BrokerDeactivateRequests" xml:space="preserve">
+    <value>طلب إيقاف رخصة التخليص الجمركي</value>
+  </data>
+  <data name="requestCancel" xml:space="preserve">
+    <value>طلب إلغاء رخصة التخليص الجمركي</value>
+  </data>
+  <data name="RequestIdCard" xml:space="preserve">
+    <value>طلب طباعة بطاقة هوية التخليص بدل فاقد</value>
+  </data>
+  <data name="requestIssue" xml:space="preserve">
+    <value>طلب إصدار رخصة التخليص الجمركي</value>
+  </data>
+  <data name="Requestletter" xml:space="preserve">
+    <value>طلب شهادة لمن يهمه الأمر</value>
+  </data>
+  <data name="requestTransfer" xml:space="preserve">
+    <value>طلبات تحويل المخلص</value>
+  </data>
+  <data name="BrokerCancelRequests" xml:space="preserve">
+    <value>طلبات إلغاء رخصة التخليص الجمركي</value>
+  </data>
+  <data name="brokercorrectInfo" xml:space="preserve">
+    <value>الرجاء إدخال المعلومات الصحيحة</value>
+  </data>
+  <data name="BrokerIssuanceRequests" xml:space="preserve">
+    <value>طلب إصدار رخصة التخليص الجمركي</value>
+  </data>
+  <data name="BrokerPrintLostIdCard" xml:space="preserve">
+    <value>طلب طباعة بطاقة هوية التخليص بدل فاقد</value>
+  </data>
+  <data name="BrokerToWhomItConcern" xml:space="preserve">
+    <value>طلب شهادة إلى من يهمه الأمر</value>
+  </data>
+  <data name="BrokerTransferInfo" xml:space="preserve">
+    <value>الرجاء إدخال المعلومات الصحيحة</value>
+  </data>
+  <data name="BrokerTransferRequests" xml:space="preserve">
+    <value>طلبات تحويل المخلص</value>
+  </data>
+  <data name="rejectedStatusMsg" xml:space="preserve">
+    <value>تم رفض الطلب
+
+, يمكنك تعديل الطلب وإعادة إرساله</value>
+  </data>
+  <data name="BrokerTransferRequestExists" xml:space="preserve">
+    <value>يوجد طلب تحويل موجود للمخلص الذي تحاول تحويله ، للتحقق يرجى مراجعة مكتب شئون المخلصين بالجمارك</value>
+  </data>
+  <data name="GenApprovedReqst" xml:space="preserve">
+    <value>تمت الموافقة على طلبك</value>
+  </data>
+  <data name="rejectedStatusMsgFinal" xml:space="preserve">
+    <value>تم رفض الطلب نهائيًا</value>
+  </data>
+  <data name="requestDeactivate" xml:space="preserve">
+    <value>طلب إيقاف رخصة التخليص الجمركي</value>
+  </data>
+  <data name="BankGuranteeStatusForTransfer" xml:space="preserve">
+    <value>ببدء في لطب تحويل المخلص، يجب أولا إيقاف الكفالة المصرفية السابقة أولا</value>
+  </data>
+  <data name="DuplicateLicence" xml:space="preserve">
+    <value>تم تسجيل رقم الترخيص الذي تم إدخاله بالفعل معنا</value>
+  </data>
+  <data name="ImporterLicenseDetails" xml:space="preserve">
+    <value>تفاصيل رخصة الأستيراد</value>
+  </data>
+  <data name="LicenseIssuer" xml:space="preserve">
+    <value>مصدر الترخيص</value>
+  </data>
+  <data name="LicenseIssuerRequired" xml:space="preserve">
+    <value>يرجى اختيار مصدر الترخيص</value>
+  </data>
+  <data name="LicensetypeRequired" xml:space="preserve">
+    <value>يرجى اختيار نوع الترخيص</value>
+  </data>
+  <data name="ManageImporterLicenses" xml:space="preserve">
+    <value>إدارة رخص الإستيراد</value>
+  </data>
+  <data name="AuthorizedSignatoriesfortheOrganization" xml:space="preserve">
+    <value>اضافة المعتدمين بالتوقيع</value>
+  </data>
+  <data name="AddMore" xml:space="preserve">
+    <value>أضف المزيد</value>
+  </data>
+  <data name="AddMoreAuthSignatory" xml:space="preserve">
+    <value>اضافة المزيد</value>
+  </data>
+  <data name="deliveryOrderNo" xml:space="preserve">
+    <value>رقم اذن التسليم</value>
+  </data>
+  <data name="securityNo" xml:space="preserve">
+    <value>رقم الحماية</value>
+  </data>
+  <data name="brokerQuickReference" xml:space="preserve">
+    <value>دليل استخدام خدمات المخلصين</value>
+  </data>
+  <data name="organizationQuickReference" xml:space="preserve">
+    <value>دليل استخدام خدمات الشركات</value>
+  </data>
+  <data name="brokerTransferComingSoonMSG" xml:space="preserve">
+    <value>سيتم تفعيل هذه الخدمة قريبا</value>
+  </data>
+  <data name="updaterequestPending" xml:space="preserve">
+    <value>يوجد طلب تحديث مرسل لهذه الشركة</value>
+  </data>
+  <data name="CancellationReqApproved" xml:space="preserve">
+    <value>تمت الموافقة على طلب الإلغاء</value>
+  </data>
+  <data name="DeactivationReqApproved" xml:space="preserve">
+    <value>تمت الموافقة على طلب الإيقاف</value>
+  </data>
+  <data name="ExamReqRejected" xml:space="preserve">
+    <value>تم رفض طلب التقدم للإختبار نهائيا</value>
+  </data>
+  <data name="RequestAccepted" xml:space="preserve">
+    <value>تم قبول الطلب</value>
+  </data>
+  <data name="ToWhomConcernReqApproved" xml:space="preserve">
+    <value>تمت الموافقة على طلب شهادة لمن يهمه الامر</value>
+  </data>
+  <data name="ValidLicenseNumberRequired" xml:space="preserve">
+    <value>الرجاء إدخال رقم ترخيص صالح</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="AgreeInfoCorrectnessRequired" xml:space="preserve">
+    <value>الرجاء الاقرار على صحة البيانات</value>
+  </data>
+  <data name="Block" xml:space="preserve">
+    <value>القطعة</value>
+  </data>
+  <data name="BlockRequired" xml:space="preserve">
+    <value>الرجاء ادخال القطعة</value>
+  </data>
+  <data name="CompanyLegalAddress" xml:space="preserve">
+    <value>عنوان الشركة</value>
+  </data>
+  <data name="Governorate" xml:space="preserve">
+    <value>المحافظة</value>
+  </data>
+  <data name="GovernorateRequired" xml:space="preserve">
+    <value>الرجاء اختيار المحافظة</value>
+  </data>
+  <data name="IsIndustrial" xml:space="preserve">
+    <value>شركة صناعية</value>
+  </data>
+  <data name="PostalCodeRequired" xml:space="preserve">
+    <value>الرجاء ادخال الرمز البريدي</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>المنطقة</value>
+  </data>
+  <data name="RegionRequired" xml:space="preserve">
+    <value>الرجاء اختيار المنطقة</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>الشارع</value>
+  </data>
+  <data name="StreetRequired" xml:space="preserve">
+    <value>الرجاء ادخال الشارع</value>
+  </data>
+  <data name="CommercialLicenseAlreadyRegistered" xml:space="preserve">
+    <value>رقم الرخصة التجارية التي قمت بإدخالها مسجلة لدينا من قبل، الرجاء الإتصال بإدارة الشركة</value>
+  </data>
+  <data name="IndustrialLicenseAlreadyRegistered" xml:space="preserve">
+    <value> رقم الترخيص الصناعي مسجل لدينا من قبل ، الرجاء الاتصال بادارة الشركة</value>
+  </data>
+  <data name="CompanyCivilId" xml:space="preserve">
+    <value>الرقم المدني للشركة</value>
+  </data>
+  <data name="ActionLabel" xml:space="preserve">
+    <value>الإجراء</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>إدفع</value>
+  </data>
+  <data name="ProceedToPay" xml:space="preserve">
+    <value>متابعة للدفع</value>
+  </data>
+  <data name="OrgReqHelpCreate" xml:space="preserve">
+    <value>يجب طباعة نموذج تسجيل الشركة و توقيعه و ختمه بختم الشركة، ومن ثم تحميله للمستندات المرفقه للطلب قبل إرساله.</value>
+  </data>
+  <data name="PrintOrgReqForm" xml:space="preserve">
+    <value>طباعة النموذج</value>
+  </data>
+  <data name="AlreadyRegisteredCompanyCivilID" xml:space="preserve">
+    <value>الرقم المدني للشركة مسجل مسبقا</value>
+  </data>
+  <data name="OrgReqHelpReject1" xml:space="preserve">
+    <value> يجب تعديل الطلب بناء على الملاحظات  و إعادة ارسال الطلب مرة أخرى، </value>
+    <comment>يجب تعديل و إعادة أرسال الطلب مرة أخرى  وفي حالة اذا وصلكم طلب زيارة الجمارك ،يجب مراجعة الأدارة العامة للجمارك في منطقة الشويخ -  مبنى 3 – إدارة فريق المشروع – مكتب تسجيل الشركات و احضار كافة المستندات التي تم تحميلها اثناء عملية التسجيل، خلال فترة أقصاهاً 15 يوم عمل من تاريخ رفض الطلب، </comment>
+  </data>
+  <data name="OrgReqHelpReject2" xml:space="preserve">
+    <value />
+    <comment>، و الا سيتم الغاء الطلب و الحساب تلقائياً</comment>
+  </data>
+  <data name="OrgReqHelpSubmit1" xml:space="preserve">
+    <value> تم استلام طلبك بتاريخ </value>
+    <comment>يجب مراجعة الأدارة العامة للجمارك في منطقة الشويخ -  مبنى 3 – إدارة فريق المشروع – مكتب تسجيل الشركات، خلال فترة أقصاهاً 15 يوم عمل من تاريخ أرسال الطلب</comment>
+  </data>
+  <data name="OrgReqHelpSubmit2" xml:space="preserve">
+    <value> وجاري معالجته الكترونيا.</value>
+    <comment>، و الا سيتم الغاء الطلب و الحساب تلقائياً.</comment>
+  </data>
+  <data name="registrationTileNewpart1" xml:space="preserve">
+    <value>يمكنم الاطلاع على </value>
+  </data>
+  <data name="registrationTileNewpart2" xml:space="preserve">
+    <value>للتعرف على كيفية استخدام هذا النموذج، و ننوه على ضرورة كتابة معلومات حقيقية و صحيحة، بما فيها معلومات الإتصال</value>
+  </data>
+  <data name="supportFax" xml:space="preserve">
+    <value>رقم الفاكس</value>
+  </data>
+  <data name="supportFirstPart" xml:space="preserve">
+    <value>نوفر لكم</value>
+  </data>
+  <data name="supportSecondPart" xml:space="preserve">
+    <value>للتعرف على خدمات تسجيل الشركات، للاستفسار</value>
+  </data>
+  <data name="supportTel" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="supportThirdPart" xml:space="preserve">
+    <value>يمكنكم التواصل مع فريق الدعم الفني عبر وسائل الاتصال التالية:</value>
+  </data>
+  <data name="supportVideoLink" xml:space="preserve">
+    <value>فيديو ارشادي</value>
+  </data>
+  <data name="technicalSupport" xml:space="preserve">
+    <value>الدعم الفني</value>
+  </data>
+  <data name="confirmEmail" xml:space="preserve">
+    <value>إعادة إدخال البريد الألكتروني</value>
+  </data>
+  <data name="confirmPhoneNumber" xml:space="preserve">
+    <value>إعادة إدخال رقم الهاتف الجوال</value>
+  </data>
+  <data name="EmailDontMatch" xml:space="preserve">
+    <value>البريد الإلكتروني غير متطابق</value>
+  </data>
+  <data name="EmailInfoMsg" xml:space="preserve">
+    <value>احرص على إدخال بريد الإلكتروني صحيح وفعال، حيث سيتم إرسال رقم كود التحقق OTP  إلى هذا البريد الإلكتروني ، والذي سيكون مطلوبًا لتنشيط حسابك، كما انه سيكون احد وسائل الاتصال الرسمية للخدمات الالكترونية.</value>
+  </data>
+  <data name="MobileInforMsg" xml:space="preserve">
+    <value>احرص على إدخال رقم هاتف نقال صحيح وفعال، حيث سيتم إرسال رقم كود التحقق OTP  إلى هذا الهاتف، والذي سيكون مطلوبًا لتنشيط حسابك، كما انه سيكون احد وسائل الاتصال الرسمية للخدمات الالكترونية.</value>
+  </data>
+  <data name="PhoneDontMatch" xml:space="preserve">
+    <value>رقم الهاتف غير متطابق</value>
+  </data>
+  <data name="newInfo" xml:space="preserve">
+    <value>لضمان سلامة تسجيل حسابك، يرجى التعريف على معلومات الدخول لحسابك في النظام الجمركي الالي ان وجد، هل لديك حساب؟</value>
+  </data>
+  <data name="newuser" xml:space="preserve">
+    <value>لا يوجد لدي حساب في النظام الجمركي الالي</value>
+  </data>
+  <data name="ClearingAgentInfo" xml:space="preserve">
+    <value>لضمان سلامة تسجيل حسابك، يرجى التعريف على معلومات الدخول لحسابك في النظام الجمركي الالي ان وجد، هل لديك حساب؟</value>
+  </data>
+  <data name="FormNotSendvalidation" xml:space="preserve">
+    <value>تعذر ارسال الطلب، يرجى توفير المعلومات المطلوبة</value>
+  </data>
+  <data name="OrgClearanceFileNumber" xml:space="preserve">
+    <value>رقم ملف التخليص</value>
+  </data>
+  <data name="companyInfor" xml:space="preserve">
+    <value>معلومات الشركة</value>
+  </data>
+  <data name="noApprovedOrganization" xml:space="preserve">
+    <value>لن تستطيع استخدام الخدمات، حيث تفيد سجلاتنا بعدم وجود شركة موافق عليها و مسجلة ضمن حسابك ، الرجاء التأكد من ارسال طلب تسجيل شركة، ثم التأكد من الموافقة عليه.</value>
+  </data>
+  <data name="printingServices" xml:space="preserve">
+    <value>خدمات طباعة كتب شؤون المخلصين</value>
+  </data>
+  <data name="BRSPrintingCancelLicence" xml:space="preserve">
+    <value>كتاب طلب إلغاء الترخيص التجاري - وزارة التجارة والصناعة</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitleAndRenewResidency" xml:space="preserve">
+    <value>كتاب طلب تغيير مسمى وظيفي وتجديد إقامة - الهيئة العامة للقوى العاملة</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitleAndTransferResidency" xml:space="preserve">
+    <value>كتاب طلب تغيير مسمى وظيفي وتحويل إقامة - الهيئة العامة للقوى العاملة</value>
+  </data>
+  <data name="BRSPrintingChangeLicenceActivity" xml:space="preserve">
+    <value>كتاب طلب تغيير نشاط الترخيص التجاري - وزارة التجارة والصناعة</value>
+  </data>
+  <data name="BRSPrintingChangeLicenceAddress" xml:space="preserve">
+    <value>كتاب طلب تغيير عنوان الترخيص التجاري - وزارة التجارة والصناعة</value>
+  </data>
+  <data name="BRSPrintingGoodBehave" xml:space="preserve">
+    <value>كتاب حسن سير وسلوك - الإدارة العامة للأدلة الجنائية</value>
+  </data>
+  <data name="BRSPrintingIssueLicence" xml:space="preserve">
+    <value>كتاب طلب إصدار ترخيص تجاري - وزارة التجارة والصناعة</value>
+  </data>
+  <data name="BRSPrintingReleaseBankGuarantee" xml:space="preserve">
+    <value>كتاب طلب إفراج عن الكفالة المصرفية - مراقبة الإيرادات</value>
+  </data>
+  <data name="BRSPrintingRenewLicence" xml:space="preserve">
+    <value>كتاب طلب تجديد الترخيص التجاري - وزارة التجارة والصناعة</value>
+  </data>
+  <data name="BRSPrintingRenewResidency" xml:space="preserve">
+    <value>كتاب طلب تجديد إقامة - الهيئة العامة للقوى العاملة</value>
+  </data>
+  <data name="BRSPrintingTransferResidency" xml:space="preserve">
+    <value>كتاب طلب تحويل إقامة - الهيئة العامة للقوى العاملة</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitle" xml:space="preserve">
+    <value>كتاب طلب تغيير مسمى وظيفي - الهيئة العامة للقوى العاملة</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitleWithCivilId" xml:space="preserve">
+    <value>كتاب طلب تغيير مسمى وظيفي ولديه هوية - الهيئة العامة للقوى العاملة</value>
+  </data>
+  <data name="BRSPrintingDeActivateLicenceDeath" xml:space="preserve">
+    <value>كتاب طلب إيقاف الترخيص التجاري للوفاة - وزارة التجارة والصناعة</value>
+  </data>
+  <data name="requestReSubmitted" xml:space="preserve">
+    <value>تمت اعادة ارسال الطلب</value>
+  </data>
+  <data name="approvedStatusMsgIssuance" xml:space="preserve">
+    <value>تمت الموافقة على طلب اصدار الترخيص</value>
+  </data>
+  <data name="colmdpushpull3" xml:space="preserve">
+    <value>col-md-pull-3</value>
+  </data>
+  <data name="Marginstart28px" xml:space="preserve">
+    <value>margin-right:28px;</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>إعادة إرسال</value>
+  </data>
+  <data name="ResendOTPButton" xml:space="preserve">
+    <value>padding:2px 12px;</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContactVerificationHelpText1" xml:space="preserve">
+    <value>يرجى إدخال رموز التحقق لتفعيل حسابك</value>
+  </data>
+  <data name="ContactVerificationHelpText2" xml:space="preserve">
+    <value>  
+      يرجى التأكد من استخدام أخر رمز تحقق قمت بإستلامه، اضغط زر "إعادة إرسال" لإرسال رمز تحقق جديد إذا لزم الأمر ، ويجب استخدام الرمز في غضون 15 دقيقة
+    </value>
+  </data>
+  <data name="bankGuaranteeExpiryeDate" xml:space="preserve">
+    <value>تاريخ انتهاء الضمان البنكي</value>
+  </data>
+  <data name="bankGuaranteeIssuanceDate" xml:space="preserve">
+    <value>تاريخ إصدار الضمان البنكي</value>
+  </data>
+  <data name="bankGuaranteeNo" xml:space="preserve">
+    <value>رقم الكفالة المصرفية</value>
+  </data>
+  <data name="bankGuaranteeStatus1" xml:space="preserve">
+    <value>حالة الضمان البنكي</value>
+  </data>
+  <data name="bankName" xml:space="preserve">
+    <value>اسم البنك</value>
+  </data>
+  <data name="ChangeJobTitleFrom" xml:space="preserve">
+    <value>المسمى الوظيفي الحالي</value>
+  </data>
+  <data name="ChangeJobTitleFromValidate" xml:space="preserve">
+    <value>الرجاء كتابة المسمى الوظيفي الحالي</value>
+  </data>
+  <data name="ChangeJobTitleTo" xml:space="preserve">
+    <value>المسمى الوظيفي المطلوب</value>
+  </data>
+  <data name="ChangeJobTitleToValidate" xml:space="preserve">
+    <value>الرجاء اختيار المسمى الوظيفي المطلوب</value>
+  </data>
+  <data name="fromBusiness" xml:space="preserve">
+    <value>من نشاط</value>
+  </data>
+  <data name="fromBusinessValidate" xml:space="preserve">
+    <value>الرجاء كتابة النشاط الحالي</value>
+  </data>
+  <data name="newBrokerRegistrationMsg" xml:space="preserve">
+    <value>أنت بصدد تسجيل حساب مخلص عام جديد غير مسجل لدى الإدارة العامة للجمارك ولا يحمل رخصة تخليص جمركي، الخدمة التي ستكون متوفرة هي خدمة "طلب دخول أختبارات التخليص</value>
+  </data>
+  <data name="ImporterLicenseAlreadyRegistered" xml:space="preserve">
+    <value>تم تسجيل رقم رخصة الاستيراد التي تم إدخالها لدينا بالفعل</value>
+  </data>
+  <data name="printtedStatus" xml:space="preserve">
+    <value>تمت طباعة الكتاب</value>
+  </data>
+  <data name="toBusiness" xml:space="preserve">
+    <value>الى نشاط</value>
+  </data>
+  <data name="AppointmentCreationsuccess" xml:space="preserve">
+    <value>تم حجز موعد التفتيش بنجاح</value>
+  </data>
+  <data name="AppointmentUpdatesuccess" xml:space="preserve">
+    <value>تم تحديث موعد التفتيش بنجاح</value>
+  </data>
+  <data name="AtleastOnevehiclerequiredforappointment" xml:space="preserve">
+    <value>الرجاء اختيار مركبة واحدة على الأقل ليتم حجز موعد للتفتيش</value>
+  </data>
+  <data name="Booked" xml:space="preserve">
+    <value>تم حجز موعد التفتيش</value>
+  </data>
+  <data name="DeclarationOrTempDeclarationRequired" xml:space="preserve">
+    <value>الرجاء ادخال رقم البيان الجمركي أو رقم البيان المؤقت</value>
+  </data>
+  <data name="DeclarationType2" xml:space="preserve">
+    <value>نوع البيان الجمركي</value>
+  </data>
+  <data name="Drivername" xml:space="preserve">
+    <value>اسم السائق</value>
+  </data>
+  <data name="Duplicatebookingforthevehicle" xml:space="preserve">
+    <value>لقد تم حجز موعد تفتيش مسبقاً للمركبات المحددة</value>
+  </data>
+  <data name="InspectionAppointment" xml:space="preserve">
+    <value>حجز مواعيد التفتيش</value>
+  </data>
+  <data name="InspectionDate" xml:space="preserve">
+    <value>تاريخ التفتيش</value>
+  </data>
+  <data name="InspectionDateRequired" xml:space="preserve">
+    <value>يجب اختيار تاريخ التفتيش </value>
+  </data>
+  <data name="InspectionRound" xml:space="preserve">
+    <value>فترة التفتيش</value>
+  </data>
+  <data name="InspectionRoundRequired" xml:space="preserve">
+    <value>يجب اختيار فترة التفتيش</value>
+  </data>
+  <data name="InspectionTerminal" xml:space="preserve">
+    <value>محطة الشحن</value>
+  </data>
+  <data name="InspectionTerminalrequired" xml:space="preserve">
+    <value>يجب اختيار محطة الشحن</value>
+  </data>
+  <data name="InspectionZone" xml:space="preserve">
+    <value>منطقة التفتيش</value>
+  </data>
+  <data name="InspectionZonerequired" xml:space="preserve">
+    <value>يجب اختيار منطقة التفتيش</value>
+  </data>
+  <data name="NoVehiclesforgivendeclaration" xml:space="preserve">
+    <value>لا يوجد مركبات متاحة للبيان الجمركي الذي قمت بإختياره</value>
+  </data>
+  <data name="Portname" xml:space="preserve">
+    <value>المنفذ</value>
+  </data>
+  <data name="Roundreachedmaximumcapacity" xml:space="preserve">
+    <value> لا يوجد مواعيد تفتيش كافية في فترة التفتيش التي تم اختيارها ولعدد المركبات التي تحديدها، يتوفر مواعيد حجز لعدد  </value>
+    <comment>لا يوجد موعد متوفر في فترة التفتيش التي قمت بإختيارها، الرجاء تحديد فترة أخرى</comment>
+  </data>
+  <data name="RoundreachedmaximumcapacityPart2" xml:space="preserve">
+    <value> فقط،أو يمكن تحديد فترة تفتيش أخرى  </value>
+  </data>
+  <data name="Roundreachedmaximumcapacity1" xml:space="preserve">
+    <value>لا يوجد موعد متوفر في فترة التفتيش التي قمت بإختيارها، الرجاء تحديد فترة أخرى</value>
+  </data>
+  <data name="selectInspectionRound" xml:space="preserve">
+    <value>الرجاء اختيار فترة التفتيش</value>
+  </data>
+  <data name="selectInspectionTerminal" xml:space="preserve">
+    <value>الرجاء اختيار محطة الشحن</value>
+  </data>
+  <data name="selectInspectionZone" xml:space="preserve">
+    <value>الرجاء اختيار منطقة التفتيش</value>
+  </data>
+  <data name="Showvehicles" xml:space="preserve">
+    <value>اظهار المركبات</value>
+  </data>
+  <data name="TempDeclarationnumber" xml:space="preserve">
+    <value>رقم البيان الجمركي المؤقت</value>
+  </data>
+  <data name="UpdateAppointment" xml:space="preserve">
+    <value>تعديل الموعد</value>
+  </data>
+  <data name="Vehiclelist" xml:space="preserve">
+    <value>الشاحنات المتاحة للتفتيش</value>
+  </data>
+  <data name="Vehicleplatenumber" xml:space="preserve">
+    <value>رقم لوحة المركبة</value>
+  </data>
+  <data name="Vehiclesrequired" xml:space="preserve">
+    <value>الرجاء اختيار المركبات المطلوب حجز موعد التفتيش لها</value>
+  </data>
+  <data name="declartionStatusNotProper" xml:space="preserve">
+    <value>مركبات البيان الجمركي الذي قمت بادخاله في حالة لا تسمح بحجز موعد للتفتيش، يرجى مراجعة حالة مركبات البيان و اعادة المحاولة لاحقا</value>
+  </data>
+  <data name="declartionCCP" xml:space="preserve">
+    <value>نوع الاجراء الجمركي</value>
+  </data>
+  <data name="Containernumber" xml:space="preserve">
+    <value>رقم الحاوية</value>
+  </data>
+  <data name="CreateAppointment" xml:space="preserve">
+    <value>حجز الموعد</value>
+  </data>
+  <data name="AgreeToPay" xml:space="preserve">
+    <value>الموافقة على الدفع الإلكتروني</value>
+  </data>
+  <data name="CustomerMobNum" xml:space="preserve">
+    <value>الهاتف المحمول</value>
+  </data>
+  <data name="Emailminlength" xml:space="preserve">
+    <value>يرجى إدخال بريد إلكتروني صحيح</value>
+  </data>
+  <data name="EmailRequired1" xml:space="preserve">
+    <value>يرجى ادخال البريد الالكتروني الخاص بك</value>
+  </data>
+  <data name="EnterReceiptDetails" xml:space="preserve">
+    <value>يرجى ادخال تفاصيل الإيصال الخاص بك</value>
+  </data>
+  <data name="FillForm" xml:space="preserve">
+    <value>يرجى تعبئة النموذج للدفع الإلكتروني الفوري</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>الهاتف المحمول</value>
+  </data>
+  <data name="Mobileminlength" xml:space="preserve">
+    <value>يرجى إدخال 8 أرقام صحيحة لرقم الهاتف النقال</value>
+  </data>
+  <data name="MobileRequired1" xml:space="preserve">
+    <value>يرجى إدخال رقم هاتفك النقال</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="PayeeName" xml:space="preserve">
+    <value>اسم المدفوع له</value>
+  </data>
+  <data name="PayInVoice" xml:space="preserve">
+    <value>يرجى دفع الفاتورة الخاصة بك</value>
+  </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>تفاصيل الدفع</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="ProceedPay" xml:space="preserve">
+    <value>المتابعة للدفع</value>
+  </data>
+  <data name="ReceiptLookup" xml:space="preserve">
+    <value>البحث عن الايصال</value>
+  </data>
+  <data name="ReceiptToPay" xml:space="preserve">
+    <value>إيصال الدفع</value>
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>رقم المرجع</value>
+  </data>
+  <data name="RefNumRequired" xml:space="preserve">
+    <value>يرجى إدخال رقم المرجع</value>
+  </data>
+  <data name="SecurityCode" xml:space="preserve">
+    <value>رمز الحماية</value>
+  </data>
+  <data name="SecurityCodeMsg1" xml:space="preserve">
+    <value>يرجى إدخال المراجع أعلاه</value>
+  </data>
+  <data name="SecurityCodeMsg2" xml:space="preserve">
+    <value>يرجى إدخال رمز الحماية الخاص بك</value>
+  </data>
+  <data name="SecurityCodeMsg3" xml:space="preserve">
+    <value>يرجى إدخال رقم الإيصال المؤقت ورمز الحماية</value>
+  </data>
+  <data name="SelfPaymentServices" xml:space="preserve">
+    <value>تكنولوجيا الخدمة الذاتية</value>
+  </data>
+  <data name="TIRCNum" xml:space="preserve">
+    <value>الرقم المؤقت للإيصال</value>
+  </data>
+  <data name="TIRCNumberRequired" xml:space="preserve">
+    <value>يرجى إدخال الرقم المؤقت للإيصال</value>
+  </data>
+  <data name="VerifyandConfirm" xml:space="preserve">
+    <value>التحقق والتأكيد</value>
+  </data>
+  <data name="WelcomeGCS" xml:space="preserve">
+    <value>مرحبًا بكم في جلوبال</value>
+  </data>
+  <data name="DRConsignee" xml:space="preserve">
+    <value>مستفيد التصفية الفورية</value>
+  </data>
+</root>

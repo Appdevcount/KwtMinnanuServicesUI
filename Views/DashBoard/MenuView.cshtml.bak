@@ -1,0 +1,125 @@
+﻿@model IEnumerable<WebApplication1.Models.AvailableEServices>
+
+@using System.Configuration;
+
+@{
+    ViewBag.Title = Resources.Resource.AvailableServices1;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@functions {
+    public string GetServiceIcon(int ServiceId)
+    {
+
+
+        switch (ServiceId)
+        {
+            //case 0:
+            //    return "~/images/HomeIcons/Info Trans.png";
+            //case 1:
+            //    return "~/images/HomeIcons/Info Trans.png";
+            case 2:
+                return "/eservices/images/HomeIcons/Renewal.png";
+            case 3:
+                return "/eservices/images/HomeIcons/Organization RegistrationPNG.png";
+            case 7:
+                return "/eservices/images/HomeIcons/Exam Requests.png";
+            case 8:
+                return "/eservices/images/HomeIcons/Online Payment.png";
+            case 9:
+                return "/eservices/images/HomeIcons/Bayan Search.png";
+            case 10:
+                return "/eservices/images/HomeIcons/HSCODE Search.png";
+            case 11:
+                return "/eservices/images/HomeIcons/HB Search.png";
+case 12:
+                return "/eservices/images/HomeIcons/Request for deactivate broker license service.PNG";
+            case 13:
+                return "/eservices/images/HomeIcons/Request for cancelling broker license service.PNG";
+            case 14:
+                return "/eservices/images/HomeIcons/Request for broker transfer service.png";
+            case 15:
+                return "/eservices/images/HomeIcons/Request for to whom it concerns letter service.PNG";
+            case 16:
+                return "/eservices/images/HomeIcons/Request for printing a lost identity card service.png";
+
+            case 17:
+                return "/eservices/images/HomeIcons/Request for issuing broker license service.png";
+            default:
+                return "";
+        }
+    }
+    public string GetServiceLink(int ServiceId)
+    {
+
+
+        switch (ServiceId)
+        {
+            //case 0:
+            //    return "~/images/HomeIcons/Info Trans.png";
+            //case 1:
+            //    return "~/images/HomeIcons/Info Trans.png";
+            case 2:
+                return Url.Action("BrokerRenewal", "BrokerRenewal");
+            case 3:
+                return Url.Action("Org_Registration", "User");
+            case 7:
+                return Url.Action("ExamRequest", "ClearingAgentExamRequest");
+            case 8:
+                return Url.Action("payment", "User");
+            case 9:
+                return Url.Action("DeclarationSearch", "User");
+            case 10:
+                return Url.Action("HSCodeSearch", "User");
+            case 11:
+                return Url.Action("HouseBillSearch", "User");
+            case 14:
+                    return Url.Action("BrokerTransfer", "BrokerRenewal", new { ServiceId = ServiceId });
+
+            case 123:
+                return Url.Action("OrganizationsDetail", "User");
+            default:
+                return "";
+        }
+    }
+}
+
+@if (Model != null)
+{
+<div class="row">
+    @*style="    padding: 20px;"*@
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3 text-center ">
+            <div onclick="window.location.href='@GetServiceLink(item.ServiceId)'">
+                @*style=" height:150px"*@
+                @*<img src="@GetServiceIcon(item.ServiceId)" style=" height:100px;cursor:pointer " onclick="window.location.href='@GetServiceLink(item.ServiceId)'" />*@
+
+                @*<button type="button" class="btn btn-default btn-circle btn-xl">*@
+                    <img src="@GetServiceIcon(item.ServiceId)" style="cursor:pointer " class="btn btn-default btn-circle btn-xl" />
+                    @*height:100px*@
+                @*</button>*@
+            </div>
+            <br />
+            <label> @item.ServiceName </label>
+        </div>
+    }
+        <div class="col-sm-3 text-center ">
+            <div style=" height:150px" onclick="window.location.href='@GetServiceLink(123)'">
+                @*<img src="@GetServiceIcon(item.ServiceId)" style=" height:100px;cursor:pointer " onclick="window.location.href='@GetServiceLink(item.ServiceId)'" />*@
+
+                <button type="button" class="btn btn-default btn-circle btn-xl">
+                    <img src="@GetServiceIcon(123)" style=" height:100px;cursor:pointer " />
+                </button>
+            </div>
+            <br />
+            <label> Manage Importer Licenses </label>
+            @*<label> @Resources.Resource.ManageCompanyDocuments </label>*@
+        </div>
+</div>
+}
+else
+{
+    <label>Currently you don't have services to use </label>
+}
+

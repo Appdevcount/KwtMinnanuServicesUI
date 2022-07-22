@@ -1,0 +1,204 @@
+.pagination {
+    margin: 0px 0;
+}
+
+
+.HeaderSpace {
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+/*.MenuEffectStyle {
+    border-radius: 29px;
+    border-color: black;
+    border-width: 19px;
+    padding: 14px;
+}*/
+
+.btn-circle.btn-xl {
+    width: 150px;
+    height: 150px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+
+
+}
+.btn-circle:hover {
+    border-color: #6c757d;
+}
+
+.btn-circleLogin.btn-xl {
+    width: 150px;
+    height: 150px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 4px;
+    border-width: 2px;
+}
+
+.btn-circleLogin:hover {
+    border-color: #6c757d;
+}
+
+
+
+.Removeeffect:hover{
+    background-color:none
+}
+
+
+.alert{
+    padding:5px;
+    font-weight:bold;
+    color:black;
+}
+
+
+.table-responsive {
+     display:inline-table; 
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.ImpLicYearHide {
+    display: none;
+}
+
+.btn-circle.btn-xl { 
+    /*for menu view*/ 
+    width: 75%;
+    height: auto;
+    padding:25px;
+}
+
+
+
+
+
+/*26-07-2019 - Raut  Suggestions*/
+
+.modal-content {
+    width: 50% !important;
+}
+
+
+@media (max-width: 600px) {
+
+    .modal-content {
+        width: 80% !important;
+        /*margin: auto 85px auto 5px !important;*/
+    }
+}
+
+
+/*remove  max-width style for all buttons in modal*/ 
+/*style="min-width:100px"*/
+
+
+
+@media (max-width: 600px) {
+
+    .no-mobile {
+        display: none;
+    }
+}
+@media (min-width: 600px) {
+
+    .mobile {
+        display: none;
+    }
+}
+
+
+
+
+#ExistingUser, #Term_conditions, #AEF, #IsAdmin {
+    margin-top: 9px;
+}
+
+.btn-blockdiscard {
+    /*min-width: 200px;*/
+    margin: 5px auto;
+}
+
+
+.navbar {
+    padding: 3px 1px;
+    }
+
+
+.btnimg {
+    cursor: pointer;
+    height: 20px;
+    width: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.btnimg1 {
+    cursor: pointer;
+    height: 25px;
+    width: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.BtnNavigationandAction
+{
+
+}
+
+
+
+/*issue reported form smaller font size form javascript validation messages*/
+.errorMsg { 
+    font-size: 14px;
+}
+
+
+.boldc {
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+
+@media (max-width: 990px) {
+    #technicalSupportContainer {
+        margin-right: 8px;
+    }
+}
+
+
+@media (max-width: 1100px) {
+    #availableServicesDiv, #firstSectionSearch {
+        margin-left: 0.0rem !important;
+        margin-right: 0.0rem !important;
+    }
+}
+
+
+@media (min-width:100px) and (max-width: 1300px) {
+    #brokerActions {
+        border: none;
+    }
+}
+
+
+
+.thumbnail {
+    height: 100%;
+}
+
+
+
+.mb-3Fix {
+    margin-bottom: 0.0rem !important;
+}
+
+.alert {
+    margin-bottom: 0px;
+}

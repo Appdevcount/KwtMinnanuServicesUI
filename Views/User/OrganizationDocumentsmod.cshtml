@@ -1,0 +1,357 @@
+﻿@model WebApplication1.Models.OrganizationDocument
+
+@{
+    ViewBag.Title = Resources.Resource.CompanyDocuments;// "Company Documents";//وثائق الشركة
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<style>
+    .form-group {
+        margin-bottom: 3px;
+    }
+</style>
+
+
+@*<div class="form-horizontal well">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OrgId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OrgId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgReqId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OrgReqId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OrgReqId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OrgName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OrgName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LicenseType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LicenseType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LicenseType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LicenseNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LicenseNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LicenseNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IssuanceDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IssuanceDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IssuanceDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DocumentTypeCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DocumentTypeCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DocumentTypeCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContentType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ContentType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ContentType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FilePath, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FilePath, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FileSize, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FileSize, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FileSize, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsUploaded, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IsUploaded, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IsUploaded, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>*@
+
+
+@using (Html.BeginForm("OrganizationDocuments", "User", FormMethod.Post))
+{
+    Html.AntiForgeryToken();
+
+    <div class="form-horizontal well" dir="@Resources.Resource.dir">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <div class="col-lg-12 text-center text-success" style="font-size: 22px;">
+                    <strong>  @Model.OrgName</strong>
+                </div>
+            </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LicenseNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                            @Html.EditorFor(model => model.LicenseNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.LicenseNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                            @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IssuanceDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                            @Html.EditorFor(model => model.IssuanceDate, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.IssuanceDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                            @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    @Html.Label(Resources.Resource.docTypesLabel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+
+                            @Html.DropDownListFor(m => m.DocumentTypeCode, Model.DocumentTypeList, new
+                       {
+                           @id = "ddlDocumentTypes",
+                           @class = "form-control select2"
+                       })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">&nbsp;</label>
+                    <div class="col-md-10 inputGroupContainer">
+                        <div class="input-group">
+                            <div class="file-loading">
+                                <input id="fileUploadCtrl" type="file" data-min-file-count="0" data-theme="fas">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="redColor text-center"> @Resources.Resource.uploadFileMSG</div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DocumentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                            @Html.EditorFor(model => model.DocumentName, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.DocumentName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <p id="fileNameError" class="errorMsg">
+                    @Resources.Resource.fileNameError
+                </p>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label ">&nbsp;</label>
+                    <div class="col-md-10 inputGroupContainer marginTop15">
+                        <div class="input-group">
+                            @*<input type="submit" class="btn btn-info btn-block col-centered width50Percent" causesvalidation="false" value="@Resources.Resource.UploadDocument_Header" />*@
+
+                            <button type="button" onclick="UploadOrgDocuments()" class="btn btn-info btn-block col-centered width50Percent" causesvalidation="false" id="uploadWindow1">
+                                <b>
+                                    <span class="glyphicon glyphicon-file"></span>&nbsp; @Resources.Resource.UploadDocument_Header &nbsp;
+                                </b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+}
+
+<p class="redColor text-center"> @Resources.Resource.uploadedFileListMSG </p>
+
+<table id="Uploadedfileslist" class="table table-responsive table-bordered table-condensed table-striped table-sm table-info ">
+    <thead>
+        <tr>
+            @*<th><input type="checkbox" id="headercheck" /></th>*@
+            <th class="text-center">@Resources.Resource.fileName</th>
+            <th class="text-center">@Resources.Resource.docType</th>
+            <th class="text-center">@Resources.Resource.uploadDate</th>
+            <th class="text-center">@Resources.Resource.Action</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @if (Model.OrganizationDocuments.Count > 0)
+        {
+            foreach (var item in Model.OrganizationDocuments)
+            {
+                <tr class="text-center">
+                    @*<td>
+                            <input type="checkbox" name="@item.DocumentId" runat="server" class="deleteselctedcheckbox" id=@item.DocumentId />
+                        </td>*@
+                    <td>
+                        @item.DocumentName
+                    </td>
+
+                    <td>
+                        @item.DocumentTypeCode
+                    </td>
+                    <td>
+                        @item.DocumentId
+                    </td>
+                    <td style="padding:1px" class="text-center">
+                        @*@Html.ActionLink(Resources.Resource.download, "DownloadFile", "BrokerRenewal", new { filename = @item.DocumentId, }, new { @class = "btn btn-primary", @style = "padding:3px" })
+
+                            <input type="button" value=@Resources.Resource.deleteFile onclick="DeleteFilewithDocIdForClearingExam(this)" id="@item.DocumentId" class="mcbutton btn btn-primary" runat="server" style="padding:3px" />*@
+
+                        @Html.ActionLink(Resources.Resource.download, "DownloadFile", "BrokerRenewal", new { filename =HttpUtility.UrlEncode ( WebApplication1.Models.CommonFunctions.CsUploadEncrypt(item.OrganizationRequestDocumentId)),
+                       referenceprofile = "OrganizationRequests" }, new { @class = "btn btn-primary" })
+
+                        @Html.ActionLink(Resources.Resource.delete, "DeleteOrgDocument", "user",
+                       new { OrgReqDocId = WebApplication1.Models.encrypt.Encode(WebApplication1.Models.CommonFunctions.CsUploadEncrypt(item.OrganizationRequestDocumentId)),
+                           OrgId = WebApplication1.Models.encrypt.Encode(WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.OrgId)),
+                           OrgReqId = WebApplication1.Models.encrypt.Encode(WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.OrgReqId)),
+                           OrgName = WebApplication1.Models.encrypt.Encode(WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.OrgName)) }, new { @class = "btn btn-primary" })
+
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-lg-12 text-center">
+        @Html.ActionLink(Resources.Resource.Back, "OrganizationsDetail", "User", null, new { @class = "btn btn-primary" })
+
+    </div>
+</div>
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage"></h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+<input type="hidden" runat="server" id="Tid" />
+<input type="hidden" runat="server" id="uid" />
+<input type="hidden" runat="server" id="reqid1" />
+<input type="hidden" id="fileErrorMsg" name="fileErrorMsg" value="@Resources.Resource.uploadFileError" />
+@*<input type="hidden" id="fileErrorHeaderMSG" name="fileErrorHeaderMSG" value="@Resources.Resource.fileName" />*@
+
+<script>
+    var UploadDocsUrl = '@System.Configuration.ConfigurationManager.AppSettings["UploadDocs"].ToString()';// 'http://localhost/ETradeAPI/api/Docs/Upload';//
+    var EserviceRequestId= '@Model.OrgId';
+    document.getElementById("Tid").value='@ViewBag.TokenId';
+    document.getElementById("uid").value='@ViewBag.UserId';
+    document.getElementById("reqid1").value = '@ViewBag.reqid1';
+
+    $("#fileUploadCtrl").click(function () {
+        // var selectedValue = $(this).val();
+        $("#NewFilename").val($("#ddlDocumentTypes").find("option:selected").text())
+
+    });
+
+</script>

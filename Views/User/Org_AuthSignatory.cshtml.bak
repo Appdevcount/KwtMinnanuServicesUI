@@ -1,0 +1,238 @@
+﻿@model WebApplication1.Models.OrgAuthorizedSignatory
+@{
+    ViewBag.Title = Resources.Resource.AuthorizedSignatoriesfortheOrganization;// "Authorized Signatories for the Organization";// Resources.Resource.ImporterDetails;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+<div class="col-lg-11 col-centered marginTop15">
+
+
+    @using (Html.BeginForm("Org_AuthSignatory", "User", FormMethod.Post, new { id = "OrgImp" }))
+    {
+
+
+        <div id="mydiv" class="well form-horizontal">
+            @*class="well"*@
+
+            <table align="center" id="maintbl" class="table center-block">
+                <tr>
+                    <td colspan="2">
+                        <div class="alert alert-success">
+                            @{
+                                if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                                {
+                                    @*<p>*@
+                                    <span class="inline-block">
+                                        @Resources.Resource.Importer_RequestNumber
+                                    </span>
+                                    @ViewBag.reqno
+                                    @*</p>*@
+                                    <br />
+                                }
+                            }
+                            <input type="hidden" name="OrganizationId" value="@Model.OrganizationId" />
+                            @*<p>*@
+                            <span class="inline-block">
+                                @Resources.Resource.Importer_CompanyNameinArabic
+                            </span>
+                            @Model.OrgAraName
+                            @*</p>*@
+                        </div>
+                        @*<div class="row">
+                                <div class="col-lg-12 " style="font-size: 10px;font-weight: bold;padding-bottom: 10px;">
+                                    @Resources.Resource.MandatoryFields
+                                </div>
+                            </div>*@
+                        <p class="redColor text-center"> @Resources.Resource.mandatoryFieldsMsg </p>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td colspan="1">
+
+                        <div class="well form-horizontal">
+
+                            <fieldset>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        @Resources.Resource.AuthorizzedPersonName
+                                    </label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-address-card-o"></i>
+                                            </span>
+
+                                            @Html.TextBoxFor(m=>m.AuthPerson, new
+       {
+       @id="inputAuthorizedPerson",
+           @placeholder = @Resources.Resource.OrgReg_AuthorizedPerson,
+           @class = "form-control lettersOnly", maxlength="200"
+       })
+
+                                        </div>  @Html.ValidationMessageFor(model => model.AuthPerson, "", new { @class = "text-danger" })
+
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        @Resources.Resource.CivilId
+                                    </label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-address-card-o"></i>
+                                            </span>
+                                            @Html.TextBoxFor(m=>m.CivilId, new
+            {
+            @id="inputCivilId",
+                @placeholder = @Resources.Resource.OrgReg_CivilId,
+                @class = "form-control numericOnly" ,@ondrop = "return false;" ,@onpaste = "return false;",
+                @maxlength = "12"
+            })
+
+
+                                        </div>      @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger" })
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                                @if (Session["purpose"] != null)
+                                {
+                                    if (Session["purpose"].ToString() == "1")
+                                    {
+                                        if (Convert.ToBoolean(ViewBag.AddMoreOption))
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-5 col-centered">
+
+                                                    <button type="submit" name="AuthSignatorySubmitType" id="btnsubmit" value="AddMoreAuthSignatory" class="btn btn-info btn-block marginTop50 btnsubmit" disabled> @Resources.Resource.AddMore </button>
+
+                                                    @*+ Add more Authorized Signatories*@
+                                                </div>
+                                            </div>
+                                        }
+                                        if (!Convert.ToBoolean(ViewBag.FirstAuthPerson))
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-5 col-centered">
+
+                                                    @Html.ActionLink(@Resources.Resource.delete, "DeleteThisAuthorizedSignatory", "User", new { @class = "btn btn-info btn-block marginTop50 btnsubmit" })
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+
+                                <div class="row">
+                                    @*<div class="col-lg-12 col-centered">*@
+
+                                    <div class="col-xs-4  col-centered">
+                                        @{
+                                            if (Session["AuthorizedSignatorySerialNum"] != null)
+                                            {
+                                                if (Int32.Parse(Session["AuthorizedSignatorySerialNum"].ToString()) > 0)
+                                                {
+                                                    @Html.ActionLink(@Resources.Resource.Commercial_B_back, "Org_AuthSignatory", "User", new { AuthorizedSignatoryBack = true }, new { @class = "btn btn-info btn-block marginTop50" })
+                                                }
+                                                else
+                                                {
+                                                    @Html.ActionLink(@Resources.Resource.Commercial_B_back, "Org_Registration", "User", new { Id = Model.OrganizationId }, new { @class = "btn btn-info btn-block marginTop50" })
+
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                    <div class="col-xs-4  col-centered">
+                                    </div>
+                                    <div class="col-xs-4  col-centered">
+
+                                        <button type="submit" id="btnsubmit" name="AuthSignatorySubmitType" value="@Resources.Resource.Importer_B_next" class="btn btn-info btn-block marginTop50 btnsubmit" disabled>
+                                            @Resources.Resource.Importer_B_next
+                                        </button>
+
+                                    </div>
+
+                                    @*</div>*@
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                    </td>
+                </tr>
+
+            </table>
+
+
+
+        </div>
+
+
+    }
+
+</div>
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var GotoReqList = '@ViewBag.GoToRequestStatus';
+    var ViewBagmodelerror='@ViewBag.modelerror';
+    var result='@ViewBag.dis';
+    if (result===null) {
+        result='';
+    }
+</script>
+
+
+<script type="text/javascript">
+    $("#permanentid").click(function () {
+        $("#tempid").hide();
+    });
+    $("#temporaryid").click(function () {
+        $("#tempid").show();
+    });
+</script>
+
+
+
+<script src="~/Scripts/JS_View/AuthSignatory.js"></script>
+@*<script src="~/Scripts/JS_View/Importer.js"></script>*@
+<style>
+    .hr {
+        border-top: 2px solid #e4e0e0;
+    }
+</style>

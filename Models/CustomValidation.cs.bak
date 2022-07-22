@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace WebApplication1.Models
+{
+    public class CustomValidation
+    {
+    }
+    public sealed class checkgeneralbrokerlicense : ValidationAttribute, IClientValidatable
+    {
+       
+
+        protected override ValidationResult IsValid(object LicenseNumber, ValidationContext validationContext)//General Broker license validation
+        {
+            if (LicenseNumber != null)
+            {
+                string LicNum = LicenseNumber.ToString();
+                if (LicNum.Length >= 6)
+                {
+                    string Firstchar = LicNum.Substring(0, 1);
+                    string SixthChar = LicNum.Substring(5, 1);
+                    if (Firstchar == "1" && SixthChar == "1")
+                    {
+                        return ValidationResult.Success;
+                    }
+                    else
+                    {
+                        return new ValidationResult(Resources.Resource.GeneralBrokerLicenseRequired);
+                    }
+                }
+                else
+                {
+                    return new ValidationResult(Resources.Resource.GeneralBrokerLicenseRequired);
+                }
+            }
+            else
+            {
+                return new ValidationResult(Resources.Resource.GeneralBrokerLicenseRequired);
+            }
+
+          
+        }
+
+        public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        {
+            ModelClientValidationRule mvr = new ModelClientValidationRule();
+            mvr.ErrorMessage = Resources.Resource.GeneralBrokerLicenseRequired;
+            mvr.ValidationType = "checkgeneralbrokerlicense";
+            return new[] { mvr };
+        }
+
+       
+    }
+
+    public sealed class checkdaterange : ValidationAttribute, IClientValidatable //Date should be greater than current date
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            DateTime dt;
+           if( DateTime.TryParseExact(value.ToString(), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"), DateTimeStyles.None,out  dt))
+            {
+                if (dt >= DateTime.UtcNow)
+                {
+                    return ValidationResult.Success;
+                }
+                else
+                {
+                    return new ValidationResult(ErrorMessage ?? Resources.Resource.DatePastNotAllowed);// "Make sure your date is >= than today");
+                }
+            }
+            else
+            {
+                return new ValidationResult(ErrorMessage ?? Resources.Resource.DatePastNotAllowed);//"Make sure your date is >= than today");
+            }
+           
+
+            
+        }
+        public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        {
+            ModelClientValidationRule mvr = new ModelClientValidationRule();
+            mvr.ErrorMessage = Resources.Resource.DatePastNotAllowed;// "Make sure your date is >= than today";
+            mvr.ValidationType = "checkdaterange";
+            return new[] { mvr };
+        }
+
+    }
+}

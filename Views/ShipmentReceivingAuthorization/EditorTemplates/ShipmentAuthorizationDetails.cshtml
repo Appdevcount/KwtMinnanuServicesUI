@@ -1,0 +1,168 @@
+﻿@*@model IEnumerable<WebApplication1.Models.ShipmentAuthorizationDetails>*@
+@model WebApplication1.Models.ShipmentAuthorizationDetails
+@*@Model.Count()*@
+@*style="margin:-0.1px;border:2px solid grey;padding:8px;border-radius:8px;min-height:573px"*@
+<div class="clone col-md-6 " style="border:0.5px solid grey;padding:8px;border-radius:8px;min-height:500px;margin-bottom:2px">
+
+    <div class="form-group   ">
+        @Html.Label(Resources.Resource.Name, htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.NameOfDelegate, new { htmlAttributes = new { @class = "form-control  text NameOfDelegate ", @placeholder = Resources.Resource.InspectionDate } })
+                <span class="input-group-addon removespan" id="">
+                    @if (Model.ShipmentAuthorizationDetailsSeqId != 1)
+                    {
+                        <img class="btnimg button-remove" src="../Images/UploadDocIcons/Delete.png" />
+                    }
+                    </span>
+</div>
+            @Html.ValidationMessageFor(model => model.NameOfDelegate, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label(Resources.Resource.CivilId, htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.CivilId, new { htmlAttributes = new { @class = "form-control  text  CivilId", @placeholder = Resources.Resource.InspectionDate } })
+            </div>
+            @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+
+
+    <div class="form-group   ">
+        @Html.Label(Resources.Resource.gender, htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.GenderType, "GenderTypeID", "GenderTypeValue"), new { @class = "selectpicker form-control Gender select2" })
+
+            </div>
+            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label(Resources.Resource.nationality, htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+                @Html.DropDownListFor(m => m.Nationality,
+               Model.NationalityType,
+new { @class = "selectpicker form-control  select2 Nationality" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label(Resources.Resource.MobileNumber, htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control AttorneyNumber text  ", @placeholder = Resources.Resource.MobileNumber } })
+            </div>
+            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label("AttorneyNumber", htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.AttorneyNumber, new { htmlAttributes = new { @class = "form-control  text AttorneyNumber ", @placeholder = Resources.Resource.InspectionDate } })
+            </div>
+            @Html.ValidationMessageFor(model => model.AttorneyNumber, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label("AttorneyIssuedby", htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+                @Html.DropDownListFor(m => m.AttorneyIssuedby,
+               Model.AttorneyIssuedbyType,
+new { @class = "selectpicker form-control  select2 AttorneyIssuedby" })
+
+            </div>
+            @Html.ValidationMessageFor(model => model.AttorneyIssuedby, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label("AttorneyIssueDate", htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.AttorneyIssueDate, new { htmlAttributes = new { @class = "form-control AttorneyIssueDate  Issuedate ", @placeholder = Resources.Resource.InspectionDate } })
+            </div>
+            @Html.ValidationMessageFor(model => model.AttorneyIssueDate, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label("AttorneyExpiryDate", htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.AttorneyExpiryDate, new { htmlAttributes = new { @class = "form-control  AttorneyExpiryDate expirydate ", @placeholder = Resources.Resource.InspectionDate } })
+            </div>
+            @Html.ValidationMessageFor(model => model.AttorneyExpiryDate, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    <div class="form-group   ">
+        @Html.Label("AttorneyRemarks", htmlAttributes: new { @class = "control-label col-md-4   " })
+        <div class="col-md-8  inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+
+
+                @Html.EditorFor(model => model.AttorneyRemarks, new { htmlAttributes = new { @class = "form-control AttorneyRemarks text  ", @placeholder = Resources.Resource.InspectionDate } })
+            </div>
+            @Html.ValidationMessageFor(model => model.AttorneyRemarks, "", new { @class = "text-danger  " })
+        </div>
+    </div>
+    @*@if (Model.ShipmentAuthorizationDetailsSeqId != 1)
+    {
+        <div class="form-group  removediv ">
+            @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-4   " })
+            <div class="col-md-8  inputGroupContainer ">
+
+                <img class="btnimg button-remove" src="../Images/UploadDocIcons/Delete.png" />
+
+            </div>
+        </div>
+    }*@
+</div>

@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="loginHtml" dir="RTL">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="/eSOnePPIA/images/fav.ico">
+
+
+
+    <link href="/eSOnePPIA/styles/newStyle/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link href="/eSOnePPIA/styles/newStyle/icons.css" rel="stylesheet" id="">
+
+    <script src="/eSOnePPIA/styles/newStyle/jquery.min.js"></script>
+    <script src="/eSOnePPIA/styles/newStyle/bootstrap.min.js"></script>
+    <link href="/eSOnePPIA/styles/newStyle/style.css" rel="stylesheet" id="">
+
+
+    <title>بوابة الخدمات الالكترونية للجمارك  الكويتية</title>
+
+
+
+
+</head>
+
+
+<div id="loading" style="display: inline-block;float: right;margin-right: 17px;/* top: 19px; */">
+    <img src="/eSOnePPIA/images/customs.png" style="
+    width: 108px;
+    height: auto;
+    margin-top: 14px;">
+</div>
+<body class="bg-image-v2-dark" style="
+    /* background-image: url(../../images/bgimg/logo.jpg); */">
+
+
+
+
+    <input type="hidden" name="usageAgreement" id="usageAgreement" value="تطبق الشروط والأحكام حسب القوانين والتعليمات واللوائح الجمركية">
+    <input type="hidden" name="usageAgreementHeader" id="usageAgreementHeader" value="اتفاقية الاستخدام">
+
+    <!-- The Modal -->
+    <div id="modalDiv" class="modal" style="display:none;">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h6 id="modelHeaderTitle">
+                    المعذرة
+                </h6>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage" style="text-align: center;">
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="closeModal" class="btn btn-info" value="موافق">
+            </div>
+        </div>
+
+    </div>
+
+    <form action="/eSOnePPIA/registration/Index" enctype="multipart/form-data" id="myform" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="z3wy4kvdr7ORCBprNrhCTsyCewNS1Bt7uhFwE6oSGSPDKqX7TTZZDzaUfBJZ1DouEfJvuQEdGMDJH9krsJgK6ArUBkU6PxVTYDMnUaRqkpw1">                <input type="hidden" name="errorMsg" value="" id="errorMsg" class="errorMsg">
+        <input type="hidden" name="ServiceType" value="1" id="ServiceType" class="errorMsg">
+        <div class="container login-container login-containerFix">
+            <div class="row">
+
+
+                <div class="col-md-12" style="top: 203px;
+    /* background-image: url(../images/customs.png); */
+    /* background-color: black; */
+    /* opacity: 0.4; */">
+
+                    <img src="/eSOnePPIA/images/customs.png" style="
+    width: 108px;
+    height: auto;
+    margin-top: 14px;">
+
+                    <div class="col-md-6 login-form-2 fixLoginStyleAr">
+
+
+
+
+
+
+                        <h6>
+                            الخدمات الإلكترونية للمخلص الجمركي
+                        </h6>
+
+
+
+                        <div class="form-group">
+
+                            <input type="email" id="Username" name="Username" class="form-control animated" maxlength="150" placeholder="البريد الالكتروني" autocomplete="off" style="direction:LTR">
+
+                            <p id="userNameErrorMsg" class="errorMsg">
+                                الرجاء كتابة بريد إلكتروني صحيح
+                            </p>
+
+
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" name="password" class="form-control" maxlength="150" placeholder="كلمة المرور" value="" autocomplete="off" style="direction:LTR">
+
+
+                            <p id="PasswordErrorMsg" class="errorMsg">
+                                الرجاء كتابة كلمة المرور
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" placeholder="ادخل نص الصورة" name="CaptchaValue" type="text" id="inputCaptcha" autocomplete="off" style="direction:LTR" maxlength="6">
+
+                            <p id="captchaErrorMsg" class="errorMsg">
+                                أدخل الرمز في الصورة بالشكل الصحيح
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <img id="m_imgCaptcha" src="../registration/GetCaptchaImage" class="text-center captcha">
+
+
+                            <i class="fas fa-sync" id="refreshCaptcha" style="color:#00a4e4;padding: 10px; cursor: pointer;"></i>
+
+                        </div>
+
+                        <div class="form-group">
+                            <!--<a href="#" class="ForgetPwd" value="Login">Forget Password?</a>-->
+                            <a href="/eSOnePPIA/registration/ResetPassword" style="color:#f3f3f3; ">
+                                هل نسيت كلمة المرور؟
+
+
+                            </a>
+                        </div>
+
+
+                        <div class="form-group">
+                            <!--<a href="#" class="ForgetPwd" value="Login">Forget Password?</a>-->
+
+                            <span style="color:#f3f3f3;">
+
+
+                                ان دخولك للنظام
+
+                                يعني اطلاعك وموافقتك على
+
+                                <a id="idpopup" style="cursor: pointer; ">
+                                    اتفاقية الاستخدام
+                                </a>
+                            </span>
+
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 hoverDiv login">
+
+
+                                    <i class="fas fa-sign-in-alt fa-3x login" style="color:#00a4e4;"></i>
+                                    <br>
+                                    <label class="login">
+
+
+                                        تسجيل الدخول لحسابك
+                                    </label>
+                                </div>
+
+                                <div class="col-md-6 hoverDiv">
+
+
+                                    <i class="fas fa-user-plus fa-3x signUp" style="color:#00a4e4;"></i>
+                                    <br>
+                                    <label class="signUp">
+
+
+                                        تسجيل حساب جديد
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+    <script type="text/javascript">
+
+        $(".login").click(function () {
+
+
+            if (!validateForm()) {
+                event.preventDefault();
+            }
+
+            if (validateForm()) {
+                $('form#myform').submit();
+            }
+        });
+
+        $("#refreshCaptcha").click(function () {
+            $("#m_imgCaptcha").removeAttr("src").attr('src', "../registration/GetCaptchaImage?Refreshforce=" + Math.floor(Math.random() * 1000));
+        });
+
+        $("#goHome").click(function () {
+            window.location = '/eSOnePPIA/registration/Start2';
+        });
+
+        $(".signUp").click(function () {
+            window.location = '/eSOnePPIA/registration/UserRegistration';//"loginOrganizations.html";
+        });
+
+
+
+        $(document).ready(function () {
+            $(document).keypress(function (e) {
+
+                if (e.which == 13) {
+                    if (!validateForm()) {
+                        event.preventDefault();
+                        return;
+                    }
+                    else {
+                        $('form#myform').submit();
+                    }
+
+                }
+            });
+
+        });
+
+
+
+
+
+    </script>
+
+
+
+    <script src="/eSOnePPIA/Scripts/JS_View/Login.js"></script>
+
+    <script src="/eSOnePPIA/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+
+
+
+</body>
+</html>

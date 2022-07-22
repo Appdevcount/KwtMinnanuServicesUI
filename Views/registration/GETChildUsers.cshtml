@@ -1,0 +1,412 @@
+﻿@*@model IEnumerable<WebApplication1.Models.ChildUsers>*@
+@using WebApplication1.Models;
+@model WebApplication1.Models.ChildUsersModel
+
+@{
+    ViewBag.Title = Resources.Resource.usersManagement;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+
+
+
+
+@*<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />*@
+
+
+
+@*<link href="~/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link rel="stylesheet" href="~/styles/Untitled.css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/jquery-ui.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="~/styles/style.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/Main/popup.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <link href="~/styles/datatables.min.css" rel="stylesheet" />
+    <script src="~/Scripts/datatables.min.js"></script>*@
+
+
+@*<link rel="stylesheet" href="~/styles/font-awesome.min.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+@*<link rel="stylesheet" href="~/styles/theme.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+
+@*<link href="~/styles/animate.min.css" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />*@
+
+
+
+@*<script src="~/Scripts/jquery.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link type="text/css" rel="stylesheet" href="~/styles/jquery-ui.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link type="text/css" rel="stylesheet" href="~/styles/datepickercss.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/datatables.min.css" rel="stylesheet" />
+    <script src="~/Scripts/datatables.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <link href="~/styles/Untitled.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@
+
+
+
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage"></h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+
+    <div class="container formContainer">
+        @*<header>
+            <h3 class="text-center marginBottom30">@Resources.Resource.usersList</h3>
+        </header>*@
+
+        <div class="form">
+
+            <div class="contact ">
+                @*@Html.HiddenFor(M => M.ParentID)*@
+
+                <table class="data-table table table-striped table-bordered responsive nowrap" cellspacing="0" width="100%" id="example">
+                    <thead>
+                        <tr >
+                            <th class="all"   >
+                                @Html.Label(@Resources.Resource.FirstName)
+                            </th>
+                            <th   >
+                                @Html.Label(@Resources.Resource.LastName)
+                            </th>
+                            @*<th class="text-center">
+                                @Html.Label(@Resources.Resource.AccountStatus)
+                            </th>
+                            <th class="text-center">
+                                @Html.Label(@Resources.Resource.AssociatedServices)
+                            </th>
+                            <th class="text-center">
+                                @Html.Label(@Resources.Resource.AssociatedOrganization)
+                            </th>
+                            <th class="text-center">
+                                @Html.Label(@Resources.Resource.DeActivate)
+                            </th>*@
+                            <th  class="desktop tablet-l tablet-p mobile-l" >
+                                @Resources.Resource.Action
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ChildUsers)
+                        {
+                        <tr >
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            @*<td class="text-center">
+                                @Html.DisplayFor(modelItem => item.AccountStatus)
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.ServiceNameEng)
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.OrgNameEng)
+                                
+                            </td>*@
+                            @*<td class="text-center">*@
+                                @*<input type="button" value="DeActivate" onclick="DeActivateUser(@item.UserID)" />*@
+                                @*<img src="~/Content/images/deactivate.png" style="height:21px;width:21px" onclick="DeActivateUser(@item.UserID)" />*@
+                                @*@Html.DisplayFor(modelItem => item.UserID)*@
+                            @*</td>*@
+                              <td class="text-center">
+                               @*<button class="btn btn-primary" id="@item.UserID">Manage</button>*@
+                                  @Html.ActionLink(Resources.Resource.Manage,"ManageUser","Registration",new { UserID= HttpUtility.UrlEncode( CommonFunctions.CsUploadEncrypt( item.UserID.ToString())) },new {@class="btn btn-primary" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-11 col-centered marginTop15">
+            <p>
+                @Html.ActionLink(Resources.Resource.addAdditionalUser, "AdditionalUserRegistration", "registration", null, new { @class = "btn btn-info btn-block col-centered  width50Percent" })
+            </p>
+        </div>
+
+    </div>
+
+
+    @*@if (Model != null)
+    {
+        <header>
+            @Html.ActionLink(Resources.Resource.addAdditionalUser, "AdditionalUserRegistration", "registration", null, new { @class = "btn btn-info btn-lg" })
+            <h3 class="text-center marginBottom30">@Resources.Resource.usersList</h3>
+        </header>
+        @Html.HiddenFor(M => M.ParentID)
+
+        <div class="panel-group" id="faqAccordion">
+            <div class="panel panel-default marginBottom15">
+                @foreach (var item in Model.ChildUsers)
+                {
+                    var divid = "question" + item.UserID;
+                    <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#@divid">
+                        <h4 class="panel-title text-center">
+                          @{var name = item.FirstName  +" "+item.LastName}
+                            @name
+                        </h4>
+                    </div>
+
+                    <div id="@divid" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row" id="MultiSubscription">
+                                <table class="display select table table-sm table-bordered " cellspacing="0" width="100%" id="example">
+                                    <thead>
+                                        <tr class="boldc">
+
+                                            <th class="text-center">
+                                                @Html.Label(@Resources.Resource.AccountStatus)
+                                            </th>
+                                            <th class="text-center">
+                                                @Html.Label(@Resources.Resource.Associated_Services)
+                                            </th>
+                                            <th class="text-center">
+                                                @Html.Label(@Resources.Resource.Associated_Organization)
+                                            </th>
+                                            <th class="text-center">
+                                                @Html.Label(@Resources.Resource.DeActivate)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="@item.UserID">
+
+                                            <td class="text-center">
+                                                @Html.DisplayFor(modelItem => item.AccountStatus)
+                                            </td>
+                                            <td class="text-center">
+                                                @Html.DisplayFor(modelItem => item.ServiceNameEng)
+                                            </td>
+                                            <td class="text-center">
+                                                @Html.DisplayFor(modelItem => item.OrgNameEng)
+                                            </td>
+                                            <td class="text-center">
+                                                <img src="~/Content/images/deactivate.png" style="height:21px;width:21px" onclick="DeActivateUser(@item.UserID)" />
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+
+        </div>
+ }*@
+
+</div>
+
+
+
+<script>
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+   var  la = getCookie("culture");
+    var table = '';
+
+    //alert(la);
+
+    if (la.indexOf("ar") !== -1) {
+        table = $('#example').dataTable({
+            "language":
+            {
+                "url": "../scripts/arabic.json"
+            },
+            "searching": false,
+            "bFilter": false,
+            "bInfo": false,
+            order: [],
+            columnDefs: [{ orderable: false, targets: [0] }],
+            "bPaginate": true,
+            "bLengthChange": false,
+            'sPaginationType': 'ellipses',
+            //  "scrollY": "true",
+            //  "scrollCollapse": true,
+            "pageLength": 5,
+            'pagingType': 'numbers',
+            "info": false
+
+        });
+    }
+
+    else {
+        table = $('#example').dataTable({
+            "oLanguage":
+            {
+                "infoEmpty": ""
+            },
+            "searching": false,
+            "bFilter": false,
+            "bInfo": false,
+            order: [],
+            columnDefs: [{ orderable: false, targets: [0] }],
+            "bPaginate": true,
+            "bLengthChange": false,
+            'sPaginationType': 'ellipses',
+            //  "scrollY": "true",
+            //  "scrollCollapse": true,
+            "pageLength": 5,
+            'pagingType': 'numbers',
+            "info": false
+
+        });
+    }
+
+    //var table = $('#example').DataTable({
+
+    //    "language":
+    //    {
+    //        "url": "../scripts/arabic.json"
+    //    },
+   
+    //    "bPaginate": true,
+    //    "bFilter": false,
+    //        "bInfo": true,
+    //        "pageLength": 10,
+    //        'pagingType': 'numbers',
+    //        "bLengthChange": false,
+    //        'columnDefs': [{
+    //            'targets': 2,
+    //            'searchable': false,
+    //            'orderable': false,
+    //            'className': 'dt-body-center'
+    //            //,'render': function (data, type, full, meta) {
+    //            //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+    //            //}
+    //        }
+    //            //, {
+    //            //    'targets': 3,
+    //            //    'searchable': false,
+    //            //    'orderable': false,
+    //            //    'className': 'dt-body-center'
+    //            //    //,'render': function (data, type, full, meta) {
+    //            //    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+    //            //    //}
+    //            //}
+    //        ],
+    //        'order': [[1, 'asc']]
+    //    });
+
+        //$('#example_wrapper').css({ "width": "90%" });
+
+
+        function DeActivateUser(ChildUserID) {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("DeActivateChildUser", "registration")",//"/registration/DeActivateChildUser",
+                data: '{ParentID: "' + $("#ParentID").val() + '",ChildUser:"' + ChildUserID + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    //var id = "#" + ChildUserID;
+                    //var idj = '"' + id + '"';
+                    //console.log(idj);
+                    //$(idj).remove();
+                    //$(this).remove();
+                    console.log(response);
+                    console.log(response.d);
+                    $('#' + ChildUserID).remove();
+
+                    $("#modelHeaderTitle").text('@Resources.Resource.delete');
+                    $("#modalMessage").text(response.Message);
+
+                    $("#modalDiv").css("display", "block");
+
+                    //alert(response.Message)
+                    //alert("Hello: " + response.Name + " .\nCurrent Date and Time: " + response.DateTime);
+                },
+                failure: function (response) {
+                    alert("Some issue has occured");
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert("Some error has occured");
+                    alert(response.responseText);
+                }
+            });
+
+        }
+
+
+</script>
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = Resources.Resource.DeclarationSearch;
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/Main/Declaration.css" rel="stylesheet" />
+<div class="@Resources.Resource.MenuHeader_cssclass">
+    <strong style="width:100px;color:white;"><span id="menuid" onclick="w3_open()" style="@Resources.Resource.menuiconstyle" class="glyphicon glyphicon-menu-hamburger"></span><span id="menuheader">@Resources.Resource.DeclarationSearch</span></strong>
+    <div class="@Resources.Resource.MenuHeader_cssclass1" onclick="w3_close()">
+        @*<a data-toggle="dropdown" href="" class="notif">&#128276;<span id="countNotify" class="@Resources.Resource.MenuHeader_cssclass2">0</span></a>*@
+        @*<a data-toggle="dropdown" href="" class="notif">&#128276;<span id="countNotify" class="@Resources.Resource.MenuHeader_cssclass2">0</span></a>*@
+        <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown" id="notifyidevent">
+            @{ if (Session["Nfcount"] != null)
+                {
+                    if (Session["Nfcount"].ToString() == "0")
+                    {
+                        <i data-count="@Session["Nfcount"].ToString()" id="idcount" class="@Resources.Resource.MenuHeader_cssclassnotification1"></i>
+                    }
+                    else
+                    {
+                        <i data-count="@Session["Nfcount"].ToString()" id="idcount" class="@Resources.Resource.MenuHeader_cssclassnotification"></i>
+                    }
+
+                }
+                else
+                {
+                    <i id="idcount" class="@Resources.Resource.MenuHeader_cssclassnotification1"></i>
+                }
+            }
+
+        </a>
+        <ul class="dropdown-menu" id="myNotifyList" style="margin: -25px 0 0;"></ul>
+    </div>
+</div>
+@using (Html.BeginForm("DeclarationSearch", "User", FormMethod.Post))
+{
+    <div class="form-group" onclick="w3_close()" id="mydiv">
+        <table align="center" style="width:90%">
+            <tr>
+                <td style="width:100%" align="center">
+                    <div class="form-group">
+                        <input class="form-control textval" placeholder="@Resources.Resource.TemporaryDeclarationNumber"
+                               type="text" id="DescSearch" name="tempDeclNumber" value="@ViewBag.search" style="background-color:#ccc;width:90%;height:40px" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <div class="form-group">
+                        <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Search</button>
+                    </div>
+                </td>
+            </tr>
+            @{ if (Model != null)
+                {
+                    if (Model.Rows != null)
+                    {
+                        if (Model.Rows.Count > 0)
+                        {
+                            foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    <td align="center">
+                                        <div style="width: 100%;">
+                                            <table style="width:100%;margin-top:20px" align="center" class="table table-bordered">
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.TempDeclNumber</td>
+                                                    <td>&nbsp;@row["DeclarationTemporaryNumber"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.DeclarationNumber</td>
+                                                    <td>&nbsp;@row["DeclarationNumber"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.Declarationtype</td>
+                                                    <td>&nbsp;@row["DeclarationType"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.HousebillNumber</td>
+                                                    <td>&nbsp;@row["HouseBillNumber"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.DeliveryorderNumber</td>
+                                                    <td>&nbsp;@row["DeliveryOrderNumber"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.ExportCountry</td>
+                                                    <td>&nbsp;@row["PortofLoadingCountry"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.DestinationCountry</td>
+                                                    <td>&nbsp;@row["PortofDischargeCountry"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.Consignee</td>
+                                                    <td>&nbsp;@row["Consignee"]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight:bold">@Resources.Resource.Status</td>
+                                                    <td>&nbsp;@row["DeclarationStatus"]</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td align="center" ><table align="center" style="margin-top:100px"><tr><td align="center"><h5 style="color:red">@Resources.Resource.noRecordsFound</h5></td></tr></table></td></tr>
+                        }
+                    }
+                }
+            }
+        </table>
+    </div>
+                }
+<div id="myLoadingElement" class="modalprgs" style="display: none">
+    <div class="prgs">
+        <img src="~/Content/loader4.gif" />
+    </div>
+</div>
+<script src="~/Scripts/Main/popup_jquery.min.js"></script>
+<script src="~/Scripts/JS_View/Declaration.js"></script>
+

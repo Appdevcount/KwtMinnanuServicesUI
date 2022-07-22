@@ -1,0 +1,197 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Resources.Resource.Verification</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="~/Content/CustomFont.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/Registration.css" rel="stylesheet" />
+    <link href="~/Content/Main/Emailvery.css" rel="stylesheet" />
+</head>
+<body style="font-family: myFirstFont !important;">
+
+    <div style="@Resources.Resource.div_direction">
+        @using (Ajax.BeginForm("EmailVerification", "registration", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divEmp" }))
+        {
+            <table id="t1" align="center">
+                <tr>
+                    <td width="50%" align="center">
+                        <div class="modal-content" id="Idmodalcontent">
+                            <div class="modal-header" style="padding:0px">
+                                <table id="t2" align="center">
+                                    <tr>
+                                        <td width="50%" align="@Resources.Resource.align">
+                                            <img src="@Resources.Resource.Logo1" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="modal-body" style="padding: 5px;">
+
+                                <form>
+                                    @{ if (ViewBag.mobile != null)
+                                        {
+                                            <div style="@Resources.Resource.Header_withoutmenu">
+                                                &nbsp;  <span onclick="location.href='@Url.Action("MyAccount", "User")'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Verification</span>
+                                            </div>
+                                            <div style="@Resources.Resource.Header_withoutmenu1;">
+                                                &nbsp;  <span onclick="location.href='@Url.Action("MyAccount", "User")'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Verification</span>
+                                            </div>
+                                        }
+                                        else if (TempData["OrgId"] != null)
+                                        {
+                                            TempData.Keep();
+                                            <div style="@Resources.Resource.Header_withoutmenu">
+                                                &nbsp;  <span onclick="location.href='@Url.Action("UploadDocument", "User")'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Verification</span>
+                                            </div>
+                                            <div style="@Resources.Resource.Header_withoutmenu1;">
+                                                &nbsp;  <span onclick="location.href='@Url.Action("UploadDocument", "User")'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Verification</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div style="@Resources.Resource.Header_withoutmenu">
+                                                &nbsp;  <span onclick="location.href='@Url.Action("Index", "registration")'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Verification</span>
+                                            </div>
+                                            <div style="@Resources.Resource.Header_withoutmenu1;">
+                                                &nbsp;  <span onclick="location.href='@Url.Action("Index", "registration")'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.Verification</span>
+                                            </div>
+                                        }
+                                    }
+                                    <div class="form-group" align="center">
+                                        <p style="text-align: center;margin-top:20px;font-size:large">
+                                            @Resources.Resource.codeVerification
+                                        </p>
+                                    </div>
+                                    <div style="width: 100%;">
+
+                                        @{ if (ViewBag.mobile != null)
+                                            {
+                                                <div class="form-group">
+                                                    <input class="form-control textval" placeholder="@Resources.Resource.MobileCode" name="Email" value=""
+                                                           type="text" id="inputEmailCode" />
+                                                </div>
+                                                <div class="form-group" id="Resenddiv">
+                                                    @Html.ActionLink(@Resources.Resource.ResendMobile, "MobileVerificationResend", "registration", null, null)
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="form-group">
+                                                    <input class="form-control textval" placeholder="@Resources.Resource.emailCode" name="Email" value=""
+                                                           type="text" id="inputEmailCode" />
+                                                </div>
+                                                <div class="form-group" id="Resenddiv">
+                                                    @Html.ActionLink(@Resources.Resource.ResendMail, "EmailVerificationResend", "registration", null, null)
+                                                </div>
+
+                                            }
+                                        }
+                                        <div class="form-group">
+                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Verify</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+                                            }
+    </div>
+    @{
+        if (ViewBag.modelerror != null)
+        {
+            if (ViewBag.modelerror == "5")
+            {
+                <div class="modal fade" tabindex="-1" id="MSGModel"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:330px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <table align="center">
+                                        <tr><td style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                        <tr><td><p style="margin-top:20px">@ViewBag.msg</p></td></tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group" style="text-align:center">
+                                        <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Ok" Style="width:auto" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        if (ViewBag.modelstatusid != null)
+        {
+            if (ViewBag.modelstatusid == "0")
+            {
+
+
+                <div class="modal fade" tabindex="-1" id="modelemail"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:5%;text-align:center">
+                        <div class="modal-content">
+                            @*<div class="modal-header" style="text-align:left">
+
+                                    <h4 class="modal-title">Search</h4>
+
+                                </div>*@
+                            <div class="modal-body" style="text-align:center">
+                                @ViewBag.modelstatus
+
+                            </div>
+                            @{
+                                if (ViewBag.ok != null)
+                                {
+                                    if (ViewBag.ok == "3")
+                                    {
+                                        <div class="modal-footer">
+                                            <div class="form-group" style="text-align:center">
+                                                @Html.ActionLink(@Resources.Resource.Ok, "Index", "registration", null, new { @class = "btn button button4", @Style = "width: fit-content;" })
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="modal-footer">
+                                        <div class="form-group" style="text-align:center">
+                                            <input type="button" id="btnHide" class="btn button button4 btnHide" value="@Resources.Resource.Ok" Style="width:auto" />
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                                    }
+                                } }
+    <div id="myLoadingElement" class="modalprgs" style="display: none">
+        <div class="prgs">
+            <img src="~/Content/loader4.gif" />
+        </div>
+    </div>
+    <script src="~/Scripts/Main/popup_jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var ViewBagmodelstatus=@ViewBag.modelstatusid;
+    </script>
+
+    <script src="~/Scripts/JS_View/Emailvery.js"></script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+    <link href="~/Content/CustomFont.css" rel="stylesheet" />
+    <link href="~/Content/w3.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Main/Main.css" rel="stylesheet" />
+
+</head>
+<body style="font-family: myFirstFont !important;position:fixed;width:100%">
+    <div style="@Resources.Resource.div_direction">
+
+        <table id="t1" align="center">
+            <tr>
+                <td width="50%" align="center">
+                    <div class="modal-content" id="Idmodalcontent">
+                        <div class="modal-header" style="padding:0px">
+                            <table id="t2" align="center">
+                                <tr>
+                                    <td width="50%" align="@Resources.Resource.align"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="w3-sidebar w3-bar-block" style="display:none;font-family: myFirstFont !important;" id="mySidebar">
+                            <div style="@Resources.Resource.Menu_style1" class="w3-bar-item w3-bar-item w3-large"> <img class="imhid" src="~/Content/avatar.svg">&nbsp;<label class="lblid" for="StudentName">@Session["UserName"].ToString()</label> </div>
+                            @{
+                                if (Session["login"] == null)
+                                {
+
+                                    if (Session["LegalEntity"] != null)
+                                    {
+                                        if (Session["LegalEntity"].ToString() == "1")
+                                        {
+                                            <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("payment", "User")'">
+                                                <strong>@Resources.Resource.Menu4</strong>
+                                            </div>
+                                        }
+
+                                        else if (Session["LegalEntity"].ToString() == "2")
+                                        {
+                                            <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("MyOrganizations", "User")'">
+                                                <strong>@Resources.Resource.Menu2</strong>
+                                            </div>
+                                            <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("Org_RequestStatus", "User")'">
+                                                <strong>@Resources.Resource.Menu3</strong>
+                                            </div>
+                                            <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("payment", "User")'">
+                                                <strong>@Resources.Resource.Menu4</strong>
+                                            </div>
+                                        }
+                                    }
+                                }
+                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("MyAccount", "User")'">
+                                    <strong>@Resources.Resource.MyAccount</strong>
+                                </div>
+
+                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("RequestListfortheUser", "Request")'">
+                                    <strong>@Resources.Resource.RequestsList</strong>
+                                </div>
+
+                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("BrokerServiceRequestUpdates", "BrokerRenewal")'">
+                                    <strong>@Resources.Resource.AvailableServices</strong>
+                                </div>
+
+                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("GETChildUsers", "registration")'">
+                                    <strong>@Resources.Resource.usersManagement</strong>
+                                </div>
+
+                                if (Session["AllowedMenus"] != null)
+                                {
+                                    if (Session["AllowedMenus"].ToString() != "")
+                                    {
+                                        string[] arr = Session["AllowedMenus"].ToString().Split(',').ToArray();
+                                        for (int i = 0; i < arr.Length; i++)
+                                        {
+                                            if (arr[i] == "Declaration")
+                                            {
+                                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("DeclarationSearch", "User")'">
+                                                    <strong>@Resources.Resource.DeclarationSearch</strong>
+                                                </div>
+                                            }
+                                            if (arr[i] == "Housebills")
+                                            {
+                                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("HouseBillSearch", "User")'">
+                                                    <strong>@Resources.Resource.HousebillSearch</strong>
+                                                </div>
+                                            }
+                                            if (arr[i] == "HsCode")
+                                            {
+                                                <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("HSCodeSearch", "User")'">
+                                                    <strong>@Resources.Resource.HSCodeSearch</strong>
+                                                </div>
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                            <div id="div1" class="@Resources.Resource.Menu_style" onclick="location.href='@Url.Action("Index", "registration")'">
+                                <strong>@Resources.Resource.Menu5</strong>
+                            </div>
+                        </div>
+                        <div class="modal-body" style="font-family: myFirstFont !important;padding: 5px;" id="modelbodydiv">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @{
+        if (ViewBag.viewname != null)
+        {
+            if (ViewBag.viewname == "Reqstatus")
+            {
+                <div class="modal fade" tabindex="-1" id="ConfirmModal"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <table align="center">
+                                    <tr><td align="center" style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                    <tr><td align="center" style="margin-top:20px"><p>@Resources.Resource.DeleteRequest</p></td></tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <div class="form-group" style="text-align:center" id="deletecnfdiv">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group" style="text-align:center">
+                                                <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Cancel" Style="width:auto" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.viewname == "Upload")
+            {
+                <div class="modal fade" tabindex="-1" id="DocumenttypesModal"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-header" style="text-align:left">
+
+                                <h4 class="modal-title">&nbsp;</h4>
+
+                            </div>
+                            <div class="modal-body" style="text-align:center">
+                                <div style="@Resources.Resource.UploadDocument_POP_RDlist_style">
+                                    @{
+                                        if (ViewData["Data"] != null)
+                                        {
+                                            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                            {
+                                                foreach (var item in ViewData["Data"] as List<WebApplication1.Models.DocTypeslist>)
+                                                {
+                                                    foreach (var item1 in item.DocTypes)
+                                                    {
+                                                        <input type="radio" name="ossm" value="@item1.TypeId" id="@item1.Code">
+                                                        <label for="@item1.Code">@item1.Name</label><br />
+
+
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+                                </div>
+                                <div class="modal-footer">
+                                    <table align="center">
+                                        <tr>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnHide" class="btn button button4 btnhide">
+                                                        @Resources.Resource.UploadDocument_POP_cancelbtn
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn button button4 btnhide" id="btnokModal" onclick="documettype1();">
+                                                        @Resources.Resource.UploadDocument_POP_OKbtn
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.viewname == "Comm")
+            {
+                <div class="modal fade" tabindex="-1" id="CommLicSubTypesModal"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-header" style="text-align:left">
+
+                                <h4 class="modal-title">&nbsp;</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                <div style="@Resources.Resource.UploadDocument_POP_RDlist_style">
+                                    @{
+                                        if (ViewData["CommLicSubTypes"] != null)
+                                        {
+                                            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                            {
+                                                foreach (var item in ViewData["CommLicSubTypes"] as List<WebApplication1.Models.CommLicSubTypeslist>
+                                                    )
+                                                {
+                                                    foreach (var item1 in item.CommLicSubTypes)
+                                                    {
+                                                        var aa = "aa" + @item1.TypeId;
+                                                        <input type="radio" name="ossm" value="@item1.TypeId" id="@aa">
+                                                        <label for="@aa">@item1.Name</label><br />
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+                                </div>
+                                <div class="modal-footer">
+                                    <table align="center">
+                                        <tr>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnHidepop" class="btn button button4 btnhide">
+                                                        @Resources.Resource.UploadDocument_POP_cancelbtn
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn button button4 btnhide" id="btnokModal" onclick="documettype();">
+                                                        @Resources.Resource.UploadDocument_POP_OKbtn
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.viewname == "Paymentsearch")
+            {
+                <div class="modal fade" tabindex="-1" id="paynentsearchtypesModal"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-header" style="@Resources.Resource.textalign">
+
+                                <h4 class="modal-title" style="font-weight:bold">@Resources.Resource.SearchBy</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                <div style="@Resources.Resource.UploadDocument_POP_RDlist_style">
+                                    @{
+                                        if (ViewData["paynentsearchtypes"] != null)
+                                        {
+                                            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                            {
+                                                foreach (var item in ViewData["paynentsearchtypes"] as List<WebApplication1.Models.Epaymentlist>
+                                                    )
+                                                {
+                                                    foreach (var item1 in item.searchtypes)
+                                                    {
+                                                        var aa = "aa" + @item1.Value;
+                                                        <input type="radio" name="ossm" value="@item1.Value" id="@aa">
+                                                        <label for="@aa">@item1.Text</label><br />
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+                                </div>
+                                <div class="modal-footer">
+                                    <table align="center">
+                                        <tr>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnHidepop" class="btn button button4 btnhide">
+                                                        @Resources.Resource.UploadDocument_POP_cancelbtn
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn button button4 btnhide" id="btnokModal" onclick="documettype2();">
+                                                        @Resources.Resource.UploadDocument_POP_OKbtn
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        if (ViewBag.modelerror != null)
+        {
+            if (ViewBag.modelerror == "5")
+            {
+
+                <div class="modal fade" tabindex="-1" id="modelcommon"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-body" style="text-align:center">
+                                <table align="center">
+                                    <tr><td align="center" style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                    <tr><td align="center"><p style="margin-top:15px">@ViewBag.Msg</p></td></tr>
+                                    <tr>
+                                        <td align="center">
+                                            <div class="form-group" style="text-align:center">
+                                                @*<input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Ok" Style="width:auto" />*@
+                                                @Html.ActionLink(@Resources.Resource.Ok, "Org_RequestStatus","User",new { id = "btnHide" ,@class="btn button button4 btnhide",@Style="width:auto"})
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "9")
+            {
+
+                <div class="modal fade" tabindex="-1" id="modelsession"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-body" style="text-align:center">
+                                <table align="center">
+                                    <tr><td align="center" style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                    <tr><td align="center"><p style="margin-top:15px">@ViewBag.Msg</p></td></tr>
+                                    <tr>
+                                        <td align="center">
+                                            <div class="form-group" style="text-align:center">
+                                                @Html.ActionLink(@Resources.Resource.Ok, "Index", "registration", null, new { @class = "btn button button4", @Style = "width: fit-content;" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "0")
+            {
+                <div class="modal fade" tabindex="-1" id="dialog"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <table>
+                                    <tr>
+                                        <td style="width:95%">@Resources.Resource.error</td>
+                                        <td style="width:5%">
+                                            <button type="button" style="color:black;opacity:unset" class="close" data-dismiss="modal">
+                                                ×
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-body">
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "2")
+            {
+                <div class="modal fade" tabindex="-1" id="MSGModal"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <table align="center">
+                                    <tr><td style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                    <tr><td align="center"><p style="margin-top:15px">@Resources.Resource.updatedSuccess</p></td></tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="form-group" style="text-align:center">
+                                    <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Ok" Style="width:auto" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "3")
+            {
+                <div class="modal fade" tabindex="-1" id="MSGModal"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <table align="center">
+                                    <tr><td style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                    <tr><td align="center"><p style="margin-top:20px">@Resources.Resource.ProvideMobileOTP</p></td></tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="form-group" style="text-align:center">
+                                    @Html.ActionLink(@Resources.Resource.Ok, "EmailVerification", "registration", null, new { @class = "btn button button4", @Style = "width: fit-content;" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "6")
+            {
+                <div class="modal fade" tabindex="-1" id="MSGModalUpload"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            @{ if (ViewBag.Msg == "Email")
+                                {
+                                    <div class="modal-body" style="text-align:center">
+                                        <table align="center">
+                                            <tr><td style="font-weight:bold" align="center">@Resources.Resource.KuwaitCustoms</td></tr>
+                                            <tr><td align="@Resources.Resource.UploadDocument_align_style"><p style="margin-top:15px">@Resources.Resource.OrganizationEmailpending</p></td></tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="form-group" style="text-align:center">
+                                            @Html.ActionLink(@Resources.Resource.Ok, "EmailVerification", "registration", null, new { @class = "btn button button4", @Style = "width: fit-content;" })
+                                        </div>
+                                    </div>
+                                }
+                                else if (ViewBag.Msg == "Docs")
+                                {
+                                    <div class="modal-body" style="text-align:center">
+                                        <table align="center">
+                                            <tr><td style="font-weight:bold" align="center">@Resources.Resource.KuwaitCustoms</td></tr>
+                                            <tr><td align="@Resources.Resource.UploadDocument_align_style"><p>@Resources.Resource.uploadDoc</p></td></tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="@Resources.Resource.UploadDocument_POP_RDlist_style">
+                                                        @{
+                                                            if (ViewData["Dataerror"] != null)
+                                                            {
+                                                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                                                {
+                                                                    int i = 1;
+                                                                    foreach (var item in ViewData["Dataerror"] as List<string>)
+                                                                    {
+                                                                        <label for="@item">@i) @item</label><br />
+                                                                        i++;
+                                                                    }
+
+                                                                }
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="form-group" style="text-align:center">
+                                            <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Ok" Style="width:auto" />
+                                        </div>
+                                    </div>
+                                }
+                                @*else
+                                {
+                                    <div class="modal-body" style="text-align:center">
+                                        <table align="center">
+                                            <tr><td style="font-weight:bold" align="center">@Resources.Resource.KuwaitCustoms</td></tr>
+                                            <tr><td align="@Resources.Resource.UploadDocument_align_style"><p style="margin-top:15px">@Resources.Resource.OrganizationEmailpending</p></td></tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="form-group" style="text-align:center">
+                                            @Html.ActionLink(@Resources.Resource.Ok, "EmailVerification", "registration", null, new { @class = "btn button button4", @Style = "width: fit-content;" })
+                                        </div>
+                                    </div>
+                                }*@
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        } }
+
+    <script type="text/javascript">
+        var modelerror= '@ViewBag.modelerror';
+        var Okbtn= '@Resources.Resource.Ok';
+        var MenuHeader_notifycssclass= '@Resources.Resource.MenuHeader_notifycssclass';
+        var MenuHeader_notifyHeader= '@Resources.Resource.MenuHeader_notifyHeader';
+        var MenuHeader_notifycssclass1= '@Resources.Resource.MenuHeader_notifycssclass1';
+        var created2= '@WebApplication1.Models.encrypt.Encode("Status")';
+        var view2= '@WebApplication1.Models.encrypt.Encode("view")';
+        var notifications_style= '@Resources.Resource.notifications_style';
+        var textalign= '@Resources.Resource.textalign';
+    </script>
+    @*<script src="~/Scripts/Main/popup_jquery.min.js"></script>*@
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/JS_View/jquery_min_321.js" type="text/javascript"></script>
+    <script src="~/Scripts/Main/Main.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

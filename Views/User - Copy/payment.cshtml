@@ -1,0 +1,298 @@
+﻿@model WebApplication1.Models.Epaymentlist
+
+@{
+    ViewBag.Title = Resources.Resource.Menu4;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+</head>
+
+
+
+
+
+@*this is Old, if you want to use please Use and UNComment  div id=Selectsearchtype*@
+
+@*<div class="modal fade" tabindex="-1" id="paynentsearchtypesModal"
+         data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" style="font-weight:bold">@Resources.Resource.SearchBy</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div style="@Resources.Resource.UploadDocument_POP_RDlist_style">
+                        @{
+                            if (ViewData["paynentsearchtypes"] != null)
+                            {
+                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                {
+                                    foreach (var item in ViewData["paynentsearchtypes"] as List<WebApplication1.Models.Epaymentlist>
+                                        )
+                                    {
+
+
+                                        foreach (var item1 in item.searchtypes)
+                                        {
+
+                                            var aa = "aa" + @item1.Value;
+                                            <input type="radio" name="ossm" value="@item1.Value" id="@aa">
+                                            <label for="@aa">@item1.Text</label><br />
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+
+                    </div>
+                    <div class="modal-footer">
+                        <table align="center">
+                            <tr>
+                                <td align="center">
+                                    <div class="form-group">
+                                        <button type="button" id="btnHidepop" class="btn button button4 btnhide">
+                                            @Resources.Resource.UploadDocument_POP_cancelbtn
+                                        </button>
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <div class="form-group">
+                                        <button type="button" class="btn button button4 btnhide" id="btnokModal" onclick="documettype2();">
+                                            @Resources.Resource.UploadDocument_POP_OKbtn
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+@using (Html.BeginForm("payment", "User", FormMethod.Post))
+{
+
+    <div class="col-lg-10 col-centered marginTop50">
+        <table class="table center-block">
+
+
+            <tr>
+                <td colspan="2">
+                    <div class="well form-horizontal">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    @Resources.Resource.SearchType
+                                </label>
+                                <div class="col-md-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                                        @{
+                                            if (ViewData["paynentsearchtypes"] != null)
+                                            {
+                                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                                {
+                                                    foreach (var item in ViewData["paynentsearchtypes"] as List<WebApplication1.Models.Epaymentlist>
+                                                        )
+                                                    {
+                                                        <select class="selectpicker form-control" id="searchList">
+
+                                                            @foreach (var item1 in item.searchtypes)
+                                                            {
+
+                                                                var aa = "aa" + @item1.Value;
+
+                                                                <option value="@item1.Value" id="@aa"> @item1.Text</option>
+                                                            }
+
+                                                        </select>
+                                                    }
+
+                                                }
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="dtypeid" name="searchDropdown" value="@ViewBag.searchtypeid" />
+                            <input type="hidden" id="dtypefirst" value="@ViewBag.searchtypeid" />
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    @Resources.Resource.EnterTexttoSearch1
+                                </label>
+                                <div class="col-md-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-qrcode"></i>
+                                        </span>
+
+
+                                        @Html.TextBoxFor(m => m.searchCriteria, new { @class = "form-control textval", @placeholder = @Resources.Resource.EnterTexttoSearch1, required = "required", @id = "PaySearch" })
+
+                             
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                        </fieldset>
+                    </div>
+                    
+
+                        
+                   
+                </td>
+            </tr>
+
+            <tr>
+
+                
+
+                @*<td style="width:50%">*@
+                    @*<div id="Selectsearchtype" class="form-group">
+                            <div id="idselect" style="text-align:center;">
+                                <table align="center">
+                                    <tr>
+                                        <td align="center"><span id="spandtype">@ViewBag.searchtype</span></td>
+                                        <td align="right"><i class="glyphicon glyphicon-chevron-down"></i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>*@
+
+                    @*<div id="searchArea">
+                        @{
+                            if (ViewData["paynentsearchtypes"] != null)
+                            {
+                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                {
+                                    foreach (var item in ViewData["paynentsearchtypes"] as List<WebApplication1.Models.Epaymentlist>
+                                        )
+                                    {
+                                        <select class="selectpicker form-control" id="searchList">
+
+                                            @foreach (var item1 in item.searchtypes)
+                                            {
+
+                                                var aa = "aa" + @item1.Value;
+
+                                                <option value="@item1.Value" id="@aa"> @item1.Text</option>
+                                            }
+
+                                        </select>
+                                    }
+
+                                }
+                            }
+                        }
+
+                    </div>
+
+                    <input type="hidden" id="dtypeid" name="searchDropdown" value="@ViewBag.searchtypeid" />
+                    <input type="hidden" id="dtypefirst" value="@ViewBag.searchtypeid" />*@
+                @*</td>*@
+                @*<td style="width:50%" align="center">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.searchCriteria, new { @class = "form-control textval", @placeholder = @Resources.Resource.EnterTexttoSearch, @id = "PaySearch" })
+                    </div>
+                </td>*@
+
+            </tr>
+            <tr>
+
+                <td colspan="2">
+                    <button type="submit" id="btnsubmit" class="btn btn-info btn-block col-centered marginTop15 width9em" causesvalidation="true">
+                        <b>
+                            <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Search &nbsp;
+                        </b>
+                    </button>
+                </td>
+
+            </tr>
+        </table>
+        <div id="paydiv" class="marginTop50">
+            <div id="wrapperDiv">
+                <table class="table  center-block" align="center" id="epaydiv">
+                    @{
+                        if (ViewData["data"] != null)
+                        {
+                            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                            {
+                                foreach (var item in ViewData["data"] as List<WebApplication1.Models.EPaymentRequestDetails>)
+                                {
+                                    if (item.RequstNo != null)
+                                    {
+                                        <tr id="epaytrid">
+                                            <td onclick="location.href='@Url.Action("EPayment", "User", new { Id = item.RequstNoenyp })'">
+                                                <div class="@Resources.Resource.databind_class">
+                                                    <strong class="blackColor">@Resources.Resource.Epayment_RequestNumber </strong>
+                                                    <strong class="blackColor">@item.RequstNo</strong>
+                                                    <br />
+                                                    <strong class="blackColor">@item.DeliveryOrderNo @Resources.Resource.by @item.Broker @Resources.Resource.To @item.ConsigeeName</strong><br />
+                                                    <strong class="blackColor">@item.PayAmount @item.PayFor  @item.Status</strong>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td align="center">
+                                                <table align="center" style="margin-top:100px">
+                                                    <tr>
+                                                        <td align="center">
+                                                            <h4 class="redColor">
+                                                                @Resources.Resource.NoPaymentRequests
+                                                            </h4>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+                        }
+
+
+
+<script type="text/javascript">
+    var Epayment_RequestNumber = '@Resources.Resource.Epayment_RequestNumber';
+    var To = '@Resources.Resource.To';
+    var by = '@Resources.Resource.by';
+    var databind_class = '@Resources.Resource.databind_class';
+</script>
+
+<link href="~/Content/Main/payment.css" rel="stylesheet" />
+<script src="~/Scripts/JS_View/Payment.js"></script>
+

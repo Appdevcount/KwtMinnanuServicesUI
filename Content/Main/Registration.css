@@ -1,0 +1,165 @@
+   .button {
+            background-color: #BD3B2E; /* Green */
+            width: 70%;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background-color: #f53d3d;
+            }
+
+        .button1 {
+            border-radius: 2px;
+        }
+
+        .button2 {
+            border-radius: 4px;
+        }
+
+        .button3 {
+            border-radius: 8px;
+        }
+
+        .button4 {
+            border-radius: 5px;
+        }
+
+        .button5 {
+            border-radius: 50%;
+        }
+
+        .button7 {
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+            .button7:hover {
+                background-color: #f53d3d;
+            }
+
+        .button6 {
+            background-color: #f53d3d; /* Green */
+            width: 100%;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .previous {
+            background-color: black;
+            color: white;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+        /* Change Autocomplete styles in Chrome*/
+        input:-webkit-autofill {
+            -webkit-box-shadow: inset 0 0 0px 9999px #ccc;
+        }
+
+            input:-webkit-autofill:focus {
+                -webkit-box-shadow: 0 0 0 50px #ccc inset;
+            }
+
+        .myclass {
+            cursor: pointer;
+            color: white;
+        }
+
+            .myclass:hover {
+                color: black;
+            }
+             .btn{
+            text-transform: uppercase;
+        }
+          .form-control {
+            width:90%;
+        }
+        .modalprgs {
+            position: fixed;
+            z-index: 999;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+         #modelbodydiv {
+           height:800px;
+        }
+         #mydiv {
+            overflow-y: auto !important;
+             height:660px;
+               width: 100%;
+             margin-top:20px;
+        }
+         @media only screen and (max-width: 450px) {
+            #Idmodalcontent {
+                position: relative;
+                background-color: #fff;
+                border: none;
+                border: none;
+                border-radius: unset;
+                outline: unset;
+                -webkit-box-shadow: unset;
+                box-shadow: unset;
+                background-clip: unset;
+                border-bottom: none;
+            }
+             #mydiv {
+            /*overflow-y:unset;
+             height:100%;*/
+        }
+               #modelbodydiv {
+           height:100%;
+        }
+        }
+        .prgs {
+            z-index: 1000;
+            margin: 300px auto;
+            width: 100px;
+            background-color: White;
+            border-radius: 10px;
+        }
+
+            .prgs img {
+                height: 100px;
+                width: 100px;
+            }
+
+              #t1 {
+               margin-top:20px;
+               width:40%;
+            }
+        @media only screen and (max-width: 600px) {
+         #t1 {
+               margin-top:0px;
+               width:100%;
+            }
+        }
+        @media only screen and (min-width:481px) and (max-device-width: 1000px) {
+             #t1 {
+               margin-top:0px;
+               width:60%;
+            }
+        }
+        @media only screen and (max-width: 800px) {
+            .dropdown-menu {
+                width: 80%;
+                position: absolute;
+                top: 9%;
+                left: 20px;
+            }
+
+        }

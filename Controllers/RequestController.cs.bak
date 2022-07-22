@@ -1,0 +1,404 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Diagnostics;
+using System.Linq;
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+namespace WebApplication1.Controllers
+{
+    public class RequestController : MyBaseController //Controller
+    {
+        Dataclass objdataclass = new Dataclass();
+        public void WriteToLogFile(string inputvalue, string sessionDetails)
+        {
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "Application";
+                eventLog.WriteEntry(sessionDetails + "Inpu" +
+                    "tValue>" + inputvalue, EventLogEntryType.Information, 101, 1);
+            }
+        }
+
+
+        // GET: Request
+        public ActionResult RequestListfortheUser()
+        {
+            try
+            {
+
+                TempData["data"] = null; //added Siraj - clearing the tempdata which was assigned in last request
+
+                if (Session["UserId"] == null)
+                {
+                    return RedirectToAction("Index", "registration");
+                }
+                EserviceRequest r = new EserviceRequest { RequesterUserId = int.Parse(Session["UserId"].ToString()), ESERVICEREQUESTNUMBER = "" };
+
+
+                String ExamServiceId = ConfigurationManager.AppSettings["ExamService"].ToString();
+                String RenewalServiceId = ConfigurationManager.AppSettings["RenewalService"].ToString();
+                String DeActivateServiceId = ConfigurationManager.AppSettings["DeActivateService"].ToString();
+                String TransferServiceId = ConfigurationManager.AppSettings["TransferService"].ToString();
+                String CancelServiceId = ConfigurationManager.AppSettings["CancelService"].ToString();
+                String IssuanceServiceId = ConfigurationManager.AppSettings["IssuanceService"].ToString();
+
+                String WhomItConcernsLetterServiceId = ConfigurationManager.AppSettings["WhomItConcernsLetterService"].ToString();
+                String PrintLostIdCardId = ConfigurationManager.AppSettings["PrintLostIdCard"].ToString();
+
+                String OrganizationRegistrationServiceId = ConfigurationManager.AppSettings["OrganizationRegistrationService"].ToString();
+                String subScriptionServiceId = ConfigurationManager.AppSettings["subScriptionService"].ToString();
+
+
+                DataTable dt = objdataclass.GETRequestListfortheUser(r);// ParentID, ChildUser);
+                GroupedRequests GR = new GroupedRequests();
+
+                var a = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == subScriptionServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+                GR.MultiSubscription = a.ToList();
+
+                DataTable dtmyorglist = new DataTable();
+                SecurityParams objmyorglist = new SecurityParams();
+                objmyorglist.mUserid = Session["UserId"].ToString();
+                objmyorglist.tokenId = Session["TokenId"].ToString();
+                dtmyorglist = objdataclass.OrgReqRequest_Status_Data(objmyorglist);
+
+                var b = from x in dtmyorglist.AsEnumerable()
+                        select new RequestList
+                        {
+                            EServiceRequestNumber = x["RequestNumber"].ToString(),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["StateName"].ToString(),
+                            StateId= x["StateId"].ToString(),
+                            IsMainCompany = x["IsMainCompany"].ToString(),
+                            Name= x["Name"].ToString(),
+                             OrganizationRequestId= x["OrganizationRequestId"].ToString()
+                           //, StatusArabic = x["StateId"].ToString()
+
+                        };
+
+                //var b = from x in dt.AsEnumerable()
+                //        where x["RequestServicesId"].ToString() == OrganizationRegistrationServiceId
+                //        select new RequestList
+                //        {
+                //            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                //            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                //            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                //            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                //            DateCreated = x["DateCreated"].ToString(),
+                //            Status = x["Status"].ToString(),
+                //            StatusArabic = x["StatusArabic"].ToString(),
+                //            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                //        };
+                GR.OrganizationRegistrationRequests = b.ToList();
+                var c = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == ExamServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+                GR.ExamRequests = c.ToList();
+
+
+
+                var s = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == RenewalServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+                GR.BrokerRenewalRequests = s.ToList();
+ var D = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == DeActivateServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+
+            //    if (D.ToList().Count != 0)
+                {
+                    GR.BrokerDeactivateRequests = D.ToList();
+
+                }
+                    var C = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == CancelServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+             
+                    GR.BrokerCancelRequests = C.ToList();
+           
+                var T = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == TransferServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+            
+                    GR.BrokerTransferRequests = T.ToList();
+         
+
+
+                var I = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == IssuanceServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+
+             
+                    GR.BrokerIssuanceRequests = I.ToList();
+
+
+
+                var W = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == WhomItConcernsLetterServiceId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+                        };
+
+           
+                    GR.BrokerToWhomItConcern = W.ToList();
+        
+
+                var P = from x in dt.AsEnumerable()
+                        where x["RequestServicesId"].ToString() == PrintLostIdCardId
+                        select new RequestList
+                        {
+                            EServiceRequestID = Convert.ToInt32(x["EServiceRequestID"]),
+                            EServiceRequestNumber = x["EServiceRequestNumber"].ToString(),
+                            RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                            RequestForUserID = Convert.ToInt32(System.Convert.IsDBNull(x["RequestForUserID"]) ? 0 : x["RequestForUserID"]),
+                            DateCreated = x["DateCreated"].ToString(),
+                            Status = x["Status"].ToString(),
+                            StatusArabic = x["StatusArabic"].ToString(),
+                            RequestServicesId = Convert.ToInt32(x["RequestServicesId"])
+
+
+                        };
+
+            
+                    GR.BrokerPrintLostIdCard = P.ToList();
+
+            
+
+                return View(GR);// s.ToList());
+            }
+            catch (Exception e)
+            {
+                WriteToLogFile(e.Message, "RequestListfortheUser");
+                ViewBag.modelerror = Constantclass.number5;
+                ViewBag.Msg = Resources.Resource.somethingwentwrong;
+                return View();
+            }
+        }
+        public ActionResult RequestDetailsfortheRequest(String EServiceRequestNumber)
+        {
+            try
+            {
+                EServiceRequestNumber = CommonFunctions.CsUploadDecrypt(EServiceRequestNumber);
+
+                if (EServiceRequestNumber == "")
+                {
+
+                    string source = Request.RawUrl.ToString();
+                    string split = "RequestNumber=";
+
+
+                    string result = source.Substring(source.IndexOf(split) + split.Length);
+
+
+                    EServiceRequestNumber = CommonFunctions.CsUploadDecrypt(result);
+
+
+
+
+                }
+                if (Session["UserId"] == null)
+                {
+                    return RedirectToAction("Index", "registration");
+                }
+                EserviceRequest r = new EserviceRequest { RequesterUserId = int.Parse(Session["UserId"].ToString()), ESERVICEREQUESTNUMBER = EServiceRequestNumber };
+
+                DataTable dt = objdataclass.GETRequestDetailsfortheRequest(r);
+
+                RequestDetailMain rm;
+
+                if (!EServiceRequestNumber.Contains("ORG"))
+                {
+                    var s = from x in dt.AsEnumerable()
+                            select new RequestDetail
+                            {
+                                EServiceRequestDetailsID = Convert.ToInt32(x["EServiceRequestDetailsID"]),
+                                RequesterUserID = Convert.ToInt32(x["RequesterUserID"]),
+                                //RequestForUserID = System.Convert.IsDBNull(x["RequestForUserID"])?0: Convert.ToInt32(x["RequestForUserID"]),
+                                //DateModified = Convert.ToDateTime(System.Convert.IsDBNull(x["DateModified"]) ? null : x["DateModified"]),
+                                Status = System.Convert.IsDBNull(x["Status"]) ? "" : x["Status"].ToString(),
+
+                                StatusArabic = System.Convert.IsDBNull(x["StatusArabic"]) ? "" : x["StatusArabic"].ToString(),
+
+                                ServiceNameEng = System.Convert.IsDBNull(x["ServiceNameEng"]) ? "" : x["ServiceNameEng"].ToString(),
+                                ServiceNameAra = System.Convert.IsDBNull(x["ServiceNameAra"]) ? "" : x["ServiceNameAra"].ToString(),
+
+                                RequestForUserType = System.Convert.IsDBNull(x["RequestForUserType"]) ? "" : x["RequestForUserType"].ToString(),
+                                RequestServicesId = System.Convert.IsDBNull(x["RequestServicesId"]) ? "" : x["RequestServicesId"].ToString(),
+                                OrganizationId = System.Convert.IsDBNull(x["OrganizationId"]) ? "" : x["OrganizationId"].ToString(),
+                                RequesterLicenseNumber = System.Convert.IsDBNull(x["RequesterLicenseNumber"]) ? "" : x["RequesterLicenseNumber"].ToString(),
+                                RequesterArabicName = System.Convert.IsDBNull(x["RequesterArabicName"]) ? "" : x["RequesterArabicName"].ToString(),
+                                RequesterEnglishName = System.Convert.IsDBNull(x["RequesterEnglishName"]) ? "" : x["RequesterEnglishName"].ToString(),
+                                Remarks = System.Convert.IsDBNull(x["Remarks"]) ? "" : x["Remarks"].ToString(),
+                                RejectionRemarks = System.Convert.IsDBNull(x["RejectionRemarks"]) ? "" : x["RejectionRemarks"].ToString(),
+                                RequestForVisit = System.Convert.IsDBNull(x["RequestForVisit"]) ? "" : x["RequestForVisit"].ToString(),
+                                RequestForVisitRemarks = System.Convert.IsDBNull(x["RequestForVisitRemarks"]) ? "" : x["RequestForVisitRemarks"].ToString(),
+                                ExamAddmissionId = System.Convert.IsDBNull(x["ExamAddmissionId"]) ? "" : x["ExamAddmissionId"].ToString(),
+                                ExamDetailsId = System.Convert.IsDBNull(x["ExamDetailsId"]) ? "" : x["ExamDetailsId"].ToString(),
+                                OwnerOrgId = System.Convert.IsDBNull(x["OwnerOrgId"]) ? "" : x["OwnerOrgId"].ToString(),
+                                OwnerLocId = System.Convert.IsDBNull(x["OwnerLocId"]) ? "" : x["OwnerLocId"].ToString(),
+                                RequestForUserId = System.Convert.IsDBNull(x["RequestForUserId"]) ? "" : x["RequestForUserId"].ToString(),
+                                RequestForName = System.Convert.IsDBNull(x["RequestForName"]) ? "" : x["RequestForName"].ToString(),
+                                RequestForEmail = System.Convert.IsDBNull(x["RequestForEmail"]) ? "" : x["RequestForEmail"].ToString().ToString(),
+                                EserviceRequestStatusArabic = System.Convert.IsDBNull(x["EserviceRequestStatusArabic"]) ? "" : x["EserviceRequestStatusArabic"].ToString().ToString(),
+                                EserviceRequestStatusEnglish = System.Convert.IsDBNull(x["EserviceRequestStatusEnglish"]) ? "" : x["EserviceRequestStatusEnglish"].ToString().ToString()
+                            };
+
+
+                    List<RequestDetail> RD = new List<RequestDetail>();
+                    RD = s.ToList();
+
+                    rm = new RequestDetailMain()
+                    {
+                        ReqDetail = RD,//s.ToList() ,
+                        EServiceRequestID = Convert.ToInt32(dt.Rows[0]["EServiceRequestID"].ToString()),
+                        EServiceRequestNumber = dt.Rows[0]["EServiceRequestNumber"].ToString(),
+                        //DateCreated = Convert.ToDateTime(System.Convert.IsDBNull(dt.Rows[0]["DateCreated"]) ? null : dt.Rows[0]["DateCreated"]),
+                        DateCreated = System.Convert.IsDBNull(dt.Rows[0]["DateCreated"]) ? null : dt.Rows[0]["DateCreated"].ToString(),
+                        ArabicFirstName = System.Convert.IsDBNull(dt.Rows[0]["ArabicFirstName"]) ? "" : dt.Rows[0]["ArabicFirstName"].ToString(),
+                        ArabicSecondName = System.Convert.IsDBNull(dt.Rows[0]["ArabicSecondName"]) ? "" : dt.Rows[0]["ArabicSecondName"].ToString(),
+                        ArabicThirdName = System.Convert.IsDBNull(dt.Rows[0]["ArabicThirdName"]) ? "" : dt.Rows[0]["ArabicThirdName"].ToString(),
+                        ArabicLastName = System.Convert.IsDBNull(dt.Rows[0]["ArabicLastName"]) ? "" : dt.Rows[0]["ArabicLastName"].ToString(),
+                        EnglishFirstName = System.Convert.IsDBNull(dt.Rows[0]["EnglishFirstName"]) ? "" : dt.Rows[0]["EnglishFirstName"].ToString(),
+                        EnglishSecondName = System.Convert.IsDBNull(dt.Rows[0]["EnglishSecondName"]) ? "" : dt.Rows[0]["EnglishSecondName"].ToString(),
+                        EnglishThirdName = System.Convert.IsDBNull(dt.Rows[0]["EnglishThirdName"]) ? "" : dt.Rows[0]["EnglishThirdName"].ToString(),
+                        EnglishLastName = System.Convert.IsDBNull(dt.Rows[0]["EnglishLastName"]) ? "" : dt.Rows[0]["EnglishLastName"].ToString(),
+                        Nationality = System.Convert.IsDBNull(dt.Rows[0]["Nationality"]) ? "" : dt.Rows[0]["Nationality"].ToString(),
+                        CivilID = System.Convert.IsDBNull(dt.Rows[0]["CivilID"]) ? "" : dt.Rows[0]["CivilID"].ToString(),
+                        CivilIDExpiryDate = System.Convert.IsDBNull(dt.Rows[0]["CivilIDExpiryDate"]) ? "" : dt.Rows[0]["CivilIDExpiryDate"].ToString(),
+                        MobileNumber = System.Convert.IsDBNull(dt.Rows[0]["MobileNumber"]) ? "" : dt.Rows[0]["MobileNumber"].ToString(),
+                        PassportNo = System.Convert.IsDBNull(dt.Rows[0]["PassportNo"]) ? "" : dt.Rows[0]["PassportNo"].ToString(),
+                        PassportExpiryDate = System.Convert.IsDBNull(dt.Rows[0]["PassportExpiryDate"]) ? "" : dt.Rows[0]["PassportExpiryDate"].ToString(),
+                        Address = System.Convert.IsDBNull(dt.Rows[0]["Address"]) ? "" : dt.Rows[0]["Address"].ToString(),
+                        Email = System.Convert.IsDBNull(dt.Rows[0]["Email"]) ? "" : dt.Rows[0]["Email"].ToString(),
+                        LicenseNumber = System.Convert.IsDBNull(dt.Rows[0]["LicenseNumber"]) ? "" : dt.Rows[0]["LicenseNumber"].ToString(),
+                        LicenseNumberExpiryDate = System.Convert.IsDBNull(dt.Rows[0]["LicenseNumberExpiryDate"]) ? "" : dt.Rows[0]["LicenseNumberExpiryDate"].ToString(),
+                        CreatedBy = System.Convert.IsDBNull(dt.Rows[0]["CreatedBy"]) ? "" : dt.Rows[0]["CreatedBy"].ToString()
+                    };
+                }
+                else
+                {
+                    rm = new RequestDetailMain();
+                }
+
+                return View(rm);
+            }
+            catch (Exception e)
+            {
+                WriteToLogFile(e.Message, "RequestDetailsfortheRequest");
+                ViewBag.modelerror = Constantclass.number5;
+                ViewBag.Msg = Resources.Resource.somethingwentwrong;
+                return View();
+            }
+        }
+
+
+        public ActionResult ConfirmAttendance(String eServiceRequestId)
+        {
+            String confirmationState = ConfigurationManager.AppSettings["ExamAttendanceConfirmedState"].ToString();
+
+            String RequestId = CommonFunctions.CsUploadDecrypt(eServiceRequestId);
+
+            Dataclass objdataclass = new Dataclass();
+
+            ExamCandidateInfo ExamCandidateInfo = new ExamCandidateInfo();
+
+            ExamCandidateInfo.EserviceRequestId = RequestId;
+            ExamCandidateInfo.stateId = confirmationState;
+
+            DataTable dataTable =  objdataclass.ConfirmExamAttendance(ExamCandidateInfo);
+
+            return RedirectToAction("RequestListfortheUser");
+        }
+    }
+}

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.OrganizationDetail>
+@using WebApplication1.Models;
+
+@{
+    ViewBag.Title = Resources.Resource.ManageImporterLicenses;//.ManageCompanyDocuments;// "Manage Company Documents";//إدارة مستندات الشركة
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<div class="col-lg-11 col-centered marginTop50">
+
+
+
+
+    @if (Model != null)
+    {
+
+        foreach (OrganizationDetail O in Model)
+        {
+
+            <div class="col-md-6 shadow-lg" style="cursor:pointer" onclick="location.href='@Url.Action("OrganizationDocuments", "User", new { OrgId = O.OrgId,OrgReqId=O.OrgReqId,OrgName=  O.OrgName  })'">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header text-center bg-secondary">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <b class="text-dark requestNoLargeFont ">
+                                   @WebApplication1.Models.CommonFunctions.CsUploadDecrypt(encrypt.Decode(O.OrgName))
+                                </b>
+                            </div>
+
+                        </div>
+                        <ul class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                            <li class="nav-item" id="tdorg">
+
+                                <br />
+                                @if (O.IsMainCompany)
+                                {
+                                    <label class="label-success text-center padding7PX">
+                                        <i class="glyphicon glyphicon-home"> </i>
+                                        &nbsp;
+                                        @Resources.Resource.mainCompany
+                                    </label>
+                                }
+                                else
+                                {
+                                    <label class="label-primary text-center padding7PX">
+                                        <i class="glyphicon glyphicon-briefcase"> </i>
+                                        &nbsp;
+                                        @Resources.Resource.subcompany
+                                    </label>
+                                }
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+
+
+
+
+
+</div>
+
+
+

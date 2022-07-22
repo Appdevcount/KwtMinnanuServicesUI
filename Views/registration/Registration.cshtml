@@ -1,0 +1,284 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Resources.Resource.UserRegistration</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+    <link href="~/Content/CustomFont.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/Registration.css" rel="stylesheet" />
+</head>
+<body style="font-family: myFirstFont !important;width:100%;position:fixed">
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <div style="@Resources.Resource.div_direction" id="divEmp">
+        @using (Ajax.BeginForm("Registration", "registration", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divEmp" }))
+        {
+            <table id="t1" align="center">
+                <tr>
+                    <td width="50%" align="center">
+                        <div class="modal-content" id="Idmodalcontent">
+                            <div class="modal-header" style="padding:0px">
+                                <table id="t2" align="center">
+                                    <tr>
+                                        <td width="50%" align="@Resources.Resource.align">
+                                            <img src="@Resources.Resource.Logo1" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="modal-body" style="font-family: myFirstFont !important;padding: 5px;" id="modelbodydiv">
+
+                                <form>
+                                    @{ if (ViewData["data"] != null)
+                                        {
+                                            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                            {
+                                                foreach (var item in ViewData["data"] as List<WebApplication1.Models.User>)
+                                                {
+                                                    <div style="@Resources.Resource.Header_withoutmenu">
+                                                        &nbsp;  <span onclick="location.href='@Url.Action("Index", "registration")'" class="glyphicon glyphicon-chevron-left myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.UserRegistration</span>
+                                                    </div>
+                                                    <div style="@Resources.Resource.Header_withoutmenu1;">
+                                                        &nbsp;  <span onclick="location.href='@Url.Action("Index", "registration")'" class="glyphicon glyphicon-chevron-right myclass"></span>&nbsp;&nbsp;<span style="font-size:2rem;height:40px;padding: 16px;line-height:40px">@Resources.Resource.UserRegistration</span>
+                                                    </div>
+                                                    <div class="form-group" align="center">
+                                                        <p style="text-align: center;">
+                                                            <h4 style="text-align: center">@Resources.Resource.Registration_Title1</h4>
+                                                        </p>
+                                                    </div>
+                                                    <div class="form-group" align="center">
+                                                        <p style="text-align: center;">
+                                                            @Resources.Resource.Registration_Title2
+                                                        </p>
+                                                    </div>
+                                                    <div id="mydiv">
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.FirstName" name="FirstName" value="@item.FirstName"
+                                                                   type="text" id="inputFirstName" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.LastName" name="LastName" value="@item.LastName"
+                                                                   type="text" id="inputLastName" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" 
+                                                                   placeholder="@Resources.Resource.CivilId" 
+                                                                   name="CivilId" 
+                                                                   value="@item.CivilId"
+                                                                   type="text" id="inputCivilId" 
+                                                                   maxlength="12" 
+                                                                   onkeypress="return IsNumeric(event);" 
+                                                                   ondrop="return false;" 
+                                                                   onpaste="return false;" 
+                                                                   autocomplete="off" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.MobileNumber" name="MobileTelNumber" value="@item.MobileTelNumber"
+                                                                   type="text" id="inputMobileNumber" maxlength="10" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.Email" name="EmailId" value="@item.EmailId"
+                                                                   type="text" id="inputEmail" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.Password" name="Pass" value="@item.Pass"
+                                                                   type="password" id="inputPassword" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <p style="color:red;width: 80%;">@Resources.Resource.validpassword</p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.ConfirmPassword" name="ConfirmPass"
+                                                                   type="password" id="inputConfirmPassword" />
+                                                        </div>
+                                                        <div class="form-group" align="@Resources.Resource.L_term_of_use_style1" style="width:80%">
+                                                            <label for="Term_conditions" style="font-weight:normal">@Html.CheckBoxFor(m => m.Term_conditions) @Resources.Resource.Agree_for <a id="idpopup" style="text-decoration:underline;cursor: pointer;" class="">@Resources.Resource.Agree_for1</a></label>
+                                                        </div>
+                                                        @{ if (ViewData["CaptchaImage"] != null)
+                                                            {
+                                                                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                                                {
+                                                                    <div class="form-group">
+                                                                        <table style="width:80%" align="center">
+                                                                            <tr>
+                                                                                <td align="center" style="width:80%"><img width="100%" id="captchasrc" src="@ViewData["CaptchaImage"]"></td>
+                                                                                <td align="center" style="width:20%"><span id="Regreshcaptch" style="font-size:20px;cursor:pointer;" class="glyphicon glyphicon-refresh"></span></td>
+                                                                            </tr>
+                                                                        </table>
+
+                                                                    </div>
+                                                                }
+                                                            }
+                                                        }
+                                                        <div class="form-group">
+                                                            <input class="form-control textval" placeholder="@Resources.Resource.Captcha" name="CaptchaValue"
+                                                                   type="text" id="inputCaptcha" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.B_Submit</button>
+                                                        </div>
+                                                    </div>
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                </form>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div class="modal fade" tabindex="-1" id="loginModal"
+         data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+        <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <table>
+                        <tr>
+                            <td style="width:95%">@Resources.Resource.Terms_of_Use3</td>
+                            <td style="width:5%">
+                                <button type="button" style="color:black;opacity:unset" class="close" data-dismiss="modal">
+                                    ×
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-body">
+                    @Resources.Resource.Terms_of_Use4
+                </div>
+            </div>
+        </div>
+    </div>
+    @{
+        if (ViewBag.modelstatusid != null)
+        {
+            if (ViewBag.modelstatusid == "0")
+            {
+                <div class="modal fade" tabindex="-1" id="modelemail"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            @*<div class="modal-header" style="text-align:left">
+
+                                    <h4 class="modal-title">Search</h4>
+
+                                </div>*@
+                            <div class="modal-body" style="text-align:center">
+                                @ViewBag.modelstatus
+
+                            </div>
+                            @{
+                                if (ViewBag.ok != null)
+                                {
+                                    <div class="modal-footer">
+                                        <div class="form-group" style="text-align:center">
+                                            @Html.ActionLink(@Resources.Resource.Ok, "EmailVerification", "registration", new { @class = "btn button button4", @Style = "width: fit-content;" })
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="modal-footer">
+                                        <div class="form-group" style="text-align:center">
+                                            <input type="button" id="btnHide" class="btn button button4" value="@Resources.Resource.Ok" Style="width:auto" />
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        } }
+    @{
+        if (ViewBag.modelerror != null)
+        {
+            if (ViewBag.modelerror == "0")
+            {
+                <div class="modal fade" tabindex="-1" id="dialog"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <table>
+                                    <tr>
+                                        <td style="width:95%">@Resources.Resource.error</td>
+                                        <td style="width:5%">
+                                            <button type="button" style="color:black;opacity:unset" class="close" data-dismiss="modal">
+                                                ×
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-body">
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (ViewBag.modelerror == "5")
+            {
+                <div class="modal fade" tabindex="-1" id="MSGModel"
+                     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+                    <div class="modal-dialog modal-lg" style="width:330px;margin-top:20%;text-align:center">
+                        <div class="modal-content">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <table align="center">
+                                        <tr><td style="font-weight:bold">@Resources.Resource.KuwaitCustoms</td></tr>
+                                        <tr><td><p style="margin-top:20px">@ViewBag.msg</p></td></tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group" style="text-align:center">
+                                        <input type="button" id="btnHide" class="btn button button4 btnhide" value="@Resources.Resource.Ok" Style="width:auto" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+    <div id="myLoadingElement" class="modalprgs" style="display: none">
+        <div class="prgs">
+            <img src="~/Content/loader4.gif" />
+        </div>
+    </div>
+    <script type="text/javascript">
+        var ViewBagmodelerror=@ViewBag.modelerror;
+        var Captchid="@ViewData["CaptchaId"]";
+        var ViewBagmodelstatus=@ViewBag.modelstatusid;
+        if (ViewBagmodelstatus==null) {
+            ViewBagmodelstatus='';
+        }
+    </script>
+    @*<script src="~/Scripts/Main/popup_jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Main/popup.js"></script>
+    <script src="~/Scripts/Main/Captcha.js"></script>
+
+    <script src="~/Scripts/JS_View/Reg.js"></script>*@
+</body>
+</html>
+

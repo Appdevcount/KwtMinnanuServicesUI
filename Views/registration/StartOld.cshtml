@@ -1,0 +1,177 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="loginHtml" dir="@Resources.Resource.dir">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+
+    <link rel="stylesheet" href="~/styles/font-awesome.min.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link rel="stylesheet" href="~/styles/theme.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link href="~/styles/animate.min.css" rel="stylesheet" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <title>@Resources.Resource.KuwaitCustoms</title>
+
+    <style>
+        /*.center-div {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #ccc;
+            border-radius: 3px;
+        }*/
+
+        .flex-center {
+            /*margin: 40px auto;*/
+            background: #f4f2f2;
+            color: white;
+            /*border: 10px solid white;*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%; /*200px;*/
+            resize: vertical;
+            overflow: auto;
+        }
+
+        .btcl {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+    <style>
+
+    </style>
+</head>
+<body dir="@Resources.Resource.dir">
+
+
+    <div class="container flex-center" style="border-radius:100px  ; ">
+        @*<div class="mx-auto col-10 bg-gradient p-5 col-md-6">*@
+        <div class="row ">
+            <div class="col-md-12 " id="col12Login">
+
+                <div class="row">
+                    <div class="col-md-12  text-center">
+                        @{ HttpCookie langCookie = Request.Cookies["culture"];
+                            var lang = langCookie.Value;
+
+                            string Query = Html.Encode(HttpContext.Current.Request.Url.Query);
+                            string AbsolutePathAndQuery = Html.Encode(HttpContext.Current.Request.Url.AbsolutePath) + Query;
+                            @*@Html.ActionLink(Resources.Resource.Language, "ChangeLanguage", "registration", new { lang = Resources.Resource.Lan, pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery }, new { ID = "", @class = "btn btn-info text-center", @style =  }) *@
+
+                            if (lang == "en")
+                            {
+
+                                @*@Html.ActionLink("العربية", "ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery }, new { ID = "changeLangToEnglish", @class = "btn btn-info text-center", @style = "font-size:12px" })*@
+                                <img class="" src="~/images/HomeIcons/Arabic.png" id="" style="height:50px;width:50px; cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "ar", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+                            }
+                            else
+                            {
+                                @*@Html.ActionLink("English", "ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery }, new { ID = "changeLangToArabic", @class = "btn btn-info text-center", @style = "font-size:12px" })*@
+
+                                <img class="" src="~/images/HomeIcons/English.png" id="" style="height:50px;width:50px; cursor:pointer; " onclick="window.location.href='@Url.Action("ChangeLanguage", "registration", new { lang = "en", pageName = "registration", contName = "Index", urlredirect = AbsolutePathAndQuery })'" />
+
+                            }
+                        }
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12  text-center">
+                        <img class="img-fluid d-block mx-auto" src="~/images/customs.png" width="150" />
+                        <br />
+                        <label style="color:black;font-size:20px">@Resources.Resource.KuwaitCustoms</label>
+                    </div>
+
+                </div>
+                @{
+                    string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+                    bool EnglishCulture = culture.Contains("English");
+                    string floatdir = EnglishCulture ? "float-left" : "float-right";
+                    string floatdirOpp = !EnglishCulture ? "float-left" : "float-right";
+
+
+                    <div class="row ">
+                        <div class="col-xs-6 btcl text-center" style="    padding-left: 0%;
+    ">
+
+                            @*@Html.ActionLink(Resources.Resource.BrokerServices, "BrokerServices", "Registration", null, new { @class = "btn btn-primary" })*@
+                            <img class="" src="~/images/HomeIcons/Brokers.png" id="" style="height:70px;width:70px; cursor:pointer; " onclick="window.location.href='@Url.Action("BrokerServices", "Registration")'" />
+                            <br />
+                            <label style="color:black;font-size:20px"  class="text-center">@Resources.Resource.BrokerServices</label>
+
+                        </div>
+                        <div class="col-xs-6 btcl text-center" style="  padding-left: 0%;
+   ">
+
+                            @*@Html.ActionLink(Resources.Resource.OrganizationServices, "StakeholderServices", "Registration", null, new { @class = "btn btn-primary" })*@
+                            <img class="" src="~/images/HomeIcons/Companies.png" id="" style="height:70px;width:70px; cursor:pointer; " onclick="window.location.href='@Url.Action("StakeholderServices", "Registration")'" />
+                            <br />
+                            <label style="color:black;font-size:20px" class="text-center">@Resources.Resource.OrganizationServices</label>
+
+                        </div>
+                    </div>
+
+                }
+                @*<div class="row">
+            <div class="col-md-6 btcl text-center">
+
+                @Html.ActionLink("LoginForBrokerServices", "LoginForBrokerServices", "Registration", null, new { @class = "btn btn-primary" })
+
+            </div>
+            <div class="col-md-6 btcl text-center">
+
+                @Html.ActionLink("LoginForStakeholderServices", "LoginForStakeholderServices", "Registration", null, new { @class = "btn btn-primary" })
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 btcl text-center">
+
+                @Html.ActionLink("RegisterForBrokerServices", "RegisterForBrokerServices", "Registration", null, new { @class = "btn btn-primary" })
+
+            </div>
+            <div class="col-md-6 btcl text-center">
+
+                @Html.ActionLink("RegisterForStakeholderServices", "RegisterForStakeholderServices", "Registration", null, new { @class = "btn btn-primary" })
+
+            </div>
+        </div>*@
+            </div>
+                </div>
+                @*</div>*@
+            </div>
+
+    @*</div>*@
+
+
+    <script src="~/Scripts/jquery.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link type="text/css" rel="stylesheet" href="~/styles/jquery-ui.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link type="text/css" rel="stylesheet" href="~/styles/datepickercss.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/JS_View/Login.js"></script>
+
+    <script src="~/Scripts/eServiceScript.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+
+</body>
+</html>
+

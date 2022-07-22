@@ -1,0 +1,167 @@
+   .alert-success {
+        margin-top: 20px;
+        color: white;
+        background-color: #2196f3;
+        border-color: #d6e9c6;
+    }
+
+    .calander:hover {
+        cursor: pointer;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 3px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+        .alert:hover {
+            cursor: default;
+            color: white;
+        }
+
+    .maxl {
+        margin: 15px;
+    }
+
+    .inline {
+        display: inline-block;
+    }
+
+        .inline + .inline {
+            margin-left: 10px;
+        }
+
+    .radio {
+        color: black;
+        font-size: 15px;
+    }
+
+        .radio span {
+            position: relative;
+            padding-left: 20px;
+        }
+
+            .radio span:after {
+                content: '';
+                width: 15px;
+                height: 15px;
+                border: 2px solid;
+                position: absolute;
+                left: 0;
+                top: 1px;
+                border-radius: 100%;
+                -moz-border-radius: 100%;
+                -webkit-border-radius: 100%;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+            }
+
+        .radio input[type="radio"] {
+            cursor: pointer;
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        }
+
+            .radio input[type="radio"]:checked + span {
+                color: #0B8;
+            }
+
+                .radio input[type="radio"]:checked + span:before {
+                    content: '';
+                    width: 5px;
+                    height: 5px;
+                    position: absolute;
+                    background: #0B8;
+                    left: 5px;
+                    top: 6px;
+                    border-radius: 100%;
+                    -moz-border-radius: 100%;
+                    -webkit-border-radius: 100%;
+                }
+
+
+    .inline1 {
+        display: inline-block;
+    }
+
+        .inline1 + .inline1 {
+            margin-right: 10px;
+        }
+
+    .radio1 {
+        color: black;
+        font-size: 15px;
+    }
+
+        .radio1 span {
+            position: relative;
+            padding-right: 20px;
+        }
+
+            .radio1 span:after {
+                content: '';
+                width: 15px;
+                height: 15px;
+                border: 2px solid;
+                position: absolute;
+                right: 0;
+                top: 1px;
+                border-radius: 100%;
+                -moz-border-radius: 100%;
+                -webkit-border-radius: 100%;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+            }
+
+        .radio1 input[type="radio"] {
+            cursor: pointer;
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        }
+
+            .radio1 input[type="radio"]:checked + span {
+                color: #0B8;
+            }
+
+                .radio1 input[type="radio"]:checked + span:before {
+                    content: '';
+                    width: 5px;
+                    height: 5px;
+                    position: absolute;
+                    background: #0B8;
+                    right: 5px;
+                    top: 6px;
+                    border-radius: 100%;
+                    -moz-border-radius: 100%;
+                    -webkit-border-radius: 100%;
+                }
+
+    .myclass {
+        cursor: pointer;
+        color: white;
+    }
+
+        .myclass:hover {
+            color: black;
+        }
+         #mydiv {
+        height: 700px;
+         width: 100%;
+        
+    }
+
+    @media only screen and (max-width: 450px) {
+        #mydiv {
+            /*height: 100%;*/
+        }
+    }

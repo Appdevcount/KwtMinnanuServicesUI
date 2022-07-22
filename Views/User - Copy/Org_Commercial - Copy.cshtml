@@ -1,0 +1,385 @@
+﻿@model WebApplication1.Models.OrgGetCommercialLicenseResult
+
+@{
+    ViewBag.Title = Resources.Resource.Commercial_Header;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+<link href="~/Content/Main/commercial.css" rel="stylesheet" />
+
+<div class="modal fade" tabindex="-1" id="CommLicSubTypesModal"
+     data-keyboard="false" data-backdrop="static" style="@Resources.Resource.div_direction">
+    <div class="modal-dialog modal-lg" style="width:300px;margin-top:20%;text-align:center">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align:left">
+
+                <h4 class="modal-title">&nbsp;</h4>
+
+            </div>
+            <div class="modal-body">
+                <div style="@Resources.Resource.UploadDocument_POP_RDlist_style">
+                    @{
+                        if (ViewData["CommLicSubTypes"] != null)
+                        {
+                            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                            {
+                                foreach (var item in ViewData["CommLicSubTypes"] as List<WebApplication1.Models.CommLicSubTypeslist>
+                                    )
+                                {
+                                    foreach (var item1 in item.CommLicSubTypes)
+                                    {
+                                        var aa = "aa" + @item1.TypeId;
+                                        <input type="radio" name="ossm" value="@item1.TypeId" id="@aa">
+                                        <label for="@aa">@item1.Name</label><br />
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                </div>
+                <div class="modal-footer">
+                    <table align="center">
+                        <tr>
+                            <td align="center">
+                                <div class="form-group">
+                                    <button type="button" id="btnHidepop" class="btn button button4 btnhide">
+                                        @Resources.Resource.UploadDocument_POP_cancelbtn
+                                    </button>
+                                </div>
+                            </td>
+                            <td align="center">
+                                <div class="form-group">
+                                    <button type="button" class="btn button button4 btnhide" id="btnokModal" onclick="documettype();">
+                                        @Resources.Resource.UploadDocument_POP_OKbtn
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Org_Commercial", "User", FormMethod.Post, new { id = "OrgCml" }))
+{
+
+    <div class="col-lg-10 col-centered">
+
+        @{if (ViewData["data"] != null)
+            {
+                if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                {
+                    foreach (var item in ViewData["data"] as List<WebApplication1.Models.OrgGetCommercialLicenseResult>
+                        )
+                    {
+                        <table align="center" id="maintbl" class="table table-striped center-block">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="alert alert-success">
+                                        @{
+                                            if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                                            {
+                                                @Resources.Resource.Commercial_RequestNumber @ViewBag.reqno<br />
+                                            }
+                                        }
+                                        <input type="hidden" name="OrganizationId" value="@item.OrganizationId" />
+                                        @Resources.Resource.Commercial_CompanyNameinArabic @item.OrgAraName
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div style="margin-top:20px;font-weight:bold">
+                                        <p>@Resources.Resource.Commercial_Licensetype</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label class="@Resources.Resource.Commercial_RD_style" style="font-weight:normal">
+                                            @{
+                                                if (item.CommLicType == "personal" || item.CommLicType == "0")
+                                                {
+                                                    <input id="rbnpersonal" type="radio" name="CommLicType" value="personal" checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="rbnpersonal" type="radio" name="CommLicType" value="personal">
+                                                }
+                                            }
+                                            <span> @Resources.Resource.Commercial_RB_Personal </span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label class="@Resources.Resource.Commercial_RD_style" style="font-weight:normal">
+                                            @{
+                                                if (item.CommLicType == "industrial")
+                                                {
+                                                    <input id="rbnindustrial" type="radio" name="CommLicType" value="industrial" checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="rbnindustrial" type="radio" name="CommLicType" value="industrial">
+                                                }
+                                            }
+                                            <span>@Resources.Resource.Commercial_RB_Industrial </span>
+                                        </label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div>
+                                        <label class="@Resources.Resource.Commercial_RD_style" style="font-weight:normal">
+                                            @{
+                                                if (item.CommLicType == "corporation")
+                                                {
+                                                    <input id="rbncorporation" type="radio" name="CommLicType" value="corporation" checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="rbncorporation" type="radio" name="CommLicType" value="corporation">
+                                                }
+                                            }
+                                            <span>@Resources.Resource.Commercial_RB_Corporation </span>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    @{
+                                        string display = "display: none";
+                                        if (item.CommLicType == "personal" || item.CommLicType == "0")
+                                        {
+                                            display = "display: none";
+                                        }
+                                        else
+                                        {
+                                            display = "display: block";
+                                        }
+
+                                        <div id="Selectsubtype" style="@display;">
+                                            <table align="center">
+                                                <tr>
+                                                    <td align="center">
+                                                        @{
+                                                            if (ViewBag.subtype != "")
+                                                            {
+                                                                <span id="spandtype">@ViewBag.subtype</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span id="spandtype">@Resources.Resource.Commercial_selectsubtype</span>
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td align="right"><i class="glyphicon glyphicon-chevron-down"></i></td>
+
+
+
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <input type="hidden" id="dtypeid" name="CommLicSubType" value="@ViewBag.subtypeid" /> <input type="hidden" id="dtypefirst" value="@ViewBag.subtypeid" />
+                                    }
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div style="font-weight:bold">
+                                        <p>@Resources.Resource.Commercial_LicenseNumber</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input class="form-control textval" placeholder="@Resources.Resource.Commercial_year" style="width:100%" name="Year"
+                                                           type="text" id="inputyear" maxlength="4" value="@item.Year" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    @{ string len = string.Empty;
+                                                        if (item.CommLicType == "personal" || item.CommLicType == "0")
+                                                        {
+                                                            len = "5";
+                                                        }
+                                                        else
+                                                        {
+                                                            len = "4";
+                                                        }
+
+                                                        <input class="form-control textval" placeholder="@Resources.Resource.Commercial_LicenseNo" style="width:100%" value="@item.CommLicNo" name="CommLicNo"
+                                                               type="text" id="inputLicenseno" maxlength="@len" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <table style="width:100%" align="center">
+                                            <tr>
+                                                <td align="left" style="width:31%;font-weight:bold">@Resources.Resource.Commercial_IssuanceDate</td>
+                                                <td align="left" style="width:69%">
+                                                    <table style="width:100%" align="center">
+                                                        <tr>
+                                                            <td style="width:100%">
+                                                                @{ string date = string.Empty;
+                                                                    if (item.IssueDate != null)
+                                                                    {
+                                                                        date = item.IssueDate;
+                                                                        if (date.Length > 10)
+                                                                        {
+                                                                            date = date.Substring(0, 10);
+                                                                        }
+                                                                        if (date.Length == 10)
+                                                                        {
+                                                                            string[] format = date.Split('-');
+                                                                            string[] format1 = date.Split('/');
+                                                                            if (format.Length == 3 || format1.Length == 3)
+                                                                            {
+                                                                                date = (Convert.ToDateTime(date)).ToString("MM/dd/yyyy");
+                                                                            }
+
+                                                                        }
+                                                                    }
+                                                                    <input class="form-control mydate textval" style="width:100%" placeholder="" value="@date" name="IssueDate"
+                                                                           type="text" id="inputissuancedate" />
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <table style="width:100%" align="center">
+                                            <tr>
+                                                <td align="left" style="width:31%;font-weight:bold">@Resources.Resource.Commercial_EndDate</td>
+                                                <td align="left" style="width:69%">
+                                                    <table style="width:100%" align="center">
+                                                        <tr>
+                                                            <td style="width:100%">
+                                                                @{ string date1 = string.Empty;
+                                                                    if (item.ExpiryDate != null)
+                                                                    {
+                                                                        date1 = item.ExpiryDate;
+                                                                        if (date1.Length > 10)
+                                                                        {
+                                                                            date1 = date1.Substring(0, 10);
+                                                                        }
+                                                                        if (date1.Length == 10)
+                                                                        {
+                                                                            string[] format = date1.Split('-');
+                                                                            string[] format1 = date1.Split('/');
+                                                                            if (format.Length == 3 || format1.Length == 3)
+                                                                            {
+                                                                                date1 = (Convert.ToDateTime(date1)).ToString("MM/dd/yyyy");
+                                                                            }
+
+                                                                        }
+                                                                    }
+                                                                    <input class="form-control mydate textval" style="width:100%" placeholder="" value="@date1" name="ExpiryDate"
+                                                                           type="text" id="inputenddate" />
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:100%" colspan="2">
+                                    <table style="width:100%" align="center">
+                                        <tr>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    @Html.ActionLink(@Resources.Resource.Commercial_B_back, "Org_ImporterDetails", "User", new { @class = "btn button button4" })
+                                                </div>
+                                            </td>
+                                            <td align="center">
+                                                <div class="form-group">
+                                                    <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Commercial_B_next</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                }
+            }
+        }
+
+    </div>
+
+
+}
+
+
+
+
+<script type="text/javascript">
+    var ViewBagmodelerror=@ViewBag.modelerror;
+    var resultc=@ViewBag.dis;
+    var result=@ViewBag.dis;
+    if (resultc===null) {
+        resultc='';
+    }
+    if (result===null) {
+        result='';
+    }
+</script>
+@*<script src="~/Scripts/Main/popup_jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    *@
+
+
+<script src="~/Scripts/JS_View/Commercial.js"></script>
+
+<script type="text/javascript">
+    $("#rbnpersonal").click(function () {
+        $("#Selectsubtype").hide();
+        $('#inputLicenseno').attr("maxlength", "5");
+    });
+    $("#rbnindustrial").click(function () {
+        $("#Selectsubtype").show();
+        $('#inputLicenseno').attr("maxlength", "4");
+    });
+    $("#rbncorporation").click(function () {
+        $("#Selectsubtype").show();
+        $('#inputLicenseno').attr("maxlength", "4");
+    });
+</script>

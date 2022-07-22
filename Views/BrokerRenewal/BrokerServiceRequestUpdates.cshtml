@@ -1,0 +1,74 @@
+﻿@model WebApplication1.Models.BrokerServiceRequestModel
+
+@{
+    ViewBag.Title = Resources.Resource.subScriptionNew;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage"></h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+    <div class="col-lg-11 col-centered marginTop15">
+        <div class="container containerMarginTop15">
+            <div class="row">
+
+                <div class="col-md-12 pt-1" id="brokersListDivExpand">
+
+                    <h3 class="text-dark text-center marginBottom30">
+                        @Resources.Resource.AvailableServices
+                    </h3>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="mx-1" id="brokersListDiv">
+            <div class="container">
+                <div class="row text-center" id="brokers">
+                    @*@Resources.Resource.ServicesNotAvailableToSubscribe*@
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center marginTop15 marginBottom15" >
+            <input type="submit" 
+                   value="@Resources.Resource.Send" id="postServiceid" class="btn btn-info text-center marginTop15 marginBottom15" style="display:none;" />
+        </div>
+
+
+
+    </div>
+
+    
+
+    
+
+    <script>
+        var Subscribed = '@Resources.Resource.SuccessfullySubscribed';
+        var SomeIssuehasoccured = '@Resources.Resource.Someerrorhasoccured';
+        var ServicesNotAvailableToSubscribe ='@Resources.Resource.NoServicesAvailableToRequest'; // 'Resources.Resource.ServicesNotAvailableToSubscribe';
+    </script>
+
+    
+
+
+
+
+

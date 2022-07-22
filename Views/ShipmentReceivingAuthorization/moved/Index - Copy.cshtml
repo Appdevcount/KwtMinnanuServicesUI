@@ -1,0 +1,1868 @@
+﻿@model WebApplication1.Models.ShipmentAuthorization
+
+@{
+    //ViewBag.Title = Resources.Resource.;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+<div class="col-xs-10 col-centered marginTop30">
+
+    <div class="row">
+        <div class="col-lg-12 text-center font-weight-bold">
+            @Resources.Resource.brokerExamRequestHeader
+        </div>
+    </div>
+
+</div>
+
+
+<div class="col-xs-10 col-centered marginTop30">
+
+    @using (Html.BeginForm("ShipmentReceivingAuthorizationPost", "ShipmentReceivingAuthorization", FormMethod.Post))
+    {
+        Html.AntiForgeryToken();
+
+        <div class="well form-horizontal" dir="@Resources.Resource.dir">
+
+            <fieldset>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.requestNo</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-barcode"></i>
+                            </span>
+                            @Html.TextBoxFor(Model => Model.RequestNumber, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.OrganizationName</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-barcode"></i>
+                            </span>
+                            @Html.TextBoxFor(Model => Model.CompanyName, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.Commercial_LicenseNo1</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-barcode"></i>
+                            </span>
+                            @Html.TextBoxFor(Model => Model.CommercialLicenseNo, new { @readonly = "readonly", @class = "form-control NotEditable" })
+                        </div>
+                    </div>
+                </div>
+
+                @if (Model.shipmentAuthorizationDetails != null)
+                {
+                    foreach (var item in Model.shipmentAuthorizationDetails)
+                    {
+                        
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray;width: 16%;">
+              
+                        <div class="clone">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.Name</label>
+                                <div class="col-md-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-barcode"></i>
+                                        </span>
+                                        @Html.TextBoxFor(Model => item.NameOfDelegate, new { @class = "form-control NotEditable" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.civilIdNo</label>
+                                <div class="col-md-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-barcode"></i>
+                                        </span>
+                                        @Html.TextBoxFor(Model => item.CivilId, new { @class = "form-control NotEditable" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.expiryDate</label>
+                                <div class="col-md-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-barcode"></i>
+                                        </span>
+                                        @Html.TextBoxFor(Model => item.Delegationvalidity, new { @class = "form-control NotEditable" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.Label(Resources.Resource.gender, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-7 ">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-briefcase"></i>
+                                        </span>
+                                        <select class="selectpicker form-control  select2"
+                                                name="genderType" id="genderTypeSelect">
+
+                                            @{
+                                                String gender = item.Gender;
+
+                                                if (gender == "M")
+                                                {
+                                                    <option value="M" selected="selected">@Resources.Resource.male</option>
+                                                }
+                                                else if (gender == "F")
+                                                {
+                                                    <option value="F" selected="selected">@Resources.Resource.female</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @{
+                                HttpCookie langCookiee = Request.Cookies["culture"];
+                                if (langCookiee.Value.Contains("ar"))
+                                {
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.nationality</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+                                                <select class="selectpicker form-control  select2" id="companyState">
+                                                    <option value="0"> اختيار الجنسية</option>
+                                                    <option value="5004">
+                                                        أفغانستان
+                                                    </option>
+                                                    <option value="5010">
+                                                        البانيا
+                                                    </option>
+                                                    <option value="5081">
+                                                        الجزائر
+                                                    </option>
+                                                    <option value="5294">
+                                                        ساموا الامريكية
+                                                    </option>
+                                                    <option value="5011">
+                                                        أندورا
+                                                    </option>
+                                                    <option value="5007">
+                                                        أنغولا
+                                                    </option>
+                                                    <option value="5008">
+                                                        انغويلا
+                                                    </option>
+                                                    <option value="5015">
+                                                        انتراكتيكا
+                                                    </option>
+                                                    <option value="5021">
+                                                        انتيكوا و باربودا
+                                                    </option>
+                                                    <option value="5013">
+                                                        الارجنتين
+                                                    </option>
+                                                    <option value="5014">
+                                                        ارمينيا
+                                                    </option>
+                                                    <option value="5016">
+                                                        آروبا
+                                                    </option>
+                                                    <option value="5017">
+                                                        استراليا
+                                                    </option>
+                                                    <option value="5018">
+                                                        النمسا
+                                                    </option>
+                                                    <option value="5019">
+                                                        أذربيجان
+                                                    </option>
+                                                    <option value="5028">
+                                                        جزر البهاما
+                                                    </option>
+
+                                                    <option value="5025">
+                                                        بنغلادش
+                                                    </option>
+                                                    <option value="5035">
+                                                        باربادوس
+                                                    </option>
+                                                    <option value="5042">
+                                                        بلارس
+                                                    </option>
+                                                    <option value="5023">
+                                                        بلجيكا
+                                                    </option>
+
+                                                    <option value="5039">
+                                                        بوتان
+                                                    </option>
+                                                    <option value="5032">
+                                                        بوليفيا
+                                                    </option>
+                                                    <option value="5033">
+                                                        البوسنة والهرسك
+                                                    </option>
+                                                    <option value="5041">
+                                                        بتسوانا
+                                                    </option>
+                                                    <option value="7054218">
+                                                        جزيرة بوفيت
+                                                    </option>
+                                                    <option value="5034">
+                                                        البرازيل
+                                                    </option>
+                                                    <option value="5133">
+                                                        مقاطعات المحيط الهند
+                                                    </option>
+                                                    <option value="5286">
+                                                        جزر العذراء البريطانية
+                                                    </option>
+                                                    <option value="5038">
+                                                        بروناى دار السلام
+                                                    </option>
+                                                    <option value="5026">
+                                                        بلغاريا
+                                                    </option>
+                                                    <option value="5036">
+                                                        بوركينا فاسو (فولتا العليا)
+                                                    </option>
+                                                    <option value="5022">
+                                                        بورندى
+                                                    </option>
+                                                    <option value="5144">
+                                                        كمبوديا
+                                                    </option>
+                                                    <option value="5051">
+                                                        الكاميرون
+                                                    </option>
+                                                    <option value="5044">
+                                                        كندا
+                                                    </option>
+                                                    <option value="5057">
+                                                        كيب فيردى
+                                                    </option>
+                                                    <option value="5065">
+                                                        جزر كايمن
+                                                    </option>
+                                                    <option value="5043">
+                                                        جمهورية إفريقيا الوسطي
+                                                    </option>
+                                                    <option value="5258">
+                                                        تشاد
+                                                    </option>
+                                                    <option value="5052">
+                                                        جزر شانيل
+                                                    </option>
+                                                    <option value="5047">
+                                                        شيلي
+                                                    </option>
+                                                    <option value="5048">
+                                                        الصين
+                                                    </option>
+                                                    <option value="5064">
+                                                        جزيرة الكريستماس
+                                                    </option>
+                                                    <option value="5045">
+                                                        جزر الكوكوس
+                                                    </option>
+                                                    <option value="5055">
+                                                        كولومبيا
+                                                    </option>
+                                                    <option value="5056">
+                                                        جزر القمر
+                                                    </option>
+                                                    <option value="5053">
+                                                        الكنغو (برازافيل)
+                                                    </option>
+                                                    <option value="5054">
+                                                        جزر كوك
+                                                    </option>
+                                                    <option value="5059">
+                                                        كوستاريكا
+                                                    </option>
+                                                    <option value="5049">
+                                                        ساحل العاج
+                                                    </option>
+                                                    <option value="5060">
+                                                        كرواتيا
+                                                    </option>
+                                                    <option value="5063">
+                                                        كوبا
+                                                    </option>
+                                                    <option value="7054225">
+                                                        كوراكاو
+                                                    </option>
+                                                    <option value="5066">
+                                                        قبرص
+                                                    </option>
+                                                    <option value="5061">
+                                                        التشيك
+                                                    </option>
+                                                    <option value="5300">
+                                                        زائير
+                                                    </option>
+                                                    <option value="5078">
+                                                        الدانمارك
+                                                    </option>
+
+                                                    <option value="5076">
+                                                        جيبوتي
+                                                    </option>
+                                                    <option value="5077">
+                                                        دومينيكا
+                                                    </option>
+                                                    <option value="5079">
+                                                        جمهورية الدومينيكان
+                                                    </option>
+                                                    <option value="5264">
+                                                        تيمور الشرقية
+                                                    </option>
+                                                    <option value="5084">
+                                                        مصر
+                                                    </option>
+                                                    <option value="5244">
+                                                        السلفادور
+                                                    </option>
+                                                    <option value="5082">
+                                                        اكوادور
+                                                    </option>
+                                                    <option value="5083">
+                                                        غينيا الاستوائية
+                                                    </option>
+                                                    <option value="5085">
+                                                        اريتريا
+                                                    </option>
+                                                    <option value="5087">
+                                                        أستونيا
+                                                    </option>
+                                                    <option value="5088">
+                                                        أثيوبيا
+                                                    </option>
+
+                                                    <option value="5090">
+                                                        جزر الفاورو
+                                                    </option>
+                                                    <option value="5096">
+                                                        جزر الفوكلاند ( مالفيناس )
+                                                    </option>
+                                                    <option value="5095">
+                                                        جزر فيجي
+                                                    </option>
+                                                    <option value="5094">
+                                                        فنلندا
+                                                    </option>
+                                                    <option value="5097">
+                                                        فرنسا
+                                                    </option>
+
+                                                    <option value="5210">
+                                                        جزر بولينيشيا الفرنسية
+                                                    </option>
+                                                    <option value="5123">
+                                                        غوىيانا الفرنسية
+                                                    </option>
+                                                    <option value="7054219">
+                                                        مناطق فرنسا الشمالية
+                                                    </option>
+                                                    <option value="5107">
+                                                        غابون
+                                                    </option>
+                                                    <option value="5115">
+                                                        غامبيا
+                                                    </option>
+                                                    <option value="5110">
+                                                        جورجيا
+                                                    </option>
+                                                    <option value="7054221">
+                                                        جزر جورجيا & ساندويش
+                                                    </option>
+                                                    <option value="5070">
+                                                        المانيا
+                                                    </option>
+                                                    <option value="5111">
+                                                        غانا
+                                                    </option>
+                                                    <option value="5112">
+                                                        جبل طارق
+                                                    </option>
+                                                    <option value="5118">
+                                                        اليونان
+                                                    </option>
+                                                    <option value="5120">
+                                                        جزيرة غرينلاند
+                                                    </option>
+                                                    <option value="5119">
+                                                        غرينادا
+                                                    </option>
+                                                    <option value="5114">
+                                                        غواديلوب
+                                                    </option>
+                                                    <option value="5124">
+                                                        غوام
+                                                    </option>
+                                                    <option value="5121">
+                                                        غواتيمالا
+                                                    </option>
+                                                    <option value="7054224">
+                                                        غوريسني
+                                                    </option>
+                                                    <option value="5122">
+                                                        غينيا بيساو
+                                                    </option>
+                                                    <option value="5125">
+                                                        غويانا
+                                                    </option>
+                                                    <option value="5129">
+                                                        هاييتي
+                                                    </option>
+                                                    <option value="7050992">
+                                                        دول أقيانوسيا الاخرى
+                                                    </option>
+                                                    <option value="5283">
+                                                        البحر المقدس
+                                                    </option>
+                                                    <option value="5128">
+                                                        هوندوراس
+                                                    </option>
+                                                    <option value="5127">
+                                                        هونغ كونغ
+                                                    </option>
+                                                    <option value="5130">
+                                                        هنغاريا (المجر)
+                                                    </option>
+                                                    <option value="5137">
+                                                        ايسلندا
+                                                    </option>
+                                                    <option value="5132">
+                                                        الهند
+                                                    </option>
+                                                    <option value="5131">
+                                                        أندونيسيا
+                                                    </option>
+                                                    <option value="5135">
+                                                        إيران
+                                                    </option>
+                                                    <option value="5136">
+                                                        العراق
+                                                    </option>
+                                                    <option value="5134">
+                                                        ايرلندا
+                                                    </option>
+                                                    <option value="7050994">
+                                                        جزيرة  مان
+                                                    </option>
+                                                    <option value="5139">
+                                                        ايطاليا
+                                                    </option>
+                                                    <option value="5140">
+                                                        جامايكا
+                                                    </option>
+                                                    <option value="5142">
+                                                        اليابان
+                                                    </option>
+                                                    <option value="7054226">
+                                                        جيرسي
+                                                    </option>
+                                                    <option value="5141">
+                                                        الأردن
+                                                    </option>
+                                                    <option value="5151">
+                                                        كازاخستان
+                                                    </option>
+                                                    <option value="5145">
+                                                        كينيا
+                                                    </option>
+                                                    <option value="5149">
+                                                        كيريباتى
+                                                    </option>
+                                                    <option value="5216">
+                                                        كوريا ش
+                                                    </option>
+                                                    <option value="5147">
+                                                        كوريا ج
+                                                    </option>
+                                                    <option value="7238404">
+                                                        كوسوفو
+                                                    </option>
+                                                    <option value="5150">
+                                                        الكويت
+                                                    </option>
+                                                    <option value="5146">
+                                                        كيرجستان
+                                                    </option>
+                                                    <option value="5152">
+                                                        جمهورية لاو ( لاوس )
+                                                    </option>
+                                                    <option value="5161">
+                                                        لاتفيا
+                                                    </option>
+                                                    <option value="5153">
+                                                        لبنان
+                                                    </option>
+                                                    <option value="5159">
+                                                        ليسوتو
+                                                    </option>
+                                                    <option value="5154">
+                                                        ليبريا
+                                                    </option>
+                                                    <option value="5155">
+                                                        ليبيا
+                                                    </option>
+                                                    <option value="5156">
+                                                        ليشتنشتاين
+                                                    </option>
+                                                    <option value="5160">
+                                                        ليتوانيا
+                                                    </option>
+                                                    <option value="5162">
+                                                        لوكسمبرغ
+                                                    </option>
+                                                    <option value="7051036">
+                                                        ماكاو
+                                                    </option>
+                                                    <option value="5169">
+                                                        مقدونيا
+                                                    </option>
+                                                    <option value="5171">
+                                                        مدغشقر
+                                                    </option>
+                                                    <option value="5188">
+                                                        ملاوى
+                                                    </option>
+                                                    <option value="5190">
+                                                        ماليزيا
+                                                    </option>
+                                                    <option value="5172">
+                                                        جزر المالديف
+                                                    </option>
+                                                    <option value="5176">
+                                                        مالي
+                                                    </option>
+                                                    <option value="5177">
+                                                        مالطه
+                                                    </option>
+                                                    <option value="5183">
+                                                        جزر مارشال
+                                                    </option>
+                                                    <option value="5186">
+                                                        مارتينيك
+                                                    </option>
+                                                    <option value="5182">
+                                                        موريتانيا
+                                                    </option>
+                                                    <option value="5187">
+                                                        موريشيوس
+                                                    </option>
+
+                                                    <option value="5173">
+                                                        المكسيك
+                                                    </option>
+                                                    <option value="5098">
+                                                        دول ميكرونيشيا الاتحادية
+                                                    </option>
+                                                    <option value="5175">
+                                                        مولدوفيا
+                                                    </option>
+                                                    <option value="5170">
+                                                        موناكو
+                                                    </option>
+                                                    <option value="5178">
+                                                        منغوليا
+                                                    </option>
+                                                    <option value="5185">
+                                                        مونتينيغرو
+                                                    </option>
+                                                    <option value="5184">
+                                                        مونتسرات
+                                                    </option>
+                                                    <option value="5167">
+                                                        المغرب
+                                                    </option>
+                                                    <option value="5179">
+                                                        موزمبيق
+                                                    </option>
+                                                    <option value="5189">
+                                                        ميانمار (بورما )
+                                                    </option>
+                                                    <option value="5191">
+                                                        ناميبيا
+                                                    </option>
+                                                    <option value="5201">
+                                                        ناورو
+                                                    </option>
+                                                    <option value="5200">
+                                                        نيبال
+                                                    </option>
+                                                    <option value="5198">
+                                                        هولندا
+                                                    </option>
+                                                    <option value="5012">
+                                                        جزر انتيل  الهولندية
+                                                    </option>
+
+                                                    <option value="5192">
+                                                        كاليدونيا الجديدة
+                                                    </option>
+                                                    <option value="5202">
+                                                        نيوزيلاندا
+                                                    </option>
+                                                    <option value="5196">
+                                                        نيكاراجوا
+                                                    </option>
+                                                    <option value="5193">
+                                                        النيجر
+                                                    </option>
+                                                    <option value="5195">
+                                                        نيجيريا
+                                                    </option>
+
+                                                    <option value="7054538">
+                                                        غير محدد الجنسية
+                                                    </option>
+                                                    <option value="5194">
+                                                        جزيرة نورفولك
+                                                    </option>
+                                                    <option value="5181">
+                                                        جزر شمال ماريانا
+                                                    </option>
+                                                    <option value="5199">
+                                                        النرويج
+                                                    </option>
+                                                    <option value="5204">
+                                                        باكستان
+                                                    </option>
+                                                    <option value="5212">
+                                                        بالاو
+                                                    </option>
+                                                    <option value="5211">
+                                                        فلسطين (غزة)
+                                                    </option>
+                                                    <option value="5205">
+                                                        بنما
+                                                    </option>
+                                                    <option value="5213">
+                                                        بابوا غينيا الجديدة
+                                                    </option>
+                                                    <option value="5218">
+                                                        براغواى
+                                                    </option>
+                                                    <option value="5207">
+                                                        بيرو
+                                                    </option>
+                                                    <option value="5208">
+                                                        الفلبين
+                                                    </option>
+
+                                                    <option value="5214">
+                                                        بولندا
+                                                    </option>
+                                                    <option value="5217">
+                                                        البرتغال
+                                                    </option>
+                                                    <option value="7050993">
+                                                        بورتو ريكو
+                                                    </option>
+                                                    <option value="5220">
+                                                        قطر
+                                                    </option>
+                                                    <option value="5113">
+                                                        جمهورية غينيا
+                                                    </option>
+                                                    <option value="5224">
+                                                        رومانيا
+                                                    </option>
+                                                    <option value="5225">
+                                                        روسيا الاتحادية
+                                                    </option>
+                                                    <option value="5226">
+                                                        رواندا
+                                                    </option>
+                                                    <option value="5237">
+                                                        سانت هيلينا
+                                                    </option>
+
+
+
+
+                                                    <option value="5227">
+                                                        ساموا ( ساموا الغربية )
+                                                    </option>
+                                                    <option value="5245">
+                                                        سان مارينو
+                                                    </option>
+
+                                                    <option value="5228">
+                                                        السعودية
+                                                    </option>
+                                                    <option value="5231">
+                                                        السنغال
+                                                    </option>
+                                                    <option value="5255">
+                                                        جزر سيشل
+                                                    </option>
+                                                    <option value="5241">
+                                                        سييراليون
+                                                    </option>
+                                                    <option value="5234">
+                                                        سنغافورة
+                                                    </option>
+                                                    <option value="5242">
+                                                        سلوفاكيا
+                                                    </option>
+                                                    <option value="5252">
+                                                        سلوفينيا
+                                                    </option>
+                                                    <option value="5240">
+                                                        جزر  سولومون
+                                                    </option>
+                                                    <option value="5246">
+                                                        الصومال
+                                                    </option>
+                                                    <option value="5299">
+                                                        جنوب أفريقيا
+                                                    </option>
+                                                    <option value="5086">
+                                                        اسبانيا
+                                                    </option>
+                                                    <option value="5157">
+                                                        سريلانكا (سيلان)
+                                                    </option>
+                                                    <option value="5230">
+                                                        السودان
+                                                    </option>
+                                                    <option value="5203">
+                                                        سلطنة عمان
+                                                    </option>
+
+
+
+                                                    <option value="5253">
+                                                        السويد
+                                                    </option>
+                                                    <option value="5046">
+                                                        سويسرا
+                                                    </option>
+                                                    <option value="5256">
+                                                        سوريا
+                                                    </option>
+                                                    <option value="5272">
+                                                        تايوان
+                                                    </option>
+                                                    <option value="5262">
+                                                        طاجكستان
+                                                    </option>
+                                                    <option value="5273">
+                                                        تنزانيا
+                                                    </option>
+                                                    <option value="5260">
+                                                        تايلاند
+                                                    </option>
+                                                    <option value="5259">
+                                                        توغو
+                                                    </option>
+
+                                                    <option value="5266">
+                                                        تونغا
+                                                    </option>
+
+                                                    <option value="5269">
+                                                        تونس
+                                                    </option>
+                                                    <option value="5270">
+                                                        تركيا
+                                                    </option>
+                                                    <option value="5263">
+                                                        تركمانستان
+                                                    </option>
+
+
+                                                    <option value="5277">
+                                                        أوغندا
+                                                    </option>
+                                                    <option value="5278">
+                                                        أوكرانيا
+                                                    </option>
+                                                    <option value="5274">
+                                                        الإمارات
+                                                    </option>
+                                                    <option value="5109">
+                                                        المملكة المتحدة
+                                                    </option>
+
+                                                    <option value="5281">
+                                                        امريكا
+                                                    </option>
+                                                    <option value="5287">
+                                                        جزر العذراء الامريكية
+                                                    </option>
+                                                    <option value="5280">
+                                                        الاورجواي
+                                                    </option>
+                                                    <option value="5282">
+                                                        أوزبكستان
+                                                    </option>
+
+                                                    <option value="5285">
+                                                        فنزويلا
+                                                    </option>
+                                                    <option value="5288">
+                                                        فيتنام
+                                                    </option>
+
+
+                                                    <option value="5296">
+                                                        اليمن
+                                                    </option>
+                                                    <option value="5298">
+                                                        يوغوسلافيا (صربيا)
+                                                    </option>
+                                                    <option value="5301">
+                                                        زامبيا
+                                                    </option>
+                                                    <option value="5302">
+                                                        زمبابوى
+                                                    </option>
+
+                                                </select>
+                                                <p id="nationalityErrorMsg" class="errorMsg">
+                                                    @Resources.Resource.nationailityRequired
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.nationality</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                                                <select class="selectpicker form-control  select2" id="companyState">
+
+                                                    <option value="0"> Select Nationality</option>
+                                                    <option value="5004">
+                                                        Afghanistan
+                                                    </option>
+                                                    <option value="5010">
+                                                        Albania
+                                                    </option>
+                                                    <option value="5081">
+                                                        Algeria
+                                                    </option>
+                                                    <option value="5294">
+                                                        American Samoa
+                                                    </option>
+                                                    <option value="5011">
+                                                        Andorra
+                                                    </option>
+                                                    <option value="5007">
+                                                        Angola
+                                                    </option>
+                                                    <option value="5008">
+                                                        Anguilla
+                                                    </option>
+                                                    <option value="5015">
+                                                        ANTARCTICA
+                                                    </option>
+                                                    <option value="5021">
+                                                        Antigua & Barbuda
+                                                    </option>
+                                                    <option value="5013">
+                                                        Argentina
+                                                    </option>
+                                                    <option value="5014">
+                                                        Armenia
+                                                    </option>
+                                                    <option value="5016">
+                                                        Aruba
+                                                    </option>
+                                                    <option value="5017">
+                                                        Australia
+                                                    </option>
+                                                    <option value="5018">
+                                                        Austria
+                                                    </option>
+                                                    <option value="5019">
+                                                        Azerbaijan
+                                                    </option>
+                                                    <option value="5028">
+                                                        Bahamas
+                                                    </option>
+                                                    <option value="7051030">
+                                                        Bahrain Free Zone
+                                                    </option>
+                                                    <option value="5025">
+                                                        Bangladesh
+                                                    </option>
+                                                    <option value="5035">
+                                                        Barbados
+                                                    </option>
+                                                    <option value="5042">
+                                                        Belarus
+                                                    </option>
+                                                    <option value="5023">
+                                                        Belgium
+                                                    </option>
+                                                    <option value="5029">
+                                                        Belize
+                                                    </option>
+                                                    <option value="5024">
+                                                        Benin
+                                                    </option>
+                                                    <option value="5031">
+                                                        Bermuda
+                                                    </option>
+                                                    <option value="5039">
+                                                        Bhutan
+                                                    </option>
+                                                    <option value="5032">
+                                                        Bolivia
+                                                    </option>
+                                                    <option value="5033">
+                                                        Bosnia And Herzegovina
+                                                    </option>
+                                                    <option value="5041">
+                                                        Botswana
+                                                    </option>
+                                                    <option value="7054218">
+                                                        BOUVET ISLAND
+                                                    </option>
+                                                    <option value="5034">
+                                                        Brazil
+                                                    </option>
+                                                    <option value="5133">
+                                                        British Indian Ocean Territory
+                                                    </option>
+                                                    <option value="5286">
+                                                        British Virgin Islands
+                                                    </option>
+                                                    <option value="5038">
+                                                        Brunei  Darussalam
+                                                    </option>
+                                                    <option value="5026">
+                                                        Bulgaria
+                                                    </option>
+                                                    <option value="5036">
+                                                        Burkina Faso (Upper Volta)
+                                                    </option>
+                                                    <option value="5022">
+                                                        Burundi
+                                                    </option>
+                                                    <option value="5144">
+                                                        Cambodia
+                                                    </option>
+                                                    <option value="5051">
+                                                        Cameroon
+                                                    </option>
+                                                    <option value="5044">
+                                                        Canada
+                                                    </option>
+                                                    <option value="5057">
+                                                        Cape Verde
+                                                    </option>
+                                                    <option value="5065">
+                                                        Cayman Islands
+                                                    </option>
+                                                    <option value="5043">
+                                                        Central African  Republic
+                                                    </option>
+                                                    <option value="5258">
+                                                        Chad
+                                                    </option>
+                                                    <option value="5052">
+                                                        Channel Islands
+                                                    </option>
+                                                    <option value="5047">
+                                                        Chile
+                                                    </option>
+                                                    <option value="5048">
+                                                        China
+                                                    </option>
+                                                    <option value="5064">
+                                                        Christmas Island
+                                                    </option>
+                                                    <option value="5045">
+                                                        Cocos (Keeling) Islands
+                                                    </option>
+                                                    <option value="5055">
+                                                        Colombia
+                                                    </option>
+                                                    <option value="5056">
+                                                        Comoros ( Islands )
+                                                    </option>
+                                                    <option value="5053">
+                                                        Congo ( Brazaville )
+                                                    </option>
+                                                    <option value="5054">
+                                                        Cook Islands
+                                                    </option>
+                                                    <option value="5059">
+                                                        Costa Rica
+                                                    </option>
+                                                    <option value="5049">
+                                                        Cote D'Ivoire  ( Ivory Coast )
+                                                    </option>
+                                                    <option value="5060">
+                                                        Croatia
+                                                    </option>
+                                                    <option value="5063">
+                                                        Cuba
+                                                    </option>
+                                                    <option value="7054225">
+                                                        CURACAO
+                                                    </option>
+                                                    <option value="5066">
+                                                        Cyprus
+                                                    </option>
+                                                    <option value="5061">
+                                                        Czeck  Republic
+                                                    </option>
+                                                    <option value="5300">
+                                                        Democratic Republic Of  Congo ( Zaire )
+                                                    </option>
+                                                    <option value="5078">
+                                                        Denmark
+                                                    </option>
+
+                                                    <option value="5076">
+                                                        Djibouti
+                                                    </option>
+                                                    <option value="5077">
+                                                        Dominica
+                                                    </option>
+                                                    <option value="5079">
+                                                        Dominican Republic
+                                                    </option>
+                                                    <option value="5264">
+                                                        East Timur
+                                                    </option>
+                                                    <option value="5084">
+                                                        Egypt
+                                                    </option>
+                                                    <option value="5244">
+                                                        Elsalvador
+                                                    </option>
+                                                    <option value="5082">
+                                                        Equador
+                                                    </option>
+                                                    <option value="5083">
+                                                        Equatorial Guinea
+                                                    </option>
+                                                    <option value="5085">
+                                                        Eritrea
+                                                    </option>
+                                                    <option value="5087">
+                                                        Estonia
+                                                    </option>
+                                                    <option value="5088">
+                                                        Ethiopia
+                                                    </option>
+
+                                                    <option value="5090">
+                                                        Faeroe  Islands
+                                                    </option>
+                                                    <option value="5096">
+                                                        Falkland Islands ( Malvinas )
+                                                    </option>
+                                                    <option value="5095">
+                                                        Fiji
+                                                    </option>
+                                                    <option value="5094">
+                                                        Finland
+                                                    </option>
+                                                    <option value="5097">
+                                                        France
+                                                    </option>
+                                                    <option value="7050866">
+                                                        Free Trade Zone
+                                                    </option>
+                                                    <option value="5210">
+                                                        French  Polynesia
+                                                    </option>
+                                                    <option value="5123">
+                                                        French Guiana
+                                                    </option>
+                                                    <option value="7054219">
+                                                        FRENCH SOUTHERN
+                                                    </option>
+                                                    <option value="5107">
+                                                        Gabon
+                                                    </option>
+                                                    <option value="5115">
+                                                        Gambia
+                                                    </option>
+                                                    <option value="5110">
+                                                        Georgia
+                                                    </option>
+                                                    <option value="7054221">
+                                                        GEORGIA&SANDWICH ISL
+                                                    </option>
+                                                    <option value="5070">
+                                                        Germany
+                                                    </option>
+                                                    <option value="5111">
+                                                        Ghana
+                                                    </option>
+                                                    <option value="5112">
+                                                        Gibraltar
+                                                    </option>
+                                                    <option value="5118">
+                                                        Greece
+                                                    </option>
+                                                    <option value="5120">
+                                                        Greenland
+                                                    </option>
+                                                    <option value="5119">
+                                                        Grenada
+                                                    </option>
+                                                    <option value="5114">
+                                                        Guadelope
+                                                    </option>
+                                                    <option value="5124">
+                                                        Guam
+                                                    </option>
+                                                    <option value="5121">
+                                                        Guatemala
+                                                    </option>
+                                                    <option value="7054224">
+                                                        GUERNSEY
+                                                    </option>
+                                                    <option value="5122">
+                                                        Guinea-Bissau
+                                                    </option>
+                                                    <option value="5125">
+                                                        Guyana
+                                                    </option>
+                                                    <option value="5129">
+                                                        Haiti
+                                                    </option>
+                                                    <option value="7050992">
+                                                        Heard Island and McDonald Islands
+                                                    </option>
+                                                    <option value="5283">
+                                                        Holy Sea
+                                                    </option>
+                                                    <option value="5128">
+                                                        Honduras
+                                                    </option>
+                                                    <option value="5127">
+                                                        Hong Kong (Special Administrative Region Of China)
+                                                    </option>
+                                                    <option value="5130">
+                                                        Hungary
+                                                    </option>
+                                                    <option value="5137">
+                                                        Iceland
+                                                    </option>
+                                                    <option value="5132">
+                                                        India
+                                                    </option>
+                                                    <option value="5131">
+                                                        Indonesia
+                                                    </option>
+                                                    <option value="5135">
+                                                        Iran
+                                                    </option>
+                                                    <option value="5136">
+                                                        Iraq
+                                                    </option>
+                                                    <option value="5134">
+                                                        Ireland
+                                                    </option>
+                                                    <option value="7050994">
+                                                        Isle Of Man
+                                                    </option>
+                                                    <option value="5139">
+                                                        Italy
+                                                    </option>
+                                                    <option value="5140">
+                                                        Jamaica
+                                                    </option>
+                                                    <option value="5142">
+                                                        Japan
+                                                    </option>
+                                                    <option value="7054226">
+                                                        JERSEY
+                                                    </option>
+                                                    <option value="5141">
+                                                        Jordan
+                                                    </option>
+                                                    <option value="5151">
+                                                        Kazakhstan
+                                                    </option>
+                                                    <option value="5145">
+                                                        Kenya
+                                                    </option>
+                                                    <option value="5149">
+                                                        Kiribati
+                                                    </option>
+                                                    <option value="5216">
+                                                        Korea (North)
+                                                    </option>
+                                                    <option value="5147">
+                                                        Korea (South)
+                                                    </option>
+                                                    <option value="7238404">
+                                                        KOSOVO
+                                                    </option>
+                                                    <option value="5150">
+                                                        Kuwait
+                                                    </option>
+                                                    <option value="5146">
+                                                        Kyrgyzstan
+                                                    </option>
+                                                    <option value="5152">
+                                                        Lao People's Democratic Republic (Laos)
+                                                    </option>
+                                                    <option value="5161">
+                                                        Latvia
+                                                    </option>
+                                                    <option value="5153">
+                                                        Lebanon
+                                                    </option>
+                                                    <option value="5159">
+                                                        Lesotho
+                                                    </option>
+                                                    <option value="5154">
+                                                        Liberia
+                                                    </option>
+                                                    <option value="5155">
+                                                        Libya
+                                                    </option>
+                                                    <option value="5156">
+                                                        Liechtenstein
+                                                    </option>
+                                                    <option value="5160">
+                                                        Lithuania
+                                                    </option>
+                                                    <option value="5162">
+                                                        Luxembourg
+                                                    </option>
+                                                    <option value="7051036">
+                                                        Macao
+                                                    </option>
+                                                    <option value="5169">
+                                                        Macedonia
+                                                    </option>
+                                                    <option value="5171">
+                                                        Madagascar
+                                                    </option>
+                                                    <option value="5188">
+                                                        Malawi
+                                                    </option>
+                                                    <option value="5190">
+                                                        Malaysia
+                                                    </option>
+                                                    <option value="5172">
+                                                        Maldives
+                                                    </option>
+                                                    <option value="5176">
+                                                        Mali
+                                                    </option>
+                                                    <option value="5177">
+                                                        Malta
+                                                    </option>
+                                                    <option value="5183">
+                                                        Marshall Islands
+                                                    </option>
+                                                    <option value="5186">
+                                                        Martinique
+                                                    </option>
+                                                    <option value="5182">
+                                                        Mauritania
+                                                    </option>
+                                                    <option value="5187">
+                                                        Mauritius
+                                                    </option>
+                                                    <option value="5297">
+                                                        Mayotte
+                                                    </option>
+                                                    <option value="5173">
+                                                        Mexico
+                                                    </option>
+                                                    <option value="5098">
+                                                        Micronesia, Federated States Of
+                                                    </option>
+                                                    <option value="5175">
+                                                        Moldova
+                                                    </option>
+                                                    <option value="5170">
+                                                        Monaco
+                                                    </option>
+                                                    <option value="5178">
+                                                        Mongolia
+                                                    </option>
+                                                    <option value="5185">
+                                                        MONTENEGRO
+                                                    </option>
+                                                    <option value="5184">
+                                                        Montserrat
+                                                    </option>
+                                                    <option value="5167">
+                                                        Morocco
+                                                    </option>
+                                                    <option value="5179">
+                                                        Mozambique
+                                                    </option>
+                                                    <option value="5189">
+                                                        Myanmar  ( Burma )
+                                                    </option>
+                                                    <option value="5191">
+                                                        Namibia
+                                                    </option>
+                                                    <option value="5201">
+                                                        Nauru
+                                                    </option>
+                                                    <option value="5200">
+                                                        Nepal
+                                                    </option>
+                                                    <option value="5198">
+                                                        Netherlands
+                                                    </option>
+                                                    <option value="5012">
+                                                        Netherlands  Antilles  Islands
+                                                    </option>
+                                                    <option value="7054220">
+                                                        NETHERLANDS ANTILLES
+                                                    </option>
+                                                    <option value="5192">
+                                                        New Caledonia
+                                                    </option>
+                                                    <option value="5202">
+                                                        New Zealand
+                                                    </option>
+                                                    <option value="5196">
+                                                        Nicaragua
+                                                    </option>
+                                                    <option value="5193">
+                                                        Niger
+                                                    </option>
+                                                    <option value="5195">
+                                                        Nigeria
+                                                    </option>
+                                                    <option value="5197">
+                                                        Niue
+                                                    </option>
+                                                    <option value="7054538">
+                                                        NON-KUWAITI
+                                                    </option>
+                                                    <option value="5194">
+                                                        Norfolk Island
+                                                    </option>
+                                                    <option value="5181">
+                                                        Northern Mariana Islands
+                                                    </option>
+                                                    <option value="5199">
+                                                        Norway
+                                                    </option>
+                                                    <option value="5204">
+                                                        Pakistan
+                                                    </option>
+                                                    <option value="5212">
+                                                        Palau
+                                                    </option>
+                                                    <option value="5211">
+                                                        Palestine (Gazza)
+                                                    </option>
+                                                    <option value="5205">
+                                                        Panama
+                                                    </option>
+                                                    <option value="5213">
+                                                        Papua New Guinea
+                                                    </option>
+                                                    <option value="5218">
+                                                        Paraguay
+                                                    </option>
+                                                    <option value="5207">
+                                                        Peru
+                                                    </option>
+                                                    <option value="5208">
+                                                        Philippines
+                                                    </option>
+                                                    <option value="5219">
+                                                        Pitcairn
+                                                    </option>
+                                                    <option value="5214">
+                                                        Poland
+                                                    </option>
+                                                    <option value="5217">
+                                                        Portugal
+                                                    </option>
+                                                    <option value="7050993">
+                                                        Puerto Rico
+                                                    </option>
+                                                    <option value="5220">
+                                                        Qatar
+                                                    </option>
+                                                    <option value="5113">
+                                                        Republic Of Guinea
+                                                    </option>
+                                                    <option value="5223">
+                                                        Reunion
+                                                    </option>
+                                                    <option value="5224">
+                                                        Romania
+                                                    </option>
+                                                    <option value="5225">
+                                                        Russian Federation
+                                                    </option>
+                                                    <option value="5226">
+                                                        Rwanda
+                                                    </option>
+                                                    <option value="5237">
+                                                        Saint Helena
+                                                    </option>
+                                                    <option value="5239">
+                                                        Saint Kitts And Nevis
+                                                    </option>
+                                                    <option value="5243">
+                                                        Saint Lucia
+                                                    </option>
+                                                    <option value="5247">
+                                                        Saint Pierre And Miquelon
+                                                    </option>
+                                                    <option value="5284">
+                                                        Saint Vincent And The Grenadines
+                                                    </option>
+                                                    <option value="5227">
+                                                        Samoa ( Western Samoa )
+                                                    </option>
+                                                    <option value="5245">
+                                                        San Marino
+                                                    </option>
+                                                    <option value="5248">
+                                                        Sao Tome And Principe
+                                                    </option>
+                                                    <option value="5228">
+                                                        Saudi Arabia
+                                                    </option>
+                                                    <option value="5231">
+                                                        Senegal
+                                                    </option>
+                                                    <option value="5255">
+                                                        Seychelles
+                                                    </option>
+                                                    <option value="5241">
+                                                        Sierra Leone
+                                                    </option>
+                                                    <option value="5234">
+                                                        Singapore
+                                                    </option>
+                                                    <option value="5242">
+                                                        Slovakia
+                                                    </option>
+                                                    <option value="5252">
+                                                        Slovenia
+                                                    </option>
+                                                    <option value="5240">
+                                                        Solomon Islands
+                                                    </option>
+                                                    <option value="5246">
+                                                        Somalia
+                                                    </option>
+                                                    <option value="5299">
+                                                        South Africa
+                                                    </option>
+                                                    <option value="5086">
+                                                        Spain
+                                                    </option>
+                                                    <option value="5157">
+                                                        Sri Lanka (Ceylon)
+                                                    </option>
+                                                    <option value="5230">
+                                                        Sudan
+                                                    </option>
+                                                    <option value="5203">
+                                                        Sultanate Of Oman
+                                                    </option>
+                                                    <option value="5250">
+                                                        Suriname
+                                                    </option>
+                                                    <option value="7050991">
+                                                        Svalbard And Jan Mayen Islands
+                                                    </option>
+                                                    <option value="5254">
+                                                        Swaziland
+                                                    </option>
+                                                    <option value="5253">
+                                                        Sweden
+                                                    </option>
+                                                    <option value="5046">
+                                                        Switzerland
+                                                    </option>
+                                                    <option value="5256">
+                                                        Syria
+                                                    </option>
+                                                    <option value="5272">
+                                                        Taiwan
+                                                    </option>
+                                                    <option value="5262">
+                                                        Tajikistan
+                                                    </option>
+                                                    <option value="5273">
+                                                        Tanzania
+                                                    </option>
+                                                    <option value="5260">
+                                                        Thailand
+                                                    </option>
+                                                    <option value="5259">
+                                                        Togo
+                                                    </option>
+                                                    <option value="7050990">
+                                                        Tokelau
+                                                    </option>
+                                                    <option value="5266">
+                                                        Tonga
+                                                    </option>
+                                                    <option value="5267">
+                                                        Trinidad & Tobago
+                                                    </option>
+                                                    <option value="5269">
+                                                        Tunisia
+                                                    </option>
+                                                    <option value="5270">
+                                                        Turkey
+                                                    </option>
+                                                    <option value="5263">
+                                                        Turkmenistan
+                                                    </option>
+                                                    <option value="5257">
+                                                        Turks And Caicos  Islands
+                                                    </option>
+                                                    <option value="5271">
+                                                        Tuvalu
+                                                    </option>
+                                                    <option value="5277">
+                                                        Uganada
+                                                    </option>
+                                                    <option value="5278">
+                                                        Ukraine
+                                                    </option>
+                                                    <option value="5274">
+                                                        United Arab Emirates
+                                                    </option>
+                                                    <option value="5109">
+                                                        United Kingdom
+                                                    </option>
+                                                    <option value="5279">
+                                                        United States Minor Outlying Islands
+                                                    </option>
+                                                    <option value="5281">
+                                                        United States Of America
+                                                    </option>
+                                                    <option value="5287">
+                                                        United States Virgin Islands
+                                                    </option>
+                                                    <option value="5280">
+                                                        Uruguay
+                                                    </option>
+                                                    <option value="5282">
+                                                        Uzbekistan
+                                                    </option>
+                                                    <option value="5290">
+                                                        Vanuatu
+                                                    </option>
+                                                    <option value="5285">
+                                                        Venezuela
+                                                    </option>
+                                                    <option value="5288">
+                                                        Vietnam
+                                                    </option>
+                                                    <option value="5292">
+                                                        Wallis And Futuna Islands
+                                                    </option>
+                                                    <option value="5293">
+                                                        Western Sahara
+                                                    </option>
+                                                    <option value="5296">
+                                                        Yemen
+                                                    </option>
+                                                    <option value="5298">
+                                                        Yugoslavia ( Serbia & Montenegro )
+                                                    </option>
+                                                    <option value="5301">
+                                                        Zambia
+                                                    </option>
+                                                    <option value="5302">
+                                                        Zimbabwe
+                                                    </option>
+
+                                                </select>
+
+                                                <p id="nationalityErrorMsg" class="errorMsg">
+                                                    @Resources.Resource.nationailityRequired
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+
+
+
+                        </div>
+                    }
+                }
+                <div class="form-group">
+                    <label class="col-md-3 control-label">@Resources.Resource.docTypesLabel</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                            @Html.DropDownListFor(m => m.docsid, Model.ddlDocumentTypesitems, new
+                       {
+                           @id = "ddlDocumentTypes",
+                           @class = "form-control "
+                       })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">&nbsp;</label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            <div class="file-loading">
+                                <input id="fileUploadCtrl" type="file" data-min-file-count="0" data-theme="fas">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label ">&nbsp;</label>
+                    <div class="col-md-7 inputGroupContainer marginTop15">
+                        <div class="input-group">
+                            <button type="button" onclick="up('BRSEShipmentAuthorizationDocs')" class="btn btn-info btn-block col-centered width50Percent" causesvalidation="false" id="uploadWindow1">
+                                <b>
+                                    <span class="glyphicon glyphicon-file"></span>&nbsp; @Resources.Resource.UploadDocument_Header &nbsp;
+                                </b>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <p class="redColor text-center"> @Resources.Resource.uploadedFileListMSG </p>
+
+                    <label class="col-md-3 control-label">&nbsp;</label>
+                    <div class="col-md-7 inputGroupContainer marginTop15">
+                        <div class="input-group">
+                            @*<table id="Uploadedfileslist">*@
+                            <table id="Uploadedfileslist" class="table data-table table-striped table-bordered responsive">
+
+                                @*<table id="Uploadedfileslist" class="data-table table table-striped table-bordered responsive nowrap ">*@
+                                <thead>
+                                    <tr>
+
+                                        <th class="all" style="max-width:100px">@Resources.Resource.fileName</th>
+                                        <th class="desktop tablet-l tablet-p ">@Resources.Resource.docType</th>
+                                        <th class="desktop tablet-l ">@Resources.Resource.uploadDate</th>
+                                        <th class="desktop tablet-l tablet-p ">@Resources.Resource.ActionLabel&nbsp;</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.ListOfUploadedFiles != null)
+                                    {
+                                        foreach (var item in Model.ListOfUploadedFiles)
+
+                                        {
+
+                                            <tr>
+                                                @*<td>
+                                                        <input type="checkbox" name="@item.DocumentId" runat="server" class="deleteselctedcheckbox" id=@item.DocumentId />
+                                                    </td>*@
+                                                <td>
+                                                    @item.NewFileName
+                                                </td>
+
+                                                <td>
+                                                    @item.DocumentType
+                                                </td>
+                                                <td>
+                                                    @item.Createddate
+                                                </td>
+                                                <td class="text-center test21" style="white-space: nowrap;">
+
+                                                    <a href="@Url.Action("DownloadFile", "BrokerRenewal",new { filename = @item.DocumentId })">
+                                                        <img class="btnimg1" src="~/images/Buttons/Download.png">
+                                                    </a>
+
+
+                                                    <img class="btnimg" onclick="DeleteFilewithDocIdForClearingExam(this)" id="@item.DocumentId" src="~/images/Buttons/Delete.png" />
+
+
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                </tbody>
+
+                            </table>
+
+
+                            <div>
+
+                            </div>
+
+
+                            <div>
+
+                            </div>
+
+
+                            @{
+                                ViewBag.UploadDocsURL = System.Configuration.ConfigurationManager.AppSettings["UploadDocs"].ToString();
+                                ViewBag.UploadDocs_actioncall = System.Configuration.ConfigurationManager.AppSettings["UploadDocs_actioncall"].ToString();
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </div>
+
+    }
+
+    @*<div class="row">
+            <div class="col-lg-12">
+
+            </div>
+        </div>*@
+
+</div>
+
+
+
+
+
+
+
+
+@*<script src="~/Scripts/eServiceScript.js"></script>*@
+<script type="text/javascript" nonce="">
+
+
+    $(document).ready(function ()
+
+    {
+        $("#fileUploadCtrl").fileinput({
+            browseClass: "btn btn-info btn-block col-centered width50Percent",
+            showCaption: false,
+            showRemove: false,
+            showUpload: false,
+            showZoom: false,
+            maxFileSize: 4096,
+            maxFilesNum: 1,
+            showUpload: false,
+            allowedFileExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+            language: "ar",
+            browseOnZoneClick: true
+
+        }).on('fileuploaderror', function (event, data, msg) {
+            $("#fileUploadCtrl").fileinput('clear');
+            //$.fn.dataTable.ext.pager.numbers_length = 5;
+        });
+
+        $(".fileinput-cancel-button").css("display", "none");
+
+        la = getCookie("culture");
+        var table = '';
+        var Orgtable = '';
+        var oTable = '';
+        //alert(la);
+
+        if (la.indexOf("ar") != -1) {
+            table = $('#Uploadedfileslist').dataTable({
+                "language":
+                {
+                    "url": applicationUrl + "/scripts/arabic.json"
+                },
+                "searching": false,
+                "bFilter": false,
+                "bInfo": false,
+                order: [],
+                columnDefs: [{ orderable: false, targets: [0] }],
+                "bPaginate": true,
+                "bLengthChange": false,
+                'sPaginationType': 'ellipses',
+                "bFilter": false,
+                "bInfo": false,
+                //  "scrollY": "true",
+                //  "scrollCollapse": true,
+                "pageLength": 5,
+                'pagingType': 'numbers',
+                "info": false,
+                "fnDrawCallback": function (oSettings) {
+                    //DrawTable()
+                }
+
+
+            });
+        }
+
+        else {
+            table = $('#Uploadedfileslist').dataTable({
+                "oLanguage":
+                {
+                    "infoEmpty": ""
+                },
+                "searching": false,
+                "bFilter": false,
+                "bInfo": false,
+                order: [],
+                columnDefs: [{ orderable: false, targets: [0] }],
+                "bPaginate": true,
+                "bLengthChange": false,
+                'sPaginationType': 'ellipses',
+                "bFilter": false,
+                "bInfo": false,
+                //  "scrollY": "true",
+                //  "scrollCollapse": true,
+                "pageLength": 5,
+                'pagingType': 'numbers',
+                "info": false,
+                "fnDrawCallback": function (oSettings) {
+                    //DrawTable()
+                }
+            });
+        }
+
+
+
+    });
+
+
+</script>
+
+
+
+

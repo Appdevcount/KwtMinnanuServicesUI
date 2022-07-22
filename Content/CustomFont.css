@@ -1,0 +1,9 @@
+@font-face {
+  font-family: myFirstFont;
+  src:url(../fonts/DroidKufi-Regular.ttf);
+  font-style: normal;
+}
+
+body, ion-content, .toolbar-title, ion-app, .alert-title {
+  font-family: myFirstFont !important;
+}

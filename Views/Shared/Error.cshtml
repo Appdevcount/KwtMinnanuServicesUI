@@ -1,0 +1,90 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CustomFont.css" rel="stylesheet" />
+    <title>@Resources.Resource.KuwaitCustoms</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/fav.ico" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/login.css" rel="stylesheet" />
+    <style type="text/css">
+        #mydiv {
+            overflow-y: auto !important;
+            width: 100%;
+            margin-top: 20px;
+            padding: 5px;
+        }
+
+        @@media only screen and (max-width: 450px) {
+            #Idmodalcontent {
+                position: relative;
+                background-color: #fff;
+                border: none;
+                border: none;
+                border-radius: unset;
+                outline: unset;
+                -webkit-box-shadow: unset;
+                box-shadow: unset;
+                background-clip: unset;
+                border-bottom: none;
+            }
+        }
+
+        #t1 {
+            margin-top: 20px;
+            width: 40%;
+        }
+
+        @@media only screen and (max-width: 600px) {
+            #t1 {
+                margin-top: 0px;
+                width: 100%;
+            }
+        }
+
+        @@media only screen and (min-width:481px) and (max-device-width: 1000px) {
+            #t1 {
+                margin-top: 0px;
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body style="font-family: myFirstFont !important;width:100%;position:fixed">
+    <div style="@Resources.Resource.div_direction">
+        <table id="t1" align="center">
+            <tr>
+                <td width="50%" align="center">
+                    <div class="modal-content" id="Idmodalcontent">
+                        <div class="modal-header">
+                            <table id="t2" align="center">
+                                <tr>
+                                    <td width="50%" align="center">
+                                        <img style="height:90%" src="@Resources.Resource.Logo" />
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="modal-body" id="mydiv">
+                            <div style="padding:20px;">
+                                <h1 class="text-danger">@Resources.Resource.error</h1>
+                                @*<h2 class="text-danger">An error occurred while processing your request.</h2>*@
+                                <h2 class="text-danger">@Resources.Resource.somethingwentwrong</h2>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

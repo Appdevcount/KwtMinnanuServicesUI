@@ -1,0 +1,158 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = Resources.Resource.Verification;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+            </p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+
+</div>
+
+
+<div class="col-lg-8 col-centered">
+    @using (Ajax.BeginForm("ContactVerification", "registration", new AjaxOptions { HttpMethod = "POST" }))
+    {
+        <table id="t1" align="center">
+            <tr>
+                <td width="50%" align="center">
+                    @*<h4 class="marginTop30">  @Resources.Resource.codeHasBeenSent </h4>*@
+                    <h4 class="marginTop30">  @Resources.Resource.ContactVerificationHelpText1 </h4>
+                    <div class="well form-horizontal marginTop30">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="marginTop30">  @Resources.Resource.ContactVerificationHelpText2 </h4>
+                            </div>
+                        </div>
+                        <form autocomplete="off">
+                            @if (ViewBag.ShowEmailBox == "true")
+                            {
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">@Resources.Resource.emailCode</label>
+                                    <div class="col-md-2 inputGroupContainer">
+                                        <div class="input-group">
+                                            @*<span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-qrcode"></i>
+                                            </span>*@
+
+                                            <input class="form-control"
+                                                   placeholder=""
+                                                   name="Email" value=""
+                                                   type="text" id="inputEmailCode"
+                                                   autocomplete="off"
+                                                   maxlength="10" />
+
+                                            @*<p id="emailIdErrorMsg" class="errorMsg">
+                                    @Resources.Resource.EmailCodeMandatory
+                                </p>*@
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 ">
+                                        <a href="#" id="EmailVerificationResend" class="btn btn-info btn-block" style="@Resources.Resource.ResendOTPButton">@Resources.Resource.Resend</a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <p id="emailIdErrorMsg" class="@Resources.Resource.colmdpushpull3 col-md-4  errorMsg">
+                                        @Resources.Resource.EmailCodeMandatory
+                                    </p>
+                                </div>
+
+                            }
+                            @if (ViewBag.ShowMobileBox == "true")
+                            {
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">@Resources.Resource.MobileCode</label>
+                                    <div class="col-md-2 inputGroupContainer">
+                                        <div class="input-group">
+                                            @*<span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-qrcode"></i>
+                                            </span>*@
+
+                                            <input class="form-control"
+                                                   placeholder=""
+                                                   name="Mobile" value=""
+                                                   type="text" id="inputMobileCode"
+                                                   autocomplete="off"
+                                                   maxlength="10" />
+
+                                            @*<p id="mobileErrorMsg" class="errorMsg">
+                                    @Resources.Resource.MobileCodeMandatory1
+                                </p>*@
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 ">
+                                        <a href="#" id="MobileVerificationResend" class="btn btn-info btn-block" style="@Resources.Resource.ResendOTPButton">@Resources.Resource.Resend</a>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <p id="mobileErrorMsg" class="@Resources.Resource.colmdpushpull3 col-md-4  errorMsg">
+                                        @Resources.Resource.MobileCodeMandatory1
+                                    </p>
+                                </div>
+
+
+                            }
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">
+                                    &nbsp;
+                                </label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        @*<span class="input-group-addon">
+                                <i class="glyphicon glyphicon-qrcode"></i>
+                            </span>*@
+
+
+                                        <button type="submit" id="btnsubmitVerification"
+                                                class="btn btn-info btn-block" style="@Resources.Resource.ResendOTPButton">
+                                            @Resources.Resource.Verify
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" value="@ViewBag.ParentID" name="ParentID" />
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    var msg = '@ViewBag.msg';
+    var success = '@ViewBag.success';
+    var EmailVerificationResend = '@Resources.Resource.VerificationsenttoyourEmail';
+    var MobileVerificationResend = '@Resources.Resource.Verificationsenttoyourmobile';
+</script>
+
+<script src="~/Scripts/Emailvery.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>

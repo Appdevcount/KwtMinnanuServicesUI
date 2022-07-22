@@ -1,0 +1,537 @@
+﻿@model WebApplication1.Models.EPaymentRequestInfo
+
+@{
+
+    ViewBag.Title = Resources.Resource.EPayment;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+<link href="~/Content/Main/Epayment.css" rel="stylesheet" />
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage"></h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-centered">
+    @using (Html.BeginForm("EPayment", "User", FormMethod.Post))
+    {
+
+
+        if (ViewData["data"] != null)
+        {
+            if (ViewData.Values != null && ViewData.Values.Count() > 0)
+            {
+                foreach (var item in ViewData["data"] as List<WebApplication1.Models.EPaymentRequestInfo>
+                    )
+                {
+
+                    String payFor = item.PayFor;
+
+
+                    String ReceiptDatetime = item.OnlineReceiptDatetime.Replace('T', '-');
+
+
+                    <table class="table table-striped center-block">
+
+                        <tr>
+                            <td colspan="1">
+                                <div class="well form-horizontal" dir="@Resources.Resource.dir">
+                                    <fieldset>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_PayFor
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+
+                                                    @{
+                                                        if (payFor == "1")
+                                                        {
+                                                            <input class="form-control" placeholder=""
+                                                                   value="@Resources.Resource.Duties"
+                                                                   name="payfor"
+                                                                   type="text" id="inputduty"
+                                                                   readonly="readonly" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input class="form-control" placeholder=""
+                                                                   value="@Resources.Resource.Deposits"
+                                                                   name="payfor"
+                                                                   type="text" id="inputduty"
+                                                                   readonly="readonly" />
+                                                        }
+                                                    }
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_PaymentID
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="OLPaymentId"
+                                                           type="text"
+                                                           id="inputpaymentid"
+                                                           value="@item.OLPaymentId"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.ConsigneeName
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder=""
+                                                           name="ConsigeeName"
+                                                           type="text" id="inputOnlineReceiptNo."
+                                                           value="@item.ConsigeeName"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_OnlineReceiptNo
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="OnlineReceiptNo"
+                                                           type="text" id="inputOnlineReceiptNo."
+                                                           value="@item.OnlineReceiptNo"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_OnlineReceiptDt
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder=""
+                                                           name="OnlineReceiptDatetime"
+                                                           type="text"
+                                                           id="inputOnlineReceiptdt"
+                                                           value="@ReceiptDatetime"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Paytype
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="OnlineReceiptDatetime"
+                                                           type="text"
+                                                           id="inputOnlineReceiptdt"
+                                                           value="@item.PaymentType"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_paymethod
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder=""
+                                                           name="OnlineReceiptDatetime"
+                                                           type="text"
+                                                           id="inputOnlineReceiptdt"
+                                                           value="@item.PaymentMethod"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Customsaccount
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control"
+                                                           placeholder=""
+                                                           name="OnlineReceiptDatetime"
+                                                           type="text"
+                                                           id="inputOnlineReceiptdt"
+                                                           value="@item.CustomsAccount"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_payby
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control"
+                                                           placeholder=""
+                                                           name="OnlineReceiptDatetime"
+                                                           type="text"
+                                                           id="inputOnlineReceiptdt"
+                                                           value="@item.PaidBy"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_totalamount
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control"
+                                                           placeholder=""
+                                                           name="OnlineReceiptDatetime"
+                                                           type="text"
+                                                           id="inputOnlineReceiptdt"
+                                                           value="@item.AmountField"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Status
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder=""
+                                                           name="STATUS"
+                                                           type="text"
+                                                           id="inputStatus"
+                                                           value="@item.STATUS"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                &nbsp;
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <label class="col-md-7 control-label">
+                                                        @Resources.Resource.SubEpayment_DutyAmount
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_CustomsDuty
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="CustomsDuty"
+                                                           type="text"
+                                                           id="inputCustomsDuty"
+                                                           value="@item.CustomsDuty"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_HandlingCharges
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="HandlingCharges"
+                                                           type="text"
+                                                           id="inputHandlingCharges"
+                                                           value="@item.HandlingCharges"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Storage
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="Storage"
+                                                           type="text"
+                                                           id="inputStorage"
+                                                           value="@item.Storage"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Penalties
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="Penalties"
+                                                           type="text"
+                                                           id="inputPenalties"
+                                                           value="@item.Penalties"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Guarantees
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="Guarantees"
+                                                           type="text"
+                                                           id="inputGuarantees"
+                                                           value="@item.Guarantees"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Certificates
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="" name="Certificates"
+                                                           type="text"
+                                                           id="inputCertificates"
+                                                           value="@item.Certificates"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Printing
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control"
+                                                           placeholder=""
+                                                           name="Printing"
+                                                           type="text"
+                                                           id="inputPrinting"
+                                                           value="@item.Printing"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.SubEpayment_Others
+                                            </label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    <input class="form-control"
+                                                           placeholder=""
+                                                           name="Others"
+                                                           type="text"
+                                                           id="inputOthers"
+                                                           value="@item.Others"
+                                                           readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </fieldset>
+                                </div>
+
+                            </td>
+
+
+                        </tr>
+
+
+                        <tr>
+                            @{
+                                if (item.STATUS == "Success" || item.STATUS == "ناجحة" || item.STATUS == "رفض" || item.STATUS == "Denied")
+
+
+                                {
+                                    <td>
+
+
+                                        <div class="form-group">
+                                            @Html.ActionLink(@Resources.Resource.SubEpayment_B_back, "payment", "User", null, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", @style = "width:90%" })
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            @*@Html.ActionLink(@Resources.Resource.btnprint, "paymentprint", "User", new { @class = "btn button button4" })
+                                                <button type="button" style="width:90%" id="btnprint" class="btn btn-info btn-block col-centered marginTop50 width50Percent">@Resources.Resource.btnprint</button>*@
+                                            @Html.ActionLink(@Resources.Resource.btnprint, "paymentprint", "User", new { @class = "btn btn-info btn-block col-centered marginTop50 width80Percent" })
+
+
+
+                                        </div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td align="center">
+                                        <div class="form-group">
+                                            <button type="submit" style="width:90%" class="btn btn-info btn-block col-centered marginTop50 width50Percent">@Resources.Resource.SubEpayment_B_pay</button>
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="form-group">
+                                            @Html.ActionLink(@Resources.Resource.SubEpayment_B_decline, "DenyPayRequest", "User", null, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", @style = "width:90%;background-color: red;" })
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="form-group">
+                                            @Html.ActionLink(@Resources.Resource.SubEpayment_B_back, "payment", "User", null, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent", @style = "width:90%" })
+                                        </div>
+                                    </td>
+                                }
+                            }
+                        </tr>
+
+
+
+                    </table>
+                }
+            }
+        }
+
+
+
+
+    }
+
+</div>
+<script>     
+    var viewbagmsg = '@ViewBag.Msg';
+      var viewbagstatus = '@ViewBag.Status';
+
+    </script>

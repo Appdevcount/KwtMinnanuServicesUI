@@ -1,0 +1,485 @@
+﻿@model WebApplication1.Models.OrgGetImportLicenseResult
+@{
+    /**/
+
+    ViewBag.Title = Resources.Resource.ImporterDetails;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+<div class="col-lg-11 col-centered marginTop15">
+    @*class="col-lg-8 col-centered">*@
+
+
+    @using (Html.BeginForm("Org_ImporterDetails", "User", FormMethod.Post, new { id = "OrgImp" }))
+    {
+
+
+        <div id="mydiv" class="well form-horizontal">
+            @*class="well"*@
+
+            <table align="center" id="maintbl" class="table center-block">
+                <tr>
+                    <td colspan="2">
+                        <div class="alert alert-success">
+                            @{
+                                if (ViewBag.dis == "1" || ViewBag.reqno != "0")
+                                {
+                                    @*<p>*@
+                                    <span class="inline-block">
+                                        @Resources.Resource.Importer_RequestNumber
+                                    </span>
+                                    @ViewBag.reqno
+                                    @*</p>*@
+                                    <br />
+                                }
+                            }
+                            <input type="hidden" name="OrganizationId" value="@Model.OrganizationId" />
+                            @*<p>*@
+                            <span class="inline-block">
+                                @Resources.Resource.Importer_CompanyNameinArabic
+                            </span>
+                            @Model.OrgAraName
+                            @*</p>*@
+                        </div>
+                        @*<div class="row">
+                                <div class="col-lg-12 " style="font-size: 10px;font-weight: bold;padding-bottom: 10px;">
+                                    @Resources.Resource.MandatoryFields
+                                </div>
+                            </div>*@
+                        <p class="redColor text-center"> @Resources.Resource.mandatoryFieldsMsg </p>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td colspan="1">
+
+                        <div class="well form-horizontal">
+
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.Importer_Licensetype * </label>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-address-card-o"></i>
+                                            </span>
+
+                                            @*<label class="col-md-1 control-label">
+                                                    &nbsp; &nbsp;
+                                                </label>*@
+
+                                            <label class="col-md-4 control-label">
+                                                @{
+
+                                                    if (String.IsNullOrWhiteSpace(Model.ImpLicType))
+                                                    {
+                                                        <input type="radio" id="permanentid" name="ImpLicType" value="permanent">
+                                                    }
+                                                    else
+                                                    {
+
+
+                                                        if (Model.ImpLicType == "permanent / دائم" || Model.ImpLicType.Contains("permanent"))
+                                                        {
+                                                            <input type="radio" id="permanentid" name="ImpLicType" value="permanent" checked>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="radio" id="permanentid" name="ImpLicType" value="permanent">
+                                                        }
+                                                    }
+                                                }
+
+                                                <span> @Resources.Resource.Importer_RB_permanent </span>
+                                            </label>
+
+                                            <label class="col-md-4 control-label">
+                                                @{
+                                                    if (String.IsNullOrWhiteSpace(Model.ImpLicType))
+                                                    {
+                                                        <input type="radio" id="temporaryid" name="ImpLicType" value="temporary">
+                                                    }
+                                                    else
+                                                    {
+                                                        if (Model.ImpLicType == "temporary / مؤقت" || Model.ImpLicType.Contains("temporary"))
+                                                        {
+                                                            <input type="radio" id="temporaryid" name="ImpLicType" value="temporary" checked>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="radio" id="temporaryid" name="ImpLicType" value="temporary">
+                                                        }
+                                                    }
+                                                }
+                                                <span>@Resources.Resource.Importer_RB_temporary </span>
+                                            </label>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        @Resources.Resource.Importer_LicenseNumber
+                                    </label>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-address-card-o"></i>
+                                            </span>
+
+                                            @{
+                                                string display = "";
+
+                                                if (String.IsNullOrWhiteSpace(Model.ImpLicType))
+                                                {
+                                                    display = "display: none";
+                                                }
+                                                else
+                                                {
+                                                    if (Model.ImpLicType == "temporary / مؤقت" || Model.ImpLicType.Contains("temporary"))
+                                                    {
+                                                        display = "";
+                                                    }
+                                                    else
+                                                    {
+                                                        display = "display: none";
+                                                    }
+                                                }
+                                            <div class="">
+                                                @*<input class="form-control textval numeric"
+        placeholder="* @Resources.Resource.Importer_LicenseNo"
+        value="@Model.ImpLicNo"
+        name="ImpLicNo"
+        type="text" id="inputLicenseno"
+        maxlength="5"
+        ondrop="return false;"
+        onpaste="return false;" />*@
+
+                                                @if (!String.IsNullOrWhiteSpace(Model.ImpLicType) &&(Model.ImpLicType == "temporary / مؤقت" || Model.ImpLicType.Contains("temporary")))
+                                                {
+                                                    @Html.TextBoxFor(m=>m.ImpLicNo, new
+                                                {
+                                                    @id = "inputLicenseno",
+                                                    @placeholder = @Resources.Resource.Importer_LicenseNo,
+                                                    @class = "form-control textval numeric",
+                                                    @maxlength = "5",
+                                                   @ondrop = "return false;",
+                                                    @onpaste = "return false;"
+                                                })
+                                                }
+                                                else
+                                                {
+                                                    @Html.TextBoxFor(m=>m.ImpLicNo, new
+                                                {
+                                                    @id = "inputLicenseno",
+                                                    @placeholder = @Resources.Resource.Importer_LicenseNo,
+                                                    @class = "form-control textval numeric",
+                                                    @maxlength = "10",
+                                                    @ondrop = "return false;",
+                                                    @onpaste = "return false;"
+                                     })
+                                                }
+
+
+                                            </div>
+
+                                                <div class="" style="@display;" id="tempid">
+                                                    @*<input class="form-control textval numeric"
+                                                        placeholder="* @Resources.Resource.Commercial_year"
+                                                        name="Year"
+                                                        type="text"
+                                                        id="inputyear"
+                                                        maxlength="4"
+                                                        value="@Model.Year"
+                                                        ondrop="return false;"
+                                                        onpaste="return false;" />*@
+
+                                                    @Html.TextBoxFor(m=>m.Year, new
+                                          {
+                                              @id = "inputyear",
+                                              @placeholder = @Resources.Resource.Commercial_year,
+                                              @class = "form-control textval numeric",
+                                              @maxlength = "4",
+                                                     @ondrop = "return false;",
+                                                      @onpaste = "return false;"
+                                          })
+
+                                                </div>
+                                            }
+
+
+                                        </div>
+
+                                    </div>  @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = display })
+                                    @Html.ValidationMessageFor(model => model.ImpLicNo, "", new { @class = "text-danger", @style = display })
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.Importer_IssuanceDate</label>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+
+                                            @{ string date = string.Empty;
+                                                if (Model.IssueDate != null)
+                                                {
+                                                    date = Model.IssueDate;
+                                                    if (date.Length > 10)
+                                                    {
+                                                        date = date.Substring(0, 10);
+                                                    }
+                                                    if (date.Length == 10)
+                                                    {
+                                                        string[] format = date.Split('-');
+                                                        string[] format1 = date.Split('/');
+                                                        if (format.Length == 3 || format1.Length == 3)
+                                                        {
+                                                            //date = (Convert.ToDateTime(date)).ToString("MM/dd/yyyy");
+                                                            date = date;
+                                                        }
+
+                                                    }
+                                                }
+                                                @*<input class="form-control mydate textval"
+                                                    placeholder="* @Resources.Resource.Importer_IssuanceDate"
+                                                    value="@date" name="IssueDate"
+                                                    type="text" id="inputissuancedate" />*@
+                                                @Html.TextBoxFor(m=>m.IssueDate, new
+                                           {
+                                               @id = "inputissuancedate",
+                                               @placeholder = @Resources.Resource.Importer_IssuanceDate,
+                                               @value = date,
+                                               @class = "form-control mydate textval"
+                                           })
+
+                                            }
+
+                                        </div>      @Html.ValidationMessageFor(model => model.IssueDate, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        @Resources.Resource.Importer_EndDate
+                                    </label>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+
+
+                                            @{ string date1 = string.Empty;
+                                                if (Model.ExpiryDate != null)
+                                                {
+                                                    date1 = Model.ExpiryDate;
+                                                    if (date1.Length > 10)
+                                                    {
+                                                        date1 = date1.Substring(0, 10);
+                                                    }
+                                                    if (date1.Length == 10)
+                                                    {
+                                                        string[] format = date1.Split('-');
+                                                        string[] format1 = date1.Split('/');
+                                                        if (format.Length == 3 || format1.Length == 3)
+                                                        {
+                                                            //date1 = (Convert.ToDateTime(date1)).ToString("MM/dd/yyyy");
+                                                            date1 = date1;
+                                                        }
+
+                                                    }
+                                                }
+                                                @*<input class="form-control mydate textval"
+                                                    placeholder="* @Resources.Resource.Importer_EndDate"
+                                                    value="@date1" name="ExpiryDate"
+                                                    type="text" id="inputenddate" />*@
+                                                @Html.TextBoxFor(m=>m.ExpiryDate, new
+                                           {
+                                               @id = "inputenddate",
+                                               @placeholder = @Resources.Resource.Importer_EndDate,
+                                               @value = date1,
+                       @class = "form-control mydate textval"
+                                           })
+                                            }
+
+
+
+                                        </div>         @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                @if (Session["purpose"] != null && 1 == 2)
+                                {
+                                    if (Session["purpose"].ToString() == "1")
+                                    {
+                                        if (Convert.ToBoolean(ViewBag.AddMoreOption))
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-5 col-centered">
+
+                                                    <button type="submit" name="ImporterDataSubmitType" id="btnsubmit" value="AddMoreImporterLicense" class="btn btn-info btn-block marginTop50">+ Add more Importer License</button>
+
+
+                                                </div>
+                                            </div>
+                                        }
+                                        if (!Convert.ToBoolean(ViewBag.FirstImport))
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-5 col-centered">
+
+                                                    @Html.ActionLink(@Resources.Resource.delete, "DeleteThisImporterLicense", "User", new { @class = "btn btn-info btn-block marginTop50" })
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+
+                                <div class="row">
+                                    @*<div class="col-lg-8 col-centered">*@
+
+
+
+
+                                    <div class="col-xs-4  col-centered">
+                                        @*<div class="col-5 col-centered">*@
+                                        @{
+                                            if (Session["ImporterSerialNum"] != null)
+                                            {
+                                                if (Int32.Parse(Session["ImporterSerialNum"].ToString()) > 0)
+                                                {
+                                                    @Html.ActionLink(@Resources.Resource.Commercial_B_back, "Org_ImporterDetails", "User", new { ImporterBack = true }, new { @class = "btn btn-info col-centered marginTop50 width50Percent" })
+                                                }
+                                                else
+                                                {
+                                                    //string url = "Org_AuthSignatory";//"Org_Registration";
+
+                                                    string url = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["EnableAdditionalAuthSignatory"].ToString()) ? "Org_AuthSignatory" : "Org_Registration";//"Org_Registration";
+
+                                                    if (Session["returnurl1"] != null)
+                                                    {
+                                                        if (Session["returnurl1"].ToString().Trim() == "Org_Industrial")
+                                                        {
+                                                            url = "Org_Industrial";
+                                                        }
+                                                    }
+
+
+                                                    if (url == "Org_Industrial")
+                                                    {
+                                                        @Html.ActionLink(@Resources.Resource.Commercial_B_back, url, "User", new { @class = "btn btn-info btn-block col-centered marginTop50" })
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="button" value="@Resources.Resource.Importer_B_back" class="btn btn-info btn-block col-centered marginTop50 " onclick="location.href='@Url.Action(url, "User", new { Id = Model.OrganizationId })'" />
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        @*</div>*@
+
+                                    </div>
+                                    <div class="col-xs-4 col-centered">
+
+                                    </div>
+
+                                    <div class="col-xs-4  col-centered">
+
+                                        <button type="submit" id="btnsubmit" name="ImporterDataSubmitType" value="@Resources.Resource.Importer_B_next" class="btn btn-info btn-block col-centered marginTop50 ">
+                                            @Resources.Resource.Importer_B_next
+                                        </button>
+
+                                    </div>
+
+                                    @*</div>*@
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                    </td>
+                </tr>
+
+            </table>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    }
+
+</div>
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var GotoReqList = '@ViewBag.GoToRequestStatus';
+    var ViewBagmodelerror='@ViewBag.modelerror';
+    var result='@ViewBag.dis';
+    if (result===null) {
+        result='';
+    }
+</script>
+
+
+<script type="text/javascript">
+    $("#permanentid").click(function ()
+    {
+        $("#tempid").hide();
+        $('#inputLicenseno').val('');
+        $('#inputLicenseno').attr('maxlength', '10');
+
+    });
+    $("#temporaryid").click(function () {
+        $("#tempid").show();
+        $('#inputLicenseno').val('');
+        $('#inputLicenseno').attr('maxlength', '5');
+    });
+</script>
+
+
+
+<script src="~/Scripts/JS_View/Importer.js"></script>

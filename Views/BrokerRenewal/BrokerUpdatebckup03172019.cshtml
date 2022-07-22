@@ -1,0 +1,503 @@
+﻿@model WebApplication1.Models.BrokerUpdateModel
+
+@{
+    ViewBag.Title = Resources.Resource.brokerUpdatation;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+<div class="col-lg-10 col-centered">
+
+    <div>
+        <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdn" />
+        <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdn" />
+        <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdn" />
+        <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdnForvaildate" />
+        <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdnForvaildate" />
+        <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdnForvaildate" />
+
+        <input type="hidden" runat="server" id="Tid" />
+        <input type="hidden" runat="server" id="uid" />
+        <input type="hidden" runat="server" id="reqid1" />
+
+        @Html.HiddenFor(m => Model.Eservicerequestid, new { @id = "Eservicerequestid" })
+        @Html.HiddenFor(m => Model.Referenceprofile, new { @id = "Referenceprofile" })
+        @Html.HiddenFor(m => m.SelectedFileId)
+    </div>
+    <table class="table table-striped center-block">
+        <caption>
+            <h3>
+                @Resources.Resource.brokerUpdatation
+            </h3>
+        </caption>
+        <tbody>
+            <tr>
+                <td colspan="1">
+                    <div id="requestListDivExpand">
+                        <h3 class="text-dark text-center">
+                            <b id="showInformationlbl">
+                                @Resources.Resource.showInformation &nbsp;
+                            </b>
+                            <b id="hideInformationlbl">
+                                @Resources.Resource.hideInformation  &nbsp;
+                            </b>
+                            <i class="glyphicon glyphicon-arrow-up" id="arrowUpp"></i>
+                            <i class="glyphicon glyphicon-arrow-down" id="arrowDownn"></i>
+
+                        </h3>
+                    </div>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="1">
+
+                    <div id="requestListDiv">
+                        @using (Html.BeginForm("BrokerUpdate", "BrokerRenewal", FormMethod.Post))
+                        {
+                            Html.AntiForgeryToken();
+
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.BrokerType</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.BrokerType, new { @disabled = "disabled", @class = "form-control NotEditable" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.requestNo</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.RequestNumber, new { @disabled = "disabled", @class = "form-control NotEditable" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.generalBroker</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.ParentBrokerName, new { @disabled = "disabled", @class = "form-control NotEditable" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.brokerArabicNameLbl</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.BrokerArabicName, new { @disabled = "disabled", @class = "form-control NotEditable" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.brokerEnglishNameLbl</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.BrokerEnglishName, new { @disabled = "disabled", @class = "form-control NotEditable" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.civilIdNo</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.CivilIdNo, new { @disabled = "disabled", @class = "form-control NotEditable" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.expiryDate</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.CivilIdExpirydate, new { @id = "CivilIdExpirydatePicker", @class = "form-control inputBorder" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.passportNo</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.passportNo, new { @id = "passportNo", @class = "form-control inputBorder" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.expiryDate</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.PassportExpirydate, new { @id = "PassportExpirydatePicker", @class = "form-control inputBorder" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.TradingLicense</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.TradeLicenseExpiryDate, new { @id = "TradeLicenseExpiryDate", @class = "form-control inputBorder" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.MobileNumber</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.MobileNumber, new { @class = "form-control inputBorder" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.eMailAddress</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            @Html.TextBoxFor(Model => Model.MailAddress, new { @class = "inputBorder", @id = "MailAddresstxt" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">@Resources.Resource.docTypesLabel</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                                            @Html.DropDownListFor(m => m.docsid, Model.ddlDocumentTypesitems, new
+                                       {
+                                           @id = "ddlDocumentTypes",
+                                           @class = "form-control select2"
+                                       })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">&nbsp;</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <div class="file-loading">
+                                                <input id="fileUploadCtrl" type="file" data-min-file-count="0" data-theme="fas">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label marginTop15">@Resources.Resource.fileName</label>
+                                    <div class="col-md-7 inputGroupContainer marginTop15">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-file"></i>
+                                            </span>
+                                            <input id="NewFilename" name="NewFilename" placeholder="@Resources.Resource.fileName"
+                                                   class="form-control" value="" type="text">
+
+                                            <p id="fileNameError" class="errorMsg">
+                                                @Resources.Resource.fileNameError
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label ">&nbsp;</label>
+                                    <div class="col-md-7 inputGroupContainer marginTop15">
+                                        <div class="input-group">
+
+                                            @if (Model.UploadDiv != "false")
+                                            {
+
+                                                <button type="button" onclick="up('BrokerRenewal')" class="btn btn-info btn-block col-centered width50PX" causesvalidation="false" id="uploadWindow1">
+                                                    <b>
+                                                        <span class="glyphicon glyphicon-file"></span>&nbsp; @Resources.Resource.UploadDocument_Header &nbsp;
+                                                    </b>
+                                                </button>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">&nbsp;</label>
+                                    <div class="col-md-7 inputGroupContainer marginTop15">
+                                        <div class="input-group">
+                                            <table id="Uploadedfileslist" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        @*<th><input type="checkbox" id="headercheck" /></th>*@
+                                                        <th>@Resources.Resource.fileName</th>
+                                                        <th>@Resources.Resource.docType</th>
+
+                                                        <th>@Resources.Resource.uploadDate</th>
+                                                        @*<th>@Resources.Resource.download</th>
+                                                            <th>@Resources.Resource.deleteFile</th>*@
+
+
+                                                        <th>&nbsp;</th>
+                                                        <th>&nbsp;</th>
+
+                                                    </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListOfUploadedFiles != null)
+                                                    {
+                                                        foreach (var item in Model.ListOfUploadedFiles)
+
+                                                        {
+
+                                                    <tr>
+                                                        @*<td>
+            <input type="checkbox" name="@item.DocumentId" runat="server" class="deleteselctedcheckbox" id=@item.DocumentId />
+        </td>*@
+                                                        <td>
+                                                            @item.NewFileName
+                                                        </td>
+
+                                                        <td>
+                                                            @item.DocumentType
+                                                        </td>
+                                                        <td>
+                                                            @item.Createddate
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink(Resources.Resource.download, "DownloadFile", "BrokerRenewal", new { filename = @item.DocumentId }, new { @class = "btn btn-primary" })
+                                                        </td>
+                                                        <td>
+                                                            @*@Html.ActionLink(Resources.Resource.deleteFile, "DeleteFile", "BrokerRenewal", new { dataItem = @item.DocumentId }, new { @class = "btn btn-primary" })*@
+                                                            @*<button type='button' class='btn btn-primary' onclick="DeleteFilewithDocId('@item.DocumentId',event)">@Resources.Resource.deleteFile</button>*@
+                                                       
+                                                        
+                                                            @Html.ActionLink(Resources.Resource.delete, "DeleteFile", "BrokerRenewal", new { dataItem = @item.DocumentId }, new { @class = "btn btn-primary" })
+
+
+                                                        </td>
+                                                    </tr>
+
+                                                        }
+                                                    }
+                                                </tbody>
+
+                                            </table>
+
+
+                                            <div>
+
+                                            </div>
+
+
+                                            <div>
+
+                                            </div>
+
+
+                                            @{
+                                                ViewBag.UploadDocsURL = System.Configuration.ConfigurationManager.AppSettings["UploadDocs"].ToString();
+                                                ViewBag.UploadDocs_actioncall = System.Configuration.ConfigurationManager.AppSettings["UploadDocs_actioncall"].ToString();
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label marginTop15">&nbsp;</label>
+                                    <div class="col-md-7 inputGroupContainer marginTop15">
+                                        <div class="input-group">
+        @if (Model.SubmitRequest != "false")
+                                    {
+                                            <button type="submit" class="btn btn-info btn-block col-centered marginTop50 width50PX" causesvalidation="true" id="sumbitExamRequest">
+                                                <b>
+                                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Send &nbsp;
+                                                </b>
+                                            </button>
+  }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </fieldset>
+
+
+                                                }
+
+                    </div>
+
+
+
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+@{
+    if (ViewData["OrgGetDocumentsResult"] != null)
+    // if (1==1)
+
+    {
+        if (ViewData.Values != null && ViewData.Values.Count() > 0)
+        {
+            foreach (var item in ViewData["OrgGetDocumentsResult"] as List<WebApplication1.Models.OrgGetDocumentsResult>)
+            {
+                <tr>
+                    <td align="@Resources.Resource.UploadDocument_align_style">
+                        <div style="margin-top:20px" id="idattach">
+                            @{
+                                if (@item.DocumentName != "")
+                                {
+                                    <table style="width:90%">
+                                        <tr>
+                                            <td style="width:5%" align="@Resources.Resource.UploadDocument_align_style"><span>&#128206;</span></td>
+                                            <td style="width:90%" align="@Resources.Resource.UploadDocument_align_style"><span>@item.DocumentName</span></td>
+                                            @{
+                                                if (ViewBag.dis == "1")
+                                                {
+                                                    <td style="width:5%" align="center"><i onclick="location.href='@Url.Action("UploadDocument1", "User", new { OrgReqDocId = item.OrganizationRequestDocumentId })'" class="glyphicon glyphicon-trash" style="border:none;color: red;"></i></td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="width:5%" align="center"><i class="glyphicon glyphicon-trash" style="border:none;color: red;"></i></td>
+                                                }
+                                            }
+
+                                        </tr>
+                                    </table>
+                                                }
+                                                else
+                                                {
+                                                    <table style="width:80%">
+                                                        <tr>
+                                                            <td align="left"><span>@item.DocumentName</span></td>
+                                                        </tr>
+                                                    </table>
+                                                }
+                            }
+                        </div>
+                    </td>
+                </tr>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td align="@Resources.Resource.UploadDocument_align_style">
+                                                            <div style="margin-top:20px" id="idattach">
+
+                                                                <table style="width:80%">
+                                                                    <tr>
+                                                                        <td align="left">&nbsp;</td>
+                                                                    </tr>
+                                                                </table>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                }
+}
+
+
+
+
+<script type="text/javascript">
+  //  var Tid = '@ViewBag.TokenId';
+    document.getElementById("Tid").value='@ViewBag.TokenId';
+    document.getElementById("uid").value='@ViewBag.UserId';
+    document.getElementById("reqid1").value='@ViewBag.reqid1';
+    @*var uid='@ViewBag.UserId';
+    var reqid1='@ViewBag.reqid1';*@
+
+    $("#fileUploadCtrl").click(function () {
+        // var selectedValue = $(this).val();
+        $("#NewFilename").val($("#ddlDocumentTypes").find("option:selected").text())
+
+    });
+
+</script>
+
+
+
+
+
+

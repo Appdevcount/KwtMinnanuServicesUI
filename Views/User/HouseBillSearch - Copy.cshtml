@@ -1,0 +1,205 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = @Resources.Resource.HousebillSearch;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<div class="col-lg-8 col-centered">
+
+
+
+
+
+
+</div>
+
+
+
+@using (Html.BeginForm("HouseBillSearch", "User", FormMethod.Post, new { @class = "marginTop50" }))
+{
+
+<div class="col-lg-8 col-centered well form-horizontal">
+
+    <table class="table table-striped center-block">
+        <tbody>
+            <tr>
+                <td colspan="1">
+                    <form class="well form-horizontal" dir="@Resources.Resource.dir">
+                        <fieldset>
+                            <p class="redColor text-center"> @Resources.Resource.mandatoryFieldsMsg </p>
+                           
+                                <div class="form-group">
+
+                                    @*<div class="form-control" style="background-color: #eae8e8;">
+                                    
+                                            <input type="radio" name="optradio" value="1" checked><b>
+                                                1)
+                                            </b>
+                                    </div>
+                                    </div>*@
+
+                                    <div class="form-group OPTIONA">
+
+                                        <label class="col-md-4 control-label">@Resources.Resource.HousebillNumber</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-tag"></i>
+                                                </span>
+                                                <input class="form-control textval" placeholder="* @Resources.Resource.HousebillNumber"
+                                                       type="text" id="HousebillSearch" name="hbNumber" value="" />
+
+                                                <p id="housebillErrorMsg" class="errorMsg">
+                                                    @Resources.Resource.houseBillRequired
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                           
+                                @*<div class="form-group">
+
+                                    <div class="form-control"  style="background-color: #eae8e8;">
+                                     
+                                        <input type="radio" name="optradio" value="2"><b>
+                                            2)
+                                        </b>
+                                     
+                                    </div>
+                                </div>*@
+
+                                <div class="form-group OPTIONB">
+
+                                    <label class="col-md-4 control-label">@Resources.Resource.deliveryOrderNo</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            <input class="form-control textval" placeholder="* @Resources.Resource.deliveryOrderNo"
+                                                   type="text" id="ee" name="ee" value="" disabled />
+
+                                            <p id="housebillErrorMsg" class="errorMsg">
+                                                @Resources.Resource.deliveryOrderNo
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label class="col-md-4 control-label">@Resources.Resource.securityNo</label>
+                                    <div class="col-md-7 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                            </span>
+                                            <input class="form-control textval" placeholder="* @Resources.Resource.securityNo"
+                                                   type="text" id="qqe" name="qqe" value="" disabled />
+
+                                            <p id="housebillErrorMsg" class="errorMsg">
+                                                @Resources.Resource.securityNo
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                        </fieldset>
+</form>
+                </td>
+
+            </tr>
+
+            <tr>
+               
+
+                <td colspan="2">
+                    <button type="submit" class="btn btn-info btn-block col-centered marginTop15 width9em" causesvalidation="true" id="searchHouseBill">
+                        <b>
+                            <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Search &nbsp;
+                        </b>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-striped center-block">
+
+        @{ if (Model != null)
+            {
+                if (Model.Rows != null)
+                {
+                    if (Model.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in Model.Rows)
+                        {
+                            <tr>
+                                <td align="center">
+                                    <div style="width: 100%;">
+                                        <table style="width:100%;margin-top:20px" align="center" class="table table-bordered">
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.HousebillNumber</td>
+                                                <td>&nbsp;@row["HousebillNumber"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.HousebillAutoNumber</td>
+                                                <td>&nbsp;@row["HousebillAuto"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.Status</td>
+                                                <td>&nbsp;@row["Status"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.TempDeclNumber</td>
+                                                <td>&nbsp;@row["TempDeclNumber"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.DeliveryorderNumber</td>
+                                                <td>&nbsp;@row["DONumber"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.Carrier</td>
+                                                <td>&nbsp;@row["CarrierandShippingAgent"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.ConsolidatedShipment</td>
+                                                <td>&nbsp;@row["ConsolidatedFlagStatus"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.Consignee</td>
+                                                <td>&nbsp;@row["Consignee"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.Quantity</td>
+                                                <td>&nbsp;@row["Quantity"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">@Resources.Resource.Weight</td>
+                                                <td>&nbsp;@row["Weight"]</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td align="center"><table align="center" style="margin-top:100px"><tr><td align="center"><h5 style="color:red">@Resources.Resource.noRecordsFound</h5></td></tr></table></td></tr>
+                    }
+                }
+            }
+        }
+
+    </table>
+
+</div>
+
+
+
+}
+
+

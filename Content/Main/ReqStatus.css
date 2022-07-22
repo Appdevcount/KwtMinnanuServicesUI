@@ -1,0 +1,70 @@
+.card1 {
+    color: black;
+    padding-left: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25), 0 2px 10px 0 rgba(0,0,0,0.25);
+    /*font-size: 1.3rem;*/
+    font-weight: normal;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card {
+    line-height: 25px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+    .card:hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+#cardid {
+    margin: 0 0 5px;
+}
+
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+.card21 {
+    color: black;
+    padding-right: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25), 0 2px 10px 0 rgba(0,0,0,0.25);
+    /*font-size: 1.3rem;*/
+    font-weight: normal;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card2 {
+    line-height: 25px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+    .card2:hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+#cardid {
+    margin: 0 0 5px;
+}
+
+.card2:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#mydiv {
+    height: 640px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    #mydiv {
+        /*height: 100%;*/
+    }
+}

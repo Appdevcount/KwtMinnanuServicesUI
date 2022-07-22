@@ -1,0 +1,564 @@
+﻿@model WebApplication1.Models.OrgGetBasicResult
+@{
+    ViewBag.Title = Resources.Resource.OrgReg_Header2;// "";//Resources.Resource.;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<head>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    @*<script src="~/Scripts/eServiceScript.js"></script>*@
+</head>
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage"></h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Org_Registration", "User", FormMethod.Post, new { id = "OrgReg" }))
+{
+    if (ViewBag.modelerror != null)
+    {
+        <p class="errorMsg">
+            @ViewBag.Msg
+        </p>
+    }
+
+    {
+        string url = "MyOrganizations";
+        if (Session["returnurl"] != null)
+        {
+            if (Session["returnurl"].ToString().Trim() == "Org_RequestStatus")
+            {
+                url = "Org_RequestStatus";
+            }
+        }
+    }
+
+    <div class="col-lg-12 col-centered" id="mydiv">
+        <table class="table table-striped center-block">
+            <tbody>
+                <tr>
+                    <td colspan="1">
+
+                        <div class="well form-horizontal" dir="@Resources.Resource.dir">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @if (@ViewBag.CompanyType == "Main")
+                                    {
+                                        <label class="text-success"> @Resources.Resource.MainCompanymsg </label>
+
+                                    }
+                                    else
+                                    {
+                                        <label class="text-primary"> @Resources.Resource.SubCompanymsg</label>
+
+                                    }
+                                </div>
+                            </div>
+
+                            <fieldset>
+                                @{
+                                    if (ViewData["data"] != null)
+                                    {
+                                        if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                                        {
+                                            foreach (var item in ViewData["data"] as List
+                                            <WebApplication1.Models.OrgGetBasicResult>
+                                                )
+                                            {
+
+                                                @*<div class="alert alert-success text-center">
+                                                    @if (@item.IsmainCompany)
+                                                    {
+                                                        @Resources.Resource.mainCompany
+                                                    }
+                                                    else
+                                                    {
+                                                        @Resources.Resource.subcompany
+                                                    }
+                                                </div>*@
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_CompanyName</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputCompanyName" name="OrgEngName" placeholder="@Resources.Resource.OrgReg_CompanyName"
+                                                                   class="form-control" required="required" value="@item.OrgEngName" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.OrgEngName, "", new { @class = "text-danger inlineBlock" })
+
+                                                            <input type="hidden" runat="server" name="OrganizationId" value="@item.OrganizationId" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Tradelicenceno</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            @{string disabledfield = "";
+                                                                //string TradeLicOfMain = "";
+                                                                if (ViewBag.CompanyType == "Main")
+                                                                {
+                                                                    disabledfield = "readonly";
+                                                                    //TradeLicOfMain = Session["LicenseNumber"].ToString();
+                                                                }
+                                                            }
+                                                            <input id="inputTradelicenceno" name="TradeLicNumber" placeholder="@Resources.Resource.OrgReg_Tradelicenceno"
+                                                                   class="form-control" required="required" value="@item.TradeLicNumber" @disabledfield  type="text" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" />
+                                                            @Html.ValidationMessageFor(model => model.TradeLicNumber, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_CivilId</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputCivilId" name="CivilId" placeholder="@Resources.Resource.OrgReg_CivilId"
+                                                                   class="form-control" required="required" value="@item.CivilId" type="text" onkeypress="return IsNumeric(event);" maxlength="12"
+                                                                   ondrop="return false;" onpaste="return false;" />
+                                                            @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_AuthorizedPerson</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputAuthorizedPerson" name="AuthPerson" placeholder="@Resources.Resource.OrgReg_AuthorizedPerson"
+                                                                   class="form-control" required="required" value="@item.AuthPerson" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.AuthPerson, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_CompanyNameinArabic</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputCNameinArabic" name="OrgAraName" placeholder="@Resources.Resource.OrgReg_CompanyNameinArabic"
+                                                                   class="form-control" required="required" value="@item.OrgAraName" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.OrgAraName, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_PostalCode</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputPOBoxNo" name="POBoxNo" placeholder="@Resources.Resource.OrgReg_PostalCode"
+                                                                   class="form-control" value="@item.POBoxNo" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.POBoxNo, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Address</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputAddress" name="Address" placeholder="@Resources.Resource.OrgReg_Address"
+                                                                   class="form-control" value="@item.Address" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_City</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputCity" name="City" placeholder="@Resources.Resource.OrgReg_City"
+                                                                   class="form-control" value="@item.City" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_BusinessNumber</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputBusinessNumber" name="BusiNo" placeholder="@Resources.Resource.OrgReg_BusinessNumber"
+                                                                   class="form-control" value="@item.BusiNo" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.BusiNo, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_BusinessFaxNumber</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputBusinessFaxNumber" name="BusiFaxNo" placeholder="@Resources.Resource.OrgReg_BusinessFaxNumber"
+                                                                   class="form-control" value="@item.BusiFaxNo" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.BusiFaxNo, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_MobileNumber</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputMobileNumber" name="MobileNo" placeholder="@Resources.Resource.OrgReg_MobileNumber"
+                                                                   class="form-control" value="@item.MobileNo" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_ResidenceNumber</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputResidenceNumber" name="ResidenceNo" placeholder="@Resources.Resource.OrgReg_ResidenceNumber"
+                                                                   class="form-control" value="@item.ResidenceNo" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.ResidenceNo, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_EmailID</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputEmailID" name="EmailId" placeholder="@Resources.Resource.Email"
+                                                                   class="form-control" value="@item.EmailId" type="text" />
+                                                            @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger inlineBlock" })
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">@Resources.Resource.OrgReg_WebPageAddress</label>
+                                                    <div class="col-md-7 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-tag"></i>
+                                                            </span>
+                                                            <input id="inputWebPageAddress" name="WebPageAddress" placeholder="@Resources.Resource.OrgReg_WebPageAddress"
+                                                                   class="form-control" value="@item.WebPageAddress" type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                if (@item.isIndustrial == true)
+                                                {
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Industrial</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+
+                                                                &nbsp; @Html.CheckBoxFor(m => m.isIndustrial, new { @checked = "checked" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.OrgReg_Industrial</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                @Html.CheckBoxFor(m => m.isIndustrial)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+
+                                                @*if (item.IsmainCompany == true)
+                                                    {
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">@Resources.Resource.mainCompany</label>
+                                                            <div class="col-md-7 inputGroupContainer">
+                                                                <div class="input-group">
+                                                                    @Html.CheckBoxFor(m => m.IsmainCompany, new { @id = "IsmainCompany", @Class = "readOnly", @checked = "checked" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (item.IsFirstRequest == true)
+                                                        {
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">@Resources.Resource.mainCompany</label>
+                                                                <div class="col-md-7 inputGroupContainer">
+                                                                    <div class="input-group">
+                                                                        @Html.CheckBoxFor(m => m.IsmainCompany, new { @Class = "readOnly", @checked = "checked" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">@Resources.Resource.mainCompany</label>
+                                                                <div class="col-md-7 inputGroupContainer">
+                                                                    <div class="input-group">
+                                                                        @Html.CheckBoxFor(m => m.IsmainCompany, new { @id = "IsmainCompany", @Class = "readOnly" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        }
+                                                    }
+                                                    if (item.IsbranchCompany == true)
+                                                    {
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">@Resources.Resource.branchCompany</label>
+                                                            <div class="col-md-7 inputGroupContainer">
+                                                                <div class="input-group">
+                                                                    @Html.CheckBoxFor(m => m.IsbranchCompany, new { @Class = "readOnly", @checked = "checked" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    }
+                                                    else
+
+                                                    {
+
+                                                        if (item.IsFirstRequest == true)
+                                                        {
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">@Resources.Resource.branchCompany</label>
+                                                                <div class="col-md-7 inputGroupContainer">
+                                                                    <div class="input-group">
+                                                                        @Html.CheckBoxFor(m => m.IsbranchCompany, new { @Class = "readOnly" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">@Resources.Resource.branchCompany</label>
+                                                                <div class="col-md-7 inputGroupContainer">
+                                                                    <div class="input-group">
+                                                                        @Html.CheckBoxFor(m => m.IsbranchCompany, new { @Class = "readOnly" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        }
+
+                                                    }*@
+
+
+
+                                                @*<div class="form-group">*@
+                                                @*<label class="col-md-3 control-label marginTop15">&nbsp;</label>
+                                                    <div class="col-md-7 inputGroupContainer marginTop15">
+                                                        <div class="input-group">
+
+                                                            <button type="submit" class="btn btn-info btn-block col-centered marginTop50 width50PX" causesvalidation="true" id="btnsubmit">
+                                                                <b>
+                                                                    <span class="glyphicon glyphicon-arrow-up"></span>&nbsp; @Resources.Resource.OrgReg_B_Next &nbsp;
+                                                                </b>
+                                                            </button>
+                                                        </div>
+                                                    </div>*@
+                                                @*<div class="col-md-7 inputGroupContainer marginTop15">
+                                                        <table style="width:100%" align="center">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <div class="form-group">
+                                                                        <button type="submit" causesvalidation="true" id="btnsubmit" class="btn button button4">@Resources.Resource.OrgReg_B_Next</button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>*@
+
+                                                @*</div>*@
+
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                            </fieldset>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+
+
+        </table>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-md-3 control-label marginTop15">&nbsp;</label>
+        <div class="col-md-7 inputGroupContainer marginTop15" style="    margin-top: -72px;">
+            <div class="input-group">
+
+                <button type="submit" class="btn btn-info btn-block col-centered marginTop50 width50Percent" causesvalidation="true" id="btnsubmit">
+                    <b>
+                        <span class="glyphicon glyphicon-arrow-up"></span>&nbsp; @Resources.Resource.OrgReg_B_Next &nbsp;
+                    </b>
+                </button>
+            </div>
+        </div>
+        @*<div class="col-md-7 inputGroupContainer marginTop15">
+                <table style="width:100%" align="center">
+                    <tr>
+                        <td align="center">
+                            <div class="form-group">
+                                <button type="submit" causesvalidation="true" id="btnsubmit" class="btn button button4">@Resources.Resource.OrgReg_B_Next</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>*@
+
+    </div>
+}
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+var ViewBagmodelerror='@ViewBag.modelerror';
+var result='@ViewBag.dis';
+if (result===null) {
+    result='';
+}
+
+    //var disablecontrol = '';
+
+
+    //if (disablecontrol === true)
+    //{
+    //    // alert('i');
+    //    $("input").prop('disabled', true);
+    //}
+
+    //$('#OrgReg').submit(function () {
+    //    $('#IsmainCompany').removeAttr('disabled');
+    //});
+
+
+</script>
+@*<script src="~/Scripts/Main/popup_jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Main/popup.js"></script>*@
+<script src="~/Scripts/JS_View/OrgReg.js"></script>

@@ -1,0 +1,715 @@
+﻿@model System.Data.DataSet
+@using System.Data;
+@using WebApplication1.Models;
+
+@{
+    ViewBag.Title = Resources.Resource.usersManagement;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@*<h2>ManageUser</h2>*@
+
+
+
+
+<div class="col-lg-11 col-centered">
+
+
+
+
+
+
+    @{
+
+        string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+        bool EnglishCulture = culture.Contains("English");
+
+
+        if (Model != null)
+        {
+
+
+            //DataTable dt1 = Model.Tables.Count >= 1 ? Model.Tables[0] : null;// Model.Tables[0];
+            //DataTable dt2 = Model.Tables.Count >= 2 ? Model.Tables[1] : null;// Model.Tables[1];
+            //DataTable dt3 = Model.Tables.Count >= 3 ? Model.Tables[2] : null;
+
+            DataTable dt1 = Model.Tables.Contains("GETUserDetail") ? Model.Tables["GETUserDetail"] : null;// Model.Tables[0];
+            DataTable dt2 = Model.Tables.Contains("GETUserAssociatedServices") ? Model.Tables["GETUserAssociatedServices"] : null;// Model.Tables[1];
+            DataTable dt3 = Model.Tables.Contains("GETUserAssociatedOrganizations") ? Model.Tables["GETUserAssociatedOrganizations"] : null;
+
+            string disabled = "";
+
+            if (dt1 != null)
+            {
+                if (dt1.Rows.Count > 0)
+                {
+                    if (dt1.Rows[0]["Admin"].ToString() == "Yes")
+                    {
+                        disabled = "";// "disabled";
+                    }
+                }
+            }
+
+            <div class="HeaderSpace">
+                <label class="text-center ">@Resources.Resource.UserBasicDetails</label>
+
+            </div>
+
+            if (dt1 != null)
+            {
+                if (dt1.Rows.Count > 0)
+                {
+                    <table class="display select table table-sm table-bordered " cellspacing="0" width="100%">
+
+                        <tr>
+
+                            <td class="text-center boldc">
+                                @Resources.Resource.FirstName
+
+                            </td>
+                            <td class="text-center">
+                                @dt1.Rows[0]["FirstName"].ToString()
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td class="text-center boldc">
+                                @Resources.Resource.LastName
+
+                            </td>
+                            <td class="text-center">
+                                @dt1.Rows[0]["LastName"].ToString()
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td class="text-center boldc">
+                                @Resources.Resource.LegalEntity
+
+                            </td>
+                            <td class="text-center">
+                                @if (EnglishCulture)
+                                {
+                                    @dt1.Rows[0]["LegalEntityName"].ToString()
+                                }
+                                else
+                                {
+                                    @dt1.Rows[0]["LegalEntityNameAra"].ToString()
+                                }
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td class="text-center boldc">
+
+                                @Resources.Resource.Administrator
+                            </td>
+                            <td class="text-center">
+
+                                @if (EnglishCulture)
+                                {
+                                    @dt1.Rows[0]["Admin"].ToString()
+                                }
+                                else
+                                {
+                                    @dt1.Rows[0]["AdminAra"].ToString()
+                                }
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td class="text-center boldc">
+                                @Resources.Resource.licenceNo
+
+                            </td>
+                            <td class="text-center">
+                                @dt1.Rows[0]["LicenseNumber"].ToString()
+
+                            </td>
+
+
+                        </tr>
+                    </table>
+
+
+
+                }
+            }
+            <div class="HeaderSpace">
+                <label class="text-center ">@Resources.Resource.UserServiceDetails</label>
+
+            </div>
+
+            <table class="display select table table-sm table-bordered " cellspacing="0" width="100%" id="SVC">
+                <thead>
+                    <tr class="boldc">
+                        @*<th class="text-center">
+                                SubscriptionID
+                            </th>
+                            <th class="text-center">
+                                UserID
+                            </th>
+                            <th class="text-center">
+                                ServiceID
+                            </th>*@
+                        <th class="text-center" width="40%">
+
+                            @Resources.Resource.ServiceNameEng
+                            @*@Html.Label(@Resources.Resource.AssociatedServices)*@
+                        </th>
+                        <th class="text-center" width="40%">
+                            @Resources.Resource.ServiceNameAra
+                            @*@Html.Label(@Resources.Resource.AssociatedOrganization)*@
+                        </th>
+                        @*<th class="text-center">
+                                UserType
+                            </th>*@
+                        <th class="text-center" width="20%">
+                            @*Action*@
+                            @Resources.Resource.Action
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (dt2 != null)
+                    {
+                        if (dt2.Rows.Count > 0)
+                        {
+                            foreach (DataRow row in dt2.Rows)
+                            {
+                                <tr>
+                                    @*<td>
+                                            @row["SubscriptionID"].ToString()
+                                        </td>
+                                        <td>
+                                            @row["UserID"].ToString()
+
+                                        </td>
+                                        <td class="text-center">
+                                            @row["ServiceID"].ToString()
+
+                                        </td>*@
+                                    <td class="text-center">
+                                        @row["ServiceNameEng"].ToString()
+
+                                    </td>
+                                    <td class="text-center">
+                                        @row["ServiceNameAra"].ToString()
+
+                                    </td>
+                                    @*<td class="text-center">
+                                            @row["UserType"].ToString()
+
+                                        </td>*@
+                                    <td class="text-center">
+                                        @{
+
+                                            //string disabled = dt1.Rows[0]["AccountStatus"].ToString() == "1" ? "" : "disabled";
+
+                                            if (dt1 != null)
+                                            {
+                                                if (dt1.Rows.Count > 0)
+                                                {
+                                                    if (dt1.Rows[0]["Admin"].ToString() == "Yes")
+                                                    {
+
+                                                        if (@row["Status"].ToString() == "Associated")
+                                                        {
+                                                            @*<button class="btn btn-success" @disabled> Dis-Associate </button>*@
+                                                            @Html.ActionLink(Resources.Resource.DisAssociate, "UserStatusAction", "Registration", new
+                                                       {
+                                                           UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                           Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("SvcDisAssociate")),
+                                                           ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["ServiceID"].ToString())),
+                                                           SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["SubscriptionID"].ToString())),
+                                                           OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(""))
+                                                       },
+                                                     new { @class = "btn btn-primary", @disabled = disabled })
+
+                                                        }
+                                                        else if (@row["Status"].ToString() == "DisAssocia")
+                                                        {
+
+                                                            @*<button class="btn btn-danger" @disabled> Associate </button>*@
+                                                            @Html.ActionLink(Resources.Resource.Associate, "UserStatusAction", "Registration", new
+                                                       {
+                                                           UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                           Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("SvcAssociate")),
+                                                           ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["ServiceID"].ToString())),
+                                                           SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["SubscriptionID"].ToString())),
+                                                           OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(""))
+
+                                                       }, new
+                                                       {
+                                                           @class = "btn btn-primary",
+                                                           @disabled = disabled
+                                                       })
+
+                                                        }
+
+
+                                                    }
+                                                    else
+                                                    {
+
+                                                        if (@row["Status"].ToString() == "Associated")
+                                                        {
+                                                            @*<button class="btn btn-success" @disabled> Dis-Associate </button>*@
+                                                            @Html.ActionLink(Resources.Resource.DisAssociate, "UserStatusAction", "Registration", new
+                                                       {
+                                                           UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                           Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("SvcDisAssociate")),
+                                                           ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["ServiceID"].ToString())),
+                                                           SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["SubscriptionID"].ToString())),
+                                                           OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(""))
+                                                       },
+                                                     new { @class = "btn btn-primary" })
+
+                                                        }
+                                                        else if (@row["Status"].ToString() == "DisAssocia")
+                                                        {
+
+                                                            @*<button class="btn btn-danger" @disabled> Associate </button>*@
+                                                            @Html.ActionLink(Resources.Resource.Associate, "UserStatusAction", "Registration", new
+                                                       {
+                                                           UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                           Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("SvcAssociate")),
+                                                           ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["ServiceID"].ToString())),
+                                                           SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["SubscriptionID"].ToString())),
+                                                           OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(""))
+
+                                                       }, new
+                                                       {
+                                                           @class = "btn btn-primary",
+
+                                                       })
+
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                    </td>
+                                </tr>
+                                                    }
+
+                                                }
+                                            }
+                </tbody>
+            </table>
+
+
+       
+                if (dt1.Rows[0]["LegalEntityName"].ToString() == "Organization")
+                {
+
+                    <div class="HeaderSpace">
+                        <label class="text-center ">@Resources.Resource.UserOrganizationDetails</label>
+
+                    </div>
+
+
+                    <table class="display select table table-sm table-bordered " cellspacing="0" width="100%" id="ORG">
+                        <thead>
+                            <tr class="boldc">
+                                @*<th class="text-center">
+                                        ORGMAPID
+                                    </th>
+                                    <th class="text-center">
+                                        UserID
+                                    </th>
+                                    <th class="text-center">
+                                        OrganizationId
+                                    </th>*@
+                                <th class="text-center" width="40%">
+                                    @Resources.Resource.OrgNameEng
+                                    @*@Html.Label(@Resources.Resource.AssociatedServices)*@
+                                </th>
+                                <th class="text-center" width="40%">
+                                    @Resources.Resource.OrgNameAra
+                                    @*@Html.Label(@Resources.Resource.AssociatedOrganization)*@
+                                </th>
+                                @*<th class="text-center">
+                                        @Resources.Resource.UserType
+                                    </th>*@
+                                <th class="text-center" width="20%">
+                                    @Resources.Resource.Action
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (dt3 != null)
+                            {
+                                if (dt3.Rows.Count > 0)
+                                {
+                                    foreach (DataRow row in dt3.Rows)
+                                    {
+                                        <tr>
+                                            @*<td>
+                                                    @row["ORGMAPID"].ToString()
+                                                </td>
+                                                <td>
+                                                    @row["UserID"].ToString()
+
+                                                </td>
+                                                <td class="text-center">
+                                                    @row["OrganizationId"].ToString()
+
+                                                </td>*@
+                                            <td class="text-center">
+                                                @row["OrgNameEng"].ToString()
+
+                                            </td>
+                                            <td class="text-center">
+                                                @row["OrgNameAra"].ToString()
+
+                                            </td>
+                                            @*<td class="text-center">
+                                                    @row["UserType"].ToString()
+
+                                                </td>*@
+                                            <td class="text-center">
+                                                @{
+
+                                                    if (dt1 != null)
+                                                    {
+                                                        if (dt1.Rows.Count > 0)
+                                                        {
+                                                            if (dt1.Rows[0]["Admin"].ToString() == "Yes")
+                                                            {
+                                                                //string disabled = dt1.Rows[0]["AccountStatus"].ToString() == "1" ? "" : "disabled";
+                                                                if (@row["Status"].ToString() == "Associated")
+                                                                {
+                                                                    @*<button class="btn btn-success" @disabled> Dis-Associate </button>*@
+                                                                    @Html.ActionLink(Resources.Resource.DisAssociate, "UserStatusAction", "Registration", new
+                                                               {
+                                                                   UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                                   Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("OrgDisAssociate")),
+                                                                   ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["OrganizationId"].ToString()))
+                                                               }, new { @class = "btn btn-primary", @disabled = disabled })
+
+                                                                }
+                                                                else if (@row["Status"].ToString() == "DisAssocia")
+                                                                {
+
+                                                                    @*<button class="btn btn-danger" @disabled> Associate </button>*@
+
+                                                                    @Html.ActionLink(Resources.Resource.Associate, "UserStatusAction", "Registration", new
+                                                               {
+                                                                   UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                                   Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("OrgAssociate")),
+                                                                   ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["OrganizationId"].ToString()))
+                                                               }, new { @class = "btn btn-primary", @disabled = disabled })
+
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                //string disabled = dt1.Rows[0]["AccountStatus"].ToString() == "1" ? "" : "disabled";
+                                                                if (@row["Status"].ToString() == "Associated")
+                                                                {
+                                                                    @*<button class="btn btn-success" @disabled> Dis-Associate </button>*@
+                                                                    @Html.ActionLink(Resources.Resource.DisAssociate, "UserStatusAction", "Registration", new
+                                                               {
+                                                                   UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                                   Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("OrgDisAssociate")),
+                                                                   ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["OrganizationId"].ToString()))
+                                                               }, new { @class = "btn btn-primary" })
+
+                                                                }
+                                                                else if (@row["Status"].ToString() == "DisAssocia")
+                                                                {
+
+                                                                    @*<button class="btn btn-danger" @disabled> Associate </button>*@
+
+                                                                    @Html.ActionLink(Resources.Resource.Associate, "UserStatusAction", "Registration", new
+                                                               {
+                                                                   UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())),
+                                                                   Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("OrgAssociate")),
+                                                                   ServiceID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   SubscriptionID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("")),
+                                                                   OrganizationID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(@row["OrganizationId"].ToString()))
+                                                               }, new { @class = "btn btn-primary" })
+                                                                }
+                                                            }
+                                                        }
+
+
+
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                                            }
+                                                        }
+                                                    }
+                        </tbody>
+                    </table>
+                                                        }
+                                                
+                    @*<div class="text-center marginBottom30 marginTop30">
+                        @{
+                            if (dt1.Rows[0]["Admin"].ToString() == "No")
+                            {
+                                if (dt1.Rows[0]["LegalEntityName"].ToString() == "Organization")
+                                {
+                                    <span class="text-danger">@Resources.Resource.OrgAdditonalUserCriteria</span>
+
+                                }
+                                else if (dt1.Rows[0]["LegalEntityName"].ToString() == "Clearing Agent")
+                                {
+                                    <span class="text-danger">@Resources.Resource.ClearingAgentAdditonalUserCriteria</span>
+                                }
+                            }
+                        }
+
+                    </div>*@
+
+
+                    <div class="text-center">
+                        @if (dt1 != null)
+                        {
+                            if (dt1.Rows.Count > 0)
+                            {
+                                string Status = dt1.Rows[0]["AccountStatus"].ToString();
+                                if (Status == "Active")
+                                {
+
+                                    @*<button class="btn btn-success text-center"> De-Activate </button>*@
+                                    @Html.ActionLink(Resources.Resource.DeActivate, "DeActivateChildUser", "Registration", new { UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())), Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("DeActivate")) }, new { @class = "btn btn-primary" })
+
+                                }
+                                else if (Status == "InActive")
+                                {
+
+                                    @*<button class="btn btn-danger text-center"> Activate </button>*@
+                                    @Html.ActionLink(Resources.Resource.Activate, "DeActivateChildUser", "Registration", new { UserID = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt(dt1.Rows[0]["UserID"].ToString())), Act = HttpUtility.UrlEncode(CommonFunctions.CsUploadEncrypt("Activate")) }, new { @class = "btn btn-primary" })
+
+                                }
+                                else if (Status == "UnVerified")
+                                {
+                                    <button class="btn btn-primary text-center" disabled> @Resources.Resource.AccountConfirmationisunderprocessing </button>
+
+                                }
+                                @*else
+                                    {
+                                        <button class="btn btn-primary text-center"> UnKnown Status </button>
+
+                                    }*@
+                            }
+                        }
+
+                        @Html.ActionLink(Resources.Resource.Back, "GetChildUsers", "Registration", null, new { @class = "btn btn-primary", style = "width:7em;" })
+                    </div>
+
+
+                    @*<div class="text-center">
+                            @if (dt1 != null)
+                            {
+                                if (dt1.Rows.Count > 0)
+                                {
+                                    if (dt1.Rows[0]["Admin"].ToString() == "No")
+                                    {
+                                        if (dt1.Rows[0]["LegalEntityName"].ToString() == "ClearingAgent")
+                                        {
+
+                                            <label class="text-center text-danger">@Resources.Resource.ClearingAgentAdditonalUserCriteria </label>
+                                        }
+                                        else if (dt1.Rows[0]["LegalEntityName"].ToString() == "Organization")
+                                        {
+                                            <label class="text-center text-danger">@Resources.Resource.OrgAdditonalUserCriteria </label>
+
+                                        }
+                                    }
+
+                                }
+                            }
+                        </div>*@
+
+
+
+                }
+            }
+
+
+            <div class="text-center marginTop30">
+                &nbsp;
+            </div>
+
+
+            @*<div class="text-center marginTop15">
+
+                    @Html.ActionLink(Resources.Resource.Back, "GetChildUsers", "Registration", null, new { @class = "btn btn-primary" })
+
+
+                </div>*@
+
+        </div>
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="OrgmodalMessage">
+                @*Status*@
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+<script>
+    
+    var ViewBagShowmsg = '@ViewBag.Showmsg';
+    var ViewBagMsg='@ViewBag.Msg';
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    var la = getCookie("culture");
+    var SVC = '';
+    var ORG = '';
+
+    if (la.indexOf("ar") !== -1) {
+        SVC = $('#SVC,#ORG').dataTable({
+            "language":
+            {
+                "url": "../scripts/arabic.json"
+            },
+            "searching": false,
+            "bFilter": false,
+            "bInfo": false,
+            order: [],
+            columnDefs: [{ orderable: false, targets: [0] }],
+            "bPaginate": true,
+            "bLengthChange": false,
+            'sPaginationType': 'ellipses',
+            //  "scrollY": "true",
+            //  "scrollCollapse": true,
+            "pageLength": 10,
+            'pagingType': 'numbers',
+            "info": false
+
+        });
+    }
+
+    else {
+        SVC = $('#SVC,#ORG').dataTable({
+            "oLanguage":
+            {
+                "infoEmpty": ""
+            },
+            "searching": false,
+            "bFilter": false,
+            "bInfo": false,
+            order: [],
+            columnDefs: [{ orderable: false, targets: [0] }],
+            "bPaginate": true,
+            "bLengthChange": false,
+            'sPaginationType': 'ellipses',
+            //  "scrollY": "true",
+            //  "scrollCollapse": true,
+            "pageLength": 10,
+            'pagingType': 'numbers',
+            "info": false
+
+        });
+    }
+
+            //var SVC = $('#SVC').DataTable({
+            //    "bPaginate": false,
+            //    "bFilter": false,
+            //    "bInfo": false,
+            //    "pageLength": 10,
+            //    'pagingType': 'numbers',
+            //    "bLengthChange": false,
+            //    //'columnDefs': [{
+            //    //    'targets': 0,
+            //    //    'searchable': false,
+            //    //    'orderable': false,
+            //    //    'className': 'dt-body-center'
+            //    //    //,'render': function (data, type, full, meta) {
+            //    //    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+            //    //    //}
+            //    //}, {
+            //    //    'targets': 3,
+            //    //    'searchable': false,
+            //    //    'orderable': false,
+            //    //    'className': 'dt-body-center'
+            //    //    //,'render': function (data, type, full, meta) {
+            //    //    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+            //    //    //}
+            //    //}],
+            //    'order': [[1, 'asc']]
+            //});
+            //var ORG = $('#ORG').DataTable({
+            //    "bPaginate": false,
+            //    "bFilter": false,
+            //    "bInfo": false,
+            //    "pageLength": 10,
+            //    'pagingType': 'numbers',
+            //    "bLengthChange": false,
+            //    //'columnDefs': [{
+            //    //    'targets': 0,
+            //    //    'searchable': false,
+            //    //    'orderable': false,
+            //    //    'className': 'dt-body-center'
+            //    //    //,'render': function (data, type, full, meta) {
+            //    //    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+            //    //    //}
+            //    //}, {
+            //    //    'targets': 3,
+            //    //    'searchable': false,
+            //    //    'orderable': false,
+            //    //    'className': 'dt-body-center'
+            //    //    //,'render': function (data, type, full, meta) {
+            //    //    //    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+            //    //    //}
+            //    //}],
+            //    'order': [[1, 'asc']]
+            //});
+</script>
+

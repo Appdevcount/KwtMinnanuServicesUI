@@ -1,0 +1,376 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link href="~/styles/Untitled.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/scripts/jquery.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <script src="~/scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/Scripts/jquery-ui.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link href="~/styles/datepickercss.css" rel="stylesheet" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <script src="~/Scripts/datepicker-ar.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <script src="~/Scripts/eServiceScript.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <title>@Resources.Resource.ToWhomItMayConcernsRequest</title>
+
+
+
+</head>
+<body dir="@Resources.Resource.dir">
+
+    <div id="loading" style="display:none;">
+        <img src="~/images/loading.gif" />
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse" id="navDiv">
+                <img src="../images/customs.png" width="60" alt="" />
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="#" id="linktoExit">@Resources.Resource.Logout</a></li>
+                    <li><a href="#" id="linktoNotifications">@Resources.Resource.Notifications</a></li>
+
+                    <li><a href="#" id="linkToBrokersManagement">@Resources.Resource.brokersManagement</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="formContainer">
+
+        <div class="col-lg-8 col-centered">
+
+
+
+            <table class="table table-striped center-block">
+                <caption>@Resources.Resource.reviewInformationCaption</caption>
+
+                <tbody>
+
+                    <tr>
+                        <td colspan="1">
+                            <form class="well form-horizontal" dir="@Resources.Resource.dir">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.requestType</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-tag"></i>
+                                                </span>
+                                                <input id="requestType" name="requestType" placeholder="@Resources.Resource.ToWhomItMayConcernsRequest"
+                                                       class="form-control" required="required" value="@Resources.Resource.ToWhomItMayConcernsRequest" type="text" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.requestNo</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-barcode"></i>
+                                                </span>
+                                                <input id="requestNo" name="requestNo" placeholder="@Resources.Resource.requestNo"
+                                                       class="form-control" required="required" value="@Resources.Resource.requestNo" type="text" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    @*in Case of General Broker, This Will be Hidden,
+                                        Other Case :  Special Broker, Special Messenger, Direct Release Broker,
+                                        Sub Broker, and Messanger
+                                        Should be Shown*@
+                                    <div class="form-group" id="parentBrokerInformationDiv">
+                                        <label class="col-md-3 control-label"> @Resources.Resource.generalBrokerInf  </label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                in Case of General Broker , Special Broker, Special Messenger, Direct Release Broker, This Will be Hidden,
+                                                Other Case :  Sub Broker, and Messanger
+                                                Should be Shown
+                                                <input id="generalbrokerName" name="generalbrokerName" placeholder="@Resources.Resource.generalBrokerName"
+                                                       class="form-control" readonly="readonly" value="" type="text">
+                                                @*<input id="generalbrokerLicenceNo" name="generalbrokerLicenceNo" placeholder="@Resources.Resource.generalBrokerlicenseNo"
+                                                           class="form-control" readonly="readonly" value="" type="text">
+                                                    <input id="generalbrokerMobileNo" name="generalbrokerMobileNo" placeholder="@Resources.Resource.generalBrokerMobilenumber"
+                                                           class="form-control" readonly="readonly" value="" type="text">*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    @*in Case of General Broker, Sub Broker, and Messanger This Will be Hidden,
+                                        Other Case :  Special Broker, Special Messenger, Direct Release Broker,
+                                        Should be Shown*@
+                                    <div class="form-group" id="specialsInformationDiv">
+                                        <label class="col-md-3 control-label"> @Resources.Resource.OrgReg_CompanyNameinArabic  </label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                in Case of General Broker, Sub Broker, and Messanger This Will be Hidden,
+                                                Other Case :  Special Broker, Special Messenger, Direct Release Broker,
+                                                Should be Shown
+                                                <input id="companyName" name="companyName" placeholder="@Resources.Resource.OrgReg_CompanyNameinArabic"
+                                                       class="form-control" readonly="readonly" value="" type="text">
+                                                <input id="commercialRegistrationNo" name="commercialRegistrationNo" placeholder="@Resources.Resource.commercialRegistrationNo"
+                                                       class="form-control" readonly="readonly" value="" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.BrokerType</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                <input id="brokerType" name="brokerType" placeholder="@Resources.Resource.BrokerType"
+                                                       class="form-control" required="required" value="" type="text" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.brokerArabicNameLbl</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                <input id="brokerNameArabicName" name="brokerNameArabicName" placeholder="@Resources.Resource.brokerArabicNameLbl"
+                                                       class="form-control" required="required" readonly="readonly" value="" type="text">
+                                                <input id="brokerNameArabicName" name="brokerNameArabicName" placeholder="@Resources.Resource.brokerArabicNameLbl"
+                                                       class="form-control" required="required" readonly="readonly" value="" type="text">
+                                                @*<input id="brokerNameArabicName" name="brokerNameArabicName" placeholder="@Resources.Resource.brokerArabicNameLbl"
+                                                           class="form-control" required="required" value="" type="text">
+                                                    <input id="brokerNameArabicName" name="brokerNameArabicName" placeholder="@Resources.Resource.brokerArabicNameLbl"
+                                                           class="form-control" required="required" value="" type="text">*@
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@Resources.Resource.remarks</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-edit"></i>
+                                                </span>
+                                                <textarea id="brokerRemarks" name="brokerRemarks" placeholder="@Resources.Resource.remarks" class="form-control" required="required" value="" type="text"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    @*<div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.brokerEnglishNameLbl</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                    </span>
+                                                    <input id="brokerNameEnglishName" name="brokerNameEnglishName" placeholder="@Resources.Resource.brokerEnglishNameLbl"
+                                                           class="form-control" required="required" value="" type="text">
+                                                    <input id="brokerNameEnglishName" name="brokerNameEnglishName" placeholder="@Resources.Resource.brokerEnglishNameLbl"
+                                                           class="form-control" required="required" value="" type="text">
+                                                    <input id="brokerNameEnglishName" name="brokerNameEnglishName" placeholder="@Resources.Resource.brokerEnglishNameLbl"
+                                                           class="form-control" required="required" value="" type="text">
+                                                    <input id="brokerNameEnglishName" name="brokerNameEnglishName" placeholder="@Resources.Resource.brokerEnglishNameLbl"
+                                                           class="form-control" required="required" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.nationality</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                                    <select class="selectpicker form-control" id="companyState">
+                                                        <option>Kuwait</option>
+                                                        <option></option>
+                                                        <option></option>
+                                                        <option></option>
+                                                        <option></option>
+                                                        <option></option>
+                                                        <option></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.CivilId</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-file"></i>
+                                                    </span>
+                                                    <input id="brokerCivilId" name="brokerCivilId" placeholder="@Resources.Resource.CivilId"
+                                                           class="form-control" value="" type="text" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.CivilId @Resources.Resource.expiryDate</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </span>
+                                                    <input id="brokerCivilIdexpiryDate" name="brokerCivilIdexpiryDate" placeholder="@Resources.Resource.CivilId @Resources.Resource.expiryDate"
+                                                           class="form-control dateClass" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.passportNo</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-flag"></i>
+                                                    </span>
+                                                    <input id="brokerPassportNo" name="brokerPassportNo" placeholder="@Resources.Resource.passportNo"
+                                                           class="form-control" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.passportNo @Resources.Resource.expiryDate</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </span>
+                                                    <input id="brokerPassportExpiryDate" name="brokerPassportExpiryDate" placeholder="@Resources.Resource.passportNo @Resources.Resource.expiryDate"
+                                                           class="form-control dateClass" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.MobileNumber</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-phone"></i>
+                                                    </span>
+                                                    <input id="brokerMobileNumber" name="brokerMobileNumber" placeholder="@Resources.Resource.MobileNumber"
+                                                           class="form-control" readonly="readonly" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.Email</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-envelope"></i>
+                                                    </span>
+                                                    <input id="brokerEmailID" name="brokerEmailID" placeholder="@Resources.Resource.Email"
+                                                           class="form-control" readonly="readonly" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.officialAddress</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-flag"></i>
+                                                    </span>
+                                                    <input id="brokerAddress" name="brokerAddress" placeholder="@Resources.Resource.officialAddress"
+                                                           class="form-control" value="" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    *@
+
+
+                                </fieldset>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-info btn-block col-centered" causesvalidation="true" id="saveBtn">
+                                <b>
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Send &nbsp;
+                                </b>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" style="z-index:200;" role="button" title="@Resources.Resource.returnToTop" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+</body>
+</html>

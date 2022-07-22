@@ -1,0 +1,464 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = @Resources.Resource.MyAccount;
+    //Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+@using (Html.BeginForm("MyAccount", "User", FormMethod.Post, new { @id = "AccountUpdateForm" }))
+{
+
+    <div class="col-lg-12 col-centered">
+
+        @if (Session["LegalEntity"] != null)
+        {
+            if (Session["LegalEntity"].ToString() == "2")
+            {
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">&nbsp;</label>
+            <div class="col-md-7 inputGroupContainer marginTop15 boldc text-center" style="color:red;font-size:17px">
+                حسب التعليمات الجمركية، يجب ربط حساب المستخدم بشركة واحدة فقط، لذا يجب
+                اختيار شركة واحده من الشركات المسجلة لديكم لربطها مع هذا الحساب
+                وللشركات الأخرى يمكن ربطها مع حسابات مستخدم منفصلة، كل على حدا  
+                According to the customs instructions, only one company should
+                linked to an account, so you should choose one of your registered companies.
+                Other companies can be linked to separate user accounts.
+
+
+
+            </div>
+
+        </div>
+
+
+            }
+        }
+        <table class="table table-striped center-block marginTop50">
+            <tbody>
+
+                <tr>
+                    <td colspan="1">
+                        <div class="well form-horizontal" dir="@Resources.Resource.dir">
+                            <fieldset>
+
+                                @{ if (Model != null)
+                                    {
+                                        if (Model.Rows != null)
+                                        {
+                                            if (Model.Rows.Count > 0)
+                                            {
+                                                foreach (DataRow row in Model.Rows)
+                                                {
+                                                    @*string EMV = string.Empty;
+                                            if (row["IsEmailVerified"].ToString().Trim() == "-1" || row["IsMobileVerified"].ToString().Trim() == "-1")
+                                            {
+                                                EMV = Resources.Resource.EmailIdMobileNumberverificationpending;
+                                            }
+                                            <div class="form-group" align="center">
+                                                <p style="text-align: center;">
+                                                    <h4 style="text-align: center">
+                                                    @Resources.Resource.ProfileInfo
+                                                    </h4>
+                                                </p>
+                                            </div>
+                                            <div class="form-group" align="center">
+                                                <p style="text-align: center;">
+                                                    @EMV
+                                                </p>
+                                            </div>*@
+
+
+                                                    <input type="hidden" id="ThemesSelectedval" value="@row["userthemes"]" />
+
+
+
+                                                    <input type="hidden" runat="server" id="MobileSelectedval" value="@row["MobileNumber"]" />
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.FirstName</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+
+                                                                <label class="form-control" disabled="disabled" readonly="readonly">@row["FirstName"]</label>
+                                                                @*<input id="inputFirstName" name="FirstName" placeholder="@Resources.Resource.FirstName"
+                                                        class="form-control" value="@row["FirstName"]" type="text" disabled="disabled" readonly="readonly">*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.LastName</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+
+                                                                <label class="form-control" disabled="disabled" readonly="readonly">@row["LastName"]</label>
+
+                                                                @*<input id="inputLastName" name="LastName" placeholder="@Resources.Resource.LastName"
+                                                        class="form-control" value="@row["LastName"]" type="text" disabled="disabled" readonly="readonly">*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.CivilId</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+                                                                @{
+                                                                    var s = row["CivilId"].ToString();
+                                                                    if (s == "NULL" || s == "")
+                                                                    {
+                                                                        <input id="inputCivilIdNumber" name="CivilId" placeholder="@Resources.Resource.CivilId" maxlength=12
+                                                                               class="form-control ClearingAgent numericOnly" value="@row["CivilId"]" type="text">
+
+
+
+
+
+                                                                    }
+
+                                                                    else
+                                                                    {
+
+                                                                        <input id="inputCivilIdNumber" name="CivilId" readonly="readonly" placeholder="@Resources.Resource.CivilId"
+                                                                               maxlength=12 class="form-control ClearingAgent numericOnly" value="@row["CivilId"]" type="text">
+                                                                    }
+
+                                                                }
+
+                                                            </div>   <p id="CivilIdErrorMsg" class="errorMsg">
+                                                                @Resources.Resource.CivilIdValidationFail
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.Importer_LicenseNo</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-flag"></i>
+                                                        </span>
+
+                                                        @{
+                                                            if (Session["LegalEntity"] != null)
+                                                            {
+                                                                if (Session["LegalEntity"].ToString() == "2")
+                                                                {
+
+
+
+                                                                    var X = row["licensenumber"].ToString();
+                                                                    if (X == "" || X == "NULL")
+                                                                    {
+                                                                        <input id="inputLicenseNumber" name="LicenseNumber" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                               class="form-control" value="@row["licensenumber"]" type="text">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input id="inputLicenseNumber" name="LicenseNumber" readonly="readonly" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                               class="form-control" value="@row["licensenumber"]" type="text">
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                 }
+
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>*@
+
+                                                                    <div>
+
+
+                                                                        @{
+                                                                            if (Session["LegalEntity"] != null)
+                                                                            {
+                                                                                if (Session["LegalEntity"].ToString() == "2")
+                                                                                {
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-3 control-label">@Resources.Resource.Importer_LicenseNo</label>
+                                                                                        <div class="col-md-7 inputGroupContainer">
+                                                                                            <div class="input-group">
+                                                                                                <span class="input-group-addon">
+                                                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                                                </span>
+
+                                                                                                @if (@row["licensenumber"].ToString() == "" || @row["licensenumber"].ToString() == "NULL")
+                                                                                                {
+                                                                                                    if (ViewBag.CompanyCivilIddetails != null)
+                                                                                                    {
+                                                                                                   
+                                                                                                        @Html.DropDownList("LicenseNumber", new SelectList(ViewBag.CompanyCivilIddetails, "Value", "Text"),new { @class = "form-control" })
+                                                                           
+
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        <input id="inputLicenseNumber" name="LicenseNumber" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                                                               class="form-control" value="@row["licensenumber"]" type="text">
+                                                                                                    }
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    <input id="inputLicenseNumber" name="LicenseNumber" readonly="readonly" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                                                           class="form-control" value="@row["licensenumber"]" type="text">
+                                                                                                }
+
+                                                                                      </div><p id="LicenseNumberErrorMsg" class="errorMsg">
+                                                                                  @Resources.Resource.TradeLicenseRequired
+                                                                                             </p>
+
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                   
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">@Resources.Resource.OrgClearanceFileNumber</label>
+                                                                            <div class="col-md-7 inputGroupContainer">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="glyphicon glyphicon-flag"></i>
+                                                                                    </span>
+                                                                                    <input id="inputOrgFileNumber" readonly="readonly" name="OrgFileNumber" placeholder="@Resources.Resource.OrgClearanceFileNumber"
+                                                                                           class="form-control" value="@row["OrgFileNumber"]" type="text" maxlength="8">
+
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                  
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                    @*<input id="inputLicenseNumber" name="LicenseNumber" readonly="readonly" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                        class="form-control" value="@row["licensenumber"]" type="text">*@
+                                                                }
+
+                                                            }
+                                                        }
+
+
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.MobileNumber</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+                                                                <input id="inputMobileNumber" name="MobileTelNumber" placeholder="@Resources.Resource.MobileNumber"
+                                                                       class="form-control" value="@row["MobileNumber"]" type="text" maxlength="8">
+
+
+                                                            </div> <p id="mobileErrorMsg" class="errorMsg">
+                                                                @Resources.Resource.MobileNumberValid
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.Email</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+                                                                <input id="inputEmailId" name="EmailId" placeholder="@Resources.Resource.Email"
+                                                                       class="form-control" value="@row["EmailId"]" type="text" disabled="disabled" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @*<label class="col-md-3 control-label marginTop15">&nbsp;</label>
+        <div class="col-md-7 inputGroupContainer marginTop15">
+            <div class="input-group">
+
+                <button type="submit"
+                        class="btn btn-info btn-block col-centered marginTop50 width50Percent"
+                        causesvalidation="true" id="btnsubmit" onclick="GetConfirmationToChangeAccountDetails(event)">
+                    <b>
+                        <span class="glyphicon glyphicon-ok-sign">
+                        </span>&nbsp; @Resources.Resource.Save &nbsp;
+                    </b>
+                </button>
+            </div>
+        </div>*@
+
+                                                        <div class="col-md-6 inputGroupContainer marginTop15">
+                                                            <div class="input-group">
+
+                                                                <button type="submit"
+                                                                        class="btn btn-info btn-block col-centered marginTop50 width50Percent"
+                                                                        causesvalidation="true" id="btnsubmit" onclick="GetConfirmationToChangeAccountDetails(event)">
+                                                                    <b>
+                                                                        <span class="glyphicon glyphicon-ok-sign">
+                                                                        </span>&nbsp; @Resources.Resource.Save &nbsp;
+                                                                    </b>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 inputGroupContainer marginTop15">
+                                                            <div class="input-group">
+
+                                                                @Html.ActionLink(Resources.Resource.Back, "MenuView", "DashBoard",null, new { @class = "btn btn-info btn-block col-centered marginTop50 width50Percent" })
+
+                                                               
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                    @*if (ViewBag.login != null)
+                                                        {
+                                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.SaveVerify</button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Save</button>
+                                                        }*@
+
+
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+
+                            </fieldset>
+
+                        </div>
+                    </td>
+
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+}
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+
+            <h5 id="modalMessage1">
+                <b id="modalMessage" style="line-height:1.6">
+                    @ViewBag.Msg
+                </b>
+            </h5>
+
+        </div>
+        <div class="modal-footer">
+           
+            <input type="button" ID="ProceedChange" class="btn btn-info" value="@Resources.Resource.Ok" /> @*&nbsp; &nbsp; &nbsp; &nbsp;*@
+
+            <input type="button" ID="CancelChange" class="btn btn-info" value="@Resources.Resource.Cancel" />
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div id="modalDivInfo" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+
+            <h5 id="modalMessage1">
+                <b id="modalMessage" style="line-height:1.6">
+                    @ViewBag.Msg
+                </b>
+            </h5>
+
+        </div>
+        <div class="modal-footer">
+          
+                        <input type="button" ID="CancelChange" class="btn btn-info" value="@Resources.Resource.Ok" />
+                 
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var ViewBagShowmsg = '@ViewBag.Showmsg';
+    var ViewBagMsg='@ViewBag.Msg';
+    var ViewBagmodelerror='@ViewBag.modelerror';
+    var ViewBagmodelstatus = '@ViewBag.modelerror';
+    var ViewBagInfoMsg = '@ViewBag.InfoMsg';
+    var DoMobileNumberVerification = '@ViewBag.DoMobileNumberVerification';
+
+    var ConfirmationMessage ='@Resources.Resource.DoMobileNumberVerification';//  'Once the Mobile number is updated successfully , You will be redirected to Login again by completing the Mobile number verification . ';
+
+    if (ViewBagmodelstatus===null) {
+        ViewBagmodelstatus='';
+    }
+
+  //  document.getElementsByName("ThemesDDl").value = document.getElementById("ThemesSelectedval").value;
+
+
+
+  ////  document.getElementsByName("ThemesDDl").value = document.getElementById("ThemesSelectedval").value;
+  //  $('select[name=ThemesDDl] option:first').html(document.getElementById("ThemesSelectedval").value);
+
+
+  //  document.getElementsByName("ThemesDDl").style.backgroundColor = document.getElementById("ThemesSelectedval").value;
+</script>
+
+
+

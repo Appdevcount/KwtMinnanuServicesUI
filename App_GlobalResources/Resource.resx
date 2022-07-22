@@ -1,0 +1,5032 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ActioncannotbeperformedPleasecontactadministrator" xml:space="preserve">
+    <value>User Account has been Suspended, Please Contact Support</value>
+  </data>
+  <data name="addFilesLabel" xml:space="preserve">
+    <value>Add files...</value>
+  </data>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>Additional Info Remarks</value>
+  </data>
+  <data name="Agree_for" xml:space="preserve">
+    <value>Agree for</value>
+  </data>
+  <data name="Agree_for1" xml:space="preserve">
+    <value>Terms and conditions</value>
+  </data>
+  <data name="align" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="AlphaNumeric" xml:space="preserve">
+    <value>Please enter alphabets only</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="assignment" xml:space="preserve">
+    <value>assignment</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BankGuaranteeStatus" xml:space="preserve">
+    <value>Bank Guarantee Status</value>
+  </data>
+  <data name="bankGurantee" xml:space="preserve">
+    <value>Bank Guarantee</value>
+  </data>
+  <data name="brokerArabicNameLbl" xml:space="preserve">
+    <value>Broker Arabic Name </value>
+  </data>
+  <data name="brokerEnglishNameLbl" xml:space="preserve">
+    <value>Broker English Name</value>
+  </data>
+  <data name="BrokerLicenseNo" xml:space="preserve">
+    <value>Broker License No</value>
+  </data>
+  <data name="brokerList" xml:space="preserve">
+    <value>Brokers List</value>
+  </data>
+  <data name="BrokerName" xml:space="preserve">
+    <value>Broker Name</value>
+  </data>
+  <data name="BrokerOfficeDetails" xml:space="preserve">
+    <value>Broker Office Details</value>
+  </data>
+  <data name="brokersManagement" xml:space="preserve">
+    <value>Brokers Management</value>
+  </data>
+  <data name="BrokerStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="BrokerType" xml:space="preserve">
+    <value>Broker Type</value>
+  </data>
+  <data name="brokerUpdatation" xml:space="preserve">
+    <value>Update Broker Information </value>
+  </data>
+  <data name="btnprint" xml:space="preserve">
+    <value>PRINT</value>
+  </data>
+  <data name="by" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="B_AssociateOrganizations" xml:space="preserve">
+    <value>Associate Organizations</value>
+  </data>
+  <data name="B_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="B_Signup" xml:space="preserve">
+    <value>New Registration</value>
+  </data>
+  <data name="B_Submit" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CannotprocessPleasecontactadministrator" xml:space="preserve">
+    <value>Cannot process. Please contact administrator</value>
+  </data>
+  <data name="CannotprocessPleasetryagainlater" xml:space="preserve">
+    <value>Cannot process. Please try again later</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="CaptchaCode" xml:space="preserve">
+    <value>Please enter the Captcha Code</value>
+  </data>
+  <data name="Carrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="checkcredentials" xml:space="preserve">
+    <value>Please check your credentials</value>
+  </data>
+  <data name="ChooseDocName" xml:space="preserve">
+    <value>Please Choose Document Name</value>
+  </data>
+  <data name="ChooseDOcNameType" xml:space="preserve">
+    <value>Please Choose Document Type and Document Name</value>
+  </data>
+  <data name="chooseDocType" xml:space="preserve">
+    <value>Please Choose Document Type</value>
+  </data>
+  <data name="CivilId" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="civilIdNo" xml:space="preserve">
+    <value>Civil Id No.</value>
+  </data>
+  <data name="CivilIdValid" xml:space="preserve">
+    <value>Civil Id No. should have 12 digits.</value>
+  </data>
+  <data name="CivilIdValidationFail" xml:space="preserve">
+    <value>Please enter the valid Civil Id number.</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="DoMobileNumberVerification" xml:space="preserve">
+    <value>Once the Mobile number is updated successfully, you will be redirected to login again to verify mobile number , click “OK” to confirm or “Cancel” to cancel</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="codeVerification" xml:space="preserve">
+    <value>Code Verification</value>
+  </data>
+  <data name="Commercial_B_back" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Commercial_B_next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Commercial_CompanyNameinArabic" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Commercial_Dt_style" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Commercial_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Commercial_Header" xml:space="preserve">
+    <value>Commercial Organization</value>
+  </data>
+  <data name="Commercial_IssuanceDate" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Commercial_LicenseNo" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="Commercial_LicenseNumber" xml:space="preserve">
+    <value>Commercial License Number</value>
+  </data>
+  <data name="Commercial_Licensetype" xml:space="preserve">
+    <value>Commercial License Type</value>
+  </data>
+  <data name="Commercial_RB_Corporation" xml:space="preserve">
+    <value>Corporation</value>
+  </data>
+  <data name="Commercial_RB_Industrial" xml:space="preserve">
+    <value>Partnership</value>
+  </data>
+  <data name="Commercial_RB_Personal" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Commercial_RD_style" xml:space="preserve">
+    <value>radio inline</value>
+  </data>
+  <data name="Commercial_RequestNumber" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Commercial_selectsubtype" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Commercial_year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="companynamearabic" xml:space="preserve">
+    <value>Please enter company name in arabic</value>
+  </data>
+  <data name="companynameinenglish" xml:space="preserve">
+    <value>Please enter company name in english.</value>
+  </data>
+  <data name="CompanyRegistrationMsg" xml:space="preserve">
+    <value>The company registration process is subject to the regulations and the rules regulating it and as determined by the General Administration of Customs.</value>
+  </data>
+  <data name="completeDate" xml:space="preserve">
+    <value>Complete Date</value>
+  </data>
+  <data name="completelicensedetails" xml:space="preserve">
+    <value>Please enter complete license details.</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Consignee" xml:space="preserve">
+    <value>Consignee</value>
+  </data>
+  <data name="ConsigneeName" xml:space="preserve">
+    <value>Consignee Name</value>
+  </data>
+  <data name="ConsolidatedShipment" xml:space="preserve">
+    <value>Consolidated Shipment</value>
+  </data>
+  <data name="databind_class" xml:space="preserve">
+    <value>card card1</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>Please enter valid Date Format</value>
+  </data>
+  <data name="DeclarationNumber" xml:space="preserve">
+    <value>Declaration Number</value>
+  </data>
+  <data name="DeclarationSearch" xml:space="preserve">
+    <value>Declaration Tracking</value>
+  </data>
+  <data name="Declarationtype" xml:space="preserve">
+    <value>Bill type</value>
+  </data>
+  <data name="deleteAllFiles" xml:space="preserve">
+    <value>Delete all files</value>
+  </data>
+  <data name="DeleteRequest" xml:space="preserve">
+    <value>Are you sure, you want to delete organization request?</value>
+  </data>
+  <data name="DeliveryorderNumber" xml:space="preserve">
+    <value>Delivery Order Number</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Denied</value>
+  </data>
+  <data name="Deposits" xml:space="preserve">
+    <value>Deposits</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DestinationCountry" xml:space="preserve">
+    <value>Destination Country</value>
+  </data>
+  <data name="dir" xml:space="preserve">
+    <value>LTR</value>
+  </data>
+  <data name="div_direction" xml:space="preserve">
+    <value>direction:ltr</value>
+  </data>
+  <data name="docTypesLabel" xml:space="preserve">
+    <value>Documents Types</value>
+  </data>
+  <data name="Duties" xml:space="preserve">
+    <value>Duties</value>
+  </data>
+  <data name="Dutieslist" xml:space="preserve">
+    <value>Duties list</value>
+  </data>
+  <data name="DutyID" xml:space="preserve">
+    <value>DutyID</value>
+  </data>
+  <data name="DutyName" xml:space="preserve">
+    <value>DutyName</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="eMailAddress" xml:space="preserve">
+    <value>E mail</value>
+  </data>
+  <data name="emailCode" xml:space="preserve">
+    <value>Email Verification Code</value>
+  </data>
+  <data name="EmailCodeMandatory" xml:space="preserve">
+    <value>Email Verification Code is mandatory</value>
+  </data>
+  <data name="emailExist" xml:space="preserve">
+    <value>Given Email ID is already registered with us.</value>
+  </data>
+  <data name="Emailidisnotavailble" xml:space="preserve">
+    <value>EmailID is not available</value>
+  </data>
+  <data name="EmailIdMobileNumberverificationpending" xml:space="preserve">
+    <value>Email Id / Mobile Number verification is pending</value>
+  </data>
+  <data name="EmailIdorMobileNumber" xml:space="preserve">
+    <value>Email-Id or Mobile Number</value>
+  </data>
+  <data name="EmailMobileCode" xml:space="preserve">
+    <value>Email Verification Code or Mobile Verification Code</value>
+  </data>
+  <data name="EnterCaptcha" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="EntercorrectCaptcha" xml:space="preserve">
+    <value>Enter correct Captcha</value>
+  </data>
+  <data name="EnterMobileEmail" xml:space="preserve">
+    <value>Please enter Email ID</value>
+    <comment>Please enter Mobile No or Email ID</comment>
+  </data>
+  <data name="enterPassword" xml:space="preserve">
+    <value>Please enter password</value>
+  </data>
+  <data name="EnterTexttoSearch" xml:space="preserve">
+    <value>Enter text to search</value>
+  </data>
+  <data name="EPayment" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="EPaymentRequests" xml:space="preserve">
+    <value>E-Payment Requests</value>
+  </data>
+  <data name="Epayment_Header" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="Epayment_RequestNumber" xml:space="preserve">
+    <value>Request Number :</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="expiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="ExportCountry" xml:space="preserve">
+    <value>Export Country</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="forgetPassowrd" xml:space="preserve">
+    <value>Forget Password?</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Forgot_B_generateotpbutton" xml:space="preserve">
+    <value>Generate OTP</value>
+  </data>
+  <data name="Forgot_B_resetpwd" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Forgot_B_rgpwd" xml:space="preserve">
+    <value>Regenerate OTP</value>
+  </data>
+  <data name="Forgot_header" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Forgot_header1" xml:space="preserve">
+    <value>Please enter your valid Email address or Mobile Number we'll send you verification codes to reset your password</value>
+  </data>
+  <data name="Forgot_input" xml:space="preserve">
+    <value>Email-Id</value>
+    <comment>Email-Id or Mobile Number</comment>
+  </data>
+  <data name="Forgot_input2" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="Forgot_inputcode" xml:space="preserve">
+    <value>Email Verification Code</value>
+    <comment>Email Verification Code</comment>
+  </data>
+  <data name="Forgot_inputcpwd" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Forgot_inputnewpwd" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="fullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="GenerateOTP" xml:space="preserve">
+    <value>Generate OTP</value>
+  </data>
+  <data name="genericErrorPageNotFoundPart1" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="genericErrorPageNotFoundPart2" xml:space="preserve">
+    <value>Please Check The Requested Page</value>
+  </data>
+  <data name="genericErrorPageSorry" xml:space="preserve">
+    <value>Sorry</value>
+  </data>
+  <data name="Header_withoutmenu" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #BD3B2E;display: block;</value>
+  </data>
+  <data name="Header_withoutmenu1" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #BD3B2E;display: none;</value>
+  </data>
+  <data name="hideInformation" xml:space="preserve">
+    <value>Hide Information</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="homePage" xml:space="preserve">
+    <value>Main Page</value>
+  </data>
+  <data name="Home_Header" xml:space="preserve">
+    <value>My Organizations</value>
+  </data>
+  <data name="HousebillAutoNumber" xml:space="preserve">
+    <value>Housebill Auto Number</value>
+  </data>
+  <data name="HousebillNumber" xml:space="preserve">
+    <value>Housebill Number</value>
+  </data>
+  <data name="HousebillSearch" xml:space="preserve">
+    <value>Housebill Search</value>
+  </data>
+  <data name="HSCode" xml:space="preserve">
+    <value>HSCode</value>
+  </data>
+  <data name="HSCodeSearch" xml:space="preserve">
+    <value>HSCode Search</value>
+  </data>
+  <data name="ImporterDetails" xml:space="preserve">
+    <value>Import Details</value>
+  </data>
+  <data name="Importer_B_back" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Importer_B_next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Importer_CompanyNameinArabic" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Importer_Dt_style" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Importer_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Importer_Header" xml:space="preserve">
+    <value>Importer Details</value>
+  </data>
+  <data name="Importer_IssuanceDate" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Importer_LicenseNo" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="Importer_LicenseNumber" xml:space="preserve">
+    <value>Import License Number</value>
+  </data>
+  <data name="Importer_Licensetype" xml:space="preserve">
+    <value>Import License Type</value>
+  </data>
+  <data name="Importer_RB_permanent" xml:space="preserve">
+    <value>Permanent</value>
+  </data>
+  <data name="Importer_RB_temporary" xml:space="preserve">
+    <value>Temporary</value>
+  </data>
+  <data name="Importer_RD_style" xml:space="preserve">
+    <value>radio inline</value>
+  </data>
+  <data name="Importer_RequestNumber" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Industrial_B_back" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Industrial_B_next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Industrial_CompanyNameinArabic" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Industrial_Dt_style" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Industrial_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Industrial_Header" xml:space="preserve">
+    <value>Industrial Organization</value>
+  </data>
+  <data name="Industrial_IssuanceDate" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Industrial_IssuanceDate1" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Industrial_LicenseNumber" xml:space="preserve">
+    <value>Industrial License Number</value>
+  </data>
+  <data name="Industrial_RegNo" xml:space="preserve">
+    <value>Industrial Registration Number</value>
+  </data>
+  <data name="Industrial_RequestNumber" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Is" xml:space="preserve">
+    <value>is</value>
+  </data>
+  <data name="IssuancegreaterthanEnddate" xml:space="preserve">
+    <value>Issuance Date should not be greater than End date.</value>
+  </data>
+  <data name="KGACOnlinePayment" xml:space="preserve">
+    <value>KGAC Online Payment</value>
+  </data>
+  <data name="KNETOnlinePayment" xml:space="preserve">
+    <value>Please do not close or refresh this page as we proceed to KNET Online Payment!</value>
+  </data>
+  <data name="kuwait" xml:space="preserve">
+    <value>kuwait</value>
+  </data>
+  <data name="KuwaitCustoms" xml:space="preserve">
+    <value>Kuwait Customs eServices</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="lG" xml:space="preserve">
+    <value>Eng</value>
+  </data>
+  <data name="licenceNo" xml:space="preserve">
+    <value>License No</value>
+  </data>
+  <data name="LicenseFieldCannotbeempty" xml:space="preserve">
+    <value>License Field Can not be empty</value>
+  </data>
+  <data name="Licenselessthandigits" xml:space="preserve">
+    <value>License number should not be less than 3 digits</value>
+  </data>
+  <data name="Licenselessthandigits4" xml:space="preserve">
+    <value>License number should not be less than 4 digits</value>
+  </data>
+  <data name="LicenseNO" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="LocalDescription" xml:space="preserve">
+    <value>Local Description</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>LogIn</value>
+  </data>
+  <data name="login1" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="loginPageWelcomeMsg" xml:space="preserve">
+    <value>Welcome to Clearing Agents Service</value>
+  </data>
+  <data name="loginwithyourcredentials" xml:space="preserve">
+    <value>The code has been successfully verified, thank you, please log in using your credentials </value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logo1" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="logOut1" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="L_term_of_use_style" xml:space="preserve">
+    <value>margin-left:100px;width:200px</value>
+  </data>
+  <data name="L_term_of_use_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="L_term_of_use_style2" xml:space="preserve">
+    <value>margin-left:100px;</value>
+  </data>
+  <data name="Menu1" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Menu2" xml:space="preserve">
+    <value>My Organizations</value>
+  </data>
+  <data name="Menu3" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="Menu4" xml:space="preserve">
+    <value>E-Payment</value>
+  </data>
+  <data name="Menu5" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MenuHeader_cssclass" xml:space="preserve">
+    <value>topnav</value>
+  </data>
+  <data name="MenuHeader_cssclass1" xml:space="preserve">
+    <value>topnav-right</value>
+  </data>
+  <data name="MenuHeader_cssclass2" xml:space="preserve">
+    <value>num</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification" xml:space="preserve">
+    <value>glyphicon glyphicon-bell notification-icon</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification1" xml:space="preserve">
+    <value>glyphicon glyphicon-bell</value>
+  </data>
+  <data name="MenuHeader_notifycssclass" xml:space="preserve">
+    <value>notifyheader</value>
+  </data>
+  <data name="MenuHeader_notifycssclass1" xml:space="preserve">
+    <value>closebtn</value>
+  </data>
+  <data name="MenuHeader_notifyHeader" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="MenuHeader_Style" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #f53d3d;height:40px;line-height:40px</value>
+  </data>
+  <data name="MenuHeader_style1" xml:space="preserve">
+    <value>padding-left:20px;</value>
+  </data>
+  <data name="menuiconstyle" xml:space="preserve">
+    <value>padding-left: 10px;padding-right:16px;top: 3px;</value>
+  </data>
+  <data name="Menu_style" xml:space="preserve">
+    <value>menunew menunew-style</value>
+  </data>
+  <data name="Menu_style1" xml:space="preserve">
+    <value>background-color:brown;text-align:left;color:white;font-weight: normal;</value>
+  </data>
+  <data name="MobileCode" xml:space="preserve">
+    <value>Mobile Verification Code</value>
+  </data>
+  <data name="MobileCodeMandatory" xml:space="preserve">
+    <value>Enter Mobile Verification Code</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="mobileNumber1" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="MobileVerified" xml:space="preserve">
+    <value>Your New Mobile Number verified Successfully</value>
+  </data>
+  <data name="msgSaved" xml:space="preserve">
+    <value>Reviewes saved successfully</value>
+  </data>
+  <data name="msgSelectADocument" xml:space="preserve">
+    <value>Open document first, click on the document name, then retry again</value>
+  </data>
+  <data name="Multipleinvalidpassword" xml:space="preserve">
+    <value>Multiple invalid login attempts made. Please change your password</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="NoPaymentRequests" xml:space="preserve">
+    <value>No Payment Requests</value>
+  </data>
+  <data name="noRecordsFound" xml:space="preserve">
+    <value>No Records Found</value>
+  </data>
+  <data name="Norequestatthemoment" xml:space="preserve">
+    <value>No request at the moment</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="notifications1" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="notifications_style" xml:space="preserve">
+    <value>Notification Notification1</value>
+  </data>
+  <data name="notsuccessfull" xml:space="preserve">
+    <value>Not Successful</value>
+  </data>
+  <data name="officialAddress" xml:space="preserve">
+    <value>Official Address</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="onefieldtogetpasswordrecovery" xml:space="preserve">
+    <value>Enter any one field to get password recovery</value>
+  </data>
+  <data name="OnlinePaymentConfirmation" xml:space="preserve">
+    <value>Online Payment Confirmation</value>
+  </data>
+  <data name="OnlyPDFJPG" xml:space="preserve">
+    <value>Only .pdf and .jpg format files are allowed for upload. File size upto 1 MB can be uploaded.</value>
+  </data>
+  <data name="OR" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="OrganisationsRequestStatus" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="OrganizationEmailpending" xml:space="preserve">
+    <value>Organization’s Email verification is pending</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfully" xml:space="preserve">
+    <value>Organization Registration Completed successfully</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfullyNew" xml:space="preserve">
+    <value>Please print the form and review with the project team at the General Administration of Customs Shuwaikh area (3) enclosed with all the documents that were uploaded during the registration process</value>
+  </data>
+  <data name="OrgReg_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="OrgReg_AuthorizedPerson" xml:space="preserve">
+    <value>Authorized Person</value>
+  </data>
+  <data name="OrgReg_BusinessFaxNumber" xml:space="preserve">
+    <value>Business Fax Number</value>
+  </data>
+  <data name="OrgReg_BusinessNumber" xml:space="preserve">
+    <value>Business Number</value>
+  </data>
+  <data name="OrgReg_B_Next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="OrgReg_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="OrgReg_CivilId" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="OrgReg_CompanyName" xml:space="preserve">
+    <value>Company Name (English)</value>
+  </data>
+  <data name="OrgReg_CompanyNameinArabic" xml:space="preserve">
+    <value>Company Name (Arabic)</value>
+  </data>
+  <data name="OrgReg_EmailID" xml:space="preserve">
+    <value>Email ID</value>
+  </data>
+  <data name="OrgReg_Header" xml:space="preserve">
+    <value>Organization Registration</value>
+  </data>
+  <data name="OrgReg_Header1" xml:space="preserve">
+    <value>The company registration process is subject to the regulations and the rules regulating it and as determined by the General Administration of Customs.</value>
+  </data>
+  <data name="OrgReg_Industrial" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="OrgReg_Industrial_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="OrgReg_Industrial_style2" xml:space="preserve">
+    <value>margin-left:100px;</value>
+  </data>
+  <data name="OrgReg_Kuwait" xml:space="preserve">
+    <value>Kuwait</value>
+  </data>
+  <data name="OrgReg_MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="OrgReg_POBoxNo" xml:space="preserve">
+    <value>P.O. Box No.</value>
+  </data>
+  <data name="OrgReg_PostalCode" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="OrgReg_ResidenceNumber" xml:space="preserve">
+    <value>Residence Number</value>
+  </data>
+  <data name="OrgReg_State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="OrgReg_Tradelicenceno" xml:space="preserve">
+    <value>Trading license No.</value>
+  </data>
+  <data name="OrgReg_WebPageAddress" xml:space="preserve">
+    <value>Web Page Address</value>
+  </data>
+  <data name="OrgStatus_header" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="OrgStatus_OrganizationName" xml:space="preserve">
+    <value>Organization Name:</value>
+  </data>
+  <data name="OrgStatus_RequestNumber" xml:space="preserve">
+    <value>Request Number:</value>
+  </data>
+  <data name="passportNo" xml:space="preserve">
+    <value>Passport Number</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="password1" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Passwordsarenotmatching" xml:space="preserve">
+    <value>The password does not match</value>
+  </data>
+  <data name="paymentdeclined" xml:space="preserve">
+    <value>Payment Declined</value>
+  </data>
+  <data name="paymentInitiatedError" xml:space="preserve">
+    <value>Your Payment Can't Be Done Now, Please Retry After 10 Minutes</value>
+  </data>
+  <data name="PendingEmailIdVerification" xml:space="preserve">
+    <value>Email Id verification will be pending. Do you want to proceed for Mobile verification?</value>
+  </data>
+  <data name="PendingMobileVerification" xml:space="preserve">
+    <value>Mobile verification will be pending. Do you want to proceed for Email Id verification?</value>
+  </data>
+  <data name="PermissionAuthority" xml:space="preserve">
+    <value>Permission/Release Authority</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Please Wait</value>
+  </data>
+  <data name="print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
+  <data name="ProfileInfo" xml:space="preserve">
+    <value>Profile and contact information</value>
+  </data>
+  <data name="ProvideMobileOTP" xml:space="preserve">
+    <value>Please provide the OTP sent to your new Mobile No. to complete the verification process</value>
+  </data>
+  <data name="ProvideRealInfo" xml:space="preserve">
+    <value>Please provide real and correct information, including contact information</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Quickreference" xml:space="preserve">
+    <value>Quick reference</value>
+  </data>
+  <data name="Readtermsconditions" xml:space="preserve">
+    <value>Read the terms and conditions</value>
+  </data>
+  <data name="RegenerateOTP" xml:space="preserve">
+    <value>Regenerate OTP</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration_Title" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="Registration_Title1" xml:space="preserve">
+    <value>Profile and contact information</value>
+  </data>
+  <data name="Registration_Title2" xml:space="preserve">
+    <value>Please provide real and correct information, including contact information</value>
+  </data>
+  <data name="RejectionReason" xml:space="preserve">
+    <value>Rejection Reason</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="renewalRequests" xml:space="preserve">
+    <value>Renewal Requests</value>
+  </data>
+  <data name="ReqNotDeleted" xml:space="preserve">
+    <value>This request cannot be deleted, Under reviewer process</value>
+  </data>
+  <data name="requestNo" xml:space="preserve">
+    <value>Request Number</value>
+  </data>
+  <data name="Requestnotavailable" xml:space="preserve">
+    <value>Request not available for view/pay</value>
+  </data>
+  <data name="RequestsList" xml:space="preserve">
+    <value>My Requests</value>
+  </data>
+  <data name="requestsList1" xml:space="preserve">
+    <value>Requests List </value>
+  </data>
+  <data name="requiredPasswordMsg" xml:space="preserve">
+    <value>Please Write Password !!!</value>
+  </data>
+  <data name="requiredUserNameMsg" xml:space="preserve">
+    <value>Please Write User Name !!!</value>
+  </data>
+  <data name="ResendMail" xml:space="preserve">
+    <value>Re-Send Email Verification Code</value>
+  </data>
+  <data name="ResendMobile" xml:space="preserve">
+    <value>Re-Send Mobile Verification Code</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Restrictionlevel" xml:space="preserve">
+    <value>Restriction level</value>
+  </data>
+  <data name="RestrictionsProhibitions" xml:space="preserve">
+    <value>Restrictions and Prohibitions</value>
+  </data>
+  <data name="RestrictsType_C" xml:space="preserve">
+    <value>Chapter</value>
+  </data>
+  <data name="RestrictsType_E" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="RestrictsType_H" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="RestrictsType_I" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="RestrictsType_P" xml:space="preserve">
+    <value>Prohibited</value>
+  </data>
+  <data name="RestrictsType_R" xml:space="preserve">
+    <value>Restricted</value>
+  </data>
+  <data name="RestrictsType_T" xml:space="preserve">
+    <value>TariffItem</value>
+  </data>
+  <data name="Resultnotfound" xml:space="preserve">
+    <value>Result not found</value>
+  </data>
+  <data name="returnToTop" xml:space="preserve">
+    <value>Click to return on the top page</value>
+  </data>
+  <data name="RewritePassword" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Save1" xml:space="preserve">
+    <value>Save your Review</value>
+  </data>
+  <data name="SaveVerify" xml:space="preserve">
+    <value>Save &amp; Verify</value>
+  </data>
+  <data name="scrollbk" xml:space="preserve">
+    <value>scrollleft.png</value>
+  </data>
+  <data name="scrollfd" xml:space="preserve">
+    <value>scrollright.png</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="search1" xml:space="preserve">
+    <value>Search </value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="searchCriteria" xml:space="preserve">
+    <value>Search Criteria</value>
+  </data>
+  <data name="SearchType" xml:space="preserve">
+    <value>Search Type</value>
+  </data>
+  <data name="SelectDocumentType" xml:space="preserve">
+    <value>Select Document Type</value>
+  </data>
+  <data name="SelectOption" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="sentDate" xml:space="preserve">
+    <value>Submission Date</value>
+  </data>
+  <data name="Servernotresponding" xml:space="preserve">
+    <value>Server not responding, Please try again later.</value>
+  </data>
+  <data name="Sessionexpired" xml:space="preserve">
+    <value>Your session got expired, Please Login again.</value>
+  </data>
+  <data name="ShortDescription" xml:space="preserve">
+    <value>Short Description</value>
+  </data>
+  <data name="showInformation" xml:space="preserve">
+    <value>Show Information</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="SignUpFailedMessage" xml:space="preserve">
+    <value>Message will send to your Email address and to your Mobile Number, please verify your Email and Mobile Number to complete the registration process</value>
+  </data>
+  <data name="SignUPTermeConditions" xml:space="preserve">
+    <value>You have to agree with the terms and conditions</value>
+  </data>
+  <data name="somethingwentwrong" xml:space="preserve">
+    <value>Something went wrong, Please try again later.</value>
+  </data>
+  <data name="stampNumber" xml:space="preserve">
+    <value>stampNumber</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="status1" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SubEpayment_B_back" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="SubEpayment_B_decline" xml:space="preserve">
+    <value>DECLINE</value>
+  </data>
+  <data name="SubEpayment_B_pay" xml:space="preserve">
+    <value>PAY</value>
+  </data>
+  <data name="SubEpayment_Certificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="SubEpayment_Customsaccount" xml:space="preserve">
+    <value>Customs Account</value>
+  </data>
+  <data name="SubEpayment_CustomsDuty" xml:space="preserve">
+    <value>Customs Duty</value>
+  </data>
+  <data name="SubEpayment_DutyAmount" xml:space="preserve">
+    <value>Duty Amount</value>
+  </data>
+  <data name="SubEpayment_Guarantees" xml:space="preserve">
+    <value>Guarantees</value>
+  </data>
+  <data name="SubEpayment_HandlingCharges" xml:space="preserve">
+    <value>Handling Charges</value>
+  </data>
+  <data name="SubEpayment_Header" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="SubEpayment_Header1" xml:space="preserve">
+    <value>E-Payment Requests</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptDt" xml:space="preserve">
+    <value>Online Receipt Date/Time</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptNo" xml:space="preserve">
+    <value>Online Receipt No.</value>
+  </data>
+  <data name="SubEpayment_Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="SubEpayment_payby" xml:space="preserve">
+    <value>Paid By</value>
+  </data>
+  <data name="SubEpayment_PayFor" xml:space="preserve">
+    <value>Pay For</value>
+  </data>
+  <data name="SubEpayment_PaymentID" xml:space="preserve">
+    <value>Payment ID</value>
+  </data>
+  <data name="SubEpayment_paymethod" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+  <data name="SubEpayment_Paytype" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
+  <data name="SubEpayment_Penalties" xml:space="preserve">
+    <value>Penalties</value>
+  </data>
+  <data name="SubEpayment_Printing" xml:space="preserve">
+    <value>Printing</value>
+  </data>
+  <data name="SubEpayment_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SubEpayment_Storage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="SubEpayment_style" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="SubEpayment_totalamount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="SubmitRequest" xml:space="preserve">
+    <value>Submit Request</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="TempDeclNo" xml:space="preserve">
+    <value>Temp Decl. No</value>
+  </data>
+  <data name="TempDeclNumber" xml:space="preserve">
+    <value>Temp. Declaration Number</value>
+  </data>
+  <data name="TemporaryDeclarationNumber" xml:space="preserve">
+    <value>Declaration Number / Temp. Decl Number</value>
+  </data>
+  <data name="Terms_of_Use1" xml:space="preserve">
+    <value>By login to the application , &lt;br /&gt; it implies that you reviewed and agreed to the</value>
+  </data>
+  <data name="Terms_of_Use2" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Terms_of_Use3" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Terms_of_Use4" xml:space="preserve">
+    <value>These services are trial editions until instructions are issued regulating the use and conditions governing each service and formal procedures to benefit from the service under the eServices agreement</value>
+  </data>
+  <data name="textalign" xml:space="preserve">
+    <value>text-align: left;</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UOM" xml:space="preserve">
+    <value>UOM</value>
+  </data>
+  <data name="updatedSuccess" xml:space="preserve">
+    <value>Successfully updated</value>
+  </data>
+  <data name="uploadDoc" xml:space="preserve">
+    <value>Please upload the documents for the below types</value>
+  </data>
+  <data name="uploadDocuments" xml:space="preserve">
+    <value>Upload Documents</value>
+  </data>
+  <data name="UploadDocument_align_style" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="UploadDocument_B_browse" xml:space="preserve">
+    <value>BROWSE FILE</value>
+  </data>
+  <data name="UploadDocument_B_cancel" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="UploadDocument_B_submit" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="UploadDocument_CompanyNameinArabic" xml:space="preserve">
+    <value>Company Name in Arabic :</value>
+  </data>
+  <data name="UploadDocument_documentformatnote" xml:space="preserve">
+    <value>Only .pdf and .jpg format files are allowed for upload. File size upto 1 MB can be uploaded.</value>
+  </data>
+  <data name="UploadDocument_documentname" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="UploadDocument_documenttype" xml:space="preserve">
+    <value>Select Document Type</value>
+  </data>
+  <data name="UploadDocument_Header" xml:space="preserve">
+    <value>Upload Document</value>
+  </data>
+  <data name="UploadDocument_Header1" xml:space="preserve">
+    <value>Please fill the mandatory information and upload your organization documents.</value>
+  </data>
+  <data name="UploadDocument_POP_cancelbtn" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UploadDocument_POP_OKbtn" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="UploadDocument_POP_RDlist_style" xml:space="preserve">
+    <value>text-align:left;overflow-y: auto !important;</value>
+  </data>
+  <data name="UploadDocument_RequestNumber" xml:space="preserve">
+    <value>Request Number :</value>
+  </data>
+  <data name="UploadMessage" xml:space="preserve">
+    <value>Please fill the mandatory information and upload your organization documents.</value>
+  </data>
+  <data name="uploadminimumonedocument" xml:space="preserve">
+    <value>Please upload minimum one document.</value>
+  </data>
+  <data name="userID" xml:space="preserve">
+    <value>userID</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="userName1" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserRegistration" xml:space="preserve">
+    <value>User Registration</value>
+  </data>
+  <data name="validateYear" xml:space="preserve">
+    <value>Importer License year should be same as issue year</value>
+  </data>
+  <data name="validemail" xml:space="preserve">
+    <value>Please, Write valid email</value>
+  </data>
+  <data name="validpassword" xml:space="preserve">
+    <value>The password should not be less than 8 digits and should contains upper and lower case ,numbers and special characters.</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>Verification</value>
+  </data>
+  <data name="verificationCode" xml:space="preserve">
+    <value>Please enter verification code.</value>
+  </data>
+  <data name="VerificationFail" xml:space="preserve">
+    <value>Verification code mismatching</value>
+  </data>
+  <data name="VerificationMessage" xml:space="preserve">
+    <value>Please enter your valid Email address or Mobile Number we'll send you verification codes to reset your password</value>
+  </data>
+  <data name="VerificationsenttoyourEmail" xml:space="preserve">
+    <value>Verification Code is sent to your Email</value>
+  </data>
+  <data name="Verificationsenttoyourmobile" xml:space="preserve">
+    <value>Verification Code is sent to your Mobile Number</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="verifyEmailID" xml:space="preserve">
+    <value>Please verify your E-mail ID</value>
+  </data>
+  <data name="VisitRemarks" xml:space="preserve">
+    <value>Requesting For Visit Remarks</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="wrongcredentials" xml:space="preserve">
+    <value>Please verify your credentials</value>
+  </data>
+  <data name="WrongOTPPleasetryagain" xml:space="preserve">
+    <value>Wrong OTP, Please try again</value>
+  </data>
+  <data name="wrongUserNamePassword" xml:space="preserve">
+    <value>Wrong User Name or Password !!!</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="OrgReg_OrganizationCode" xml:space="preserve">
+    <value>Company Code</value>
+  </data>
+  <data name="remarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="clearingAgentExamService" xml:space="preserve">
+    <value>Clearing Agent Exam Service</value>
+  </data>
+  <data name="generalBroker" xml:space="preserve">
+    <value>General Broker</value>
+  </data>
+  <data name="generalBrokerInf" xml:space="preserve">
+    <value>General Broker Information</value>
+  </data>
+  <data name="nationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="brokerExamRequestHeader" xml:space="preserve">
+    <value>Please, Fill Required Information, in The Following Form, then Click Send</value>
+  </data>
+  <data name="clearingAgentCancelRequest" xml:space="preserve">
+    <value>Clearing Agent Cancel Request</value>
+  </data>
+  <data name="clearingAgentExamRequest" xml:space="preserve">
+    <value>Clearing Agent Exam Request</value>
+  </data>
+  <data name="commercialRegistrationNo" xml:space="preserve">
+    <value>Commercial Registration No</value>
+  </data>
+  <data name="generalBrokerlicenseNo" xml:space="preserve">
+    <value>General Broker License Number</value>
+  </data>
+  <data name="generalBrokerMobilenumber" xml:space="preserve">
+    <value>General Broker Mobile number</value>
+  </data>
+  <data name="generalBrokerName" xml:space="preserve">
+    <value>General Broker Name</value>
+  </data>
+  <data name="requestType" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
+  <data name="reviewInformationCaption" xml:space="preserve">
+    <value>Please, Review the Information in The Following Form, then Click Send</value>
+  </data>
+  <data name="topPage" xml:space="preserve">
+    <value>Click to return on the top page</value>
+  </data>
+  <data name="ToWhomItMayConcernsRequest" xml:space="preserve">
+    <value>To Whom It May Concern</value>
+  </data>
+  <data name="AccountConfirmationisunderprocessing" xml:space="preserve">
+    <value>Account Confirmation is under processing</value>
+  </data>
+  <data name="AccountStatus" xml:space="preserve">
+    <value>Account Status</value>
+  </data>
+  <data name="Action1" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ActioncannotbeperformedPleasecontactadministrator1" xml:space="preserve">
+    <value>User Account has been Suspended, Please Contact Support</value>
+  </data>
+  <data name="AdditionalInfo1" xml:space="preserve">
+    <value>Additional Info Remarks</value>
+  </data>
+  <data name="AdminUsers" xml:space="preserve">
+    <value>Admin Users</value>
+  </data>
+  <data name="Agree_for11" xml:space="preserve">
+    <value>I certify that all data and documents submitted are correct, without any responsibility on the General Administration of Customs</value>
+  </data>
+  <data name="Agree_for3" xml:space="preserve">
+    <value>Please certify that all data and documents submitted are correct, without any responsibility on the General Administration of Customs</value>
+  </data>
+  <data name="Agree_for2" xml:space="preserve">
+    <value>Agree for</value>
+  </data>
+  <data name="align1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="AlphaNumeric1" xml:space="preserve">
+    <value>Please enter alphabets only</value>
+  </data>
+  <data name="Amount1" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="at1" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="AvailableOrganizations" xml:space="preserve">
+    <value>Available Organizations</value>
+  </data>
+  <data name="AvailableServices" xml:space="preserve">
+    <value>Available Services</value>
+  </data>
+  <data name="Back1" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="btnprint1" xml:space="preserve">
+    <value>PRINT</value>
+  </data>
+  <data name="by1" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="B_AssociateOrganizations1" xml:space="preserve">
+    <value>Associate Organizations</value>
+  </data>
+  <data name="B_Login1" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
+  <data name="B_Signup1" xml:space="preserve">
+    <value>User Registration</value>
+  </data>
+  <data name="B_Submit1" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="Cancel1" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelLicense" xml:space="preserve">
+    <value>Cancel License</value>
+  </data>
+  <data name="CannotprocessPleasecontactadministrator1" xml:space="preserve">
+    <value>Cannot process. Please contact administrator</value>
+  </data>
+  <data name="CannotprocessPleasetryagainlater1" xml:space="preserve">
+    <value>Cannot process. Please try again later</value>
+  </data>
+  <data name="Captcha1" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="CaptchaCode1" xml:space="preserve">
+    <value>Please enter the Captcha Code</value>
+  </data>
+  <data name="Carrier1" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="checkcredentials1" xml:space="preserve">
+    <value>Please check your credentials</value>
+  </data>
+  <data name="ChooseDocName1" xml:space="preserve">
+    <value>Please Choose Document Name</value>
+  </data>
+  <data name="ChooseDOcNameType1" xml:space="preserve">
+    <value>Please Choose Document Type and Document Name</value>
+  </data>
+  <data name="chooseDocType1" xml:space="preserve">
+    <value>Please Choose Document Type</value>
+  </data>
+  <data name="CivilId1" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="CivilIdValid1" xml:space="preserve">
+    <value>Civil Id No. should have 12 digits.</value>
+  </data>
+  <data name="CivilIdValidationFail1" xml:space="preserve">
+    <value>Please enter the valid Civil Id number.</value>
+  </data>
+  <data name="ClearingAgent" xml:space="preserve">
+    <value>Clearing Agent</value>
+  </data>
+  <data name="Code1" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="codeVerification1" xml:space="preserve">
+    <value>Code Verification</value>
+  </data>
+  <data name="Commercial_B_back1" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Commercial_B_next1" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Commercial_CompanyNameinArabic1" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Commercial_Dt_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Commercial_EndDate1" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Commercial_Header1" xml:space="preserve">
+    <value>Commercial Organization</value>
+  </data>
+  <data name="Commercial_IssuanceDate1" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Commercial_LicenseNo1" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="Commercial_LicenseNumber1" xml:space="preserve">
+    <value>Commercial License Number</value>
+  </data>
+  <data name="Commercial_Licensetype1" xml:space="preserve">
+    <value>Commercial License Type</value>
+  </data>
+  <data name="Commercial_RB_Corporation1" xml:space="preserve">
+    <value>Corporation</value>
+  </data>
+  <data name="Commercial_RB_Industrial1" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="Commercial_RB_Personal1" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Commercial_RD_style1" xml:space="preserve">
+    <value>radio inline</value>
+  </data>
+  <data name="Commercial_RequestNumber1" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Commercial_selectsubtype1" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Commercial_year1" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="companynamearabic1" xml:space="preserve">
+    <value>Please enter company name in arabic</value>
+  </data>
+  <data name="companynameinenglish1" xml:space="preserve">
+    <value>Please enter company name in english.</value>
+  </data>
+  <data name="CompanyRegistrationMsg1" xml:space="preserve">
+    <value>The company registration process is subject to the regulations and the rules regulating it and as determined by the General Administration of Customs.</value>
+  </data>
+  <data name="completelicensedetails1" xml:space="preserve">
+    <value>Please enter complete license details.</value>
+  </data>
+  <data name="ConfirmPassword1" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Consignee1" xml:space="preserve">
+    <value>Consignee</value>
+  </data>
+  <data name="ConsigneeName1" xml:space="preserve">
+    <value>Consignee Name</value>
+  </data>
+  <data name="ConsolidatedShipment1" xml:space="preserve">
+    <value>Consolidated Shipment</value>
+  </data>
+  <data name="databind_class1" xml:space="preserve">
+    <value>card card1</value>
+  </data>
+  <data name="DateFormat1" xml:space="preserve">
+    <value>Please enter valid Date Format</value>
+  </data>
+  <data name="DeActivate" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="DeclarationNumber1" xml:space="preserve">
+    <value>Declaration Number</value>
+  </data>
+  <data name="DeclarationSearch1" xml:space="preserve">
+    <value>Declaration Search</value>
+  </data>
+  <data name="Declarationtype1" xml:space="preserve">
+    <value>Declaration type</value>
+  </data>
+  <data name="DeleteRequest1" xml:space="preserve">
+    <value>Are you sure, you want to Permanently Delete this request? </value>
+  </data>
+  <data name="DeliveryorderNumber1" xml:space="preserve">
+    <value>Delivery Order Number</value>
+  </data>
+  <data name="Denied1" xml:space="preserve">
+    <value>Denied</value>
+  </data>
+  <data name="Deposits1" xml:space="preserve">
+    <value>Deposits</value>
+  </data>
+  <data name="Description1" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DestinationCountry1" xml:space="preserve">
+    <value>Destination Country</value>
+  </data>
+  <data name="div_direction1" xml:space="preserve">
+    <value>direction:ltr</value>
+  </data>
+  <data name="Duties1" xml:space="preserve">
+    <value>Duties</value>
+  </data>
+  <data name="Dutieslist1" xml:space="preserve">
+    <value>Duties list</value>
+  </data>
+  <data name="DutyID1" xml:space="preserve">
+    <value>DutyID</value>
+  </data>
+  <data name="DutyName1" xml:space="preserve">
+    <value>DutyName</value>
+  </data>
+  <data name="Email1" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="emailCode1" xml:space="preserve">
+    <value>Email Verification Code</value>
+  </data>
+  <data name="EmailCodeMandatory1" xml:space="preserve">
+    <value>Enter Email Verification code</value>
+  </data>
+  <data name="emailExist1" xml:space="preserve">
+    <value>Given Email ID is already registered with us.</value>
+  </data>
+  <data name="Emailidisnotavailble1" xml:space="preserve">
+    <value>EmailID is not available</value>
+  </data>
+  <data name="EmailIdMobileNumberverificationpending1" xml:space="preserve">
+    <value>Email Id / Mobile Number verification is pending</value>
+  </data>
+  <data name="EmailIdorMobileNumber1" xml:space="preserve">
+    <value>Email-Id or Mobile Number</value>
+  </data>
+  <data name="EmailMobileCode1" xml:space="preserve">
+    <value>Email Verification Code or Mobile Verification Code</value>
+  </data>
+  <data name="EnterCaptcha1" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="EntercorrectCaptcha1" xml:space="preserve">
+    <value>Enter correct Captcha</value>
+  </data>
+  <data name="EnterMobileEmail1" xml:space="preserve">
+    <value>Please enter Company  Email ID </value>
+  </data>
+  <data name="enterPassword1" xml:space="preserve">
+    <value>Please enter password</value>
+  </data>
+  <data name="EnterTexttoSearch1" xml:space="preserve">
+    <value>Enter text to search</value>
+  </data>
+  <data name="EntertheCaptcha" xml:space="preserve">
+    <value>Enter the Captcha</value>
+  </data>
+  <data name="Enterthecharactershownabove" xml:space="preserve">
+    <value>Enter the character shown above</value>
+  </data>
+  <data name="EPayment1" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="EPaymentRequests1" xml:space="preserve">
+    <value>E-Payment Requests</value>
+  </data>
+  <data name="Epayment_Header1" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="Epayment_RequestNumber1" xml:space="preserve">
+    <value>Request Number :</value>
+  </data>
+  <data name="error1" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ExportCountry1" xml:space="preserve">
+    <value>Export Country</value>
+  </data>
+  <data name="FirstName1" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FirstNamerDA" xml:space="preserve">
+    <value>Please enter the First Name</value>
+  </data>
+  <data name="For1" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="ForgotPassword1" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Forgot_B_generateotpbutton1" xml:space="preserve">
+    <value>Generate OTP</value>
+  </data>
+  <data name="Forgot_B_resetpwd1" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Forgot_B_rgpwd1" xml:space="preserve">
+    <value>Regenerate OTP</value>
+  </data>
+  <data name="Forgot_header11" xml:space="preserve">
+    <value>Please enter your valid Email address or Mobile Number we'll send you verification codes to reset your password</value>
+  </data>
+  <data name="Forgot_header2" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Forgot_input1" xml:space="preserve">
+    <value>Email-Id </value>
+    <comment>Email-Id or Mobile Number</comment>
+  </data>
+  <data name="Forgot_input21" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="Forgot_inputcode1" xml:space="preserve">
+    <value>Email Verification Code</value>
+    <comment>Email Verification Code</comment>
+  </data>
+  <data name="Forgot_inputcpwd1" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Forgot_inputnewpwd1" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="GenerateOTP1" xml:space="preserve">
+    <value>Generate OTP</value>
+  </data>
+  <data name="Header_withoutmenu11" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #BD3B2E;display: none;</value>
+  </data>
+  <data name="Header_withoutmenu2" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #BD3B2E;display: block;</value>
+  </data>
+  <data name="Home_Header1" xml:space="preserve">
+    <value>My Organizations</value>
+  </data>
+  <data name="HousebillAutoNumber1" xml:space="preserve">
+    <value>Housebill Auto Number</value>
+  </data>
+  <data name="HousebillNumber1" xml:space="preserve">
+    <value>Housebill Number</value>
+  </data>
+  <data name="HousebillSearch1" xml:space="preserve">
+    <value>Housebill Search</value>
+  </data>
+  <data name="HSCode1" xml:space="preserve">
+    <value>HSCode</value>
+  </data>
+  <data name="HSCodeSearch1" xml:space="preserve">
+    <value>HSCode Search</value>
+  </data>
+  <data name="ImporterDetails1" xml:space="preserve">
+    <value>Importer Details</value>
+  </data>
+  <data name="Importer_B_back1" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Importer_B_next1" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Importer_CompanyNameinArabic1" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Importer_Dt_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Importer_EndDate1" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Importer_Header1" xml:space="preserve">
+    <value>Importer Details</value>
+  </data>
+  <data name="Importer_IssuanceDate1" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Importer_LicenseNo1" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="Importer_LicenseNumber1" xml:space="preserve">
+    <value>Importer License Number</value>
+  </data>
+  <data name="Importer_Licensetype1" xml:space="preserve">
+    <value>Importer License Type</value>
+  </data>
+  <data name="Importer_RB_permanent1" xml:space="preserve">
+    <value>Permanent</value>
+  </data>
+  <data name="Importer_RB_temporary1" xml:space="preserve">
+    <value>Temporary</value>
+  </data>
+  <data name="Importer_RD_style1" xml:space="preserve">
+    <value>radio inline</value>
+  </data>
+  <data name="Importer_RequestNumber1" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Industrial_B_back1" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Industrial_B_next1" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Industrial_CompanyNameinArabic1" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Industrial_Dt_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Industrial_EndDate1" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Industrial_Header1" xml:space="preserve">
+    <value>Industrial Organization</value>
+  </data>
+  <data name="Industrial_IssuanceDate11" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Industrial_IssuanceDate2" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Industrial_LicenseNumber1" xml:space="preserve">
+    <value>Industrial License Number</value>
+  </data>
+  <data name="Industrial_RegNo1" xml:space="preserve">
+    <value>Industrial Registration Number</value>
+  </data>
+  <data name="Industrial_RequestNumber1" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Is1" xml:space="preserve">
+    <value>is</value>
+  </data>
+  <data name="IssuancegreaterthanEnddate1" xml:space="preserve">
+    <value>Issuance Date should not be greater than End date.</value>
+  </data>
+  <data name="KGACOnlinePayment1" xml:space="preserve">
+    <value>KGAC Online Payment</value>
+  </data>
+  <data name="KNETOnlinePayment1" xml:space="preserve">
+    <value>Please do not close or refresh this page as we proceed to KNET Online Payment!</value>
+  </data>
+  <data name="kuwait1" xml:space="preserve">
+    <value>kuwait</value>
+  </data>
+  <data name="KuwaitCustoms1" xml:space="preserve">
+    <value>Kuwait Customs eServices</value>
+  </data>
+  <data name="LastName1" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LastNamerDA" xml:space="preserve">
+    <value>Please enter the Last Name</value>
+  </data>
+  <data name="LegalEntity" xml:space="preserve">
+    <value>Legal Entity</value>
+  </data>
+  <data name="LicenseFieldCannotbeempty1" xml:space="preserve">
+    <value>License Field Can not be empty</value>
+  </data>
+  <data name="Licenselessthandigits1" xml:space="preserve">
+    <value>License number should not be less than 3 digits</value>
+  </data>
+  <data name="Licenselessthandigits41" xml:space="preserve">
+    <value>License number should not be less than 4 digits</value>
+  </data>
+  <data name="LicenseNO1" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="LicenseNumber" xml:space="preserve">
+    <value>Licence Number</value>
+  </data>
+  <data name="ListofAdminUsers" xml:space="preserve">
+    <value>List of Admin Users</value>
+  </data>
+  <data name="ListofAvailableOrganizations" xml:space="preserve">
+    <value>List of Available Organizations</value>
+  </data>
+  <data name="LocalDescription1" xml:space="preserve">
+    <value>Local Description</value>
+  </data>
+  <data name="Login2" xml:space="preserve">
+    <value>LogIn</value>
+  </data>
+  <data name="loginwithyourcredentials1" xml:space="preserve">
+    <value>The code has been successfully verified, thank you, please log in using your credentials to complete the registration application</value>
+  </data>
+  <data name="Logo11" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logo2" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logout2" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="L_term_of_use_style11" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="L_term_of_use_style21" xml:space="preserve">
+    <value>margin-left:100px;</value>
+  </data>
+  <data name="L_term_of_use_style3" xml:space="preserve">
+    <value>margin-left:100px;width:200px</value>
+  </data>
+  <data name="Menu11" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Menu21" xml:space="preserve">
+    <value>My Organizations</value>
+  </data>
+  <data name="Menu31" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="Menu41" xml:space="preserve">
+    <value>E-Payment</value>
+  </data>
+  <data name="Menu51" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MenuHeader_cssclass11" xml:space="preserve">
+    <value>topnav-right</value>
+  </data>
+  <data name="MenuHeader_cssclass21" xml:space="preserve">
+    <value>num</value>
+  </data>
+  <data name="MenuHeader_cssclass3" xml:space="preserve">
+    <value>topnav</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification11" xml:space="preserve">
+    <value>glyphicon glyphicon-bell</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification2" xml:space="preserve">
+    <value>glyphicon glyphicon-bell notification-icon</value>
+  </data>
+  <data name="MenuHeader_notifycssclass11" xml:space="preserve">
+    <value>closebtn</value>
+  </data>
+  <data name="MenuHeader_notifycssclass2" xml:space="preserve">
+    <value>notifyheader</value>
+  </data>
+  <data name="MenuHeader_notifyHeader1" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="MenuHeader_style11" xml:space="preserve">
+    <value>padding-left:20px;</value>
+  </data>
+  <data name="MenuHeader_Style2" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #f53d3d;height:40px;line-height:40px</value>
+  </data>
+  <data name="menuiconstyle1" xml:space="preserve">
+    <value>padding-left: 10px;padding-right:16px;top: 3px;</value>
+  </data>
+  <data name="Menu_style11" xml:space="preserve">
+    <value>background-color:brown;text-align:left;color:white;font-weight: normal;</value>
+  </data>
+  <data name="Menu_style2" xml:space="preserve">
+    <value>menunew menunew-style</value>
+  </data>
+  <data name="MobileCode1" xml:space="preserve">
+    <value>Mobile Verification Code</value>
+  </data>
+  <data name="MobileCodeMandatory1" xml:space="preserve">
+    <value>Enter Mobile Verification Code</value>
+  </data>
+  <data name="MobileNumber2" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="MobileNumberDA" xml:space="preserve">
+    <value>Please enter the Mobile Number</value>
+  </data>
+  <data name="MobileVerified1" xml:space="preserve">
+    <value>Your New Mobile Number verified Successfully</value>
+  </data>
+  <data name="Multipleinvalidpassword1" xml:space="preserve">
+    <value>Multiple invalid login attempts made. Please change your password</value>
+  </data>
+  <data name="MyAccount1" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="Name1" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewPassword1" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="NoPaymentRequests1" xml:space="preserve">
+    <value>No Payment Requests</value>
+  </data>
+  <data name="noRecordsFound1" xml:space="preserve">
+    <value>No Records Found</value>
+  </data>
+  <data name="Norequestatthemoment1" xml:space="preserve">
+    <value>No request at the moment</value>
+  </data>
+  <data name="Notifications2" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="notifications_style1" xml:space="preserve">
+    <value>Notification Notification1</value>
+  </data>
+  <data name="notsuccessfull1" xml:space="preserve">
+    <value>Not Successful</value>
+  </data>
+  <data name="Ok1" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="onefieldtogetpasswordrecovery1" xml:space="preserve">
+    <value>Enter any one field to get password recovery</value>
+  </data>
+  <data name="OnlinePaymentConfirmation1" xml:space="preserve">
+    <value>Online Payment Confirmation</value>
+  </data>
+  <data name="OnlyPDFJPG1" xml:space="preserve">
+    <value>Only .pdf and .jpg format files are allowed for upload. File size upto 1 MB can be uploaded.</value>
+  </data>
+  <data name="OR1" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="OrganisationsRequestStatus1" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OrganizationEmailpending1" xml:space="preserve">
+    <value>Organization’s Email verification is pending</value>
+  </data>
+  <data name="OrganizationName" xml:space="preserve">
+    <value>Organization Name</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfully1" xml:space="preserve">
+    <value>Organization Registration Completed successfully</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfullyNew1" xml:space="preserve">
+    <value>Please print the form and review with the project team at the General Administration of Customs Shuwaikh area (3) enclosed with all the documents that were uploaded during the registration process</value>
+  </data>
+  <data name="OrgReg_Address1" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="OrgReg_AuthorizedPerson1" xml:space="preserve">
+    <value>Authorized Person</value>
+  </data>
+  <data name="OrgReg_BusinessFaxNumber1" xml:space="preserve">
+    <value>Business Fax Number</value>
+  </data>
+  <data name="OrgReg_BusinessNumber1" xml:space="preserve">
+    <value>Business Number</value>
+  </data>
+  <data name="OrgReg_B_Next1" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="OrgReg_City1" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="OrgReg_CivilId1" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="OrgReg_CompanyName1" xml:space="preserve">
+    <value>Company Name in English</value>
+  </data>
+  <data name="OrgReg_CompanyNameinArabic1" xml:space="preserve">
+    <value>Company Name in Arabic</value>
+  </data>
+  <data name="OrgReg_EmailID1" xml:space="preserve">
+    <value>Email ID</value>
+  </data>
+  <data name="OrgReg_Header11" xml:space="preserve">
+    <value>The company registration process is subject to the regulations and the rules regulating it and as determined by the General Administration of Customs.</value>
+  </data>
+  <data name="OrgReg_Header2" xml:space="preserve">
+    <value>Organization Registration</value>
+  </data>
+  <data name="OrgReg_Industrial1" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="OrgReg_Industrial_style11" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="OrgReg_Industrial_style21" xml:space="preserve">
+    <value>margin-left:100px;</value>
+  </data>
+  <data name="OrgReg_Kuwait1" xml:space="preserve">
+    <value>Kuwait</value>
+  </data>
+  <data name="OrgReg_MobileNumber1" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="OrgReg_POBoxNo1" xml:space="preserve">
+    <value>P.O. Box No.</value>
+  </data>
+  <data name="OrgReg_PostalCode1" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="OrgReg_ResidenceNumber1" xml:space="preserve">
+    <value>Residence Number</value>
+  </data>
+  <data name="OrgReg_State1" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="OrgReg_Tradelicenceno1" xml:space="preserve">
+    <value>Trading license No.</value>
+  </data>
+  <data name="OrgReg_WebPageAddress1" xml:space="preserve">
+    <value>Web Page Address</value>
+  </data>
+  <data name="OrgStatus_header1" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="OrgStatus_OrganizationName1" xml:space="preserve">
+    <value>Organization Name:</value>
+  </data>
+  <data name="OrgStatus_RequestNumber1" xml:space="preserve">
+    <value>Request Number:</value>
+  </data>
+  <data name="Password2" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Passwordsarenotmatching1" xml:space="preserve">
+    <value>The password does not match</value>
+  </data>
+  <data name="paymentdeclined1" xml:space="preserve">
+    <value>Payment Declined</value>
+  </data>
+  <data name="PendingEmailIdVerification1" xml:space="preserve">
+    <value>Email Id verification will be pending. Do you want to proceed for Mobile verification?</value>
+  </data>
+  <data name="PendingMobileVerification1" xml:space="preserve">
+    <value>Mobile verification will be pending. Do you want to proceed for Email Id verification?</value>
+  </data>
+  <data name="PermissionAuthority1" xml:space="preserve">
+    <value>Permission/Release Authority</value>
+  </data>
+  <data name="PleaseEntertheCorrectCaptcha" xml:space="preserve">
+    <value>Please enter the correct Captcha</value>
+  </data>
+  <data name="PleaseselectaLegalEntity" xml:space="preserve">
+    <value>Please select a Legal Entity</value>
+  </data>
+  <data name="PleaseSelectatleastOneOrganization" xml:space="preserve">
+    <value>Please Select atleast One Organization</value>
+  </data>
+  <data name="PleaseSelectAtleastOneServices" xml:space="preserve">
+    <value>Please select atleast one service</value>
+  </data>
+  <data name="Pleasetryagainlater" xml:space="preserve">
+    <value>Please try again later</value>
+  </data>
+  <data name="PleaseWait1" xml:space="preserve">
+    <value>Please Wait</value>
+  </data>
+  <data name="print1" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Proceed1" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
+  <data name="ProcessincompleteinRegistration" xml:space="preserve">
+    <value>Process incomplete in Registration</value>
+  </data>
+  <data name="ProfileInfo1" xml:space="preserve">
+    <value>Profile and contact information</value>
+  </data>
+  <data name="ProvideMobileOTP1" xml:space="preserve">
+    <value>Please provide the OTP sent to your new Mobile No. to complete the verification process</value>
+  </data>
+  <data name="ProvideRealInfo1" xml:space="preserve">
+    <value>Please provide real and correct information, including contact information</value>
+  </data>
+  <data name="Quantity1" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Quickreference1" xml:space="preserve">
+    <value>Quick reference</value>
+  </data>
+  <data name="Readtermsconditions1" xml:space="preserve">
+    <value>Read the terms and conditions</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="RegenerateOTP1" xml:space="preserve">
+    <value>Regenerate OTP</value>
+  </data>
+  <data name="Register1" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration_Title11" xml:space="preserve">
+    <value>Profile and contact information</value>
+  </data>
+  <data name="Registration_Title21" xml:space="preserve">
+    <value>Please provide real and correct information, including contact information</value>
+  </data>
+  <data name="Registration_Title3" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="RejectionReason1" xml:space="preserve">
+    <value>Rejection Reason</value>
+  </data>
+  <data name="RememberMe1" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="ReqNotDeleted1" xml:space="preserve">
+    <value>This request cannot be deleted, Under reviewer process</value>
+  </data>
+  <data name="Requestnotavailable1" xml:space="preserve">
+    <value>Request not available for view/pay</value>
+  </data>
+  <data name="RequestsList2" xml:space="preserve">
+    <value>Requests List</value>
+  </data>
+  <data name="RequesttoIssueNewIdentityCard" xml:space="preserve">
+    <value>Request to Issue New Identity Card</value>
+  </data>
+  <data name="RequesttoTransferBroker" xml:space="preserve">
+    <value>Request to Transfer Broker</value>
+  </data>
+  <data name="ResendMail1" xml:space="preserve">
+    <value>Re-Send Email Verification Code</value>
+  </data>
+  <data name="ResendMobile1" xml:space="preserve">
+    <value>Re-Send Mobile Verification Code</value>
+  </data>
+  <data name="ResetPassword1" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Restrictionlevel1" xml:space="preserve">
+    <value>Restriction level</value>
+  </data>
+  <data name="RestrictionsProhibitions1" xml:space="preserve">
+    <value>Restrictions and Prohibitions</value>
+  </data>
+  <data name="RestrictsType_C1" xml:space="preserve">
+    <value>Chapter</value>
+  </data>
+  <data name="RestrictsType_E1" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="RestrictsType_H1" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="RestrictsType_I1" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="RestrictsType_P1" xml:space="preserve">
+    <value>Prohibited</value>
+  </data>
+  <data name="RestrictsType_R1" xml:space="preserve">
+    <value>Restricted</value>
+  </data>
+  <data name="RestrictsType_T1" xml:space="preserve">
+    <value>TariffItem</value>
+  </data>
+  <data name="Resultnotfound1" xml:space="preserve">
+    <value>Result not found</value>
+  </data>
+  <data name="RewritePassword1" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Save2" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveVerify1" xml:space="preserve">
+    <value>Save &amp; Verify</value>
+  </data>
+  <data name="Search2" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchBy1" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="SearchType1" xml:space="preserve">
+    <value>Search Type</value>
+  </data>
+  <data name="SelectDocumentType1" xml:space="preserve">
+    <value>Select Document Type</value>
+  </data>
+  <data name="SelectOption1" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Send1" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Servernotresponding1" xml:space="preserve">
+    <value>Server not responding, Please try again later.</value>
+  </data>
+  <data name="ServiceName" xml:space="preserve">
+    <value>Service Name</value>
+  </data>
+  <data name="Sessionexpired1" xml:space="preserve">
+    <value>Your session got expired, Please Login again.</value>
+  </data>
+  <data name="ShortDescription1" xml:space="preserve">
+    <value>Short Description</value>
+  </data>
+  <data name="SignUp1" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="SignUpFailedMessage1" xml:space="preserve">
+    <value>Message will send to your Email address and to your Mobile Number, please verify your Email and Mobile Number to complete the registration process</value>
+  </data>
+  <data name="SignUPTermeConditions1" xml:space="preserve">
+    <value>You have to agree with the terms and conditions</value>
+  </data>
+  <data name="Someerrorhasoccured" xml:space="preserve">
+    <value>Some error has occured</value>
+  </data>
+  <data name="Someissuehasoccured" xml:space="preserve">
+    <value>Some issue has occured</value>
+  </data>
+  <data name="somethingwentwrong1" xml:space="preserve">
+    <value>Something went wrong, Please try again later.</value>
+  </data>
+  <data name="Started1" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="Status2" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SubEpayment_B_back1" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="SubEpayment_B_decline1" xml:space="preserve">
+    <value>DECLINE</value>
+  </data>
+  <data name="SubEpayment_B_pay1" xml:space="preserve">
+    <value>PAY</value>
+  </data>
+  <data name="SubEpayment_Certificates1" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="SubEpayment_Customsaccount1" xml:space="preserve">
+    <value>Customs Account</value>
+  </data>
+  <data name="SubEpayment_CustomsDuty1" xml:space="preserve">
+    <value>Customs Duty</value>
+  </data>
+  <data name="SubEpayment_DutyAmount1" xml:space="preserve">
+    <value>Duty Amount</value>
+  </data>
+  <data name="SubEpayment_Guarantees1" xml:space="preserve">
+    <value>Guarantees</value>
+  </data>
+  <data name="SubEpayment_HandlingCharges1" xml:space="preserve">
+    <value>Handling Charges</value>
+  </data>
+  <data name="SubEpayment_Header11" xml:space="preserve">
+    <value>E-Payment Requests</value>
+  </data>
+  <data name="SubEpayment_Header2" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptDt1" xml:space="preserve">
+    <value>Online Receipt Date/Time</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptNo1" xml:space="preserve">
+    <value>Online Receipt No.</value>
+  </data>
+  <data name="SubEpayment_Others1" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="SubEpayment_payby1" xml:space="preserve">
+    <value>Paid By</value>
+  </data>
+  <data name="SubEpayment_PayFor1" xml:space="preserve">
+    <value>Pay For</value>
+  </data>
+  <data name="SubEpayment_PaymentID1" xml:space="preserve">
+    <value>Payment ID</value>
+  </data>
+  <data name="SubEpayment_paymethod1" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+  <data name="SubEpayment_Paytype1" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
+  <data name="SubEpayment_Penalties1" xml:space="preserve">
+    <value>Penalties</value>
+  </data>
+  <data name="SubEpayment_Printing1" xml:space="preserve">
+    <value>Printing</value>
+  </data>
+  <data name="SubEpayment_Status1" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SubEpayment_Storage1" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="SubEpayment_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="SubEpayment_totalamount1" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="success1" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="TempDeclNo1" xml:space="preserve">
+    <value>Temp Decl. No</value>
+  </data>
+  <data name="TempDeclNumber1" xml:space="preserve">
+    <value>Temp. Declaration Number</value>
+  </data>
+  <data name="TemporaryDeclarationNumber1" xml:space="preserve">
+    <value>Declaration Number / Temp. Decl Number</value>
+  </data>
+  <data name="Terms_of_Use11" xml:space="preserve">
+    <value>By login to the application, it implies that you reviewed and agreed to the</value>
+  </data>
+  <data name="Terms_of_Use21" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Terms_of_Use31" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Terms_of_Use41" xml:space="preserve">
+    <value>These services are trial editions until instructions are issued regulating the use and conditions governing each service and formal procedures to benefit from the service under the eServices agreement</value>
+  </data>
+  <data name="textalign1" xml:space="preserve">
+    <value>text-align: left;</value>
+  </data>
+  <data name="To1" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="Type1" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UnknownStatusinRegistration" xml:space="preserve">
+    <value>Unknown Status in Registration</value>
+  </data>
+  <data name="UOM1" xml:space="preserve">
+    <value>UOM</value>
+  </data>
+  <data name="updatedSuccess1" xml:space="preserve">
+    <value>Successfully updated</value>
+  </data>
+  <data name="uploadDoc1" xml:space="preserve">
+    <value>Please upload the documents for the below types</value>
+  </data>
+  <data name="UploadDocument_align_style1" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="UploadDocument_B_browse1" xml:space="preserve">
+    <value>BROWSE FILE</value>
+  </data>
+  <data name="UploadDocument_B_cancel1" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="UploadDocument_B_submit1" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="UploadDocument_CompanyNameinArabic1" xml:space="preserve">
+    <value>Company Name in Arabic :</value>
+  </data>
+  <data name="UploadDocument_documentformatnote1" xml:space="preserve">
+    <value>Only .pdf and .jpg format files are allowed for upload. File size upto 1 MB can be uploaded.</value>
+  </data>
+  <data name="UploadDocument_documentname1" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="UploadDocument_documenttype1" xml:space="preserve">
+    <value>Select Document Type</value>
+  </data>
+  <data name="UploadDocument_Header11" xml:space="preserve">
+    <value>Please fill the mandatory information and upload your organization documents.</value>
+  </data>
+  <data name="UploadDocument_Header2" xml:space="preserve">
+    <value>Upload Document</value>
+  </data>
+  <data name="UploadDocument_POP_cancelbtn1" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UploadDocument_POP_OKbtn1" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="UploadDocument_POP_RDlist_style1" xml:space="preserve">
+    <value>text-align:left;overflow-y: auto !important;</value>
+  </data>
+  <data name="UploadDocument_RequestNumber1" xml:space="preserve">
+    <value>Request Number :</value>
+  </data>
+  <data name="UploadMessage1" xml:space="preserve">
+    <value>Please fill the mandatory information and upload your organization documents.</value>
+  </data>
+  <data name="uploadminimumonedocument1" xml:space="preserve">
+    <value>Please upload minimum one document.</value>
+  </data>
+  <data name="Userdoesnotexist" xml:space="preserve">
+    <value>Please enter a valid username or password !!!</value>
+  </data>
+  <data name="InValidUsername" xml:space="preserve">
+    <value>Please enter a valid username!!!</value>
+  </data>
+  <data name="Userhasbeendeactivated" xml:space="preserve">
+    <value>User has been Deleted Successfully</value>
+  </data>
+  <data name="UserName2" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserRegistration1" xml:space="preserve">
+    <value>User Registration</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="validateYear1" xml:space="preserve">
+    <value>Please enter valid Year(yyyy Format).</value>
+  </data>
+  <data name="validemail1" xml:space="preserve">
+    <value>Enter valid email</value>
+  </data>
+  <data name="validpassword1" xml:space="preserve">
+    <value>The password should not be less than 8 digits and should contains upper and lower case and numbers.</value>
+  </data>
+  <data name="Verification1" xml:space="preserve">
+    <value>Verification</value>
+  </data>
+  <data name="verificationCode1" xml:space="preserve">
+    <value>Please enter verification code.</value>
+  </data>
+  <data name="VerificationFail1" xml:space="preserve">
+    <value>Verification code mismatching</value>
+  </data>
+  <data name="VerificationMessage1" xml:space="preserve">
+    <value>Please enter your valid Email address or Mobile Number we'll send you verification codes to reset your password</value>
+  </data>
+  <data name="VerificationsenttoyourEmail1" xml:space="preserve">
+    <value>Verification Code is sent to your Email</value>
+  </data>
+  <data name="Verificationsenttoyourmobile1" xml:space="preserve">
+    <value>Verification Code is sent to your Mobile Number</value>
+  </data>
+  <data name="Verify1" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="verifyEmailID1" xml:space="preserve">
+    <value>Please verify your E-mail ID</value>
+  </data>
+  <data name="VisitRemarks1" xml:space="preserve">
+    <value>Requesting For Visit Remarks</value>
+  </data>
+  <data name="Weight1" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="wrongcredentials1" xml:space="preserve">
+    <value>Please verify your credentials</value>
+  </data>
+  <data name="WrongSMSOTPPleasetryagain" xml:space="preserve">
+    <value>Wrong Mobile OTP, Please try again</value>
+  </data>
+  <data name="WrongOTPPleasetryagain1" xml:space="preserve">
+    <value>Wrong OTP, Please try again</value>
+  </data>
+  <data name="Year1" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="AccountConfirmationisunderprocessing1" xml:space="preserve">
+    <value>Account Confirmation is under processing</value>
+  </data>
+  <data name="AccountStatus1" xml:space="preserve">
+    <value>Account Status</value>
+  </data>
+  <data name="Action2" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ActioncannotbeperformedPleasecontactadministrator2" xml:space="preserve">
+    <value>User Account has been Suspended, Please Contact Support</value>
+  </data>
+  <data name="AdditionalInfo2" xml:space="preserve">
+    <value>Additional Info Remarks</value>
+  </data>
+  <data name="AdminUsers1" xml:space="preserve">
+    <value>Admin Users</value>
+  </data>
+  <data name="Agree_for12" xml:space="preserve">
+    <value>Terms and conditions</value>
+  </data>
+  <data name="align2" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="AlphaNumeric2" xml:space="preserve">
+    <value>Please enter alphabets only</value>
+  </data>
+  <data name="Amount2" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="at2" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="AvailableOrganizations1" xml:space="preserve">
+    <value>Available Organizations</value>
+  </data>
+  <data name="AvailableServices1" xml:space="preserve">
+    <value>My Services</value>
+  </data>
+  <data name="Back2" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="btnprint2" xml:space="preserve">
+    <value>PRINT</value>
+  </data>
+  <data name="by2" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="B_AssociateOrganizations2" xml:space="preserve">
+    <value>Associate Organizations</value>
+  </data>
+  <data name="B_Login2" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
+  <data name="B_Signup2" xml:space="preserve">
+    <value>User Registration</value>
+  </data>
+  <data name="B_Submit2" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="Cancel2" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelLicense1" xml:space="preserve">
+    <value>Cancel License</value>
+  </data>
+  <data name="CannotprocessPleasecontactadministrator2" xml:space="preserve">
+    <value>Cannot process. Please contact administrator</value>
+  </data>
+  <data name="CannotprocessPleasetryagainlater2" xml:space="preserve">
+    <value>Cannot process. Please try again later</value>
+  </data>
+  <data name="Captcha2" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="CaptchaCode2" xml:space="preserve">
+    <value>Please enter the Captcha Code</value>
+  </data>
+  <data name="Carrier2" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="checkcredentials2" xml:space="preserve">
+    <value>Please check your credentials</value>
+  </data>
+  <data name="ChooseDocName2" xml:space="preserve">
+    <value>Please Choose Document Name</value>
+  </data>
+  <data name="ChooseDOcNameType2" xml:space="preserve">
+    <value>Please Choose Document Type and Document Name</value>
+  </data>
+  <data name="chooseDocType2" xml:space="preserve">
+    <value>Please Choose Document Type</value>
+  </data>
+  <data name="CivilId2" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="CivilIdValid2" xml:space="preserve">
+    <value>Civil Id No. should have 12 digits.</value>
+  </data>
+  <data name="CivilIdValidationFail2" xml:space="preserve">
+    <value>Please enter the valid Civil Id number.</value>
+  </data>
+  <data name="ClearingAgent1" xml:space="preserve">
+    <value>Clearing Agent</value>
+  </data>
+  <data name="Code2" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="codeVerification2" xml:space="preserve">
+    <value>Code Verification</value>
+  </data>
+  <data name="Commercial_B_back2" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Commercial_B_next2" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Commercial_CompanyNameinArabic2" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Commercial_Dt_style2" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Commercial_EndDate2" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Commercial_Header2" xml:space="preserve">
+    <value>Commercial Organization</value>
+  </data>
+  <data name="Commercial_IssuanceDate2" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Commercial_LicenseNo2" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="Commercial_LicenseNumber2" xml:space="preserve">
+    <value>Commercial License Number</value>
+  </data>
+  <data name="Commercial_Licensetype2" xml:space="preserve">
+    <value>Commercial License Type</value>
+  </data>
+  <data name="Commercial_RB_Corporation2" xml:space="preserve">
+    <value>Corporation</value>
+  </data>
+  <data name="Commercial_RB_Industrial2" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="Commercial_RB_Personal2" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Commercial_RD_style2" xml:space="preserve">
+    <value>radio inline</value>
+  </data>
+  <data name="Commercial_RequestNumber2" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Commercial_selectsubtype2" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Commercial_year2" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="companynamearabic2" xml:space="preserve">
+    <value>Please enter company name in arabic</value>
+  </data>
+  <data name="companynameinenglish2" xml:space="preserve">
+    <value>Please enter company name in english.</value>
+  </data>
+  <data name="CompanyRegistrationMsg2" xml:space="preserve">
+    <value>The company registration process is subject to the regulations and the rules regulating it and as determined by the General Administration of Customs.</value>
+  </data>
+  <data name="completelicensedetails2" xml:space="preserve">
+    <value>Please enter complete license details.</value>
+  </data>
+  <data name="ConfirmPassword2" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Consignee2" xml:space="preserve">
+    <value>Consignee</value>
+  </data>
+  <data name="ConsigneeName2" xml:space="preserve">
+    <value>Consignee Name</value>
+  </data>
+  <data name="ConsolidatedShipment2" xml:space="preserve">
+    <value>Consolidated Shipment</value>
+  </data>
+  <data name="databind_class2" xml:space="preserve">
+    <value>card card1</value>
+  </data>
+  <data name="DateFormat2" xml:space="preserve">
+    <value>Please enter valid Date Format</value>
+  </data>
+  <data name="DeActivate1" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="DeclarationNumber2" xml:space="preserve">
+    <value>Declaration Number</value>
+  </data>
+  <data name="DeclarationSearch2" xml:space="preserve">
+    <value>Declaration Search</value>
+  </data>
+  <data name="Declarationtype2" xml:space="preserve">
+    <value>Declaration type</value>
+  </data>
+  <data name="DeleteRequest2" xml:space="preserve">
+    <value>Are you sure, you want to delete organization request?</value>
+  </data>
+  <data name="DeliveryorderNumber2" xml:space="preserve">
+    <value>Delivery Order Number</value>
+  </data>
+  <data name="Denied2" xml:space="preserve">
+    <value>Denied</value>
+  </data>
+  <data name="Deposits2" xml:space="preserve">
+    <value>Deposits</value>
+  </data>
+  <data name="Description2" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DestinationCountry2" xml:space="preserve">
+    <value>Destination Country</value>
+  </data>
+  <data name="div_direction2" xml:space="preserve">
+    <value>direction:ltr</value>
+  </data>
+  <data name="Duties2" xml:space="preserve">
+    <value>Duties</value>
+  </data>
+  <data name="Dutieslist2" xml:space="preserve">
+    <value>Duties list</value>
+  </data>
+  <data name="DutyID2" xml:space="preserve">
+    <value>DutyID</value>
+  </data>
+  <data name="DutyName2" xml:space="preserve">
+    <value>DutyName</value>
+  </data>
+  <data name="Email2" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="emailCode2" xml:space="preserve">
+    <value>Email Verification Code</value>
+  </data>
+  <data name="EmailCodeMandatory2" xml:space="preserve">
+    <value>Email Verification Code is mandatory</value>
+  </data>
+  <data name="emailExist2" xml:space="preserve">
+    <value>Given Email ID is already registered with us.</value>
+  </data>
+  <data name="Emailidisnotavailble2" xml:space="preserve">
+    <value>EmailID is not available</value>
+  </data>
+  <data name="EmailIdMobileNumberverificationpending2" xml:space="preserve">
+    <value>Email Id / Mobile Number verification is pending</value>
+  </data>
+  <data name="EmailIdorMobileNumber2" xml:space="preserve">
+    <value>Email-Id or Mobile Number</value>
+  </data>
+  <data name="EmailMobileCode2" xml:space="preserve">
+    <value>Email Verification Code or Mobile Verification Code</value>
+  </data>
+  <data name="EnterCaptcha2" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="EntercorrectCaptcha2" xml:space="preserve">
+    <value>Enter correct Captcha</value>
+  </data>
+  <data name="EnterMobileEmail2" xml:space="preserve">
+    <value>Please enter Mobile No or Email ID</value>
+  </data>
+  <data name="enterPassword2" xml:space="preserve">
+    <value>Please enter password</value>
+  </data>
+  <data name="EnterTexttoSearch2" xml:space="preserve">
+    <value>Enter text to search</value>
+  </data>
+  <data name="EntertheCaptcha1" xml:space="preserve">
+    <value>Enter the Captcha</value>
+  </data>
+  <data name="Enterthecharactershownabove1" xml:space="preserve">
+    <value>Enter the character shown above</value>
+  </data>
+  <data name="EPayment2" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="EPaymentRequests2" xml:space="preserve">
+    <value>E-Payment Requests</value>
+  </data>
+  <data name="Epayment_Header2" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="Epayment_RequestNumber2" xml:space="preserve">
+    <value>Request Number :</value>
+  </data>
+  <data name="error2" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ExistingUser" xml:space="preserve">
+    <value>Yes, I do have an account in Customs System</value>
+  </data>
+  <data name="ExportCountry2" xml:space="preserve">
+    <value>Export Country</value>
+  </data>
+  <data name="FirstName2" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FirstNamerDA1" xml:space="preserve">
+    <value>Please enter the First Name</value>
+  </data>
+  <data name="For2" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="ForgotPassword2" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Forgot_B_generateotpbutton2" xml:space="preserve">
+    <value>Generate OTP</value>
+  </data>
+  <data name="Forgot_B_resetpwd2" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Forgot_B_rgpwd2" xml:space="preserve">
+    <value>Regenerate OTP</value>
+  </data>
+  <data name="Forgot_header12" xml:space="preserve">
+    <value>Please enter your valid Email address or Mobile Number we'll send you verification codes to reset your password</value>
+  </data>
+  <data name="Forgot_header3" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Forgot_input22" xml:space="preserve">
+    <value>Enter Captcha</value>
+  </data>
+  <data name="Forgot_input3" xml:space="preserve">
+    <value>Email-Id or Mobile Number</value>
+  </data>
+  <data name="Forgot_inputcode2" xml:space="preserve">
+    <value>Email Verification Code or Mobile Verification Code</value>
+  </data>
+  <data name="Forgot_inputcpwd2" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Forgot_inputnewpwd2" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="GeneralBrokerLicense" xml:space="preserve">
+    <value>General Broker License</value>
+  </data>
+  <data name="GeneralBrokerLicenseRequired" xml:space="preserve">
+    <value>Please enter a valid General Broker License Number</value>
+  </data>
+  <data name="GenerateOTP2" xml:space="preserve">
+    <value>Generate OTP</value>
+  </data>
+  <data name="Header_withoutmenu12" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #BD3B2E;display: none;</value>
+  </data>
+  <data name="Header_withoutmenu3" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #BD3B2E;display: block;</value>
+  </data>
+  <data name="Home_Header2" xml:space="preserve">
+    <value>My Organizations</value>
+  </data>
+  <data name="HousebillAutoNumber2" xml:space="preserve">
+    <value>Housebill Auto Number</value>
+  </data>
+  <data name="HousebillNumber2" xml:space="preserve">
+    <value>Housebill Number</value>
+  </data>
+  <data name="HousebillSearch2" xml:space="preserve">
+    <value>Housebill Search</value>
+  </data>
+  <data name="HSCode2" xml:space="preserve">
+    <value>HSCode</value>
+  </data>
+  <data name="HSCodeSearch2" xml:space="preserve">
+    <value>HSCode Search</value>
+  </data>
+  <data name="ImporterDetails2" xml:space="preserve">
+    <value>Importer Details</value>
+  </data>
+  <data name="Importer_B_back2" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Importer_B_next2" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Importer_CompanyNameinArabic2" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Importer_Dt_style2" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Importer_EndDate2" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Importer_Header2" xml:space="preserve">
+    <value>Importer Details</value>
+  </data>
+  <data name="Importer_IssuanceDate2" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Importer_LicenseNo2" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="Importer_LicenseNumber2" xml:space="preserve">
+    <value>Importer License Number</value>
+  </data>
+  <data name="Importer_Licensetype2" xml:space="preserve">
+    <value>Importer License Type</value>
+  </data>
+  <data name="Importer_RB_permanent2" xml:space="preserve">
+    <value>Permanent</value>
+  </data>
+  <data name="Importer_RB_temporary2" xml:space="preserve">
+    <value>Temporary</value>
+  </data>
+  <data name="Importer_RD_style2" xml:space="preserve">
+    <value>radio inline</value>
+  </data>
+  <data name="Importer_RequestNumber2" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="Industrial_B_back2" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Industrial_B_next2" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Industrial_CompanyNameinArabic2" xml:space="preserve">
+    <value>Company Name in Arabic : </value>
+  </data>
+  <data name="Industrial_Dt_style2" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Industrial_EndDate2" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Industrial_Header2" xml:space="preserve">
+    <value>Industrial Organization</value>
+  </data>
+  <data name="Industrial_IssuanceDate12" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Industrial_IssuanceDate3" xml:space="preserve">
+    <value>Issuance Date</value>
+  </data>
+  <data name="Industrial_LicenseNumber2" xml:space="preserve">
+    <value>Industrial License Number</value>
+  </data>
+  <data name="Industrial_RegNo2" xml:space="preserve">
+    <value>Industrial Registration Number</value>
+  </data>
+  <data name="Industrial_RequestNumber2" xml:space="preserve">
+    <value>Request Number : </value>
+  </data>
+  <data name="InvalidMCDeatils" xml:space="preserve">
+    <value>Please enter the correct Broker License and Microclear credential details</value>
+  </data>
+  <data name="Is2" xml:space="preserve">
+    <value>is</value>
+  </data>
+  <data name="IsAdminUser" xml:space="preserve">
+    <value>General User ?</value>
+    <comment>Administrator User ?</comment>
+  </data>
+  <data name="IssuancegreaterthanEnddate2" xml:space="preserve">
+    <value>Issuance Date should not be greater than End date.</value>
+  </data>
+  <data name="KGACOnlinePayment2" xml:space="preserve">
+    <value>KGAC Online Payment</value>
+  </data>
+  <data name="KNETOnlinePayment2" xml:space="preserve">
+    <value>Please do not close or refresh this page as we proceed to KNET Online Payment!</value>
+  </data>
+  <data name="kuwait2" xml:space="preserve">
+    <value>kuwait</value>
+  </data>
+  <data name="KuwaitCustoms2" xml:space="preserve">
+    <value>Kuwait Customs eServices</value>
+  </data>
+  <data name="LastName2" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LastNamerDA1" xml:space="preserve">
+    <value>Please enter the Last Name</value>
+  </data>
+  <data name="LegalEntity1" xml:space="preserve">
+    <value>Legal Entity</value>
+  </data>
+  <data name="LicenseFieldCannotbeempty2" xml:space="preserve">
+    <value>License Field Can not be empty</value>
+  </data>
+  <data name="Licenselessthandigits2" xml:space="preserve">
+    <value>License number should not be less than 3 digits</value>
+  </data>
+  <data name="Licenselessthandigits42" xml:space="preserve">
+    <value>License number should not be less than 4 digits</value>
+  </data>
+  <data name="LicenseNO2" xml:space="preserve">
+    <value>License No.</value>
+  </data>
+  <data name="LicenseNumber1" xml:space="preserve">
+    <value>Licence Number</value>
+  </data>
+  <data name="ListofAdminUsers1" xml:space="preserve">
+    <value>List of Admin Users</value>
+  </data>
+  <data name="ListofAvailableOrganizations1" xml:space="preserve">
+    <value>List of Available Organizations</value>
+  </data>
+  <data name="LocalDescription2" xml:space="preserve">
+    <value>Local Description</value>
+  </data>
+  <data name="Login3" xml:space="preserve">
+    <value>LogIn</value>
+  </data>
+  <data name="loginwithyourcredentials2" xml:space="preserve">
+    <value>The code has been successfully verified, thank you, please log in using your credentials to complete the registration application</value>
+  </data>
+  <data name="Logo12" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logo3" xml:space="preserve">
+    <value>~/images/customs.png</value>
+  </data>
+  <data name="Logout3" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="L_term_of_use_style12" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="L_term_of_use_style22" xml:space="preserve">
+    <value>margin-left:100px;</value>
+  </data>
+  <data name="L_term_of_use_style4" xml:space="preserve">
+    <value>margin-left:100px;width:200px</value>
+  </data>
+  <data name="MCPassword" xml:space="preserve">
+    <value>MC Password</value>
+  </data>
+  <data name="MCPasswordRequired" xml:space="preserve">
+    <value>Please enter the Automated Customs System (MicroClear) Password</value>
+  </data>
+  <data name="MCUserName" xml:space="preserve">
+    <value>MC UserName</value>
+  </data>
+  <data name="MCUserNameRequired" xml:space="preserve">
+    <value>Please enter the Automated Customs System (MicroClear)  UserName</value>
+  </data>
+  <data name="Menu12" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Menu22" xml:space="preserve">
+    <value>My Organizations</value>
+  </data>
+  <data name="Menu32" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="Menu42" xml:space="preserve">
+    <value>E-Payment</value>
+  </data>
+  <data name="Menu52" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MenuHeader_cssclass12" xml:space="preserve">
+    <value>topnav-right</value>
+  </data>
+  <data name="MenuHeader_cssclass22" xml:space="preserve">
+    <value>num</value>
+  </data>
+  <data name="MenuHeader_cssclass4" xml:space="preserve">
+    <value>topnav</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification12" xml:space="preserve">
+    <value>glyphicon glyphicon-bell</value>
+  </data>
+  <data name="MenuHeader_cssclassnotification3" xml:space="preserve">
+    <value>glyphicon glyphicon-bell notification-icon</value>
+  </data>
+  <data name="MenuHeader_notifycssclass12" xml:space="preserve">
+    <value>closebtn</value>
+  </data>
+  <data name="MenuHeader_notifycssclass3" xml:space="preserve">
+    <value>notifyheader</value>
+  </data>
+  <data name="MenuHeader_notifyHeader2" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="MenuHeader_style12" xml:space="preserve">
+    <value>padding-left:20px;</value>
+  </data>
+  <data name="MenuHeader_Style3" xml:space="preserve">
+    <value>text-align:left;color:white;background-color: #f53d3d;height:40px;line-height:40px</value>
+  </data>
+  <data name="menuiconstyle2" xml:space="preserve">
+    <value>padding-left: 10px;padding-right:16px;top: 3px;</value>
+  </data>
+  <data name="Menu_style12" xml:space="preserve">
+    <value>background-color:brown;text-align:left;color:white;font-weight: normal;</value>
+  </data>
+  <data name="Menu_style3" xml:space="preserve">
+    <value>menunew menunew-style</value>
+  </data>
+  <data name="MobileCode2" xml:space="preserve">
+    <value>Mobile Verification Code</value>
+  </data>
+  <data name="MobileCodeMandatory2" xml:space="preserve">
+    <value>Enter Mobile Verification Code</value>
+  </data>
+  <data name="MobileNumber3" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="MobileNumberDA1" xml:space="preserve">
+    <value>Please enter the Mobile Number</value>
+  </data>
+  <data name="MobileVerified2" xml:space="preserve">
+    <value>Your New Mobile Number verified Successfully</value>
+  </data>
+  <data name="Multipleinvalidpassword2" xml:space="preserve">
+    <value>Multiple invalid login attempts has been made. Please Change your Password</value>
+  </data>
+  <data name="MyAccount2" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="Name2" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewPassword2" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="NoPaymentRequests2" xml:space="preserve">
+    <value>No Payment Requests</value>
+  </data>
+  <data name="noRecordsFound2" xml:space="preserve">
+    <value>No Records Found</value>
+  </data>
+  <data name="Norequestatthemoment2" xml:space="preserve">
+    <value>No request at the moment</value>
+  </data>
+  <data name="Notifications3" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="notifications_style2" xml:space="preserve">
+    <value>Notification Notification1</value>
+  </data>
+  <data name="notsuccessfull2" xml:space="preserve">
+    <value>Not Successful</value>
+  </data>
+  <data name="Ok2" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="onefieldtogetpasswordrecovery2" xml:space="preserve">
+    <value>Enter any one field to get password recovery</value>
+  </data>
+  <data name="OnlinePaymentConfirmation2" xml:space="preserve">
+    <value>Online Payment Confirmation</value>
+  </data>
+  <data name="OnlyPDFJPG2" xml:space="preserve">
+    <value>Only .pdf and .jpg format files are allowed for upload. File size upto 1 MB can be uploaded.</value>
+  </data>
+  <data name="OR2" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="OrganisationsRequestStatus2" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="Organization1" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OrganizationEmailpending2" xml:space="preserve">
+    <value>Organization’s Email verification is pending</value>
+  </data>
+  <data name="OrganizationName1" xml:space="preserve">
+    <value>Organization Name</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfully2" xml:space="preserve">
+    <value>Organization Registration Completed successfully</value>
+  </data>
+  <data name="OrganizationRegCompletedsuccessfullyNew2" xml:space="preserve">
+    <value>Please print the form and review with the project team at the General Administration of Customs Shuwaikh area (3) enclosed with all the documents that were uploaded during the registration process</value>
+  </data>
+  <data name="OrgReg_Address2" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="OrgReg_AuthorizedPerson2" xml:space="preserve">
+    <value>Authorized Person</value>
+  </data>
+  <data name="OrgReg_BusinessFaxNumber2" xml:space="preserve">
+    <value>Business Fax Number</value>
+  </data>
+  <data name="OrgReg_BusinessNumber2" xml:space="preserve">
+    <value>Business Number</value>
+  </data>
+  <data name="OrgReg_B_Next2" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="OrgReg_City2" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="OrgReg_CivilId2" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="OrgReg_CompanyName2" xml:space="preserve">
+    <value>Company Name in English</value>
+  </data>
+  <data name="OrgReg_CompanyNameinArabic2" xml:space="preserve">
+    <value>Company Name in Arabic</value>
+  </data>
+  <data name="OrgReg_EmailID2" xml:space="preserve">
+    <value>Email ID</value>
+  </data>
+  <data name="OrgReg_Header12" xml:space="preserve">
+    <value>The company registration process is subject to the regulations and the rules regulating it and as determined by the General Administration of Customs.</value>
+  </data>
+  <data name="OrgReg_Header3" xml:space="preserve">
+    <value>Organization Registration</value>
+  </data>
+  <data name="OrgReg_Industrial2" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="OrgReg_Industrial_style12" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="OrgReg_Industrial_style22" xml:space="preserve">
+    <value>margin-left:100px;</value>
+  </data>
+  <data name="OrgReg_Kuwait2" xml:space="preserve">
+    <value>Kuwait</value>
+  </data>
+  <data name="OrgReg_MobileNumber2" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="OrgReg_POBoxNo2" xml:space="preserve">
+    <value>P.O. Box No.</value>
+  </data>
+  <data name="OrgReg_PostalCode2" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="OrgReg_ResidenceNumber2" xml:space="preserve">
+    <value>Residence Number</value>
+  </data>
+  <data name="OrgReg_State2" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="OrgReg_Tradelicenceno2" xml:space="preserve">
+    <value>Trading license No.</value>
+  </data>
+  <data name="OrgReg_WebPageAddress2" xml:space="preserve">
+    <value>Web Page Address</value>
+  </data>
+  <data name="OrgStatus_header2" xml:space="preserve">
+    <value>Organizations Request Status</value>
+  </data>
+  <data name="OrgStatus_OrganizationName2" xml:space="preserve">
+    <value>Organization Name:</value>
+  </data>
+  <data name="OrgStatus_RequestNumber2" xml:space="preserve">
+    <value>Request Number:</value>
+  </data>
+  <data name="Password3" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Passwordsarenotmatching2" xml:space="preserve">
+    <value>The password does not match</value>
+  </data>
+  <data name="paymentdeclined2" xml:space="preserve">
+    <value>Payment Declined</value>
+  </data>
+  <data name="PendingEmailIdVerification2" xml:space="preserve">
+    <value>Email Id verification will be pending. Do you want to proceed for Mobile verification?</value>
+  </data>
+  <data name="PendingMobileVerification2" xml:space="preserve">
+    <value>Mobile verification will be pending. Do you want to proceed for Email Id verification?</value>
+  </data>
+  <data name="PermissionAuthority2" xml:space="preserve">
+    <value>Permission/Release Authority</value>
+  </data>
+  <data name="PleaseEntertheCorrectCaptcha1" xml:space="preserve">
+    <value>Please enter the correct Captcha</value>
+  </data>
+  <data name="PleaseselectaLegalEntity1" xml:space="preserve">
+    <value>Please select a Legal Entity</value>
+  </data>
+  <data name="PleaseSelectatleastOneOrganization1" xml:space="preserve">
+    <value>Please Select atleast One Organization</value>
+  </data>
+  <data name="PleaseSelectAtleastOneServices1" xml:space="preserve">
+    <value>Please select atleast one service</value>
+  </data>
+  <data name="Pleasetryagainlater1" xml:space="preserve">
+    <value>Please try again later</value>
+  </data>
+  <data name="PleaseWait2" xml:space="preserve">
+    <value>Please Wait</value>
+  </data>
+  <data name="print2" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Proceed2" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
+  <data name="ProcessincompleteinRegistration1" xml:space="preserve">
+    <value>Process incomplete in Registration</value>
+  </data>
+  <data name="ProfileInfo2" xml:space="preserve">
+    <value>Profile and contact information</value>
+  </data>
+  <data name="ProvideMobileOTP2" xml:space="preserve">
+    <value>Please provide the OTP sent to your new Mobile No. to complete the verification process</value>
+  </data>
+  <data name="ProvideRealInfo2" xml:space="preserve">
+    <value>Please provide real and correct information, including contact information</value>
+  </data>
+  <data name="Quantity2" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Quickreference2" xml:space="preserve">
+    <value>Quick reference</value>
+  </data>
+  <data name="Readtermsconditions2" xml:space="preserve">
+    <value>Read the terms and conditions</value>
+  </data>
+  <data name="Reason1" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="RegenerateOTP2" xml:space="preserve">
+    <value>Regenerate OTP</value>
+  </data>
+  <data name="Register2" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration_Title12" xml:space="preserve">
+    <value>Profile and contact information</value>
+  </data>
+  <data name="Registration_Title22" xml:space="preserve">
+    <value>Please provide real and correct information, including contact information</value>
+  </data>
+  <data name="Registration_Title4" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="RejectionReason2" xml:space="preserve">
+    <value>Rejection Reason</value>
+  </data>
+  <data name="RememberMe2" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="ReqNotDeleted2" xml:space="preserve">
+    <value>This request cannot be deleted, Under reviewer process</value>
+  </data>
+  <data name="Requestnotavailable2" xml:space="preserve">
+    <value>Request not available for view/pay</value>
+  </data>
+  <data name="RequestsList3" xml:space="preserve">
+    <value>Requests List</value>
+  </data>
+  <data name="RequesttoIssueNewIdentityCard1" xml:space="preserve">
+    <value>Request to Issue New Identity Card</value>
+  </data>
+  <data name="RequesttoTransferBroker1" xml:space="preserve">
+    <value>Request to Transfer Broker</value>
+  </data>
+  <data name="ResendMail2" xml:space="preserve">
+    <value>Re-Send Email Verification Code</value>
+  </data>
+  <data name="ResendMobile2" xml:space="preserve">
+    <value>Re-Send Mobile Verification Code</value>
+  </data>
+  <data name="ResetPassword2" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Restrictionlevel2" xml:space="preserve">
+    <value>Restriction level</value>
+  </data>
+  <data name="RestrictionsProhibitions2" xml:space="preserve">
+    <value>Restrictions and Prohibitions</value>
+  </data>
+  <data name="RestrictsType_C2" xml:space="preserve">
+    <value>Chapter</value>
+  </data>
+  <data name="RestrictsType_E2" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="RestrictsType_H2" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="RestrictsType_I2" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="RestrictsType_P2" xml:space="preserve">
+    <value>Prohibited</value>
+  </data>
+  <data name="RestrictsType_R2" xml:space="preserve">
+    <value>Restricted</value>
+  </data>
+  <data name="RestrictsType_T2" xml:space="preserve">
+    <value>TariffItem</value>
+  </data>
+  <data name="Resultnotfound2" xml:space="preserve">
+    <value>Result not found</value>
+  </data>
+  <data name="RewritePassword2" xml:space="preserve">
+    <value>Re-write Password</value>
+  </data>
+  <data name="Save3" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveVerify2" xml:space="preserve">
+    <value>Save &amp; Verify</value>
+  </data>
+  <data name="Search3" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchBy2" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="SearchType2" xml:space="preserve">
+    <value>Search Type</value>
+  </data>
+  <data name="SelectDocumentType2" xml:space="preserve">
+    <value>Select Document Type</value>
+  </data>
+  <data name="SelectOption2" xml:space="preserve">
+    <value>Select Option</value>
+  </data>
+  <data name="Send2" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Servernotresponding2" xml:space="preserve">
+    <value>Server not responding, Please try again later.</value>
+  </data>
+  <data name="ServiceName1" xml:space="preserve">
+    <value>Service Name</value>
+  </data>
+  <data name="Sessionexpired2" xml:space="preserve">
+    <value>Your session got expired, Please Login again.</value>
+  </data>
+  <data name="ShortDescription2" xml:space="preserve">
+    <value>Short Description</value>
+  </data>
+  <data name="SignUp2" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="SignUpFailedMessage2" xml:space="preserve">
+    <value>Message will send to your Email address and to your Mobile Number, please verify your Email and Mobile Number to complete the registration process</value>
+  </data>
+  <data name="SignUPTermeConditions2" xml:space="preserve">
+    <value>You have to agree with the terms and conditions</value>
+  </data>
+  <data name="Someerrorhasoccured1" xml:space="preserve">
+    <value>Some error has occured</value>
+  </data>
+  <data name="Someissuehasoccured1" xml:space="preserve">
+    <value>Some issue has occured</value>
+  </data>
+  <data name="somethingwentwrong2" xml:space="preserve">
+    <value>Something went wrong, Please try again later.</value>
+  </data>
+  <data name="Started2" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="Status3" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SubEpayment_B_back2" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="SubEpayment_B_decline2" xml:space="preserve">
+    <value>DECLINE</value>
+  </data>
+  <data name="SubEpayment_B_pay2" xml:space="preserve">
+    <value>PAY</value>
+  </data>
+  <data name="SubEpayment_Certificates2" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="SubEpayment_Customsaccount2" xml:space="preserve">
+    <value>Customs Account</value>
+  </data>
+  <data name="SubEpayment_CustomsDuty2" xml:space="preserve">
+    <value>Customs Duty</value>
+  </data>
+  <data name="SubEpayment_DutyAmount2" xml:space="preserve">
+    <value>Duty Amount</value>
+  </data>
+  <data name="SubEpayment_Guarantees2" xml:space="preserve">
+    <value>Guarantees</value>
+  </data>
+  <data name="SubEpayment_HandlingCharges2" xml:space="preserve">
+    <value>Handling Charges</value>
+  </data>
+  <data name="SubEpayment_Header12" xml:space="preserve">
+    <value>E-Payment Requests</value>
+  </data>
+  <data name="SubEpayment_Header3" xml:space="preserve">
+    <value>E-Payment​</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptDt2" xml:space="preserve">
+    <value>Online Receipt Date/Time</value>
+  </data>
+  <data name="SubEpayment_OnlineReceiptNo2" xml:space="preserve">
+    <value>Online Receipt No.</value>
+  </data>
+  <data name="SubEpayment_Others2" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="SubEpayment_payby2" xml:space="preserve">
+    <value>Paid By</value>
+  </data>
+  <data name="SubEpayment_PayFor2" xml:space="preserve">
+    <value>Pay For</value>
+  </data>
+  <data name="SubEpayment_PaymentID2" xml:space="preserve">
+    <value>Payment ID</value>
+  </data>
+  <data name="SubEpayment_paymethod2" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+  <data name="SubEpayment_Paytype2" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
+  <data name="SubEpayment_Penalties2" xml:space="preserve">
+    <value>Penalties</value>
+  </data>
+  <data name="SubEpayment_Printing2" xml:space="preserve">
+    <value>Printing</value>
+  </data>
+  <data name="SubEpayment_Status2" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SubEpayment_Storage2" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="SubEpayment_style2" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="SubEpayment_totalamount2" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="Submit1" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="success2" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="TempDeclNo2" xml:space="preserve">
+    <value>Temp Decl. No</value>
+  </data>
+  <data name="TempDeclNumber2" xml:space="preserve">
+    <value>Temp. Declaration Number</value>
+  </data>
+  <data name="TemporaryDeclarationNumber2" xml:space="preserve">
+    <value>Declaration Number / Temp. Decl Number</value>
+  </data>
+  <data name="Terms_of_Use12" xml:space="preserve">
+    <value>By login to the application, it implies that you reviewed and agreed to the</value>
+  </data>
+  <data name="Terms_of_Use22" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Terms_of_Use32" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Terms_of_Use42" xml:space="preserve">
+    <value>These services are trial editions until instructions are issued regulating the use and conditions governing each service and formal procedures to benefit from the service under the eServices agreement</value>
+  </data>
+  <data name="textalign2" xml:space="preserve">
+    <value>text-align: left;</value>
+  </data>
+  <data name="To2" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="TradingLicense" xml:space="preserve">
+    <value>Org.Trading License Number</value>
+  </data>
+  <data name="TradingLicenseRequired" xml:space="preserve">
+    <value>Please enter a valid Trading License Number</value>
+  </data>
+  <data name="Transfer1" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="Type2" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UnknownStatusinRegistration1" xml:space="preserve">
+    <value>Unknown Status in Registration</value>
+  </data>
+  <data name="UOM2" xml:space="preserve">
+    <value>UOM</value>
+  </data>
+  <data name="updatedSuccess2" xml:space="preserve">
+    <value>Successfully updated</value>
+  </data>
+  <data name="uploadDoc2" xml:space="preserve">
+    <value>Please upload the documents for the below types</value>
+  </data>
+  <data name="UploadDocument_align_style2" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="UploadDocument_B_browse2" xml:space="preserve">
+    <value>BROWSE FILE</value>
+  </data>
+  <data name="UploadDocument_B_cancel2" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="UploadDocument_B_submit2" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="UploadDocument_CompanyNameinArabic2" xml:space="preserve">
+    <value>Company Name in Arabic :</value>
+  </data>
+  <data name="UploadDocument_documentformatnote2" xml:space="preserve">
+    <value>Only .pdf and .jpg format files are allowed for upload. File size upto 1 MB can be uploaded.</value>
+  </data>
+  <data name="UploadDocument_documentname2" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="UploadDocument_documenttype2" xml:space="preserve">
+    <value>Select Document Type</value>
+  </data>
+  <data name="UploadDocument_Header12" xml:space="preserve">
+    <value>Please fill the mandatory information and upload your organization documents.</value>
+  </data>
+  <data name="UploadDocument_Header3" xml:space="preserve">
+    <value>Upload Document</value>
+  </data>
+  <data name="UploadDocument_POP_cancelbtn2" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UploadDocument_POP_OKbtn2" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="UploadDocument_POP_RDlist_style2" xml:space="preserve">
+    <value>text-align:left;overflow-y: auto !important;</value>
+  </data>
+  <data name="UploadDocument_RequestNumber2" xml:space="preserve">
+    <value>Request Number :</value>
+  </data>
+  <data name="UploadMessage2" xml:space="preserve">
+    <value>Please fill the mandatory information and upload your organization documents.</value>
+  </data>
+  <data name="uploadminimumonedocument2" xml:space="preserve">
+    <value>Please upload minimum one document.</value>
+  </data>
+  <data name="Userdoesnotexist1" xml:space="preserve">
+    <value>User doesn't exist</value>
+  </data>
+  <data name="Userhasbeendeactivated1" xml:space="preserve">
+    <value>User has been DeActivated</value>
+  </data>
+  <data name="UserName3" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserRegistration2" xml:space="preserve">
+    <value>User Registration</value>
+  </data>
+  <data name="UserType1" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="validateYear2" xml:space="preserve">
+    <value>Please enter valid Year(yyyy Format).</value>
+  </data>
+  <data name="validemail2" xml:space="preserve">
+    <value>Enter valid email</value>
+  </data>
+  <data name="validpassword2" xml:space="preserve">
+    <value>The password should not be less than 8 digits and should contains upper and lower case and numbers.</value>
+  </data>
+  <data name="Verification2" xml:space="preserve">
+    <value>Verification</value>
+  </data>
+  <data name="verificationCode2" xml:space="preserve">
+    <value>Please enter verification code.</value>
+  </data>
+  <data name="VerificationFail2" xml:space="preserve">
+    <value>Verification code mismatching</value>
+  </data>
+  <data name="VerificationMessage2" xml:space="preserve">
+    <value>Please enter your valid Email address or Mobile Number we'll send you verification codes to reset your password</value>
+  </data>
+  <data name="VerificationsenttoyourEmail2" xml:space="preserve">
+    <value>Verification Code is sent to your Email</value>
+  </data>
+  <data name="Verificationsenttoyourmobile2" xml:space="preserve">
+    <value>Verification Code is sent to your Mobile Number</value>
+  </data>
+  <data name="Verify2" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="verifyEmailID2" xml:space="preserve">
+    <value>Please verify your E-mail ID</value>
+  </data>
+  <data name="VisitRemarks2" xml:space="preserve">
+    <value>Requesting For Visit Remarks</value>
+  </data>
+  <data name="Weight2" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="wrongcredentials2" xml:space="preserve">
+    <value>Please verify your credentials</value>
+  </data>
+  <data name="WrongEmailOTPPleasetryagain2" xml:space="preserve">
+    <value>Wrong Email OTP, Please try again</value>
+  </data>
+  <data name="WrongOTPPleasetryagain2" xml:space="preserve">
+    <value>Wrong OTP, Please try again</value>
+  </data>
+  <data name="Year2" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="eServiceHeader" xml:space="preserve">
+    <value>Kuwait Customs Electronic Services</value>
+  </data>
+  <data name="termsOfUse" xml:space="preserve">
+    <value>Terms Of Use</value>
+  </data>
+  <data name="usageAgreement" xml:space="preserve">
+    <value>Terms and conditions applied in accordance with laws, regularities and customs regulations</value>
+  </data>
+  <data name="addAdditionalUser" xml:space="preserve">
+    <value>Add New User</value>
+  </data>
+  <data name="usersList" xml:space="preserve">
+    <value>Users List</value>
+  </data>
+  <data name="usersManagement" xml:space="preserve">
+    <value>Users Management</value>
+  </data>
+  <data name="directReleaseBroker" xml:space="preserve">
+    <value>Direct Release Broker</value>
+  </data>
+  <data name="specialBroker" xml:space="preserve">
+    <value>Special Broker</value>
+  </data>
+  <data name="specialMessanger" xml:space="preserve">
+    <value>Special Messanger</value>
+  </data>
+  <data name="subBroker" xml:space="preserve">
+    <value>Sub Broker</value>
+  </data>
+  <data name="subMessanger" xml:space="preserve">
+    <value>Sub Messanger</value>
+  </data>
+  <data name="requestNumber" xml:space="preserve">
+    <value>Request Number</value>
+  </data>
+  <data name="deleteFile" xml:space="preserve">
+    <value>Delete Selected Files</value>
+  </data>
+  <data name="docType" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="fileName" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="requestSubmittedAlert" xml:space="preserve">
+    <value>Your Request has been Sent, You will Receive a Confirmation E mail.</value>
+  </data>
+  <data name="uploadDate" xml:space="preserve">
+    <value>Upload Date</value>
+  </data>
+  <data name="selectOneServiceMsg" xml:space="preserve">
+    <value>Please ensure to select minimum one Service and one Organization for the Additional user</value>
+  </data>
+  <data name="addressRequired" xml:space="preserve">
+    <value>Address is Required</value>
+  </data>
+  <data name="expiryDateRequired" xml:space="preserve">
+    <value>Expiry Date is Required</value>
+  </data>
+  <data name="nameFirstRequiredMSG" xml:space="preserve">
+    <value>First Name is Required</value>
+  </data>
+  <data name="nameLastRequiredMSG" xml:space="preserve">
+    <value>Last Name is Required</value>
+  </data>
+  <data name="nameRequiredMSG" xml:space="preserve">
+    <value>All Name Parts are Required, Please Write Full Name</value>
+  </data>
+  <data name="passportNoRequired" xml:space="preserve">
+    <value>Passport Number is Required</value>
+  </data>
+  <data name="fileNameError" xml:space="preserve">
+    <value>Please Write a Name for the File You Want to Upload</value>
+  </data>
+  <data name="selectDocument" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="uploadFileError" xml:space="preserve">
+    <value>Please Choose  file to Upload</value>
+  </data>
+  <data name="bahaini" xml:space="preserve">
+    <value>Bahrain</value>
+  </data>
+  <data name="emirati" xml:space="preserve">
+    <value>United Arab Emirates</value>
+  </data>
+  <data name="kuwaiti" xml:space="preserve">
+    <value>Kuwait</value>
+  </data>
+  <data name="omani" xml:space="preserve">
+    <value>Oman</value>
+  </data>
+  <data name="qatari" xml:space="preserve">
+    <value>Qatar</value>
+  </data>
+  <data name="saudi" xml:space="preserve">
+    <value>Saudi Arabia</value>
+  </data>
+  <data name="MobileNumberValid" xml:space="preserve">
+    <value>Please enter a valid 8 digit Mobile Number</value>
+  </data>
+  <data name="houseBillRequired" xml:space="preserve">
+    <value>Please, Write Housebill  Number</value>
+  </data>
+  <data name="tempDeclarationRequired" xml:space="preserve">
+    <value>Please, Write Temporary Declaration Number </value>
+  </data>
+  <data name="industrialOrganization" xml:space="preserve">
+    <value>Industrial Organization</value>
+  </data>
+  <data name="BrokerRenewalRequests" xml:space="preserve">
+    <value>Broker Renewal Requests</value>
+  </data>
+  <data name="ServiceSubscriptionRequests" xml:space="preserve">
+    <value>Service Subscription Requests</value>
+  </data>
+  <data name="ClearingAgentExamRequests" xml:space="preserve">
+    <value>Clearing Agent Exam Requests</value>
+  </data>
+  <data name="OrganizationRegistrationRequests" xml:space="preserve">
+    <value>Organization Registration Requests</value>
+  </data>
+  <data name="EServiceSubscriptionRequests" xml:space="preserve">
+    <value>E-Service Subscription Requests</value>
+  </data>
+  <data name="SubscriptionRequestDetails" xml:space="preserve">
+    <value>Request Details</value>
+  </data>
+  <data name="NoRequests" xml:space="preserve">
+    <value>No Requests raised under this category</value>
+  </data>
+  <data name="SubmittedDate" xml:space="preserve">
+    <value>Submitted Date</value>
+  </data>
+  <data name="NoServicesAvailableToRequest" xml:space="preserve">
+    <value>You don't have any service to subscribe</value>
+  </data>
+  <data name="SuccessfullySubscribed" xml:space="preserve">
+    <value>Successfully subscribed to the selected services</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="branchCompany" xml:space="preserve">
+    <value>Branch Company</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="mainCompany" xml:space="preserve">
+    <value>Main Company</value>
+  </data>
+  <data name="userSessionIsActive" xml:space="preserve">
+    <value>You Already Have an Active Session, If you want to Close Other Session and Login , Please Close this Message,  and  Try Again !!!!</value>
+  </data>
+  <data name="chooseBrokerType" xml:space="preserve">
+    <value>Please, Choose Clearing Agent Type, that will Participate in The Exam</value>
+  </data>
+  <data name="ServicesNotAvailableToSubscribe" xml:space="preserve">
+    <value>You have raised service request for all the services </value>
+  </data>
+  <data name="notFoundpage" xml:space="preserve">
+    <value>Sorry, The Page, You are Looking for is not found.</value>
+  </data>
+  <data name="subScriptionNew" xml:space="preserve">
+    <value>Services Subscription</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="ExamRequestDuplicated" xml:space="preserve">
+    <value>You Have already an Existing Exam Request for The Selected User Type</value>
+  </data>
+  <data name="ClearingAgentAdditonalUserCriteria" xml:space="preserve">
+    <value>Please ensure to select minimum one Service for the Additional user</value>
+  </data>
+  <data name="OrgAdditonalUserCriteria" xml:space="preserve">
+    <value>Please ensure to select minimum one Service and one Organization for the Additional user</value>
+  </data>
+  <data name="AlreadyRegisteredLicense" xml:space="preserve">
+    <value>The given General Broker License number is already registered with us, Please contact your Admin</value>
+  </data>
+  <data name="AlreadyRegisteredOrgLicense" xml:space="preserve">
+    <value>The given Trade License number is already registered with us, Please contact your Organization Admin</value>
+  </data>
+  <data name="noLicenceNumberError" xml:space="preserve">
+    <value>Please, Add Your Trade Licence Number</value>
+  </data>
+  <data name="examConfirmAttendance" xml:space="preserve">
+    <value>Confirm Attendance</value>
+  </data>
+  <data name="AssociatedOrganization" xml:space="preserve">
+    <value>Associated Organization</value>
+  </data>
+  <data name="AssociatedServices" xml:space="preserve">
+    <value>Associated Services</value>
+  </data>
+  <data name="examDate" xml:space="preserve">
+    <value>Exam Date</value>
+  </data>
+  <data name="examDetails" xml:space="preserve">
+    <value>Exam Details</value>
+  </data>
+  <data name="examNumber" xml:space="preserve">
+    <value>Exam Number</value>
+  </data>
+  <data name="examTime" xml:space="preserve">
+    <value>Exam Time</value>
+  </data>
+  <data name="placeOfExam" xml:space="preserve">
+    <value>Exam Location</value>
+  </data>
+  <data name="examAnnoncementMSG" xml:space="preserve">
+    <value>Please, confirm Attendance</value>
+  </data>
+  <data name="examAnnoncementPublished" xml:space="preserve">
+    <value>The date and place of the customs clearance Exam have been determined. Please login to your account at Customs E-Services for exam details and confirming your attendance within 5 days  or else you will be considered excluded from the exam</value>
+  </data>
+  <data name="examConfirmStatus" xml:space="preserve">
+    <value>Exam Attendance Confirmed</value>
+  </data>
+  <data name="examNotPass" xml:space="preserve">
+    <value>You failed to pass the customs clearance Exam, you can send a new request for the next exam through your account at Customs E-Services</value>
+  </data>
+  <data name="examPassed" xml:space="preserve">
+    <value>You have Successfully passed the customs clearance Exam, now you Can Request License Issuance through your account at Customs E-Services.</value>
+  </data>
+  <data name="notAttend" xml:space="preserve">
+    <value>You Didn't Attend Exam</value>
+  </data>
+  <data name="examWillPublishedSoon" xml:space="preserve">
+    <value>Exam Date, Time, and Place will be Published Soon</value>
+  </data>
+  <data name="requestReceivedUnderReview" xml:space="preserve">
+    <value>Request Received, and it is under Review</value>
+  </data>
+  <data name="requestStillCreated" xml:space="preserve">
+    <value>Request Not Sent Yet</value>
+  </data>
+  <data name="IssueDate" xml:space="preserve">
+    <value>Issue Date</value>
+  </data>
+  <data name="CanCreateOrg" xml:space="preserve">
+    <value>Main Organization is yet to be approved, untill that you cannot create new organizations</value>
+  </data>
+  <data name="subcompany" xml:space="preserve">
+    <value>Sub Company</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>Associate</value>
+  </data>
+  <data name="DisAssociate" xml:space="preserve">
+    <value>DisAssociate</value>
+  </data>
+  <data name="OrgNameAra" xml:space="preserve">
+    <value>Organization Name Arabic</value>
+  </data>
+  <data name="OrgNameEng" xml:space="preserve">
+    <value>Organization Name English</value>
+  </data>
+  <data name="ServiceNameAra" xml:space="preserve">
+    <value>Service Name Arabic</value>
+  </data>
+  <data name="ServiceNameEng" xml:space="preserve">
+    <value>Service Name English</value>
+  </data>
+  <data name="UserBasicDetails" xml:space="preserve">
+    <value>User's Basic Details</value>
+  </data>
+  <data name="UserOrganizationDetails" xml:space="preserve">
+    <value>User's Organization Details</value>
+  </data>
+  <data name="UserServiceDetails" xml:space="preserve">
+    <value>User's Service Details</value>
+  </data>
+  <data name="AlreadyRegisteredCivilID" xml:space="preserve">
+    <value>The provided Civil ID is already registered with us</value>
+  </data>
+  <data name="AdditionalUserRegistrationSuccessfull" xml:space="preserve">
+    <value>Registration is successfull , User has to try for logon and do the Email verification to activate the account</value>
+  </data>
+  <data name="editRequest" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ResetPasswordSuccess" xml:space="preserve">
+    <value>Your password has been reset successfully</value>
+  </data>
+  <data name="approvedStatusMsgExam" xml:space="preserve">
+    <value>Your customs clearance exam request has been accepted, You will be notified of the details of the exam as soon as it is announced.</value>
+  </data>
+  <data name="approvedStatusMsgRenew" xml:space="preserve">
+    <value>Request has been Approved</value>
+  </data>
+  <data name="PasswordCriteriadoesntmet" xml:space="preserve">
+    <value>Password Criteria does not met. The password should not be less than 8 digits and should contains upper and lower case ,numbers and special characters.</value>
+  </data>
+  <data name="MainCompanymsg" xml:space="preserve">
+    <value>This is supposed to be the main company</value>
+  </data>
+  <data name="SubCompanymsg" xml:space="preserve">
+    <value>This is supposed to be the sub company</value>
+  </data>
+  <data name="tradeLicenseExpiryDat" xml:space="preserve">
+    <value>Trade License Expiry Date</value>
+  </data>
+  <data name="NewPasswordSameasOld" xml:space="preserve">
+    <value>Please do not enter the new password same as your last password</value>
+  </data>
+  <data name="civilIdExpiryDate" xml:space="preserve">
+    <value>Civil Id Expiry Date</value>
+  </data>
+  <data name="passportExpiryDate" xml:space="preserve">
+    <value>Passport No Expiry Date</value>
+  </data>
+  <data name="requestRenew" xml:space="preserve">
+    <value>Request Renew</value>
+  </data>
+  <data name="unAuthorizedAction" xml:space="preserve">
+    <value>Un Authorized Action</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="showAll" xml:space="preserve">
+    <value>Show All</value>
+  </data>
+  <data name="female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="firstNamePart" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="lastNamePart" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="secondNamePart" xml:space="preserve">
+    <value>Second Name</value>
+  </data>
+  <data name="thirdNamePart" xml:space="preserve">
+    <value>Third Name</value>
+  </data>
+  <data name="GenderRequired" xml:space="preserve">
+    <value>Please select a gender type</value>
+  </data>
+  <data name="dashBoadrRejectedRequests" xml:space="preserve">
+    <value>Rejected Requests</value>
+  </data>
+  <data name="dashBoard" xml:space="preserve">
+    <value>My Dashboard</value>
+  </data>
+  <data name="dashBoardAllRequests" xml:space="preserve">
+    <value>All Requests</value>
+  </data>
+  <data name="dashBoardApprovedRequests" xml:space="preserve">
+    <value>Approved  Requests</value>
+  </data>
+  <data name="dashBoardExamRequests" xml:space="preserve">
+    <value>Exam Requests</value>
+  </data>
+  <data name="DashBoardOrganizationRequests" xml:space="preserve">
+    <value>Organization Requests</value>
+  </data>
+  <data name="DashBoardRenewalRequests" xml:space="preserve">
+    <value>Renewal Requests</value>
+  </data>
+  <data name="dashBoardSubmittedRequests" xml:space="preserve">
+    <value>Submitted Requests</value>
+  </data>
+  <data name="dashBoardSubscriptionRequests" xml:space="preserve">
+    <value>Subscription Requests</value>
+  </data>
+  <data name="DashBoardYourSerivces" xml:space="preserve">
+    <value>My Serivces </value>
+  </data>
+  <data name="NumbersAndSpecialCharactersNotAllowed" xml:space="preserve">
+    <value>Please enter a valid name (numbers and special characters are not allowed)</value>
+  </data>
+  <data name="codeHasBeenSent" xml:space="preserve">
+    <value>Verification Code has been Sent to Your Email and Mobile number, that has been Used in Registeration </value>
+  </data>
+  <data name="registerationContactInfoWarning" xml:space="preserve">
+    <value>Conatct Information will be used to Identify User and for Comunications</value>
+  </data>
+  <data name="AuthorizzedPersonName" xml:space="preserve">
+    <value>Please enter the Authorized person name</value>
+  </data>
+  <data name="BusinessFaxNumRequired" xml:space="preserve">
+    <value>Please enter the Business Fax number</value>
+  </data>
+  <data name="BusinessNumberRequired" xml:space="preserve">
+    <value>Please enter the Business number</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>Please enter the City name</value>
+  </data>
+  <data name="CommercialLicenseissuedyearRequired" xml:space="preserve">
+    <value>Please enter the Commercial License issued year</value>
+  </data>
+  <data name="CommercialLicensenumberRequired" xml:space="preserve">
+    <value>Please enter the Commercial License number</value>
+  </data>
+  <data name="CommercialLicensetypeRequired" xml:space="preserve">
+    <value>Please select the Commercial License type</value>
+  </data>
+  <data name="ExpiryDateisRequired" xml:space="preserve">
+    <value>Please enter the Expiry Date</value>
+  </data>
+  <data name="ImporterLicensenumberRequired" xml:space="preserve">
+    <value>Please enter the Import License number</value>
+  </data>
+  <data name="ImporterLicensetypeRequired" xml:space="preserve">
+    <value>Please select the Import License type</value>
+  </data>
+  <data name="IndustrialLicenseNumberRequired" xml:space="preserve">
+    <value>Please enter the Industrial License Number</value>
+  </data>
+  <data name="IndustrialRegistrationNumberRequired" xml:space="preserve">
+    <value>Please enter the Industrial Registration Number</value>
+  </data>
+  <data name="IssuancedateofIndustrialRegistrationNumber" xml:space="preserve">
+    <value>Please enter the Issuance date of Industrial Registration Number</value>
+  </data>
+  <data name="IssueDateRequired" xml:space="preserve">
+    <value>Please enter the Issue Date</value>
+  </data>
+  <data name="NumbersOnly" xml:space="preserve">
+    <value>Please enter numbers only</value>
+  </data>
+  <data name="OrgAraNameRequired" xml:space="preserve">
+    <value>Please enter the Organization name in Arabic</value>
+  </data>
+  <data name="OrgEngNameRequired" xml:space="preserve">
+    <value>Please enter the Organization name in English</value>
+  </data>
+  <data name="PostBoxNumberRequired" xml:space="preserve">
+    <value>Please enter the Post Box number</value>
+  </data>
+  <data name="TradeLicenseRequired" xml:space="preserve">
+    <value>Please enter the Trade License number</value>
+  </data>
+  <data name="examParticipate" xml:space="preserve">
+    <value>( Exam Participant Details )</value>
+  </data>
+  <data name="uploadAllRequiredDocMSG" xml:space="preserve">
+    <value>( Please, Upload all Documents, one by one )</value>
+    <comment>( يرجى تحميل جميع الملفات المطلوبة، كلُّ على حدا )</comment>
+  </data>
+  <data name="uploadedFileListMSG" xml:space="preserve">
+    <value>( Uploaded Documents, will Appear in Below Table )</value>
+    <comment>( ستظهر الملفات التي تم تحميلها، في الجدول ادناه )</comment>
+  </data>
+  <data name="uploadFileMSG" xml:space="preserve">
+    <value>( You can Rename the Document )</value>
+    <comment>( لسهولة التعرف على الملف، يمكن إعادة تسميته )</comment>
+  </data>
+  <data name="existingUsers" xml:space="preserve">
+    <value>Existing Users</value>
+  </data>
+  <data name="searchResult" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
+  <data name="emailRequired" xml:space="preserve">
+    <value>Please, Write Valid Email</value>
+  </data>
+  <data name="mobileRequired" xml:space="preserve">
+    <value>Please, Write Mobile Number</value>
+  </data>
+  <data name="nationailityRequired" xml:space="preserve">
+    <value>Please, Choose Nationality</value>
+  </data>
+  <data name="DatePastNotAllowed" xml:space="preserve">
+    <value>Expiry date  should be greater than or equal to Today's date</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="rejectedFinalStatusMsgExam" xml:space="preserve">
+    <value>Exam Request has been Final Rejected, you can't Resend it</value>
+  </data>
+  <data name="rejectedStatusMsgExam" xml:space="preserve">
+    <value>Exam Request has been Rejected</value>
+  </data>
+  <data name="rejectedStatusMsgRenew" xml:space="preserve">
+    <value>Renewal Request has been Rejected</value>
+  </data>
+  <data name="requestForVisit" xml:space="preserve">
+    <value>Request  For Visit </value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Permissiondenied" xml:space="preserve">
+    <value>You do not have permission to access this feature.</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="LoginForBrokerServices" xml:space="preserve">
+    <value>Brokers login</value>
+  </data>
+  <data name="LoginForStakeholderServices" xml:space="preserve">
+    <value>Companies login</value>
+  </data>
+  <data name="RegisterForBrokerServices" xml:space="preserve">
+    <value>Broker E-Service Account Sign Up</value>
+  </data>
+  <data name="RegisterForStakeholderServices" xml:space="preserve">
+    <value>Compaines E-Services Account Sign Up</value>
+  </data>
+  <data name="OrgServicesNotAllowed" xml:space="preserve">
+    <value>You do not have access for stakeholder services.</value>
+  </data>
+  <data name="BrokerServices" xml:space="preserve">
+    <value>Broker Services</value>
+  </data>
+  <data name="OrganizationServices" xml:space="preserve">
+    <value>Organization Services</value>
+  </data>
+  <data name="Pleaseenterpassword" xml:space="preserve">
+    <value>Please enter the password</value>
+  </data>
+  <data name="HSCodeRequired" xml:space="preserve">
+    <value>Please, write HSCode number</value>
+  </data>
+  <data name="KuwaitCustomsBrokereServices" xml:space="preserve">
+    <value>Kuwait Customs Broker eServices</value>
+  </data>
+  <data name="KuwaitCustomsOrganizationeServices" xml:space="preserve">
+    <value>Kuwait Customs Organization eServices</value>
+  </data>
+  <data name="Lan" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ServiceSelection" xml:space="preserve">
+    <value>Change the Service</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TermsPart1" xml:space="preserve">
+    <value>By login to the application ,</value>
+  </data>
+  <data name="TermsPart2" xml:space="preserve">
+    <value>it implies that you reviewed and agreed to the</value>
+  </data>
+  <data name="mandatoryFieldsMsg" xml:space="preserve">
+    <value>The fields Marked with " * " are Required fields</value>
+  </data>
+  <data name="saveDraft" xml:space="preserve">
+    <value>Save as Draft</value>
+  </data>
+  <data name="MandatoryFields" xml:space="preserve">
+    <value>The fields which marked with " * " are required fields</value>
+  </data>
+  <data name="CompanyDocuments" xml:space="preserve">
+    <value>Company Documents</value>
+  </data>
+  <data name="ManageCompanyDocuments" xml:space="preserve">
+    <value>Manage Company Documents</value>
+  </data>
+  <data name="BrokerDeactivateRequests" xml:space="preserve">
+    <value>Deactivate Broker License Request</value>
+  </data>
+  <data name="BrokerCancelRequests" xml:space="preserve">
+    <value>Broker License Cancellation Requests</value>
+  </data>
+  <data name="BrokerIssuanceRequests" xml:space="preserve">
+    <value>Broker License Issuance Request</value>
+  </data>
+  <data name="BrokerPrintLostIdCard" xml:space="preserve">
+    <value>Print Lost Broker License  Card Request</value>
+  </data>
+  <data name="BrokerToWhomItConcern" xml:space="preserve">
+    <value>To Whom It Concern Letter Request</value>
+  </data>
+  <data name="BrokerTransferRequests" xml:space="preserve">
+    <value>Broker Transfer Requests</value>
+  </data>
+  <data name="requestDeactivate" xml:space="preserve">
+    <value>Request Deactive</value>
+  </data>
+  <data name="requestCancel" xml:space="preserve">
+    <value>Request Cancel</value>
+  </data>
+  <data name="RequestIdCard" xml:space="preserve">
+    <value>Request ID Card</value>
+  </data>
+  <data name="requestIssue" xml:space="preserve">
+    <value>Request Issue</value>
+  </data>
+  <data name="Requestletter" xml:space="preserve">
+    <value>Request Letter</value>
+  </data>
+  <data name="requestTransfer" xml:space="preserve">
+    <value>Request Transfer</value>
+  </data>
+  <data name="BrokerTransferInfo" xml:space="preserve">
+    <value>Broker Transfer Requests</value>
+  </data>
+  <data name="brokercorrectInfo" xml:space="preserve">
+    <value>Please Enter Correct Info</value>
+  </data>
+  <data name="rejectedStatusMsg" xml:space="preserve">
+    <value>Request Has Been Rejected </value>
+  </data>
+  <data name="BrokerTransferRequestExists" xml:space="preserve">
+    <value>There is an existing transfer request for the broker which you are trying to transfer, please check with BS customs administration.</value>
+  </data>
+  <data name="GenApprovedReqst" xml:space="preserve">
+    <value>Your Request has been Approved</value>
+  </data>
+  <data name="rejectedStatusMsgFinal" xml:space="preserve">
+    <value>Request has been Final Rejected</value>
+  </data>
+  <data name="BankGuranteeStatusForTransfer" xml:space="preserve">
+    <value>To initiate broker transfer request, old bank guarantee should be deactivated first.</value>
+  </data>
+  <data name="DuplicateLicence" xml:space="preserve">
+    <value>The entered License number has been already registered with us</value>
+  </data>
+  <data name="ImporterLicenseDetails" xml:space="preserve">
+    <value>Import License Details</value>
+  </data>
+  <data name="LicenseIssuer" xml:space="preserve">
+    <value>License Issuer</value>
+  </data>
+  <data name="LicenseIssuerRequired" xml:space="preserve">
+    <value>Please select a License Issuer</value>
+  </data>
+  <data name="LicensetypeRequired" xml:space="preserve">
+    <value>Please select a License type</value>
+  </data>
+  <data name="ManageImporterLicenses" xml:space="preserve">
+    <value>Manage Import Licenses</value>
+  </data>
+  <data name="AuthorizedSignatoriesfortheOrganization" xml:space="preserve">
+    <value>Authorized Signatories for the Organization</value>
+  </data>
+  <data name="AddMore" xml:space="preserve">
+    <value>Add More</value>
+  </data>
+  <data name="AddMoreAuthSignatory" xml:space="preserve">
+    <value>Add more</value>
+  </data>
+  <data name="deliveryOrderNo" xml:space="preserve">
+    <value>رقم اذن التسليم</value>
+  </data>
+  <data name="securityNo" xml:space="preserve">
+    <value>Security Number</value>
+  </data>
+  <data name="brokerQuickReference" xml:space="preserve">
+    <value>Broker Quick Reference</value>
+  </data>
+  <data name="organizationQuickReference" xml:space="preserve">
+    <value>Organization Quick Reference</value>
+  </data>
+  <data name="brokerTransferComingSoonMSG" xml:space="preserve">
+    <value>The Service Will be Activated Soon</value>
+  </data>
+  <data name="updaterequestPending" xml:space="preserve">
+    <value>There is an update request submitted for this organization</value>
+  </data>
+  <data name="CancellationReqApproved" xml:space="preserve">
+    <value>Cancellation Request has been Approved</value>
+  </data>
+  <data name="DeactivationReqApproved" xml:space="preserve">
+    <value>Deactivation Request has been Approved</value>
+  </data>
+  <data name="ExamReqRejected" xml:space="preserve">
+    <value>Exam Request has been rejected</value>
+  </data>
+  <data name="RequestAccepted" xml:space="preserve">
+    <value>Request has been accepted</value>
+  </data>
+  <data name="ToWhomConcernReqApproved" xml:space="preserve">
+    <value>To Whom Concern Request has been Approved</value>
+  </data>
+  <data name="ValidLicenseNumberRequired" xml:space="preserve">
+    <value>Please enter a valid License Number</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AgreeInfoCorrectnessRequired" xml:space="preserve">
+    <value>Please agree to correctness of the information</value>
+  </data>
+  <data name="Block" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="BlockRequired" xml:space="preserve">
+    <value>Please enter the Block</value>
+  </data>
+  <data name="CompanyLegalAddress" xml:space="preserve">
+    <value>Company Legal Address</value>
+  </data>
+  <data name="Governorate" xml:space="preserve">
+    <value>Governorate</value>
+  </data>
+  <data name="GovernorateRequired" xml:space="preserve">
+    <value>Please select the Governorate</value>
+  </data>
+  <data name="IsIndustrial" xml:space="preserve">
+    <value>Is Industrial</value>
+  </data>
+  <data name="PostalCodeRequired" xml:space="preserve">
+    <value>Please enter the Postal Code</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="RegionRequired" xml:space="preserve">
+    <value>Please select the Region</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="StreetRequired" xml:space="preserve">
+    <value>Please enter the Street</value>
+  </data>
+  <data name="CommercialLicenseAlreadyRegistered" xml:space="preserve">
+    <value>The entered Commercial License number has been already registered with us</value>
+  </data>
+  <data name="IndustrialLicenseAlreadyRegistered" xml:space="preserve">
+    <value>The entered Industrial License number has been already registered with us</value>
+  </data>
+  <data name="CompanyCivilId" xml:space="preserve">
+    <value>Company CivilId</value>
+  </data>
+  <data name="ActionLabel" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="ProceedToPay" xml:space="preserve">
+    <value>ProceedToPay</value>
+  </data>
+  <data name="OrgReqHelpCreate" xml:space="preserve">
+    <value>Please print the registration request form, then sign and stamp it with the company stamp, then upload it along with the required documents of the request as it is mandatory before sending the request.</value>
+  </data>
+  <data name="PrintOrgReqForm" xml:space="preserve">
+    <value>Print the form</value>
+  </data>
+  <data name="AlreadyRegisteredCompanyCivilID" xml:space="preserve">
+    <value>The company civil ID is already registered</value>
+  </data>
+  <data name="OrgReqHelpReject1" xml:space="preserve">
+    <value>You must modify and resubmit the request Within 15 Days</value>
+    <comment>You must modify and resubmit the request  and in case if you received a request to visit customs,Please visit the General Administration of Customs in Shuwaikh Area - Building 3 - Project Team Management - Corporate Registration Office with the signed request form, within a maximum period of 15 working days from the date of the rejection of the application</comment>
+  </data>
+  <data name="OrgReqHelpReject2" xml:space="preserve">
+    <value>.</value>
+    <comment>otherwise the request and the account will be canceled automatically</comment>
+  </data>
+  <data name="OrgReqHelpSubmit1" xml:space="preserve">
+    <value>We received your Request, and it is in Progress</value>
+    <comment>You should visit the General Administration of Customs in Shuwaikh Area - Building 3 - Project Team Management - Organization Registration Office with the signed request form, within a maximum period of 15 working days from the date of submitting the request</comment>
+  </data>
+  <data name="OrgReqHelpSubmit2" xml:space="preserve">
+    <value>.</value>
+    <comment>otherwise the request and the account will be canceled automatically.</comment>
+  </data>
+  <data name="registrationTileNewpart1" xml:space="preserve">
+    <value>Refer to the </value>
+  </data>
+  <data name="registrationTileNewpart2" xml:space="preserve">
+    <value>for explanation on how to use this form, and make sure to provide correct and valid information, contact details in particular.</value>
+  </data>
+  <data name="supportFax" xml:space="preserve">
+    <value>Fax Number</value>
+  </data>
+  <data name="supportFirstPart" xml:space="preserve">
+    <value>We Provided</value>
+  </data>
+  <data name="supportSecondPart" xml:space="preserve">
+    <value>introducing Organization Services,</value>
+  </data>
+  <data name="supportTel" xml:space="preserve">
+    <value>Telephone Number</value>
+  </data>
+  <data name="supportThirdPart" xml:space="preserve">
+    <value>You can also contact our technical support team through the following</value>
+  </data>
+  <data name="supportVideoLink" xml:space="preserve">
+    <value>instructional video</value>
+  </data>
+  <data name="technicalSupport" xml:space="preserve">
+    <value>Technical Support</value>
+  </data>
+  <data name="confirmEmail" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="confirmPhoneNumber" xml:space="preserve">
+    <value>Confirm Mobile Number</value>
+  </data>
+  <data name="EmailDontMatch" xml:space="preserve">
+    <value>The Email does not match</value>
+  </data>
+  <data name="EmailInfoMsg" xml:space="preserve">
+    <value>Please enter correct email id which is active. An OTP will be sent to this emailid , which will be required for activating your account, and will be considered as one of the official communication channels by Customs eServices</value>
+  </data>
+  <data name="MobileInforMsg" xml:space="preserve">
+    <value>Please enter correct Mobile Number which is active. An OTP will be sent to this Mobile Number , which will be required for activating your account, and will be considered as one of the official communication channels by Customs eServices</value>
+  </data>
+  <data name="PhoneDontMatch" xml:space="preserve">
+    <value>The Phone Number does not match</value>
+  </data>
+  <data name="newInfo" xml:space="preserve">
+    <value>To ensure smooth registration for your account, please provide your Customs System account access details if available, do you have one?</value>
+  </data>
+  <data name="newuser" xml:space="preserve">
+    <value>No, I don’t have an account in Customs System</value>
+  </data>
+  <data name="ClearingAgentInfo" xml:space="preserve">
+    <value>To ensure smooth registration for your account, please provide your Customs System account access details if available, do you have one?</value>
+  </data>
+  <data name="FormNotSendvalidation" xml:space="preserve">
+    <value>Form is not sent, please provide the required details.</value>
+  </data>
+  <data name="OrgClearanceFileNumber" xml:space="preserve">
+    <value>Organization File Number</value>
+  </data>
+  <data name="companyInfor" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="noApprovedOrganization" xml:space="preserve">
+    <value>Our Records, indicates, that you Don't have Any Approved Organization, Please Make sure that you have any Approved Organization. </value>
+  </data>
+  <data name="printingServices" xml:space="preserve">
+    <value>Broker Affairs Letter Service</value>
+  </data>
+  <data name="BRSPrintingCancelLicence" xml:space="preserve">
+    <value>Cancel Commercial License -Ministry of Commerce and Industry</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitleAndRenewResidency" xml:space="preserve">
+    <value>Change Job Title and Renew Residency- General Authority for Manpower</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitleAndTransferResidency" xml:space="preserve">
+    <value>Change Job Title and Transfer Residency- General Authority for Manpower</value>
+  </data>
+  <data name="BRSPrintingChangeLicenceActivity" xml:space="preserve">
+    <value>Change Commercial License Business - Ministry of Commerce and Industry</value>
+  </data>
+  <data name="BRSPrintingChangeLicenceAddress" xml:space="preserve">
+    <value>Change Commercial License Address Letter - Ministry of Commerce and Industry</value>
+  </data>
+  <data name="BRSPrintingGoodBehave" xml:space="preserve">
+    <value>Good conduct and behavior- General Directorate of Criminal Evidence</value>
+  </data>
+  <data name="BRSPrintingIssueLicence" xml:space="preserve">
+    <value>Issue Commercial License- Ministry of Commerce and Industry</value>
+  </data>
+  <data name="BRSPrintingReleaseBankGuarantee" xml:space="preserve">
+    <value>Release Bank Guarantee - Revenue Control</value>
+  </data>
+  <data name="BRSPrintingRenewLicence" xml:space="preserve">
+    <value>Renew Commercial License - Ministry of Commerce and Industry</value>
+  </data>
+  <data name="BRSPrintingRenewResidency" xml:space="preserve">
+    <value>Residency Renew- General Authority for Manpower</value>
+  </data>
+  <data name="BRSPrintingTransferResidency" xml:space="preserve">
+    <value>Residency Transfer- General Authority for Manpower</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitle" xml:space="preserve">
+    <value>Change Job Title- General Authority for Manpower</value>
+  </data>
+  <data name="BRSPrintingChangeJobTitleWithCivilId" xml:space="preserve">
+    <value>Change Job Title- With Broker License- General Authority for Manpower</value>
+  </data>
+  <data name="BRSPrintingDeActivateLicenceDeath" xml:space="preserve">
+    <value>Deactivate Commercial License- Death- Ministry of Commerce and Industry</value>
+  </data>
+  <data name="requestReSubmitted" xml:space="preserve">
+    <value>Request Has Been ReSubmitted</value>
+  </data>
+  <data name="approvedStatusMsgIssuance" xml:space="preserve">
+    <value>Issuance License Request has been Approved</value>
+  </data>
+  <data name="colmdpushpull3" xml:space="preserve">
+    <value>col-md-push-3</value>
+  </data>
+  <data name="Marginstart28px" xml:space="preserve">
+    <value>margin-left:28px;</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Re-Send</value>
+  </data>
+  <data name="ResendOTPButton" xml:space="preserve">
+    <value>padding:5px 12px;</value>
+  </data>
+  <data name="ContactVerificationHelpText1" xml:space="preserve">
+    <value>Please enter the verification codes to activate your account</value>
+  </data>
+  <data name="ContactVerificationHelpText2" xml:space="preserve">
+    <value>Make sure to use the latest OTP received, click resend to regenerate new code if need , the code should be used within 15 minutes</value>
+  </data>
+  <data name="bankGuaranteeExpiryeDate" xml:space="preserve">
+    <value>Bank Guarantee Expirye Date</value>
+  </data>
+  <data name="bankGuaranteeIssuanceDate" xml:space="preserve">
+    <value>Bank Guarantee Issuance Date</value>
+  </data>
+  <data name="bankGuaranteeNo" xml:space="preserve">
+    <value>Bank Guarantee Number</value>
+  </data>
+  <data name="bankGuaranteeStatus1" xml:space="preserve">
+    <value>Bank Guarantee Status</value>
+  </data>
+  <data name="bankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="ChangeJobTitleFrom" xml:space="preserve">
+    <value>Current Job Title</value>
+  </data>
+  <data name="ChangeJobTitleFromValidate" xml:space="preserve">
+    <value>Please Write Your Current Job Title</value>
+  </data>
+  <data name="ChangeJobTitleTo" xml:space="preserve">
+    <value>Change JobTitle To</value>
+  </data>
+  <data name="ChangeJobTitleToValidate" xml:space="preserve">
+    <value>Please Choose Required JobTitle</value>
+  </data>
+  <data name="fromBusiness" xml:space="preserve">
+    <value>From Business</value>
+  </data>
+  <data name="fromBusinessValidate" xml:space="preserve">
+    <value>Please Write Your Current Business</value>
+  </data>
+  <data name="newBrokerRegistrationMsg" xml:space="preserve">
+    <value>You are heading to register eService account as a new general broker that does not already have a customs clearance license and not registered with customs, the only service will be available is "General Broker Exam Request</value>
+  </data>
+  <data name="ImporterLicenseAlreadyRegistered" xml:space="preserve">
+    <value>The entered Importer License number has been already registered with us</value>
+  </data>
+  <data name="printtedStatus" xml:space="preserve">
+    <value>Letter has Been Printted</value>
+  </data>
+  <data name="toBusiness" xml:space="preserve">
+    <value>To Business</value>
+  </data>
+  <data name="AppointmentCreationsuccess" xml:space="preserve">
+    <value>Appointment Created successfully</value>
+  </data>
+  <data name="AppointmentUpdatesuccess" xml:space="preserve">
+    <value>Appointment updated successfully</value>
+  </data>
+  <data name="AtleastOnevehiclerequiredforappointment" xml:space="preserve">
+    <value>At least One vehicle should be selected while creating inspection schedule</value>
+  </data>
+  <data name="Booked" xml:space="preserve">
+    <value>Booked</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="Clear1" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Completed1" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Containernumber" xml:space="preserve">
+    <value>Container No.</value>
+  </data>
+  <data name="CreateAppointment" xml:space="preserve">
+    <value>Create Appointment</value>
+  </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="Declarationnumber3" xml:space="preserve">
+    <value>Declaration ID</value>
+  </data>
+  <data name="DeclarationOrTempDeclarationRequired" xml:space="preserve">
+    <value>Please enter either Declaration number or Temp Declaration Number</value>
+  </data>
+  <data name="DeclarationType3" xml:space="preserve">
+    <value>Declaration Type</value>
+  </data>
+  <data name="Drivername" xml:space="preserve">
+    <value>Driver Name</value>
+  </data>
+  <data name="Duplicatebookingforthevehicle" xml:space="preserve">
+    <value>There is a booking already exist for the selected vehicle</value>
+  </data>
+  <data name="InspectionAppointment" xml:space="preserve">
+    <value>Inspection Appointments Booking </value>
+  </data>
+  <data name="InspectionDate" xml:space="preserve">
+    <value>Inspection Date</value>
+  </data>
+  <data name="InspectionDateRequired" xml:space="preserve">
+    <value>Inspection Date is required</value>
+  </data>
+  <data name="InspectionRound" xml:space="preserve">
+    <value>Inspection Round</value>
+  </data>
+  <data name="InspectionRoundRequired" xml:space="preserve">
+    <value>Inspection round is required</value>
+  </data>
+  <data name="InspectionTerminal" xml:space="preserve">
+    <value>Inspection Terminal</value>
+  </data>
+  <data name="InspectionTerminalrequired" xml:space="preserve">
+    <value>Inspection Terminal is required</value>
+  </data>
+  <data name="InspectionZone" xml:space="preserve">
+    <value>Inspection Zone</value>
+  </data>
+  <data name="InspectionZonerequired" xml:space="preserve">
+    <value>Inspection Zone is required</value>
+  </data>
+  <data name="NoVehiclesforgivendeclaration" xml:space="preserve">
+    <value>No vehicles available for the given Declaration Number</value>
+  </data>
+  <data name="Portname" xml:space="preserve">
+    <value>Port Name</value>
+  </data>
+  <data name="Roundreachedmaximumcapacity" xml:space="preserve">
+    <value>The selected round has reached its maximum capacity. You can book</value>
+  </data>
+  <data name="RoundreachedmaximumcapacityPart2" xml:space="preserve">
+    <value>only, or select another round </value>
+  </data>
+  <data name="Roundreachedmaximumcapacity1" xml:space="preserve">
+    <value>The selected round has reached its maximum capacity. Please select another round</value>
+  </data>
+  <data name="selectInspectionRound" xml:space="preserve">
+    <value>Please select the Inspection Round</value>
+  </data>
+  <data name="selectInspectionTerminal" xml:space="preserve">
+    <value>Please select the Inspection Terminal</value>
+  </data>
+  <data name="selectInspectionZone" xml:space="preserve">
+    <value>Please select the Inspection Zone</value>
+  </data>
+  <data name="Showvehicles" xml:space="preserve">
+    <value>Show Vehicles</value>
+  </data>
+  <data name="TempDeclarationnumber" xml:space="preserve">
+    <value>Temp Declaration ID</value>
+  </data>
+  <data name="UpdateAppointment" xml:space="preserve">
+    <value>Update Appointment</value>
+  </data>
+  <data name="Vehiclelist" xml:space="preserve">
+    <value>Vehicles available for inspection</value>
+  </data>
+  <data name="Vehicleplatenumber" xml:space="preserve">
+    <value>Vehicle Plate No.</value>
+  </data>
+  <data name="Vehiclesrequired" xml:space="preserve">
+    <value>Please select the vehicles to create the schedule</value>
+  </data>
+  <data name="declartionStatusNotProper" xml:space="preserve">
+    <value>Declaration Number Vehicles, that you used Not applicable for Inspection Appointment</value>
+  </data>
+  <data name="declartionCCP" xml:space="preserve">
+    <value>Declaration CCP</value>
+  </data>
+  <data name="AgreeToPay" xml:space="preserve">
+    <value>Agree to E - Payment</value>
+  </data>
+  <data name="CustomerMobNum" xml:space="preserve">
+    <value>Customer Mobile No.</value>
+  </data>
+  <data name="Emailminlength" xml:space="preserve">
+    <value>Please enter a valid email address</value>
+  </data>
+  <data name="EmailRequired1" xml:space="preserve">
+    <value>Please enter a valid email address</value>
+  </data>
+  <data name="EnterReceiptDetails" xml:space="preserve">
+    <value>Enter your Receipt Details</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax: +965 24981490</value>
+  </data>
+  <data name="FillForm" xml:space="preserve">
+    <value>Fill in the form for instant E - Payment</value>
+  </data>
+  <data name="MessageCode1" xml:space="preserve">
+    <value>Receipt , Reference Number  or Security Code is Invalid , Please enter right details</value>
+  </data>
+  <data name="MessageCode11" xml:space="preserve">
+    <value>Receipt is Already Paid and in Submitted state</value>
+  </data>
+  <data name="MessageCode13" xml:space="preserve">
+    <value>Please Enter Receipt Number</value>
+  </data>
+  <data name="MessageCode2" xml:space="preserve">
+    <value>OK to Proceed for Payment now [Info : Payment tried earlier and discarded ]</value>
+  </data>
+  <data name="MessageCode3" xml:space="preserve">
+    <value>Payment already done for the receipt</value>
+  </data>
+  <data name="MessageCode4" xml:space="preserve">
+    <value>OK to Proceed for Payment</value>
+  </data>
+  <data name="MessageCode5" xml:space="preserve">
+    <value>Payment already In-Progress for the receipt . Please try after 10 mins to verify and proceed.</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="Mobileminlength" xml:space="preserve">
+    <value>Please enter a valid 8 digit Mobile Number </value>
+  </data>
+  <data name="MobileRequired1" xml:space="preserve">
+    <value>Please enter your Mobile Number</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="PayeeName" xml:space="preserve">
+    <value>Payee Name</value>
+  </data>
+  <data name="PayInVoice" xml:space="preserve">
+    <value>Pay your Invoice</value>
+  </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>Payment Details</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="ProceedPay" xml:space="preserve">
+    <value>Proceed To Pay</value>
+  </data>
+  <data name="ReceiptLookup" xml:space="preserve">
+    <value>Receipt Lookup</value>
+  </data>
+  <data name="ReceiptToPay" xml:space="preserve">
+    <value>Receipt to  Pay</value>
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="RefNumRequired" xml:space="preserve">
+    <value>Please enter a Reference Number</value>
+  </data>
+  <data name="SecurityCode" xml:space="preserve">
+    <value>Security Code</value>
+  </data>
+  <data name="SecurityCodeMsg1" xml:space="preserve">
+    <value>Please enter above References</value>
+  </data>
+  <data name="SecurityCodeMsg2" xml:space="preserve">
+    <value>Please enter your SecurityCode</value>
+  </data>
+  <data name="SecurityCodeMsg3" xml:space="preserve">
+    <value>Please enter your TIRCNumber and  SecurityCode</value>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>Telephone: +965 1809222 Ext: 1160</value>
+  </data>
+  <data name="TIRCNum" xml:space="preserve">
+    <value>TIRC Number</value>
+  </data>
+  <data name="TIRCNumberRequired" xml:space="preserve">
+    <value>Please enter your TIRCNumber</value>
+  </data>
+  <data name="VerifyandConfirm" xml:space="preserve">
+    <value>Verify and Confirm</value>
+  </data>
+  <data name="WelcomeGCS" xml:space="preserve">
+    <value>Welcome to GCS. Global Clearinghouse Systems</value>
+  </data>
+  <data name="SelfPaymentServices" xml:space="preserve">
+    <value>Self Payment Services</value>
+  </data>
+  <data name="DRConsignee" xml:space="preserve">
+    <value>DR Consignee</value>
+  </data>
+</root>

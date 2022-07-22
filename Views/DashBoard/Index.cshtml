@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = Resources.Resource.dashBoard;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+@{
+
+    String allRequests = String.Empty;
+    String rejectedRequests = String.Empty;
+    String approvedRequests = String.Empty;
+    String examRequests = String.Empty;
+    String organizationRequests = String.Empty;
+    String renewalRequests = String.Empty;
+    String submittedRequests = String.Empty;
+    String subscriptionRequests = String.Empty;
+    String mySerivces = String.Empty;
+
+    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+    if (ViewData.Model != null)
+    {
+
+        dataTable = (System.Data.DataTable)ViewData.Model;
+    }
+
+    foreach (System.Data.DataRow item in dataTable.Rows)
+    {
+        allRequests = "(" + item["AllRequests"].ToString() + ")";
+        rejectedRequests = "(" + item["AllRejectedRequests"].ToString() + ")";
+        approvedRequests = "(" + item["AllApprovedRequests"].ToString() + ")";
+        examRequests = "(" +  item["ExamRequests"].ToString() + ")";
+        organizationRequests = "(" +  item["OrganizationsRequests"].ToString() + ")";
+        renewalRequests = "(" +  item["RenewalRequests"].ToString() + ")";
+        submittedRequests = "(" +  item["AllSubmittedRequests"].ToString() + ")";
+        subscriptionRequests = "(" +  item["SubscriptionRequests"].ToString() + ")" ;
+        mySerivces = "(" + item["YourServices"].ToString() + ")";
+    }
+
+
+
+    <div class="container marginTop15">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-building-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@allRequests</p>
+                                <p class="announcement-text">@Resources.Resource.dashBoardAllRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-paper-plane fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@submittedRequests</p>
+                                <p class="announcement-text">@Resources.Resource.dashBoardSubmittedRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-thumbs-o-up fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@approvedRequests</p>
+                                <p class="announcement-text">@Resources.Resource.dashBoardApprovedRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-thumbs-down fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@rejectedRequests</p>
+                                <p class="announcement-text">@Resources.Resource.dashBoadrRejectedRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom text-center">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div><!-- /.row -->
+
+
+
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-address-card-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@examRequests</p>
+                                <p class="announcement-text">@Resources.Resource.dashBoardExamRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-address-book-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@renewalRequests</p>
+                                <p class="announcement-text">@Resources.Resource.DashBoardRenewalRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-bookmark-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@subscriptionRequests</p>
+                                <p class="announcement-text">@Resources.Resource.dashBoardSubscriptionRequests</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-calendar-check-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="announcement-heading">@mySerivces</p>
+                                <p class="announcement-text">@Resources.Resource.DashBoardYourSerivces</p>
+                                                               
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footerEservice announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    @Resources.Resource.details
+                                </div>
+                                @*<div class="col-xs-6 text-center">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>*@
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+}

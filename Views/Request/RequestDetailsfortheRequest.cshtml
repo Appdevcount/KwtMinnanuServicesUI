@@ -1,0 +1,847 @@
+﻿@model WebApplication1.Models.RequestDetailMain
+@using WebApplication1.Models;
+@using System.Data;
+@using System.Configuration;
+
+@{
+
+    ViewBag.Title = Resources.Resource.SubscriptionRequestDetails;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+@{
+    HttpCookie lang = Request.Cookies["culture"];
+
+    System.Data.DataTable examDetails = new System.Data.DataTable();
+    Dataclass objdataclass = new Dataclass();
+    EservicesRequests request = new EservicesRequests();
+    request.EserviceRequestId = Model.EServiceRequestID;
+
+    String confirmationState = ConfigurationManager.AppSettings["ExamAttendanceConfirmedState"].ToString();
+    String examSentState = ConfigurationManager.AppSettings["ExamCandidateInfoExamSentState"].ToString();
+
+    String Pstatus = "";
+    String RequestCreatedState = ConfigurationManager.AppSettings["EServiceRequestCreatedState"].ToString();
+    String RequestAcceptedState = ConfigurationManager.AppSettings["EServiceRequestAcceptedState"].ToString();
+    String RequestSubmittedState = ConfigurationManager.AppSettings["EServiceRequestSubmittedState"].ToString();
+
+    String passedExam = ConfigurationManager.AppSettings["passedExam"].ToString();
+    String didNotPass = ConfigurationManager.AppSettings["notPassExam"].ToString();
+    String didNotAttened = ConfigurationManager.AppSettings["notAttended"].ToString();
+
+    String ExamCandidateInfoApprovedState = ConfigurationManager.AppSettings["ExamCandidateInfoApprovedState"].ToString();
+
+    String stateId = String.Empty;
+
+    String ExamServiceId = ConfigurationManager.AppSettings["ExamService"].ToString();
+
+    String RenewalServiceId = ConfigurationManager.AppSettings["RenewalService"].ToString();
+
+
+    String IssuanceServiceID = ConfigurationManager.AppSettings["IssuanceService"].ToString();
+
+    String DeActivateServiceID = ConfigurationManager.AppSettings["DeActivateService"].ToString();
+
+    String TransferServiceID = ConfigurationManager.AppSettings["TransferService"].ToString();
+
+    String CancelServiceID = ConfigurationManager.AppSettings["CancelService"].ToString();
+
+    String WhomItConcernsLetterServiceID = ConfigurationManager.AppSettings["WhomItConcernsLetterService"].ToString();
+
+    String PrintLostIdCardID = ConfigurationManager.AppSettings["PrintLostIdCard"].ToString();
+
+
+
+    #region New BRS Printing Services
+
+    String BrsPrintingCancelLicense = ConfigurationManager.AppSettings["BrsPrintingCancelLicense"].ToString();
+    String BrsPrintingIssueLicense = ConfigurationManager.AppSettings["BrsPrintingIssueLicense"].ToString();
+    String BrsPrintingChangeLicenseAddress = ConfigurationManager.AppSettings["BrsPrintingChangeLicenseAddress"].ToString();
+    String BrsPrintingChangeLicenseActivity = ConfigurationManager.AppSettings["BrsPrintingChangeLicenseActivity"].ToString();
+    String BrsPrintingReleaseBankGuarantee = ConfigurationManager.AppSettings["BrsPrintingReleaseBankGuarantee"].ToString();
+    String BrsPrintingGoodBehave = ConfigurationManager.AppSettings["BrsPrintingGoodBehave"].ToString();
+    String BrsPrintingRenewLicense = ConfigurationManager.AppSettings["BrsPrintingRenewLicense"].ToString();
+    String BrsPrintingChangeJobTitleRenewResidency = ConfigurationManager.AppSettings["BrsPrintingChangeJobTitleRenewResidency"].ToString();
+    String BrsPrintingChangeJobTitleTransferResidency = ConfigurationManager.AppSettings["BrsPrintingChangeJobTitleTransferResidency"].ToString();
+    String BrsPrintingRenewResidency = ConfigurationManager.AppSettings["BrsPrintingRenewResidency"].ToString();
+    String BrsPrintingTransferResidency = ConfigurationManager.AppSettings["BrsPrintingTransferResidency"].ToString();
+    String BrsPrintingChangeJobTitle = ConfigurationManager.AppSettings["BrsPrintingChangeJobTitle"].ToString();
+    String BrsPrintingChangeJobTitleCivil = ConfigurationManager.AppSettings["BrsPrintingChangeJobTitleCivil"].ToString();
+    String BrsPrintingDeActivateLicenseDeath = ConfigurationManager.AppSettings["BrsPrintingDeActivateLicenseDeath"].ToString();
+
+
+    List<String> BRSPrintingServiceList = new List<String>()
+{
+BrsPrintingCancelLicense ,
+BrsPrintingIssueLicense ,
+BrsPrintingChangeLicenseAddress ,
+BrsPrintingChangeLicenseActivity ,
+BrsPrintingReleaseBankGuarantee ,
+BrsPrintingGoodBehave ,
+BrsPrintingRenewLicense ,
+BrsPrintingChangeJobTitleRenewResidency ,
+BrsPrintingChangeJobTitleTransferResidency ,
+BrsPrintingRenewResidency ,
+BrsPrintingTransferResidency ,
+BrsPrintingChangeJobTitle ,
+BrsPrintingChangeJobTitleCivil ,
+BrsPrintingDeActivateLicenseDeath
+};
+
+    #endregion New BRS Printing Services
+
+
+
+    examDetails = objdataclass.getExamDetailsByEservicesRequestId(request);
+}
+
+   
+
+
+    
+
+<style type="text/css">
+    .width35Percent {
+        width: 35%;
+    }
+</style>
+<div class="col-lg-11 col-centered marginTop50">
+
+    <div class="col-lg-11 col-centered" id="requests">
+        @if (Model != null)
+        {
+
+            foreach (var item in Model.ReqDetail)
+            {
+
+                <div class="col-md-6 shadow-lg col-centered">
+                    <div class="card text-white bg-info mb-3">
+                        <div class="card-header text-center bg-secondary">
+                            <div class="nav nav-pills card-header-pills text-center flex-row-reverse">
+                                <li class="nav-item">
+
+                                    @{
+                                        if (lang != null)
+                                        {
+                                            if (lang.Value.Contains("ar"))
+                                            {
+                                                <b class="text-dark "> @item.ServiceNameAra  </b>
+                                            }
+                                            else
+                                            {
+                                                <b class="text-dark ">@item.ServiceNameEng </b>
+                                            }
+                                        }
+                                    }
+
+                                </li>
+
+                                @{
+
+
+                                    if (@item.RequestServicesId == ExamServiceId)
+                                    {
+                                        if (examDetails.Rows.Count > 0)
+                                        {
+                                            if (examDetails.Rows[0]["ExamResult"] != null
+                                                && !String.IsNullOrWhiteSpace(examDetails.Rows[0]["ExamResult"].ToString()))
+                                            {
+                                                if (examDetails.Rows[0]["ExamResult"].ToString() == passedExam && examDetails.Rows[0]["StateId"].ToString() == ExamCandidateInfoApprovedState)
+                                                {
+                                                    <li class="nav-item">
+                                                        <b class="redColor">
+                                                            @Resources.Resource.examPassed
+                                                        </b>
+                                                    </li>
+
+                                                }
+
+                                                else if (examDetails.Rows[0]["ExamResult"].ToString() == didNotPass && examDetails.Rows[0]["StateId"].ToString() == ExamCandidateInfoApprovedState)
+                                                {
+                                                    <li class="nav-item">
+                                                        <b class="redColor">
+                                                            @Resources.Resource.examNotPass
+                                                        </b>
+                                                    </li>
+
+                                                }
+
+                                                else if (examDetails.Rows[0]["ExamResult"].ToString() == didNotAttened && examDetails.Rows[0]["StateId"].ToString() == ExamCandidateInfoApprovedState)
+                                                {
+                                                    <li class="nav-item">
+                                                        <b class="redColor">
+                                                            @Resources.Resource.notAttend
+                                                        </b>
+                                                    </li>
+
+                                                }
+
+                                                else
+                                                {
+                                                    if (examDetails.Rows[0]["ExamResult"].ToString() == confirmationState)
+                                                    {
+                                                        <li class="nav-item">
+                                                            <b class="redColor">@Resources.Resource.examAnnoncementPublished @Resources.Resource.examAnnoncementMSG</b>
+                                                        </li>
+
+                                                    }
+
+                                                    else
+                                                    {
+                                                        <li class="nav-item">
+                                                            <b class="redColor">@Resources.Resource.examConfirmStatus</b>
+                                                        </li>
+
+                                                    }
+                                                }
+                                            } // End ExamResult != null
+                                            else
+                                            {
+                                                if (examDetails.Rows[0]["StateId"].ToString() == examSentState)
+                                                {
+                                                    <li class="nav-item">
+                                                        <b class="redColor">@Resources.Resource.examAnnoncementPublished @Resources.Resource.examAnnoncementMSG</b>
+                                                    </li>
+
+                                                }
+
+                                                else if (examDetails.Rows[0]["StateId"].ToString() == confirmationState)
+                                                {
+                                                    <li class="nav-item">
+                                                        <b class="redColor">@Resources.Resource.examConfirmStatus</b>
+                                                    </li>
+
+                                                }
+
+                                                else
+                                                {
+                                                    <li class="nav-item">
+                                                        <b class="redColor">@Resources.Resource.examWillPublishedSoon</b>
+                                                    </li>
+
+                                                }
+                                            }
+
+                                        } // End examDetails.Rows.Count
+
+                                        else
+                                        {
+
+                                            if (item.Status.Contains("Creation in Progress")) /*(item.Status == RequestCreatedState)*/
+                                            {
+                                                <li class="nav-item">
+                                                    <b class="redColor">
+                                                        @Resources.Resource.requestStillCreated
+                                                    </b>
+                                                </li>
+
+                                            }
+
+
+                                            else if (item.EserviceRequestStatusEnglish == "ReSubmitted")
+                                            {
+                                                <li class="nav-item">
+                                                    <b class="bg-light">
+                                                        @Resources.Resource.requestReSubmitted
+                                                    </b>
+                                                </li>
+
+                                            }
+
+                                            else if (item.Status.Contains("Submitted") && !item.EserviceRequestStatusEnglish.ToLower().Contains("reject"))
+                                            {
+
+                                                <li class="nav-item">
+                                                    <b class="redColor">
+                                                        @Resources.Resource.requestReceivedUnderReview
+                                                    </b>
+                                                </li>
+
+                                            }
+
+                                            else if (item.Status.Contains("Approved"))
+                                            {
+                                                <li class="nav-item">
+                                                    <b class="redColor">
+                                                        @Resources.Resource.examWillPublishedSoon
+                                                    </b>
+                                                </li>
+
+                                            }
+
+                                            else if (item.Status.ToLower().Contains("rejected") || (!item.EserviceRequestStatusEnglish.ToLower().Contains("final") && item.EserviceRequestStatusEnglish.ToLower().Contains("rejected")))
+                                            {
+                                                <li class="nav-item">
+                                                    <b class="redColor">
+                                                        @Resources.Resource.rejectedStatusMsgExam
+                                                    </b>
+                                                </li>
+
+                                            }
+
+                                            else if (item.Status.ToLower().Contains("final") || item.EserviceRequestStatusEnglish.ToLower().Contains("final"))
+                                            {
+                                                <li class="nav-item">
+                                                    <b class="redColor">
+                                                        @Resources.Resource.rejectedFinalStatusMsgExam
+                                                    </b>
+                                                </li>
+
+                                            }
+
+
+
+
+
+                                        }
+                                    }
+
+                                    else if (@item.RequestServicesId == RenewalServiceId)
+                                    {
+
+                                        if (item.EserviceRequestStatusEnglish.ToLower().Contains("approved"))
+
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.approvedStatusMsgRenew
+
+                                                </b>
+                                            </li>
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish == "ReSubmitted")
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReSubmitted
+                                                </b>
+                                            </li>
+
+                                        }
+
+
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("submitted"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReceivedUnderReview
+
+                                                </b>
+                                            </li>
+
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("rejected"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.rejectedStatusMsgRenew
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("completed"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.Completed
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("proceed"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReceivedUnderReview
+
+                                                </b>
+                                            </li>
+                                        }
+
+
+
+                                        else
+                                        {
+
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+
+                                                    @Resources.Resource.requestStillCreated
+
+                                                </b>
+                                            </li>
+
+
+                                        }
+                                    }
+
+
+
+
+
+                                    else if ((@item.RequestServicesId == IssuanceServiceID) || (@item.RequestServicesId == DeActivateServiceID) || (@item.RequestServicesId == CancelServiceID) || (@item.RequestServicesId == PrintLostIdCardID) || (@item.RequestServicesId == WhomItConcernsLetterServiceID))
+                                    {
+
+                                        if (item.EserviceRequestStatusEnglish.ToLower().Contains("approved"))
+
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.GenApprovedReqst
+
+                                                </b>
+                                            </li>
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish == "ReSubmitted")
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReSubmitted
+                                                </b>
+                                            </li>
+
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("submitted"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReceivedUnderReview
+
+                                                </b>
+                                            </li>
+
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("completed"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.Completed
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("final"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.rejectedStatusMsgFinal
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("rejected"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.rejectedStatusMsg
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("proceed"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReceivedUnderReview
+
+                                                </b>
+                                            </li>
+                                        }
+
+
+
+                                        else
+                                        {
+
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+
+                                                    @Resources.Resource.requestStillCreated
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                    }
+                                    else if ((@item.RequestServicesId == TransferServiceID))
+                                    {
+                                        <li class="nav-item">
+                                            <b class="bg-light">
+                                                @{
+                                                    string culture = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+
+                                                    bool EnglishCulture = culture.Contains("English");
+                                                    Pstatus = item.Status.ToString();
+                                                    if (EnglishCulture)
+                                                    {
+
+                                                        @item.Status.ToString()
+
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.StatusArabic.ToString()
+
+                                                    }
+                                                }
+
+                                            </b>
+                                        </li>
+                                    }
+
+
+
+
+
+
+
+
+                                    else if (BRSPrintingServiceList.Contains(item.RequestServicesId))
+                                    {
+                                        if (item.EserviceRequestStatusEnglish.ToLower().Contains("approved"))
+
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.GenApprovedReqst
+
+
+                                                </b>
+                                            </li>
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish == "ReSubmitted")
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReSubmitted
+                                                </b>
+                                            </li>
+
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("submitted"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReceivedUnderReview
+
+                                                </b>
+                                            </li>
+
+                                        }
+
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("completed"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.Completed
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("final"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.rejectedStatusMsgFinal
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("rejected"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.rejectedStatusMsg
+
+                                                </b>
+                                            </li>
+
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("proceed"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.requestReceivedUnderReview
+
+                                                </b>
+                                            </li>
+                                        }
+                                        else if (item.EserviceRequestStatusEnglish.ToLower().Contains("printted"))
+                                        {
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+                                                    @Resources.Resource.printtedStatus
+
+                                                </b>
+                                            </li>
+                                        }
+
+
+                                        else
+                                        {
+
+                                            <li class="nav-item">
+                                                <b class="bg-light">
+
+                                                    @Resources.Resource.requestStillCreated
+
+                                                </b>
+                                            </li>
+
+                                        }
+
+                                    }
+
+
+
+
+                                }
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+            <table class="table table-striped table-bordered text-center">
+
+
+                <tr>
+                    <td class="font-weight-bold width50Percent">@Resources.Resource.requestNumber </td>
+                    <td class="font-weight-bold width50Percent">@Model.EServiceRequestNumber</td>
+                </tr>
+                @*<tr>
+                        <td  class="font-weight-bold width50Percent">Arabic Name</td>
+                        <td class="font-weight-bold width50Percent">@Model.EServiceRequestNumber</td>
+                    </tr>
+                    <tr>
+                        <td  class="font-weight-bold width50Percent">English Name</td>
+                        <td class="font-weight-bold width50Percent">@Model.EServiceRequestNumber</td>
+                    </tr>*@
+                <tr>
+                    <td class="font-weight-bold width50Percent">@Resources.Resource.SubmittedDate</td>
+                    <td class="font-weight-bold width50Percent">@Model.DateCreated</td>
+                </tr>
+
+                <tr>
+                    <td class="font-weight-bold width50Percent">@Resources.Resource.CivilId</td>
+                    <td class="font-weight-bold width50Percent">@Model.CivilID</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold width50Percent">@Resources.Resource.MobileNumber</td>
+                    <td class="font-weight-bold width50Percent">@Model.MobileNumber</td>
+                </tr>
+                @*<tr>
+                        <td class="font-weight-bold width50Percent">@Resources.Resource.passportNo</td>
+                        <td class="font-weight-bold width50Percent">@Model.PassportNo</td>
+                    </tr>*@
+                <tr>
+                    <td class="font-weight-bold width50Percent">@Resources.Resource.Email</td>
+                    <td class="font-weight-bold width50Percent">@Model.Email</td>
+                </tr>
+                <tr>
+                    @if (!String.IsNullOrWhiteSpace(@Model.LicenseNumber))
+                    {
+                        <td class="font-weight-bold width50Percent">@Resources.Resource.licenceNo</td>
+                        <td class="font-weight-bold width50Percent">@Model.LicenseNumber</td>
+                    }
+
+                </tr>
+
+                <tr>
+                    @if (!String.IsNullOrWhiteSpace(@Model.BrokerType))
+                    {
+                        <td class="font-weight-bold width50Percent">@Resources.Resource.BrokerType</td>
+                        <td class="font-weight-bold width50Percent">@Model.BrokerType</td>
+                    }
+
+                </tr>
+                <tr>
+                    @if (!String.IsNullOrWhiteSpace(@Model.BrokerName))
+                    {
+                        <td class="font-weight-bold width50Percent">@Resources.Resource.BrokerName</td>
+                        <td class="font-weight-bold width50Percent">@Model.BrokerName</td>
+                    }
+
+                </tr>
+
+                <tr>
+                    @if (!String.IsNullOrWhiteSpace(@Model.RequestedOrganizations))
+                    {
+                        <td class="font-weight-bold width50Percent">@Resources.Resource.AssociatedOrganization</td>
+                        <td class="font-weight-bold width50Percent">@Model.RequestedOrganizations</td>
+                    }
+
+                </tr>
+
+                <tr>
+                    @if (!String.IsNullOrWhiteSpace(@Model.RejectionRemarks))
+                    {
+                        <td class="font-weight-bold width50Percent">@Resources.Resource.RejectionReason</td>
+                        <td class="font-weight-bold width50Percent">@Model.RejectionRemarks</td>
+                    }
+
+                </tr>
+            </table>
+
+
+
+
+
+            if (examDetails.Rows.Count > 0)
+            {
+                String Status = !String.IsNullOrWhiteSpace(examDetails.Rows[0]["StateId"].ToString()) ? examDetails.Rows[0]["StateId"].ToString() : " ";
+
+                if (!String.IsNullOrWhiteSpace(Status) && (Status == examSentState || Status == confirmationState))
+                {
+                    <div class="marginTop15">
+                        <table class="table table-striped table-bordered text-center">
+                            <caption>
+                                <h3>
+                                    @Resources.Resource.examDetails
+                                </h3>
+                            </caption>
+
+                            @foreach (DataRow row in examDetails.Rows)
+                            {
+                                <tr>
+                                    <td class="font-weight-bold width50Percent">@Resources.Resource.examNumber </td>
+                                    <td class="font-weight-bold width50Percent">@row["ExamNumber"].ToString()</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold width50Percent">@Resources.Resource.examDate </td>
+                                    <td class="font-weight-bold width50Percent">@row["DateOfExam"].ToString()</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold width50Percent">@Resources.Resource.placeOfExam </td>
+                                    <td class="font-weight-bold width50Percent">@row["PlaceOfExam"].ToString()</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold width50Percent">@Resources.Resource.examTime </td>
+                                    <td class="font-weight-bold width50Percent">@DateTime.Parse(row["ExamStartTime"].ToString()).ToLongTimeString()</td>
+                                </tr>
+
+                                <tr>
+
+
+                                    @{
+
+                                        //String passedExam = ConfigurationManager.AppSettings["passedExam"].ToString();
+                                        //String didNotPass = ConfigurationManager.AppSettings["notPassExam"].ToString();
+                                        //String didNotAttened = ConfigurationManager.AppSettings["notAttended"].ToString();
+
+                                        //String ExamCandidateInfoApprovedState = ConfigurationManager.AppSettings["ExamCandidateInfoApprovedState"].ToString();
+
+                                        stateId = row["StateId"].ToString();
+
+                                        if (row["ExamResult"] != null)
+                                        {
+                                            if (row["ExamResult"].ToString() == passedExam && stateId == ExamCandidateInfoApprovedState)
+                                            {
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.Status </td>
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.examPassed</td>
+                                            }
+
+                                            else if (row["ExamResult"].ToString() == didNotPass && stateId == ExamCandidateInfoApprovedState)
+                                            {
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.Status </td>
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.examNotPass</td>
+                                            }
+
+                                            else if (row["ExamResult"].ToString() == didNotAttened && stateId == ExamCandidateInfoApprovedState)
+                                            {
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.Status </td>
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.notAttend</td>
+                                            }
+
+                                            else
+                                            {
+                                                if (row["StateId"].ToString() == confirmationState)
+                                                {
+                                                    <td class="font-weight-bold width50Percent">@Resources.Resource.Status </td>
+                                                    <td class="font-weight-bold width50Percent">@Resources.Resource.examConfirmStatus</td>
+                                                }
+                                            }
+                                        }
+
+                                        else
+                                        {
+
+                                            if (row["StateId"].ToString() == confirmationState)
+                                            {
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.Status </td>
+                                                <td class="font-weight-bold width50Percent">@Resources.Resource.examConfirmStatus</td>
+                                            }
+
+                                        }
+
+                                    }
+
+                                </tr>
+                            }
+                        </table>
+
+
+                        @if (stateId != confirmationState)
+                        {
+                            <div class="col-md-6 marginBottom30 col-centered">
+                                <div class="col-md-12">
+                                    <b>
+                                        @Html.ActionLink(Resources.Resource.examConfirmAttendance, "ConfirmAttendance", new { eServiceRequestId = CommonFunctions.CsUploadEncrypt(request.EserviceRequestId.ToString()) }, new { @class = "btn btn-info btn-block col-centered marginTop50", style = "text-decoration:none;" })
+                                    </b>
+                                </div>
+                            </div>
+                        }
+
+
+
+                    </div>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="col-lg-11 col-centered marginTop15">
+        <p>
+            @Html.ActionLink(Resources.Resource.Back, "RequestListForTheUser", "Request", null, new { @class = "btn btn-info btn-block col-centered  width35Percent" })
+
+            @if (Pstatus.Contains("Please make the payment"))
+            {
+
+            }
+            else
+            {
+                <button type="button" onclick="window.location.href='@Url.Action("Requestprint", "User", new { RequestNumber = WebApplication1.Models.CommonFunctions.CsUploadEncrypt(Model.EServiceRequestNumber) })'" class="btn btn-info btn-block col-centered marginTop50 width35Percent" id="PrintButton">
+                    <b>
+
+                        <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.print &nbsp;
+                    </b>
+                </button>
+            }
+        </p>
+    </div>
+</div>
+
+
+

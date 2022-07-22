@@ -1,0 +1,804 @@
+﻿@using System.Data;
+@using System.Configuration;
+@{
+    ViewBag.Title = Resources.Resource.printingServices;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+@functions {
+    String getServiceIcon(String ServiceId)
+    {
+        switch (ServiceId)
+        {
+            case "20":
+                return "fa fa-window-close-o";
+            case "21":
+                return "fa fa-credit-card";
+            case "22":
+                return "fa fa-clipboard";
+            case "23":
+                return "fa fa-files-o";
+            case "24":
+                return "fa fa-money";
+            case "25":
+                return "fa fa-check-square-o";
+            case "26":
+                return "fa fa-envelope-o";
+            case "27":
+                return "fa fa-male";
+            case "28":
+                return "fa fa-user-o";
+            case "29":
+                return "fa fa-window-restore";
+            case "30":
+                return "fa fa-retweet";
+            case "31":
+                return "fa fa-user-circle";
+            case "32":
+                return "fa fa-address-card-o";
+            case "33":
+                return "fa fa-user-times";
+
+            default:
+                return "";
+
+        }
+    }
+}
+
+<!-- The Modal -->
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&nbsp;</span>
+            <h6 id="modelHeaderTitle"> &nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+                @Resources.Resource.Sessionexpired
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a id="ok" href="../registration/LogOut" class="btn btn-info btn-blockdiscard col-centered  " style="text-decoration:none;width: 80px;">@Resources.Resource.Ok</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-12 col-centered marginTop15">
+
+
+    <div class="bg-info mx-5" id="availableServicesDiv">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 paddingRight15">
+                    <h3 class="text-center bg-info text-dark" id="expandSearch">
+                        <b>@Resources.Resource.AvailableServices</b>
+                        <i class="fa fa-plus" id="arrowUppp" style="font-size: 10px;"></i>
+                        <i class="fa fa-minus" id="arrowDownnn" style="font-size: 10px;"></i>
+                        <input type="hidden" name="lgHidden" id="lgHidden" value="@Resources.Resource.lG" />
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="pt-1 bg-secondary mx-5" id="firstSectionSearch" style="padding-bottom: 1%;">
+
+
+
+
+        <div class="container">
+            <div class="row justify-content-start">
+
+                @{
+
+                    if (Session["serviceSubscriptionDataTable"] != null)
+                    {
+                        DataTable serviceSubscriptionDataTablee = Session["serviceSubscriptionDataTable"] as DataTable;
+                        HttpCookie langCookie = Request.Cookies["culture"];
+                        String langg = String.Empty;
+
+                        String[] generalBrokerOnlyServices = { "20", "21", "22", "23", "26", "33" };
+
+                        if (langCookie != null)
+                        {
+                            langg = langCookie.Value.ToString();
+                        }
+
+                        foreach (DataRow row in serviceSubscriptionDataTablee.Rows)
+                        {
+                            if (row["type"].ToString().ToLower() == "printing")
+                            {
+                                String service = "service" + row["ServiceID"].ToString();
+
+                                if (Session["LegalEntity"] != null)
+                                {
+                                    // Organization
+                                    if (Session["LegalEntity"].ToString() == "2" &&
+                                      generalBrokerOnlyServices.Contains(row["ServiceID"].ToString()))
+                                    {
+                                        continue;
+                                    }
+                                }
+
+                                <div class="col-4">
+                                    <div class="thumbnail toBeClicked">
+                                        <div class="caption text-center">
+                                            <div class="position-relative">
+
+
+
+                                                <i class="@getServiceIcon(row["ServiceID"].ToString())"></i>
+                                            </div>
+                                            <div class="thumbnail-description smaller">
+                                                <input type="hidden" id="@service" />
+                                                @{
+                                                    String serviceName = langg.Contains("en") ? row["ServiceNameEng"].ToString() : row["ServiceNameAra"].ToString();
+                                                }
+
+                                                @serviceName.ToString()
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+                    }
+                }
+
+
+
+
+
+                <!--
+
+                <div class="col-4">
+                    <div class="thumbnail toBeClicked">
+                        <div class="caption text-center">
+                            <div class="position-relative">
+                                <img src = "/images/customs.png" style="width:72px;height:72px;" />
+                                <i class="fa fa-id-card light-red lighter"></i>
+                            </div>
+                            <h4 id = "thumbnail-label" >
+                                < a href="#" target="_blank">
+                                    Microsoft Slack
+                                </a>
+                            </h4>
+                            <p>
+                                <i class="fa fa-id-card light-red lighter"></i>
+
+                            </p>
+                            <div class="thumbnail-description smaller">
+                                كتاب طلب الغاء الترخيص التجاري
+                            </div>
+                        </div>
+                        <div class="caption card-footer text-center">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="people lighter"></i>
+                                    &nbsp; عبد الكريم
+                                </li>
+                                <li></li>
+                                <li>
+                                    <i class="glyphicon glyphicon-envelope lighter">
+                                    </i><a href = "#" >
+                                        &nbsp; فف
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                    -->
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div class="col-lg-12 col-centered marginTop15">
+    <div class="pt-1 bg-secondary mx-5" id="brokersList" style="padding-bottom: 1%;">
+        <div class="container">
+
+            <div class="row justify-content-start">
+                @*<div class="row space-16">&nbsp;</div>*@
+                <div class="row" id="brokers">
+
+                    @*<div class="col-sm-3">
+                            <div class="thumbnail">
+                                <div class="caption text-center">
+                                    <div class="position-relative">
+                                        عبدالله حسين زايد بوعركي
+                                    </div>
+                                    <h4 id = "thumbnail-label" >
+                                        < b >
+                                            1004810   مخلص عام
+                                        </b>
+                                    </h4>
+                                    <p>
+                                        <strong class="text-dark">
+                                            ضمان بنكي
+                                        </strong>
+                                        18/01/80102/5/212029
+                                    </p>
+                                    <div class="thumbnail-description smaller">
+
+                                        <strong>
+                                            تاريخ انتهائه
+
+                                        </strong>
+                                        31/12/2019
+
+
+                                    </div>
+                                </div>
+                                <div class="caption card-footer">
+
+                                    <table class="table-responsive" border="0" style="text-align: center;">
+                                        <tr>
+                                            <td style = "width:50%;" class="bg-light">
+                                                نشط
+                                            </td>
+
+                                            <td style = "width:50%;" >
+
+                                                < button class="btn btn-info btn-sm">
+                                                    طلب الخدمة
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="thumbnail">
+                                <div class="caption text-center">
+                                    <div class="position-relative">
+                                        عبدالله حسين زايد بوعركي
+                                    </div>
+                                    <h4 id = "thumbnail-label" >
+                                        < b >
+                                            1004810   مخلص عام
+                                        </b>
+                                    </h4>
+                                    <p>
+                                        <strong class="text-dark">
+                                            ضمان بنكي
+                                        </strong>
+                                        18/01/80102/5/212029
+                                    </p>
+                                    <div class="thumbnail-description smaller">
+
+                                        <strong>
+                                            تاريخ انتهائه
+
+                                        </strong>
+                                        31/12/2019
+
+
+                                    </div>
+                                </div>
+                                <div class="caption card-footer">
+
+                                    <table class="table-responsive" border="0" style="text-align: center;">
+                                        <tr>
+                                            <td style = "width:50%;" class="bg-light">
+                                                نشط
+                                            </td>
+
+                                            <td style = "width:50%;" >
+
+                                                < button class="btn btn-info btn-sm">
+                                                    طلب الخدمة
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="thumbnail">
+                                <div class="caption text-center">
+                                    <div class="position-relative">
+                                        عبدالله حسين زايد بوعركي
+                                    </div>
+                                    <h4 id = "thumbnail-label" >
+                                        < b >
+                                            1004810   مخلص عام
+                                        </b>
+                                    </h4>
+                                    <p>
+                                        <strong class="text-dark">
+                                            ضمان بنكي
+                                        </strong>
+                                        18/01/80102/5/212029
+                                    </p>
+                                    <div class="thumbnail-description smaller">
+
+                                        <strong>
+                                            تاريخ انتهائه
+
+                                        </strong>
+                                        31/12/2019
+
+
+                                    </div>
+                                </div>
+                                <div class="caption card-footer">
+
+                                    <table class="table-responsive" border="0" style="text-align: center;">
+                                        <tr>
+                                            <td style = "width:50%;" class="bg-light">
+                                                نشط
+                                            </td>
+
+                                            <td style = "width:50%;" >
+
+                                                < button class="btn btn-info btn-sm">
+                                                    طلب الخدمة
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
+        // Get Brokers List
+        function getsubBrokers(serviceId)
+        {
+
+                $.ajax({
+        type: "POST",
+                    async: true,
+                    cache: false, // Added for Security
+                    url: '@Url.Action("GetBrokersDetails", "PrintingServices")',
+                    data: JSON.stringify({ 'serviceId': serviceId }),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    error: function(XMLHttpRequest, textStatus, errorThrown)
+                    {
+                console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            },
+                    success: function(result)
+                    {
+                if (result)
+                {
+                    if (result == "-1")
+                    {
+                                $("#modalDiv").css("display", "block");
+                        return;
+                    }
+                    else
+                    {
+                                $("#modalDiv").css("display", "none");
+                    }
+
+
+
+                            $("#brokers").empty();
+
+                    var obj = result;
+
+                    var length = result.length;
+
+                            $.each(obj, function(index, element)
+                            {
+
+                        //console.log(obj[index]);
+                        //var replaceRequestsubmissionDateTime = obj[index].RequestsubmissionDateTime.replace("/", "").replace("Date", "").replace("(", "").replace(")", "").replace("/", "");
+                        //var RequestSubmissionDate = new Date(parseInt(replaceRequestsubmissionDateTime));
+
+                        //var dd = RequestSubmissionDate.getDate();
+                        //var mm = RequestSubmissionDate.getMonth() + 1; //January is 0!
+
+                        //var yyyy = RequestSubmissionDate.getFullYear();
+                        //if (dd < 10) {
+                        //    dd = '0' + dd;
+                        //}
+                        //if (mm < 10) {
+                        //    mm = '0' + mm;
+                        //}
+                        //RequestSubmissionDate = dd + '/' + mm + '/' + yyyy;
+
+
+                        var targetPage = applicationUrl + "PrintingServices/PrintFormRequest?Orgid=" + obj[index].OrganizationId + "";
+
+                        var brokerType = '';
+                        var brokerStatus = obj[index].AccountStatus;
+                        var bankGuaranteeNo = obj[index].BankGuaranteeNo;
+                        var bankGuaranteeExpiryDate = obj[index].BankGuaranteeExpiryDatee;
+
+                        var LicenseExpiryDate = obj[index].LicenseNumberExpiryDate;
+
+                        var lgHidden = $('#lgHidden').val();
+
+                        var bankGurantee = "ضمان بنكي";
+                        var expiryDate = "تاريخ انتهائه";
+                        var showInformation = "طلب الخدمة";
+                        var licenseNo = "ترخيص رقم";
+
+                        if (lgHidden.indexOf("En") != -1)
+                        {
+                            brokerType = obj[index].EseBrokerType;
+                            bankGurantee = "Bank Guarantee";
+                            expiryDate = "Expiry Date";
+                            showInformation = "Request Service";
+                            licenseNo = "License No. ";
+                        }
+
+                        else
+                        {
+                            brokerType = obj[index].BrokerType;
+
+                            if (brokerStatus == "ACTIVE" ||
+                                brokerStatus == "active" ||
+                                brokerStatus == "Active")
+                            {
+                                brokerStatus = "نشط";
+                            }
+                            else
+                            {
+                                brokerStatus = "غير نشط";
+                            }
+                        }
+
+                        //alert(bankGuaranteeNo);
+
+                        if (bankGuaranteeNo == "NULL")
+                        {
+                            bankGuaranteeNo = "---";
+                        }
+
+                        if (!bankGuaranteeExpiryDate || bankGuaranteeExpiryDate == "NULL")
+                        {
+                            bankGuaranteeExpiryDate = "---";
+                        }
+                        if (!LicenseExpiryDate || LicenseExpiryDate == "NULL")
+                        {
+                            LicenseExpiryDate = "---";
+                        }
+
+
+                        //var broker =
+                        //<div class="col-4">
+                        //        <div class="thumbnail toBeClicked">
+                        //            <div class="caption text-center">
+                        //                <div class="position-relative">
+                        //                    <i class="fa fa-id-card"></i>
+                        //                </div>
+                        //                <div class="thumbnail-description smaller">
+
+                        //                </div>
+                        //            </div>
+
+                        //        </div>
+                        //    </div>
+                        var div = '<div class="col-sm-3">';
+                        if (length == 1)
+                        {
+                            div = '<div class="col-sm-12">'
+
+                        }
+
+                        else if (length == 2)
+                        {
+                            div = '<div class="col-sm-6">'
+
+                                }
+
+                        else if (length == 3) {
+                            div = '<div class="col-sm-4">'
+
+                                }
+
+                                console.log(length);
+
+                        var broker =
+                            //'<div class="col-sm-3">' +
+                            div +
+                            '<div class="thumbnail">' +
+                            '<div class="caption text-center" style="height: 83%;">' +
+                            '<div class="position-relative">' +
+                            obj[index].BrokerName +
+                            '</div>' +
+                            '<h4 id="thumbnail-label">' +
+                            '<b>' +
+                            //obj[index].TradeLicenseNumber +
+                            //'  ' +
+                            brokerType +
+                            '</b>' +
+                            '</h4>' +
+
+                            '<hr/>' +
+
+                            '<h4>' +
+                            '<b class="text-dark">' +
+                            licenseNo +
+                            '</b>' +
+                            '  ' +
+                            //obj[index].BankGuaranteeNo +
+                            obj[index].TradeLicenseNumber +
+                            '</h4>' +
+
+                            '<h4>' +
+                            '<b>' +
+                            expiryDate +
+                            '</b>' +
+                            ' ' +
+
+                            LicenseExpiryDate +
+                            '</h4>' +
+
+
+                            '<hr/>' +
+
+                            '<h4>' +
+                            '<b class="text-dark">' +
+                            bankGurantee +
+                            '</b>' +
+                              '  ' +
+                            //obj[index].BankGuaranteeNo +
+                            bankGuaranteeNo +
+                            '</h4>' +
+
+                            '<div class="thumbnail-description smaller">' +
+                            '<h4>' +
+                            '<b>' +
+                            expiryDate +
+                            '</b>' +
+                            ' ' +
+                            //obj[index].BankGuaranteeExpiryDate +
+                            bankGuaranteeExpiryDate +
+                            '</h4>' +
+
+
+                            '</div>' +
+                            '</div>' +
+                            '<div class="caption card-footer">' +
+                            '<table class="table-responsive" id="brokerActions" border="0" style="text-align: center;">' +
+                            '<tr>' +
+                            '<td style="width:50%;" class="bg-light">' +
+                            brokerStatus +
+                            '</td>' +
+                            '<td style="width:50%;">' +
+                            '<a class="btn btn-info btn-sm" style="font-family:inherit;" href="' + targetPage + '">' +
+                            showInformation +
+                            '</a>' +
+                            '</td>' +
+                            '</tr>' +
+                            '</table>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                                $("#brokers").append(broker);
+                    });
+                }
+            }// End Success
+        });  // End Ajax Request
+} // End Get Brokers List
+
+
+        $(document).ready(function ()
+        {
+
+            //getsubBrokers();
+
+            $('.toBeClicked').css('cursor', 'pointer');
+            $('#brokersList').css('display', 'none');
+
+
+        if ($(window).width() < 1100) {
+                $('#availableServicesDiv').removeClass('mx-5');
+                $('#firstSectionSearch').removeClass('mx-5');
+                $('#brokersList').removeClass('mx-5');
+
+
+            //$('.lighter').css('font-size', '2em');
+
+        }
+            else {
+                $('#availableServicesDiv').addClass('mx-5');
+                $('#firstSectionSearch').addClass('mx-5');
+                $('#brokersList').addClass('mx-5');
+
+
+            //$('.lighter').css('font-size', '3em');
+        }
+
+        var windowSize = window.matchMedia("(max-width: 1100px)");
+
+        if (windowSize.matches)
+        {
+            // If media query matches
+            document.getElementById('availableServicesDiv').style.marginLeft = "0.0rem !important";
+            document.getElementById('firstSectionSearch').style.marginLeft = "0.0rem !important";
+            document.getElementById('brokersList').style.marginLeft = "0.0rem !important";
+
+            document.getElementById('availableServicesDiv').style.marginRight = "0.0rem !important";
+            document.getElementById('firstSectionSearch').style.marginRight = "0.0rem !important";
+            document.getElementById('brokersList').style.marginRight = "0.0rem !important";
+
+
+            //$('.lighter').css('font-size', '2em');
+
+            //$('.pageHeader').css('font-size', '1rem');
+
+            //document.body.style.backgroundColor = "blue";
+        }
+        else
+        {
+            document.getElementById('availableServicesDiv').style.marginLeft = "2.5rem !important";
+            document.getElementById('firstSectionSearch').style.marginLeft = "2.5rem !important";
+            document.getElementById('brokersList').style.marginLeft = "2.5rem !important";
+
+            document.getElementById('availableServicesDiv').style.marginRight = "2.5rem !important";
+            document.getElementById('firstSectionSearch').style.marginRight = "2.5rem !important";
+            document.getElementById('brokersList').style.marginRight = "2.5rem !important";
+
+
+            //$('.lighter').css('font-size', '3em');
+
+            //$('.pageHeader').css('font-size', '1.2rem');
+
+            //document.body.style.backgroundColor = "pink";
+        }
+});
+
+
+
+        $(window).resize(function () {
+        this.console.log($(window).width().toString());
+        if ($(window).width() < 1100) {
+                $('#availableServicesDiv').removeClass('mx-5');
+                $('#firstSectionSearch').removeClass('mx-5');
+                $('#brokersList').removeClass('mx-5');
+
+
+                //$('.lighter').css('font-size', '2em');
+                //$('.pageHeader').css('font-size', '1rem');
+
+
+                $('#firstSectionSearch').css('margin-left', '2.5rem !important');
+                $('#availableServicesDiv').css('margin-left', '2.5rem !important');
+
+                $('#firstSectionSearch').css('margin-right', '2.5rem !important');
+                $('#availableServicesDiv').css('margin-right', '2.5rem !important');
+
+        }
+            else
+            {
+                $('#availableServicesDiv').addClass('mx-5');
+                $('#firstSectionSearch').addClass('mx-5');
+                $('#brokersList').addClass('mx-5');
+
+
+                $('#firstSectionSearch').css('margin-left', '0.0rem !important');
+                $('#availableServicesDiv').css('margin-left', '0.0rem !important');
+
+                $('#firstSectionSearch').css('margin-right', '0.0rem !important');
+                $('#availableServicesDiv').css('margin-right', '0.0rem !important');
+
+            //$('.lighter').css('font-size', '3em');
+            //$('.pageHeader').css('font-size', '1.2rem');
+
+
+
+        }
+});
+
+        function changeCSS(windowSize)
+{
+        if (windowSize.matches)
+        {
+            // If media query matches
+            document.getElementById('availableServicesDiv').style.marginLeft = "0.0rem !important";
+            document.getElementById('firstSectionSearch').style.marginLeft = "0.0rem !important";
+
+            document.getElementById('availableServicesDiv').style.marginRight = "0.0rem !important";
+            document.getElementById('firstSectionSearch').style.marginRight = "0.0rem !important";
+
+
+            //$('.lighter').css('font-size', '2em');
+
+            //$('.pageHeader').css('font-size', '1rem');
+
+            //document.body.style.backgroundColor = "blue";
+        }
+        else
+        {
+            document.getElementById('availableServicesDiv').style.marginLeft = "2.5rem !important";
+            document.getElementById('firstSectionSearch').style.marginLeft = "2.5rem !important";
+
+            document.getElementById('availableServicesDiv').style.marginRight = "2.5rem !important";
+            document.getElementById('firstSectionSearch').style.marginRight = "2.5rem !important";
+
+
+            //$('.lighter').css('font-size', '3em');
+
+            //$('.pageHeader').css('font-size', '1.2rem');
+
+            //document.body.style.backgroundColor = "pink";
+        }
+}
+
+var windowSize = window.matchMedia("(max-width: 1100px)");
+changeCSS(windowSize); // Call listener function at run time
+windowSize.addListener(changeCSS); // Attach listener function on state changes
+
+
+        // background-color: #A9A9A9;
+        //font - weight: bold;
+
+        $(document).on("click", ".toBeClicked", function () {
+            event.preventDefault();
+            $('.toBeClicked').css('background-color', '#fff');
+            $('.toBeClicked').css('font-weight', 'normal');
+            $('.toBeClicked').css('border', '1px solid #ddd');
+            //$('.toBeClicked').css('color', '#777');
+
+            $(this).css('background-color', '#A9A9A9');
+            $(this).css('font-weight', 'bold');
+            $(this).css('border', '1px solid #000');
+        //$(this).css('color', '#000');
+
+        var service = $(this).find('input[type=hidden]:first').attr("id").replace("service", '');
+
+        //console.log(service);
+
+        getsubBrokers(service);
+
+
+            $('#brokersList').css('display', 'block');
+
+        var windowSize = window.matchMedia("(max-width: 1100px)");
+        changeCSS(windowSize); // Call listener function at run time
+            //windowSize.addListener(changeCSS); // Attach listener function on state changes
+
+            // Getting the height of the document
+            $('html, body').animate({
+        scrollTop: $("#brokersList").offset().top
+            }, 700);
+});
+
+</script>

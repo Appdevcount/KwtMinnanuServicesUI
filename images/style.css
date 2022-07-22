@@ -1,0 +1,14 @@
+﻿
+body {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 13px;
+  margin: 0;
+  padding: 20px;
+}
+img {
+    background-image: url(./Images/default_thumb.jpg);
+    overflow: hidden;
+}
+a {
+  color: #222;
+}

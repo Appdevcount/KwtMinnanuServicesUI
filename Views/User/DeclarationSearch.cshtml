@@ -1,0 +1,344 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = Resources.Resource.DeclarationSearch;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<style>
+    .container {
+        width: 25%;
+    }
+
+    .step {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        background-color: cream;
+    }
+
+    .v-stepper {
+        position: relative;
+        /*   visibility: visible; */
+    }
+
+
+    /* regular step */
+    .step .circle {
+        background-color: white;
+        border: 5px solid gray;
+        /*border-radius: 100%;*/
+        width: 20px; /* +6 for border */
+        height: 20px;
+        display: inline-block;
+    }
+
+    .step .Myline {
+        top: 20px;
+        left: 10px;
+        /*   height: 120px; */
+        height: 100%;
+        position: absolute;
+        border-left: 3px solid gray;
+    }
+
+    .step.completed .circle {
+        visibility: visible;
+        background-color: rgb(36, 132, 25);
+        border-color: rgb(36, 132, 25);
+    }
+
+    .step.completed .Myline {
+        border-left: 3px solid rgb(36, 132, 25);
+    }
+
+    .step.active .circle {
+        visibility: visible;
+        border-color: rgb(6,150,215);
+    }
+
+    .step.empty .circle {
+        visibility: hidden;
+    }
+
+    .step.empty .Myline {
+        /*     visibility: hidden; */
+        /*   height: 150%; */
+        top: 0;
+        height: 150%;
+    }
+
+    .Myline {
+        width: 100%;
+        height: 1px;
+        /* border-bottom: 1px dashed #ddd; */
+        /* margin: 40px 0; */
+    }
+
+    .step:last-child .Myline {
+        border-left: 3px solid white;
+        z-index: -1; /* behind the circle to completely hide */
+    }
+
+    .content {
+        margin-left: 20px;
+        display: inline-block;
+    }
+
+
+    /* codepen override */
+
+</style>
+
+@*<style>
+
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .time {
+            /*left: -110px;*/
+        }
+
+        .timeline-wrapper {
+            /*padding-left: 27px;*/
+            min-width: 400px;
+            font-family: 'Helvetica';
+            font-size: 14px;
+            /*border: 1px solid #CCC;*/
+        }
+
+        .StepProgress {
+            position: relative;
+            padding-left: 45px;
+            list-style: none;
+        }
+
+            .StepProgress::before {
+                display: inline-block;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 15px;
+                width: 10px;
+                height: 100%;
+                border-left: 2px solid #CCC;
+            }
+
+        .StepProgress-item {
+            position: relative;
+            counter-increment: list;
+        }
+
+            .StepProgress-item:not(:last-child) {
+                padding-bottom: 20px;
+            }
+
+            .StepProgress-item::before {
+                display: inline-block;
+                content: '';
+                position: absolute;
+                left: -32px;
+                height: 100%;
+                width: 10px;
+            }
+
+            .StepProgress-item::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: -37px;
+                width: 12px;
+                height: 12px;
+                border: 2px solid #CCC;
+                background-color: #FFF;
+            }
+
+            .StepProgress-item.is-done::before {
+                border-left: 2px solid green;
+            }
+
+            .StepProgress-item.is-done::after {
+                /*content: "?";*/
+                font-size: 10px;
+                color: #FFF;
+                text-align: center;
+                border: 2px solid green;
+                background-color: green;
+            }
+
+        .StepProgress strong {
+            display: block;
+        }
+    </style>*@
+
+
+
+
+
+<div class="col-lg-8 col-centered marginTop30 ">
+
+
+    <table class="table table-striped center-block">
+        <tbody>
+            <tr>
+                <td colspan="1">
+                    <div id="requestListDiv" class="well" style="text-align:center;">
+
+                        <h3>
+                            @Resources.Resource.brokerTransferComingSoonMSG
+                        </h3>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+
+
+@*This Was Commentted in 23 July 2019, To Display Message Coming Soon [Under Development]*@
+
+
+
+
+@*@using (Html.BeginForm("DeclarationSearch", "User", FormMethod.Post, new { @class = "marginTop50" }))
+    {
+
+        <div class="col-lg-8 col-centered well form-horizontal">
+
+            <table class="table table-striped center-block">
+                <tbody>
+
+                    <tr>
+                        <td colspan="1">
+                            <form class="well form-horizontal" dir="@Resources.Resource.dir">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <p class="redColor text-center"> @Resources.Resource.mandatoryFieldsMsg </p>
+                                        <label class="col-md-4 control-label">@Resources.Resource.TempDeclNumber</label>
+                                        <div class="col-md-7 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-tag"></i>
+                                                </span>
+                                                <input id="DescSearch"
+                                                       name="tempDeclNumber" placeholder="* @Resources.Resource.TempDeclNumber"
+                                                       class="form-control" value="" type="text">
+
+                                                <p id="declarationErrorMsg" class="errorMsg">
+                                                    @Resources.Resource.tempDeclarationRequired
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+
+                            <button type="submit" id="searchDeclaration" class="btn btn-info btn-block col-centered marginTop15 width9em" causesvalidation="true">
+                                <b>
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Search &nbsp;
+                                </b>
+                            </button>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" >
+                            @{ if (Model != null)
+                                            {
+                                                if (Model.Rows != null)
+                                                {
+                                                    if (Model.Rows.Count > 0)
+                                                    { var count = 1;
+                                                        foreach (DataRow row in Model.Rows)
+                                                        {
+                                                            if (row["status"].ToString() == "1")
+                                                            {
+                                                <!-- completed -->
+                                                <div class="step completed">
+                                                    <div class="v-stepper">
+                                                        <div class="circle">@count</div>
+                                                        <div class="Myline"></div>
+                                                    </div>
+
+                                                    <div class="content" style="padding-right: 10%;">
+                                                        @row["phasename"]<br/>
+                                                        @row["Myactiondatetime"]
+
+                                                    </div>
+
+
+                                                </div>
+                                                }
+                                                <!-- active -->
+                                                if (row["status"].ToString() != "1")
+                                                {
+                                                <div class="step active">
+                                                    <div class="v-stepper">
+                                                        <div class="circle">@count</div>
+                                                        <div class="Myline"></div>
+                                                    </div>
+                                                    <div class="content" style="padding-right: 10%;">
+                                                        @row["phasename"]<br />
+                                                        @row["Myactiondatetime"]
+
+                                                    </div>
+                                                </div>
+
+                                                }
+
+                                             count = count + 1;
+
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                            }
+
+                            </td>
+
+                            </tr>
+
+                        </tbody>
+            </table>
+
+
+            <table class="table table-striped center-block">
+
+
+
+
+    </table>
+
+        </div>
+
+                    }*@
+
+
+
+
+
+
+

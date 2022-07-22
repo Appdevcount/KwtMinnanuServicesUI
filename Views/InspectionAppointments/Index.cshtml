@@ -1,0 +1,429 @@
+﻿@{
+    ViewBag.Title = Resources.Resource.printingServices;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+<!-- The Modal -->
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&nbsp;</span>
+            <h6 id="modelHeaderTitle"> &nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+                @Resources.Resource.Sessionexpired
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a id="ok" href="../registration/LogOut" class="btn btn-info btn-blockdiscard col-centered  " style="text-decoration:none;width: 80px;">@Resources.Resource.Ok</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-12 col-centered marginTop15">
+
+
+
+
+
+
+    <div class="bg-secondary mx-5"
+         id="firstSectionSearch"
+         style="padding-bottom: 1%;">
+
+
+
+        <table class="table table-striped center-block">
+            
+            <tbody>
+                <tr>
+                    <td style="border:none !important;">
+                        <h3>
+                            @Resources.Resource.chooseBrokerType
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td colspan="1">
+
+                        @using (Html.BeginForm("ExamRequest", "ClearingAgentExamRequest", FormMethod.Post, new { @class = "well form-horizontal", enctype = "multipart/form-data", accept_charset = "utf-8", autocomplete = "off" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        <fieldset>
+
+                            @*<div class="form-group">
+            <label class="col-md-3 control-label">@Resources.Resource.BrokerType</label>
+            <div class="col-md-7 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+                    <select class="selectpicker form-control"
+                            name="brokerTypeSelected" id="brokerTypeSelect">
+
+
+
+                    </select>
+                </div>
+            </div>
+        </div>*@
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.brokerEnglishNameLbl</label>
+                                <div class="col-md-5 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-address-card" ></i>
+                                        </span>
+                                        <input id="deliveryOrderNo" name="deliveryOrderNo"
+                                               placeholder="* Delivery Order Number "
+                                               class="form-control" required="required"
+                                               value="" type="text" autocomplete="off">
+                                        <p id="firstnameErrorMsg" class="errorMsg">
+                                            @Resources.Resource.nameFirstRequiredMSG
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">@Resources.Resource.brokerEnglishNameLbl</label>
+                                <div class="col-md-5 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-barcode"></i>
+                                        </span>
+                                        <input id="" name=""
+                                               placeholder="* Security Code"
+                                               class="form-control" required="required"
+                                               value="" type="text" autocomplete="off">
+                                        <p id="firstnameErrorMsg" class="errorMsg">
+                                            @Resources.Resource.nameFirstRequiredMSG
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                        </fieldset>
+                        }
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+    <div class="col-lg-12 col-centered marginTop15">
+        <div class="pt-1 bg-secondary mx-5" id="" style="padding-bottom: 1%;">
+            <div class="container">
+                <div class="row justify-content-start">
+
+
+
+                    <div class="col-sm-3 toBeClicked">
+                        <div class="thumbnail">
+                            <div class="caption text-center">
+                                <div class="position-relative">
+                                    عبدالله حسين زايد بوعركي
+                                </div>
+                                <h4 id="thumbnail-label">
+                                    <b>
+                                        1004810   مخلص عام
+                                    </b>
+                                </h4>
+                                <p>
+                                    <strong class="text-dark">
+                                        ضمان بنكي
+                                    </strong>
+                                    18/01/80102/5/212029
+                                </p>
+                                <div class="thumbnail-description smaller">
+
+                                    <strong>
+                                        تاريخ انتهائه
+
+                                    </strong>
+                                    31/12/2019
+
+
+                                </div>
+                            </div>
+                            <div class="caption card-footer">
+
+                                <table class="table-responsive" border="0" style="text-align: center;">
+                                    <tr>
+                                        <td style="width:50%;" class="bg-light">
+                                            نشط
+                                        </td>
+
+                                        <td style="width:50%;">
+
+                                            <button class="btn btn-info btn-sm">
+                                                طلب الخدمة
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3 toBeClicked">
+                        <div class="thumbnail">
+                            <div class="caption text-center">
+                                <div class="position-relative">
+                                    عبدالله حسين زايد بوعركي
+                                </div>
+                                <h4 id="thumbnail-label">
+                                    <b>
+                                        1004810   مخلص عام
+                                    </b>
+                                </h4>
+                                <p>
+                                    <strong class="text-dark">
+                                        ضمان بنكي
+                                    </strong>
+                                    18/01/80102/5/212029
+                                </p>
+                                <div class="thumbnail-description smaller">
+
+                                    <strong>
+                                        تاريخ انتهائه
+
+                                    </strong>
+                                    31/12/2019
+
+
+                                </div>
+                            </div>
+                            <div class="caption card-footer">
+
+                                <table class="table-responsive" border="0" style="text-align: center;">
+                                    <tr>
+                                        <td style="width:50%;" class="bg-light">
+                                            نشط
+                                        </td>
+
+                                        <td style="width:50%;">
+
+                                            <button class="btn btn-info btn-sm">
+                                                طلب الخدمة
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
+   
+
+
+
+    $(document).ready(function () {
+
+        //getsubBrokers();
+
+        $('.toBeClicked').css('cursor', 'pointer');
+        //$('#brokersList').css('display', 'none');
+
+
+        if ($(window).width() < 1100) {
+
+            $('#firstSectionSearch').removeClass('mx-5');
+            $('#brokersList').removeClass('mx-5');
+
+
+            //$('.lighter').css('font-size', '2em');
+
+        }
+        else {
+
+            $('#firstSectionSearch').addClass('mx-5');
+            $('#brokersList').addClass('mx-5');
+
+
+            //$('.lighter').css('font-size', '3em');
+        }
+
+        var windowSize = window.matchMedia("(max-width: 1100px)");
+
+        if (windowSize.matches) {
+            // If media query matches
+
+            document.getElementById('firstSectionSearch').style.marginLeft = "0.0rem !important";
+            document.getElementById('brokersList').style.marginLeft = "0.0rem !important";
+
+
+
+
+
+            //$('.lighter').css('font-size', '2em');
+
+            //$('.pageHeader').css('font-size', '1rem');
+
+            //document.body.style.backgroundColor = "blue";
+        }
+        else {
+
+            document.getElementById('firstSectionSearch').style.marginLeft = "2.5rem !important";
+            document.getElementById('brokersList').style.marginLeft = "2.5rem !important";
+
+
+
+
+
+            //$('.lighter').css('font-size', '3em');
+
+            //$('.pageHeader').css('font-size', '1.2rem');
+
+            //document.body.style.backgroundColor = "pink";
+        }
+    });
+
+
+
+    $(window).resize(function () {
+        this.console.log($(window).width().toString());
+        if ($(window).width() < 1100) {
+
+            $('#firstSectionSearch').removeClass('mx-5');
+            $('#brokersList').removeClass('mx-5');
+
+
+            //$('.lighter').css('font-size', '2em');
+            //$('.pageHeader').css('font-size', '1rem');
+
+
+            $('#firstSectionSearch').css('margin-left', '2.5rem !important');
+
+
+
+
+
+        }
+        else {
+
+            $('#firstSectionSearch').addClass('mx-5');
+            $('#brokersList').addClass('mx-5');
+
+
+            $('#firstSectionSearch').css('margin-left', '0.0rem !important');
+
+
+
+
+
+            //$('.lighter').css('font-size', '3em');
+            //$('.pageHeader').css('font-size', '1.2rem');
+
+
+
+        }
+    });
+
+    function changeCSS(windowSize) {
+        if (windowSize.matches) {
+            // If media query matches
+
+            document.getElementById('firstSectionSearch').style.marginLeft = "0.0rem !important";
+
+
+
+
+
+            //$('.lighter').css('font-size', '2em');
+
+            //$('.pageHeader').css('font-size', '1rem');
+
+            //document.body.style.backgroundColor = "blue";
+        }
+        else {
+
+            document.getElementById('firstSectionSearch').style.marginLeft = "2.5rem !important";
+
+
+
+
+
+            //$('.lighter').css('font-size', '3em');
+
+            //$('.pageHeader').css('font-size', '1.2rem');
+
+            //document.body.style.backgroundColor = "pink";
+        }
+    }
+
+    var windowSize = window.matchMedia("(max-width: 1100px)");
+    changeCSS(windowSize); // Call listener function at run time
+    windowSize.addListener(changeCSS); // Attach listener function on state changes
+
+
+    // background-color: #A9A9A9;
+    //font - weight: bold;
+
+    $(document).on("click", ".toBeClicked", function () {
+        event.preventDefault();
+        $('.toBeClicked').css('background-color', '#fff');
+        $('.toBeClicked').css('font-weight', 'normal');
+        $('.toBeClicked').css('border', '1px solid #ddd');
+        //$('.toBeClicked').css('color', '#777');
+
+        $(this).css('background-color', '#A9A9A9');
+        $(this).css('font-weight', 'bold');
+        $(this).css('border', '1px solid #000');
+        //$(this).css('color', '#000');
+
+
+
+
+
+
+
+
+        var windowSize = window.matchMedia("(max-width: 1100px)");
+        changeCSS(windowSize); // Call listener function at run time
+        //windowSize.addListener(changeCSS); // Attach listener function on state changes
+
+        // Getting the height of the document
+        $('html, body').animate({
+            scrollTop: $("#brokersList").offset().top
+        }, 700);
+    });
+
+</script>

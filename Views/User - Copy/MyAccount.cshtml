@@ -1,0 +1,276 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+@{
+    ViewBag.Title = @Resources.Resource.MyAccount;
+    //Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+@using (Html.BeginForm("MyAccount", "User", FormMethod.Post))
+{
+
+    <div class="col-lg-10 col-centered">
+
+        <table class="table table-striped center-block marginTop50">
+            <tbody>
+
+                <tr>
+                    <td colspan="1">
+                        <div class="well form-horizontal" dir="@Resources.Resource.dir">
+                            <fieldset>
+
+                                @{ if (Model != null)
+                                    {
+                                        if (Model.Rows != null)
+                                        {
+                                            if (Model.Rows.Count > 0)
+                                            {
+                                                foreach (DataRow row in Model.Rows)
+                                                {
+                                                    @*string EMV = string.Empty;
+                                                        if (row["IsEmailVerified"].ToString().Trim() == "-1" || row["IsMobileVerified"].ToString().Trim() == "-1")
+                                                        {
+                                                            EMV = Resources.Resource.EmailIdMobileNumberverificationpending;
+                                                        }
+                                                        <div class="form-group" align="center">
+                                                            <p style="text-align: center;">
+                                                                <h4 style="text-align: center">
+                                                                @Resources.Resource.ProfileInfo
+                                                                </h4>
+                                                            </p>
+                                                        </div>
+                                                        <div class="form-group" align="center">
+                                                            <p style="text-align: center;">
+                                                                @EMV
+                                                            </p>
+                                                        </div>*@
+
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.FirstName</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+
+                                                                <label class="form-control" disabled="disabled" readonly="readonly">@row["FirstName"]</label>
+                                                                @*<input id="inputFirstName" name="FirstName" placeholder="@Resources.Resource.FirstName"
+                                                                    class="form-control" value="@row["FirstName"]" type="text" disabled="disabled" readonly="readonly">*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.LastName</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+
+                                                                <label class="form-control" disabled="disabled" readonly="readonly">@row["LastName"]</label>
+
+                                                                @*<input id="inputLastName" name="LastName" placeholder="@Resources.Resource.LastName"
+                                                                    class="form-control" value="@row["LastName"]" type="text" disabled="disabled" readonly="readonly">*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.CivilId</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+         								 @{
+                                                                    var s = row["CivilId"].ToString();
+                                                                    if (s == "NULL" || s == "")
+                                                                    {
+                                                                        <input id="inputCivilIdNumber" name="CivilId" placeholder="@Resources.Resource.CivilId" maxlength = 12
+                                                                               class="form-control ClearingAgent numericOnly" value="@row["CivilId"]" type="text">
+
+
+                                                                    }
+
+                                                                    else
+                                                                    {
+
+                                                                        <input id="inputCivilIdNumber" name="CivilId" readonly="readonly" placeholder="@Resources.Resource.CivilId"
+                                                                             maxlength = 12  class="form-control ClearingAgent numericOnly" value="@row["CivilId"]" type="text">
+                                                                    }
+
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.Importer_LicenseNo</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+
+                                                                     @{
+                                                                    if (Session["LegalEntity"] != null)
+                                                                    {
+                                                                        if (Session["LegalEntity"].ToString() == "2")
+                                                                        {
+
+
+
+                                                                            var X = row["licensenumber"].ToString();
+                                                                            if (X == "" || X == "NULL")
+                                                                            {
+                                                                        <input id="inputMobileNumber" name="LicenseNumber" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                               class="form-control" value="@row["licensenumber"]" type="text">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                        <input id="inputMobileNumber" name="LicenseNumber" readonly="readonly" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                               class="form-control" value="@row["licensenumber"]" type="text">
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <input id="inputMobileNumber" name="LicenseNumber" readonly="readonly" placeholder="@Resources.Resource.Importer_LicenseNo"
+                                                                                   class="form-control" value="@row["licensenumber"]" type="text">
+                                                                            }
+
+                                                                        }
+                                                                    }
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.MobileNumber</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+                                                                <input id="inputMobileNumber" name="MobileTelNumber" placeholder="@Resources.Resource.MobileNumber"
+                                                                       class="form-control" value="@row["MobileNumber"]" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">@Resources.Resource.Email</label>
+                                                        <div class="col-md-7 inputGroupContainer">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                                </span>
+                                                                <input id="inputEmailId" name="EmailId" placeholder="@Resources.Resource.Email"
+                                                                       class="form-control" value="@row["EmailId"]" type="text" disabled="disabled" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label marginTop15">&nbsp;</label>
+                                                        <div class="col-md-7 inputGroupContainer marginTop15">
+                                                            <div class="input-group">
+
+                                                                <button type="submit"
+                                                                        class="btn btn-info btn-block col-centered marginTop50 width50Percent"
+                                                                        causesvalidation="true" id="btnsubmit">
+                                                                    <b>
+                                                                        <span class="glyphicon glyphicon-ok-sign">
+                                                                        </span>&nbsp; @Resources.Resource.Save &nbsp;
+                                                                    </b>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    @*if (ViewBag.login != null)
+                                                        {
+                                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.SaveVerify</button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button type="submit" id="btnsubmit" class="btn button button4">@Resources.Resource.Save</button>
+                                                        }*@
+
+
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+
+                            </fieldset>
+
+                        </div>
+                    </td>
+
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+}
+
+
+<div id="modalDiv" class="modal" style="display:none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @ViewBag.Msg
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var ViewBagShowmsg = '@ViewBag.Showmsg';
+    var ViewBagMsg='@ViewBag.Msg';
+    var ViewBagmodelerror='@ViewBag.modelerror';
+    var ViewBagmodelstatus='@ViewBag.modelerror';
+    if (ViewBagmodelstatus===null) {
+        ViewBagmodelstatus='';
+    }
+</script>
+
+
+

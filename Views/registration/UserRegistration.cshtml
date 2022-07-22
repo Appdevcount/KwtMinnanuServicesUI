@@ -1,0 +1,1075 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = Resources.Resource.UserRegistration;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+<body dir=@Resources.Resource.dir>
+
+    @{
+        HttpCookie langCookie = Request.Cookies["culture"];
+    }
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    @*<link href="~/styles/datatables.min.css" rel="stylesheet" />*@
+    <link href="~/styles/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+    @{
+        string TermsCheckBoxStyle = "";
+        if (langCookie != null)
+        {
+            if (langCookie.Value.Contains("ar"))
+            {
+                <link href="~/styles/responsive.dataTables-rtl.min.css" rel="stylesheet" />
+                TermsCheckBoxStyle = "height:21px;    margin-right: -20px;";
+                
+            }
+            else
+            {
+                <link href="~/styles/responsive.dataTables.min.css" rel="stylesheet" />
+                TermsCheckBoxStyle = " height:21px;    margin-left: -20px;";
+            }
+        }
+    }
+    <script src="~/Scripts/datatables.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/dataTables.responsive.min.js" type="text/javascript"></script>
+    <input type="hidden" name="usageAgreement" id="usageAgreement" value="@Resources.Resource.usageAgreement" />
+    <input type="hidden" name="usageAgreementHeader" id="usageAgreementHeader" value="@Resources.Resource.termsOfUse" />
+
+
+    <!-- The Modal -->
+    <div id="modalDiv" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeError">&times;</span>
+                <h6 id="modelHeaderTitle">&nbsp;</h6>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+
+            </div>
+        </div>
+
+    </div>
+
+    @*<div id="loading" style="display:none;">
+            <img src="~/images/loading.gif" />
+        </div>*@
+    <div class="col-lg-11 col-centered">
+
+        <table class="table table-striped center-block">
+
+
+            @if (ViewBag.SelectedEntity == "1")
+            {
+                <caption>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>@Resources.Resource.Registration_Title1</h3>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <h4> @Resources.Resource.Registration_Title2</h4>
+
+
+
+                        </div>
+                    </div>
+
+                </caption>
+            }
+            else if (ViewBag.SelectedEntity == "2")
+            {
+                <caption>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>@Resources.Resource.Registration_Title1</h3>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <h4>
+                                @Resources.Resource.registrationTileNewpart1
+                                <a href="https://eservices.kgac.gov.kw/HelpV/UserRegistration.mp4" target="_blank"
+                                   style="color: #012b73; font-weight:bold;">
+                                    @Resources.Resource.supportVideoLink
+                                </a>
+
+                                @Resources.Resource.registrationTileNewpart2
+                            </h4>
+                        </div>
+                    </div>
+
+                </caption>
+
+            }
+
+
+
+            <tbody>
+                <tr>
+                    <td colspan="1">
+
+                        @using (Ajax.BeginForm("UserRegistration", "Registration", null,
+
+new AjaxOptions
+{
+    OnSuccess = "RegSuccess",
+    OnFailure = "RegFailure"
+}, new { autocomplete = "off", onkeydown = "return event.keyCode!=13" }))
+
+                        {
+
+                            <div class="well form-horizontal" dir="@Resources.Resource.dir">
+                                <fieldset>
+
+
+
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(M => M.ParentID)
+                                    @Html.HiddenFor(M => M.SubUser)
+                                    @Html.HiddenFor(M => M.SelectedServices)
+                                    @Html.HiddenFor(M => M.SelectedOrganizations)
+
+                                    @*@Html.HiddenFor(M=>M.CompanyName)*@
+
+                                    @if (!Model.SubUser)//(bool)ViewBag.SubUser)
+                                    {
+
+                                        <div class="form-group LegalEntityBlock" style="display:none">
+                                            @Html.Label(Resources.Resource.LegalEntity, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+
+                                                    @Html.DropDownListFor(m => m.LegalEntity, new SelectList(ViewBag.UserType, "LegalEntityID", "LegalEntityName"), new { @class = "selectpicker form-control  select2 LegalEntityBlock" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.LegalEntity, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center" style="font-size: 19px;">
+                                            @if (ViewBag.SelectedEntity == "1")
+                                            {
+                                                <label>   @Resources.Resource.RegisterForBrokerServices</label>
+                                            }
+                                            else if (ViewBag.SelectedEntity == "2")
+                                            {
+
+                                                <label>  @Resources.Resource.RegisterForStakeholderServices</label>
+                                            }
+
+
+                                        </div>
+
+
+                                        @*<hr />*@
+                                    if (ViewBag.SelectedEntity == "1")
+                                    {
+                                        <p class="redColor text-center marginBottom15">@Resources.Resource.ClearingAgentInfo</p>
+
+
+
+
+                                        <!--
+                                             BackUp  02/12/ 2019
+                                            to Display Options
+
+
+                                          <div class="form-group ClearingAgentP">
+                                            <label class="col-md-3 control-label">&nbsp;</label>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+
+                                                    @*@Html.CheckBoxFor(m => m.ExistingUser, new { @class = "col-md-2 control-label" })  @Html.Label(@Resources.Resource.ExistingUser, new { @class = "col-md-10 control-label" })*@
+                                                    @*@Html.RadioButtonFor(m => m.ExistingUser, new { @class = "col-md-2 control-label" })*@
+
+
+                                                    <input type="radio" name="ExistingUser" class="col-md-2 control-label" id="ExistingUser" runat="server" />
+
+
+                                                    @Html.Label(@Resources.Resource.ExistingUser, new { @class = "col-md-10 " })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group ClearingAgentP">
+                                            <label class="col-md-3 control-label">&nbsp;</label>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+
+                                                    @*@Html.CheckBoxFor(m => m.ExistingUser, new { @class = "col-md-2 control-label" })  @Html.Label(@Resources.Resource.ExistingUser, new { @class = "col-md-10 control-label" })*@
+                                                    <input type="radio" name="ExistingUser" class="col-md-2 control-label" id="newuser" runat="server" />
+
+                                                    @Html.Label(@Resources.Resource.newuser, new { @class = "col-md-10" })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            -->
+
+                                           <div class="form-group1">
+                                            @*<div class="col-md-12">
+                                                <div class="input-group">*@
+
+                                                    @Html.RadioButtonFor(model => model.ExistingUser, "", new { @checked = "checked", @class = " control-label" })
+                                                    &nbsp;
+
+                                                    @*@Html.Label(@Resources.Resource.ExistingUser, new { @class = " " })*@
+                                            <span>
+                                                @Resources.Resource.ExistingUser
+                                            </span>
+
+                                                @*</div>
+                                            </div>*@
+                                        </div>
+                                        <div class="form-group1">
+                                            @*<div class="col-md-12">
+                                                <div class="input-group">*@
+                                                    <input type="radio" name="ExistingUser"
+                                                           class=" control-label"
+                                                           id="newuser" runat="server">
+                                                    &nbsp;
+                                                    @*@Html.Label(@Resources.Resource.newuser, new { @class = "" })*@
+                                            <span>
+                                                @Resources.Resource.newuser
+                                            </span>
+
+                                                @*</div>
+                                            </div>*@
+                                        </div>
+                                        <div id="NewBrokerUserMsg" class="text-center redColor marginBottom15 ClearingAgentPOPT ClearingAgentNP" >
+                                            @Resources.Resource.newBrokerRegistrationMsg
+                                        </div>
+                                        }
+                                    }
+
+                                    <p class="redColor text-center marginBottom15"> @Resources.Resource.mandatoryFieldsMsg </p>
+
+                                    @*@if (ViewBag.SelectedEntity == "2")
+                                        {
+                                        <div class="form-group " >
+                                            @Html.Label("Organization Type", new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+
+                                                    @Html.DropDownListFor(m => m.LegalEntitySubType, new SelectList(ViewBag.LegalEntitySubType, "LegalEntityID", "LegalEntityName"), new { @class = "selectpicker form-control  select2 ", @style= "padding: 1px;" })
+
+                                                    @Html.ValidationMessageFor(model => model.LegalEntitySubType, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }*@
+
+                                    <div class="form-group ClearingAgentPOPT">
+                                        @Html.Label(Resources.Resource.FirstName, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.FirstName, new { placeholder = "* " + Resources.Resource.FirstName, maxlength = 150, @class = "form-control ClearingAgent lettersOnly", autocomplete = "off" })
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group ClearingAgentPOPT">
+                                        @Html.Label(Resources.Resource.LastName, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.LastName, new { placeholder = "* " + Resources.Resource.LastName, maxlength = 150, @class = "form-control ClearingAgent lettersOnly", autocomplete = "off" })
+
+                                            </div> @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="form-group ">
+                                        @Html.Label(Resources.Resource.gender, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @*id="genderSelect" ,*@
+                                                @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.GenderType, "GenderTypeID", "GenderTypeValue"), new { @class = "selectpicker form-control  select2" })
+
+
+                                                @*<select class="selectpicker form-control"
+                                                            name="genderType" id="genderTypeSelect">
+                                                        <option value="M">@Resources.Resource.male</option>
+                                                        <option value="M">@Resources.Resource.male</option>
+                                                        <option value="F">@Resources.Resource.female</option>
+
+                                                    </select>*@
+
+                                                @*@Html.DropDownListFor(m => m.LegalEntity, new SelectList(ViewBag.UserType, "LegalEntityID", "LegalEntityName"), new { @class = "selectpicker form-control  select2" })*@
+                                            </div>@Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ClearingAgentPOPT">
+                                        @Html.Label(Resources.Resource.CivilId, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.CivilId, new { maxlength = 12, placeholder = "* " + Resources.Resource.CivilId, @class = "form-control ClearingAgent numericOnly", autocomplete = "off" })
+                                            </div>      @Html.ValidationMessageFor(model => model.CivilId, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    @*id="added by azhar 01212020" ,*@
+                        @if (ViewBag.SelectedEntity == "1")
+                                                    {
+                                    <div class="form-group ClearingAgentPOPT">
+                                        @Html.Label(Resources.Resource.nationality, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                             
+                                                @Html.DropDownListFor(m => m.Nationality, new SelectList(ViewBag.NationalityType, "NationalityID", "NationalityValue"), new { @class = "selectpicker form-control  select2" })
+
+
+                                             </div>@Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    }
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.CompanyCivilId, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.CompanyCivilId, new { maxlength = 10, placeholder = "* " + Resources.Resource.CompanyCivilId, @class = "form-control Org numericOnly", autocomplete = "off" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.CompanyCivilId, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="form-group OrgP">
+                                        <label class="col-md-3 control-label">
+                                            @Resources.Resource.Importer_LicenseNumber
+                                        </label>
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-drivers-license"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.ImporterLicenseNumber, new { maxlength = 20, placeholder = "" + Resources.Resource.Importer_LicenseNumber, @class = "form-control Org ", autocomplete = "off" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    @if (!Model.SubUser)//(bool)ViewBag.SubUser)
+                                    {
+
+                                        <div class="form-group ClearingAgentP ClearingAgentExistingUser">
+                                            @Html.Label(Resources.Resource.generalBrokerlicenseNo, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-drivers-license"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.GeneralBrokerLicenseNumber, new { placeholder = "* " + Resources.Resource.generalBrokerlicenseNo, @class = "form-control ClearingAgent numericOnly", autocomplete = "off" })
+
+                                                </div> @Html.ValidationMessageFor(model => model.GeneralBrokerLicenseNumber, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group OrgP">
+                                            <label class="col-md-3 control-label">
+                                                @Resources.Resource.TradingLicense
+                                            </label>
+
+
+                                            <div class="col-md-5 ">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-drivers-license"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.TradeLicenseNumber, new { maxlength = 15, placeholder = "* " + Resources.Resource.TradingLicense, @class = "form-control Org numericOnly", @readonly = true, autocomplete = "off" })
+                                                </div>       @Html.ValidationMessageFor(model => model.TradeLicenseNumber, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+                                    <div class="form-group OrgP">
+                                        <label class="col-md-3 control-label">&nbsp;</label>
+
+                                        <div class="col-md-5">
+                                            <div class="input-group ">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.CheckBoxFor(m => m.IsIndustrial, new { @class = "col-xs-2 control-label" })
+                                                @Html.Label(Resources.Resource.IsIndustrial, new { @class = "col-xs-6 control-label", @style = "margin-top: 0px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group OrgPOPT">
+                                        <label class="col-md-3 control-label">
+                                            @Resources.Resource.Industrial_LicenseNumber
+                                            @*IndustrialLicenseNumber*@
+                                        </label>
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-drivers-license"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.IndustrialLicenseNumber, new { maxlength = 15, placeholder = "* " + Resources.Resource.Industrial_LicenseNumber, @class = "form-control Org OrgP OrgPOPT ", autocomplete = "off" })
+                                            </div>       @Html.ValidationMessageFor(model => model.IndustrialLicenseNumber, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group OrgP">
+                                        <label class="col-md-3 control-label">
+                                            @Resources.Resource.Commercial_LicenseNumber
+                                            @*CommercialLicenseNumber*@
+                                        </label>
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-drivers-license"></i>
+                                                </span>
+                                                @*<div class="col-xs-6 ">*@
+                                                @Html.TextBoxFor(Model => Model.CommercialLicenseNumber, new { maxlength = 15, placeholder = "" + Resources.Resource.Commercial_LicenseNumber, @class = "form-control Org ", @readonly = true, autocomplete = "off" })
+                                                @*</div>
+                                                                                                <div class="col-xs-6 ">
+                                                        @Html.TextBoxFor(Model => Model.CommercialLicenseYear, new { maxlength = 4, placeholder = "" + Resources.Resource.Year, @class = "form-control Org numericOnly", autocomplete = "off" })
+                                                    </div>*@
+                                            </div>       @Html.ValidationMessageFor(model => model.CommercialLicenseNumber, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group OrgP">
+                                        <label class="col-md-3 control-label">&nbsp;</label>
+                                        <div class="col-md-5">
+                                            <div class="input-group text-center">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.Label(@Resources.Resource.CompanyLegalAddress, new { @class = "col-xs-6 control-label  text-center" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.Governorate, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.DropDownListFor(m => m.Governorate, new SelectList(ViewBag.Governorate, "GovernorateID", "GovernorateName"), new { @class = "selectpicker form-control  select2 Org " })
+                                            </div>@Html.ValidationMessageFor(model => model.Governorate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.Region, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                @Html.DropDownListFor(m => m.Region, new SelectList(ViewBag.GovernRegions, "RegionID", "RegionName"), new { @class = "selectpicker form-control  select2 Org " })
+                                            </div>@Html.ValidationMessageFor(model => model.Region, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.OrgReg_PostalCode, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.PostalCode, new { placeholder = "", @class = "form-control  Org ", @readonly = true, autocomplete = "off" })
+                                            </div>        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.Block, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.Block, new { placeholder = "* " + Resources.Resource.Block, @class = "form-control  Org ", maxlength = "10", autocomplete = "off" })
+                                            </div>        @Html.ValidationMessageFor(model => model.Block, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.Street, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.Street, new { placeholder = "* " + Resources.Resource.Street, @class = "form-control  Org ", @maxlength = "150", autocomplete = "off" })
+                                            </div>        @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group OrgP">
+                                        @Html.Label(Resources.Resource.Address, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.Address, new { maxlength = 200, placeholder = "* " + Resources.Resource.Address, @class = "form-control  Org ", autocomplete = "off" })
+                                            </div>        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    @if (!Model.SubUser)//(bool)ViewBag.SubUser)
+                                    {
+
+                                        <div class="form-group ClearingAgentP ClearingAgentExistingUser">
+                                            @Html.Label(Resources.Resource.MCUserName, new { @class = "col-md-3 control-label" })
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.MCUserID, new { placeholder = "* " + Resources.Resource.MCUserName, @class = "form-control lettersWithDot", autocomplete = "off" })
+                                                </div>        @Html.ValidationMessageFor(model => model.MCUserID, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group ClearingAgentP ClearingAgentExistingUser">
+                                            @Html.Label(Resources.Resource.MCPassword, new { @class = "col-md-3 control-label " })
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                    </span>
+                                                    @Html.PasswordFor(Model => Model.MCPassword, new { placeholder = "* " + Resources.Resource.MCPassword, @maxlength = 50, @class = "form-control COPYPASTEBLOCK" })
+                                                </div>     @Html.ValidationMessageFor(model => model.MCPassword, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+
+                                    @if (Model.SubUser)//(bool)ViewBag.SubUser)
+                                    {
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">&nbsp;</label>
+
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                    </span>
+                                                    @Html.CheckBoxFor(m => m.IsAdmin, new { @class = "col-xs-2 control-label" })
+                                                    @Html.Label(@Resources.Resource.IsAdminUser, new { @class = "col-xs-6 control-label" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+                                    <div class="form-group">
+
+                                        <label class="col-md-3 control-label">
+                                            &nbsp;
+                                        </label>
+
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <label class="col-md-12 control-label redColor">
+                                                    @Resources.Resource.registerationContactInfoWarning
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.MobileNumber, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-phone"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.MobileTelNumber, new { maxlength = 8, placeholder = "* " + Resources.Resource.MobileNumber, @class = "form-control numericOnly", autocomplete = "off" })
+
+
+                                            </div>   @Html.ValidationMessageFor(model => model.MobileTelNumber, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group " id="MobileNumberRefmsg" style="display:none">
+
+                                        <label class="col-md-3 control-label">
+                                            &nbsp;
+                                        </label>
+
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <label class="col-md-12 control-label redColor ">
+                                                    @Resources.Resource.MobileInforMsg
+
+
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.confirmPhoneNumber, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-phone"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.ConfirmMobileTelNumber, new { maxlength = 8, placeholder = "* " + Resources.Resource.confirmPhoneNumber, @class = "form-control numericOnly", autocomplete = "off" })
+
+
+                                            </div>   @Html.ValidationMessageFor(model => model.ConfirmMobileTelNumber, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.Email, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-envelope"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.EmailId, new { placeholder = "* " + Resources.Resource.Email, @class = "form-control", autocomplete = "off" })
+                                            </div>      @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group " id="EmailRefmsg" style="display:none">
+
+                                        <label class="col-md-3 control-label">
+                                            &nbsp;
+                                        </label>
+
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <label class="col-md-12 control-label redColor ">
+                                                    @Resources.Resource.EmailInfoMsg
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.confirmEmail, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-asterisk"></i>
+                                                </span>
+                                                @Html.TextBoxFor(Model => Model.ConfirmEmailId, new { placeholder = "* " + Resources.Resource.confirmEmail, @class = "form-control COPYPASTEBLOCK", autocomplete = "off" })
+                                            </div>      @Html.ValidationMessageFor(model => model.ConfirmEmailId, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+                                    @if (Model.SubUser)//(bool)ViewBag.SubUser)
+                                    {
+                                        <p class="contact AdminF">
+                                            @Html.Label(Resources.Resource.AvailableServices)
+                                        </p>
+                                        <p class="contact AdminF " id="AvailableEServices">
+
+                                            <table id="example" class="display select table table-sm table-bordered " cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr class="boldc">
+                                                        <th class="text-center fcwidth">
+                                                            <input type="checkbox" class="text-center SELECTALLCHECKBOX" name="select_all" value="1" id="example-select-all">
+                                                        </th>
+                                                        <th></th>
+
+                                                        <th class="text-center ">@Resources.Resource.ServiceName</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{ foreach (WebApplication1.Models.EService ES in Model.AvailableEServices)
+                                                        {
+                                                            <tr>
+                                                                <td class="text-center">
+
+                                                                    <input type="checkbox" name=@ES.ServiceID class="activateselectedservice text-center" id=@ES.ServiceID />
+                                                                </td>
+                                                                <td class="text-center">
+
+                                                                    @ES.ServiceID
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @{
+
+                                                                        String lang = langCookie.Value;
+                                                                        if (lang == "en")
+                                                                        {
+                                                                            @ES.ServiceNameEng
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @ES.ServiceNameAra
+                                                                        }
+                                                                    }
+
+                                                                </td>
+                                                            </tr>
+                                                                        }
+                                                    }
+                                                </tbody>
+
+                                            </table>
+                                        </p>
+                                                                        if (ViewBag.OrgAdmin == "True")
+                                                                        {
+                                                                            <p class="contact AdminF">
+
+                                                                                @Html.Label(Resources.Resource.AvailableOrganizations)
+
+                                                                            </p>
+                                                                            <p class="contact  AdminF" id="AvailableOrganizations">
+
+                                                                                <table id="exampleO" class="display select table table-sm table-bordered " cellspacing="0" width="100%">
+                                                                                    <thead>
+                                                                                        <tr class="boldc">
+                                                                                            <th class="text-center fcwidth">
+                                                                                                <input type="checkbox" class="text-center SELECTALLCHECKBOXO" name="select_allO" value="1" id="example-select-allO">
+                                                                                            </th>
+                                                                                            <th></th>
+                                                                                            <th class="text-center">@Resources.Resource.OrganizationName</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        @{ foreach (WebApplication1.Models.Organization ES in Model.AvailableOrganizations)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td class="text-center">
+                                                                                                        <input type="checkbox" name=@ES.OrganizationId class="activateselectedserviceO text-center" id=@ES.OrganizationId />
+                                                                                                    </td>
+                                                                                                    <td class="text-center">
+                                                                                                        @ES.OrganizationId
+                                                                                                    </td>
+                                                                                                    <td class="text-center">
+                                                                                                        @{
+
+                                                                                                            String lang = langCookie.Value;
+                                                                                                            if (lang == "en")
+                                                                                                            {
+                                                                                                                @ES.OrgNameEng
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                @ES.OrgNameAra
+                                                                                                            }
+                                                                                                        }
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                            }
+                                                                                        }
+                                                                                    </tbody>
+
+                                                                                </table>
+
+
+
+                                                                            </p>
+                                                                                                            }
+                                                                                                            <p id="DTVald" class="contact AdminF">
+                                                                                                            </p>
+                                                                                                            }
+
+
+
+
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.Password, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-asterisk"></i>
+                                                </span>
+                                                @Html.PasswordFor(Model => Model.Pass, new { placeholder = "* " + Resources.Resource.Password, @maxlength = 20, @class = "form-control COPYPASTEBLOCK", autocomplete = "off" })
+                                            </div>      @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.ConfirmPassword, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5 ">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-asterisk"></i>
+                                                </span>
+                                                @Html.PasswordFor(Model => Model.ConfirmPass, new { placeholder = "* " + Resources.Resource.ConfirmPassword, @maxlength = 20, @class = "form-control COPYPASTEBLOCK", autocomplete = "off" })
+                                            </div>      @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="form-group">
+                                        @Html.Label(Resources.Resource.EnterCaptcha, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-qrcode"></i>
+                                                </span>
+
+                                                @Html.TextBoxFor(Model => Model.CaptchaValue, new { maxlength = 6, placeholder = "* " + Resources.Resource.EnterCaptcha, @class = "form-control", autocomplete = "off" })
+
+
+
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.CaptchaValue, "", new { @class = "text-danger" })
+                                            <br />
+                                            <img id="m_imgCaptcha" src="../registration/GetCaptchaImage"
+                                                 class="text-center captcha" />
+
+                                            @*<img id="m_imgCaptcha" src="~/registration/GetCaptchaImage"
+                                                class="text-center captcha"
+                                                 />*@
+
+                                            <span id="Regreshcaptch"
+                                                  class="glyphicon glyphicon-refresh">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">&nbsp;</label>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                @*<span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-exclamation-sign"></i>
+                                                </span>*@
+
+                                                @if (ViewBag.SelectedEntity == "1")
+                                                {
+                                                    @Html.CheckBoxFor(m => m.Term_conditions, new { @class = "col-xs-2 control-label", @style= @TermsCheckBoxStyle })
+                                                    @Html.Label(@Resources.Resource.Agree_for, new { @class = "col-xs-4 control-label", @style = "font-size:19px" })
+                                                    @Html.Label(" " + @Resources.Resource.Agree_for1, new { @class = "col-xs-6 control-label", @style = "margin-top: 0px;font-size:19px", @id = "AEF" })
+                                                }
+                                                else if (ViewBag.SelectedEntity == "2")
+                                                {
+
+                                                    @Html.CheckBoxFor(m => m.Term_conditions, new { @class = "col-xs-2 control-label", @style =  @TermsCheckBoxStyle })
+
+                                                    @Html.Label("* " + @Resources.Resource.Agree_for11, new { @class = "col-xs-10 control-label", @style = "margin-top: 0px;font-size:19px" })
+                                                }
+
+
+
+                                                <br />
+                                            </div>      @Html.ValidationMessageFor(model => model.Term_conditions, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">@ViewBag.Status</label>
+                                        <div class="col-md-5 ">
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <p class="text-center">
+                                        @*<input type="submit" class="btn btn-info text-center" id="SubmitUserDetails" value="@Resources.Resource.Submit" onclick="SetSelectedServices()" />*@
+                                        <input type="submit" class="btn btn-info text-center" id="SubmitUserDetails" value="@Resources.Resource.Submit"  />
+                                    </p>
+
+                                </fieldset>
+                            </div>
+                                                                                                            }
+                    </td>
+                </tr>
+
+                <tr>
+                    @*<td colspan="2">
+                            <button type="button" class="btn btn-info btn-block col-centered" causesvalidation="true" id="saveBtn">
+                                <b>
+                                    <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Save &nbsp;
+                                </b>
+                            </button>
+                        </td>*@
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+
+
+
+
+    <style type="text/css">
+        .select2-container {
+            width: 100% !important;
+            padding: 0;
+        }
+    </style>
+
+
+    <script>
+        var ViewBagOrgAdmin = '@ViewBag.OrgAdmin';
+        var OrgAdditionalUserCriteria = '@Resources.Resource.OrgAdditonalUserCriteria';
+        var ClearingAgentAdditionalUserCriteria = '@Resources.Resource.ClearingAgentAdditonalUserCriteria';
+        var SelectedEntity = '@ViewBag.SelectedEntity';
+        
+        $('#Gender').select2();
+        
+        $('#Governorate').select2();
+        
+        $('#Region').select2();
+
+        $('#Nationality').select2();
+
+        
+        var OrgAdditionalUserCriteriaEng = 'Please ensure to select minimum one Service and one Organization for the Additional user';
+        var ClearingAgentAdditionalUserCriteriaEng = 'Please ensure to select minimum one Service for the Additional user';
+        var OrgAdditionalUserCriteriaAra = 'الرجاء التأكد من اختيار خدمة واحدة على الاقل ، و اختيار شركة واحدة على الاقل';
+        var ClearingAgentAdditionalUserCriteriaAra = 'الرجاء التأكد من اختيار خدمة واحدة قبل اضافة المستخدم';
+
+
+        var legalentity = '@ViewBag.SelectedEntity';
+      
+        //if ($('#newuser').is(':checked')) {
+        //    $('#NewBrokerUserMsg').css('display', 'block');
+        //}
+      
+        //$("#SubmitUserDetails").click(function (event) {
+        //if ($('#newuser').is(':checked')) {
+            
+        //    if ($("#companyState").val() != 0) {
+        //            $("#nationalityErrorMsg").css("display", "none");
+        //        }
+        //        else {
+        //            event.preventDefault();
+        //            $("#nationalityErrorMsg").css("display", "block");
+        //            valid = false;
+        //        }
+
+        //}
+        //});
+
+    
+
+    </script>
+
+    <script src="~/Scripts/Registration.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+
+    <script type="text/javascript">
+
+    </script>
+
+
+    <style>
+        .form-group {
+            margin-bottom: 11px;
+        }
+    </style>
+
+</body>

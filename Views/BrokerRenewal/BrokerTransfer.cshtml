@@ -1,0 +1,203 @@
+﻿@model WebApplication1.Models.BrokerUpdateModel
+@{
+    if (Session["ServiceId"].ToString() == "14")
+    {
+
+        ViewBag.Title = Resources.Resource.requestTransfer;
+    }
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+<div id="modalDiv" class="modal" style="display:@ViewBag.display">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalMessage">
+                @ViewBag.message
+            </h5>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+<div class="col-lg-8 col-centered marginTop30">
+
+    <div>
+        <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdn" />
+        <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdn" />
+        <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdn" />
+        <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdnForvaildate" />
+        <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdnForvaildate" />
+        <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdnForvaildate" />
+
+        <input type="hidden" runat="server" id="Tid" />
+        <input type="hidden" runat="server" id="uid" />
+        <input type="hidden" runat="server" id="reqid1" />
+
+        @Html.HiddenFor(m => Model.Eservicerequestid, new { @id = "Eservicerequestid" })
+        @Html.HiddenFor(m => Model.Referenceprofile, new { @id = "Referenceprofile" })
+        @Html.HiddenFor(m => m.SelectedFileId)
+    </div>
+
+    @*<table class="table table-striped center-block">
+        <tbody>
+            <tr>
+                <td colspan="1">
+                    <div id="requestListDiv" class="well" style="text-align:center;">
+
+                        <h3>
+                            @Resources.Resource.brokerTransferComingSoonMSG
+                        </h3>
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>*@
+
+
+
+    @*This Was Commentted in 23 July 2019, To Display Message Coming Soon [Under Development]*@
+
+    <table class="table table-striped center-block">
+
+            <tbody>
+                <tr>
+                    <td colspan="1">
+
+                        <div id="requestListDiv" class="well">
+                            @using (Html.BeginForm("BrokerTransferPost", "BrokerRenewal", FormMethod.Post))
+                            {
+                                Html.AntiForgeryToken();
+
+                                <div class="well form-horizontal" dir="@Resources.Resource.dir">
+
+                                    <fieldset>
+
+
+                                        @if (Model.ddlDocumentTypesitems != null)
+                                        {
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">@Resources.Resource.BrokerType</label>
+                                                <div class="col-md-7 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon maxWidth100"><i class="glyphicon glyphicon-list"></i></span>
+
+                                                        @Html.DropDownListFor(m => m.docsid, Model.ddlDocumentTypesitems, new
+                                                   {
+                                                       @id = "ddlDocumentTypes",
+                                                       @class = "form-control select2",@style="height:0.1%"
+                                                   })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+
+                                        @*<div class="form-group">
+            <label class="col-md-3 control-label">@Resources.Resource.BrokerLicenseNo</label>
+            <div class="col-md-7 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-barcode"></i>
+                    </span>
+                    @Html.TextBoxFor(Model => Model.BrokerLicenseNumber, new { maxlength = 15, placeholder = "* " + Resources.Resource.BrokerLicenseNo, @class = "form-control", autocomplete = "off" })
+
+
+                    @Html.ValidationMessageFor(model => model.BrokerLicenseNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.BrokerLicenseNo</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-barcode"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.LicenseNumber, new { maxlength = 15, placeholder = "* " + Resources.Resource.BrokerLicenseNo, @class = "form-control", autocomplete = "off" })
+
+
+
+                                                </div>  @Html.ValidationMessageFor(model => model.LicenseNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">@Resources.Resource.civilIdNo</label>
+                                            <div class="col-md-7 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-file"></i>
+                                                    </span>
+                                                    @Html.TextBoxFor(Model => Model.CivilIdNo, new { maxlength = 12, placeholder = "* " + Resources.Resource.CivilId, @class = "form-control", autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(model => model.CivilIdNo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label marginTop15">&nbsp;</label>
+                                            <div class="col-md-7 inputGroupContainer marginTop15">
+                                                <div class="input-group">
+                                                    @if (Model.SubmitRequest != "false")
+                                                    {
+
+                                                        <button type="submit" class="btn btn-info btn-block col-centered marginTop50 width50Percent" causesvalidation="true" id="SubmitRequest">
+                                                            <b>
+                                                                <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Proceed &nbsp;
+                                                            </b>
+                                                        </button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </fieldset>
+
+                                </div>
+
+
+
+
+
+                                                            }
+
+                        </div>
+
+
+
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+</div>

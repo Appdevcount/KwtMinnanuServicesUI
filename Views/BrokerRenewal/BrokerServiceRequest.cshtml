@@ -1,0 +1,214 @@
+﻿@model WebApplication1.Models.BrokerServiceRequestModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@using (Html.BeginForm("BrokerServiceRequest", "BrokerRenewal", FormMethod.Post, new { enctype = "multipart/form-data", @id = "BrokerserviceRequestForm" }))
+
+{
+<head>
+    <title> @Resources.Resource.brokerUpdatation</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="~/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+    <link href="~/themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="~/js/fileinput.js" type="text/javascript"></script>
+    <script src="~/js/locales/fr.js" type="text/javascript"></script>
+    <script src="~/js/locales/es.js" type="text/javascript"></script>
+    <script src="~/themes/fas/theme.js" type="text/javascript"></script>
+    <script src="~/themes/explorer-fas/theme.js" type="text/javascript"></script>
+
+    @*<script src="~/scripts/jquery.min.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>*@
+
+    <link href="~/styles/bootstrap.css" rel="stylesheet" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <script src="~/scripts/bootstrap.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+    <link rel="stylesheet" href="~/styles/font-awesome.min.css" type="text/css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link rel="stylesheet" href="~/styles/Untitled.css" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <link type="text/css" rel="stylesheet" href="~/styles/jquery-ui.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link type="text/css" rel="stylesheet" href="~/styles/datepickercss.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+
+    <link rel="stylesheet" type="text/css" href="~/styles/style.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    <link rel="stylesheet" type="text/css" href="~/styles/demo.css" media="all" nonce="EDNnf03nceIOfn39fn3e9h3sdfa" />
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">*@
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <script src="~/Scripts/datatables.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+    <script src="~/Scripts/dataTables.responsive.min.js" type="text/javascript"></script>
+
+    <script src="~/Scripts/dataTables.responsive.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+</head>
+
+    <body dir=@Resources.Resource.dir>
+
+        <div id="loading" style="display:none;">
+            <img src="~/images/loading.gif" />
+        </div>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="navbar-collapse collapse" id="navDiv">
+                    <img src="images/customs.png" width="60" alt="" />
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="LogOut.aspx" id="linktoExit">@Resources.Resource.Logout</a></li>
+                        <li><a href="notifications.aspx" id="linktoNotifications">@Resources.Resource.Notifications</a></li>
+
+                        <li><a href="EServiceBrokerRenewal.aspx" id="linkToBrokersManagement">@Resources.Resource.brokersManagement</a></li>
+
+
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdn" />
+                <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdn" />
+                <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdn" />
+                <input type="hidden" runat="server" id="txtCivilIdExpirydatePickerhdnForvaildate" />
+                <input type="hidden" runat="server" id="txtPassportExpirydatePickerhdnForvaildate" />
+                <input type="hidden" runat="server" id="txtTradeLicenseExpiryDatePickerhdnForvaildate" />
+
+                @Html.HiddenFor(m => m.SelectedFileId) <br />
+
+
+            </div>
+        </div>
+        <div class="container">
+            <header>
+                <h3>"Available Services"</h3>
+            </header>
+
+
+            <p class="contact">
+                @Html.Label("Service Types")
+
+
+            </p>
+            <p class="contact">
+                <table id="ServiceListGrid" class="table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="headercheck" /></th>
+                            <th><u>Available Services</u></th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ListOfAvailableServices)
+                        {
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name=@item.AvailableEserviceId runat="server" class="deleteselctedcheckbox" id=@item.AvailableEserviceId />
+
+                                </td>
+                                <td>
+                                    @item.AvailableEservicename
+                                </td>
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </p>
+
+            <p class="contact">
+                <input type="submit" CssClass="btn btn-info text-center" id="SubmitServiceRequest" Text="" />
+
+            </p>
+        </div>
+
+        }
+
+        <script type="text/javascript">
+                //
+
+                //$('.select2').select2();
+
+
+    var UploadDocsURL='@ViewBag.UploadDocsURL';
+    var UploadDocs_actioncall='@ViewBag.UploadDocs_actioncall';
+    var ViewBagmodelstatus='@ViewBag.modelerror';
+    var result='@ViewBag.dis';
+    if (result===null) {
+        result='';
+    }
+    var Tid='@ViewBag.TokenId';
+    var uid='@ViewBag.UserId';
+    var reqid1='@ViewBag.reqid1';
+     var UploadDocument_align_style = '@Resources.Resource.UploadDocument_align_style';
+
+
+                //$.fn.dataTable.ext.pager.numbers_length = 5;
+
+
+
+                $(document).ready(function () {
+                    var checkselected = new Array();
+
+                    $("#SubmitServiceRequest").click(function () {
+                        $('#ServiceListGrid').find('input.deleteselctedcheckbox:checkbox:checked').each(function () {
+
+
+                            {
+                                //   alert($(this).attr('name'));
+                                checkselected.push($(this).attr('name'));
+                               // count++;
+                                //  $(this).closest('tr').remove();
+
+                            }
+                            document.getElementById("SelectedFileId").value = checkselected.join(',');
+                        });
+                    });
+                });
+
+
+
+        </script>
+
+        <style type="text/css">
+            .input-group file-caption-main {
+                width: 70%
+            }
+        </style>
+    </body>
+
+
+}

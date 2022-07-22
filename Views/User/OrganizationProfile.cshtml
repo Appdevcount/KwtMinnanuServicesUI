@@ -1,0 +1,662 @@
+﻿@*@model WebApplication1.Models.OrgRequestlist*@
+
+@{
+    ViewBag.Title = "OrganizationProfile";
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<style>
+    .txleft{
+        text-align:left;
+    }
+    .txtfont {
+        font-weight: bolder;
+        font-size: 10px;
+    }
+    .valuebox{
+        border-style:inset
+    }
+    .titlebox {
+        margin-bottom: 4px;
+        margin-top: 17px;
+        background-color: #a2a0a0;
+        color: white;
+        padding: 7px;
+    }
+    .marginbtmrow {
+        margin-bottom: 5px;
+    }
+</style>
+
+@*@if (Model != null)
+{
+    if (Model.Data != null)
+    {*@
+
+        <div class="row marginbtmrow">
+          
+            <div class="col-lg-12  text-center ">
+                <div class="row txtfont">
+                    <div class="col-lg-12 titlebox">
+                        طلب تسجيل المنظمة
+                        /
+                        Organization Registration Request
+                    </div>
+
+                </div>
+                <div class="row marginbtmrow">
+
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                رقم الطلب / Request Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                الحالة / Status
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                إسم المنظمة / Organization Name
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                الوصف المحلي / Local Description
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                الرقم المدني / Civil Id No
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                رقم الرخصة التجارية / Trading License No
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                سبب الرفض / Rejection Reason
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                شخص معتمد / Authorized Person
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row txtfont">
+                    <div class="col-lg-12 titlebox">
+                        تفاصيل الترخيص الصناعي / Industrial License Details
+                    </div>
+
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                رقم الترخيص الصناعي / Industrial License Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                تاريخ الإنتهاء / Expiry Date
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                تاريخ الإصدار / Issue Date
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row txtfont">
+                    <div class="col-lg-12 titlebox">
+                        تفاصيل رخصة الاستيراد / Importer License Details
+                    </div>
+
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                رقم رخصة الاستيراد / Importer License Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                نوع رخصة الاستيراد / Importer License Type
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                تاريخ انتهاء رخصة الاستيراد / Importer License Expiry Date
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                تاريخ اصدار رخصة الاستيراد / Importer License Issue Date
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row txtfont">
+                    <div class="col-lg-12 titlebox">
+                        تفاصيل الرخصة التجارية / Commercial License Details
+                    </div>
+
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                رقم الترخيص التجاري / Commercial License Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                نوع الرخصة التجارية / Commercial License Type
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                تاريخ إنتهاء الرخصة التجارية / Commercial License Expiry Date
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                تاريخ إصدار الرخصة التجارية / Commercial License Issue Date
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row txtfont">
+                    <div class="col-lg-12 titlebox">
+                        العنوان / Address
+                    </div>
+
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                هاتف المكتب / Business Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                رقم صندوق البريد / P.O Box No
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                هاتف المنزل / Residence Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                العنوان / Address
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                رقم فاكس المكتب / Business Fax Number
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                الولاية / State
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                البريد الإلكتروني / Email ID
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                الرمز البريدي / Postal Code
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marginbtmrow">
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont ">
+                                صفحة الإنترنت / Web Page Address
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row marginbtmrow">
+                            <div class="col-xs-8 txtfont">
+                                البلد / Country
+                            </div>
+                            <div class="col-xs-4 valuebox">
+                                #1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<table style="width: 70%;margin:0 auto;" class="table table-responsive table-striped table-bordered table-condensed table-hover " dir="rtl">
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="text" dir="rtl">
+                                طلب تسجيل المنظمة
+                                /
+                                Organization Registration Request
+                            </td>
+                        </tr>
+                        <tr>
+                            <td dir="rtl" style="width: 15% ;">
+                                #1
+                            </td>
+                            <th style="width: 15% ; text-align: left" dir="rtl">
+                                الحالة / Status
+                            </th>
+                            <td dir="rtl" style="width: 15% ;">
+                                #0
+                            </td>
+                            <th style="width:15% ; text-align: left" dir="rtl">
+                                رقم الطلب / Request Number
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #3
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                الوصف المحلي / Local Description
+                            </th>
+                            <td dir="rtl">
+                                #2
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                إسم المنظمة / Organization Name
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #5
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                الرقم المدني / Civil Id No
+                            </th>
+                            <td dir="rtl">
+                                #4
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم الرخصة التجارية / Trading License No
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #7
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                سبب الرفض / Rejection Reason
+                            </th>
+                            <td dir="rtl">
+                                #6
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                شخص معتمد / Authorized Person
+                            </th>
+
+                        </tr>
+                        <tr class="text">
+                            <th style="width: 20% ; text-align: left;font-weight:900" dir="rtl" colspan="4">
+                                تفاصيل الترخيص الصناعي / Industrial License Details
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl"></td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                            </th>
+                            <td dir="rtl">
+                                #8
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم الترخيص الصناعي / Industrial License Number
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                #10
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                تاريخ الإنتهاء / Expiry Date
+                            </th>
+                            <td>
+                                #9
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                تاريخ الإصدار / Issue Date
+                            </th>
+                        </tr>
+
+                        <tr class="text">
+                            <th style="width: 20% ; text-align: left;font-weight:900" dir="rtl" colspan="4">
+                                تفاصيل رخصة الاستيراد / Importer License Details
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #12
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم رخصة الاستيراد / Importer License Number
+                            </th>
+                            <td dir="rtl">
+                                #11
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                نوع رخصة الاستيراد / Importer License Type
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                #14
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                تاريخ انتهاء رخصة الاستيراد / Importer License Expiry Date
+                            </th>
+                            <td>
+                                #13
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                تاريخ اصدار رخصة الاستيراد / Importer License Issue Date
+                            </th>
+                        </tr>
+                        <tr class="text">
+                            <th style="width: 20% ; text-align: left;font-weight:900" dir="rtl" colspan="4">
+                                تفاصيل الرخصة التجارية / Commercial License Details
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #16
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم الترخيص التجاري / Commercial License Number
+                            </th>
+                            <td dir="rtl">
+                                #15
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                نوع الرخصة التجارية / Commercial License Type
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                #18
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                تاريخ إنتهاء الرخصة التجارية / Commercial License Expiry Date
+                            </th>
+                            <td>
+                                #17
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                تاريخ إصدار الرخصة التجارية / Commercial License Issue Date
+                            </th>
+                        </tr>
+                        <tr class="text">
+                            <th style="width: 20% ; text-align: left;font-weight:900;" dir="rtl" colspan="4">
+                                العنوان / Address
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #20
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                هاتف المكتب / Business Number
+                            </th>
+                            <td dir="rtl">
+                                #19
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم صندوق البريد / P.O Box No
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #22
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                هاتف المنزل / Residence Number
+                            </th>
+                            <td dir="rtl">
+                                #21
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                العنوان / Address
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #24
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم الهاتف النقال / Mobile Number
+                            </th>
+                            <td dir="rtl">
+                                #23
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                المدينة / City
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #26
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                رقم فاكس المكتب / Business Fax Number
+                            </th>
+                            <td dir="rtl">
+                                #25
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                الولاية / State
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #28
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                البريد الإلكتروني / Email ID
+                            </th>
+                            <td dir="rtl">
+                                #27
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                الرمز البريدي / Postal Code
+                            </th>
+                        </tr>
+                        <tr>
+                            <td dir="rtl">
+                                #30
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                صفحة الإنترنت / Web Page Address
+                            </th>
+                            <td dir="rtl">
+                                #29
+                            </td>
+                            <th style="width: 20% ; text-align: left" dir="rtl">
+                                البلد / Country
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>*@
+
+
+
+            </div>
+         
+        </div>
+
+    @*}
+}*@

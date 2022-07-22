@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = Resources.Resource.technicalSupport;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+
+    // Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<body dir="@Resources.Resource.dir">
+    <div id="technicalSupportContainer" class="col-lg-11 col-centered">
+
+        @{
+
+
+            String phone = String.Empty;
+            String fax = String.Empty;
+
+
+            //phone = String.Concat("" , "" );
+            phone = "<b dir='ltr'> +965 24981234 </b>";
+            fax = "<b dir='ltr'> +965 24981479 </b>";
+            //fax = String.Concat(+965 ", "24981479");
+
+        }
+        <h3>
+            @Resources.Resource.technicalSupport:
+        </h3>
+
+
+        @{
+
+            if (Session["LegalEntity"] != null)
+            {
+                if (Session["LegalEntity"].ToString() == "1")
+                {
+                    <p>
+                        @Resources.Resource.supportThirdPart
+                    </p>
+                   
+                }
+
+                else if (Session["LegalEntity"].ToString() == "2") // Organization
+                {
+                    <h4>
+                        @Resources.Resource.supportFirstPart
+                        <a href="https://eservices.kgac.gov.kw/HelpV/OrganizationRegistration.mp4" target="_blank"
+                           style="color: #012b73; font-weight:bold;">
+                            @Resources.Resource.supportVideoLink
+                        </a>
+
+                        @Resources.Resource.supportSecondPart @Resources.Resource.supportThirdPart
+                    </h4>
+                 
+                        
+                    
+                }
+            }   
+
+        }
+
+
+
+
+
+                    <h4 style="display: inline-flex;">
+                        @Resources.Resource.supportTel:&nbsp;
+
+
+
+                        <a href="tel:+96524981234"> @Html.Raw(phone)</a>
+                    </h4>
+
+
+
+        <h4>
+
+            @Resources.Resource.supportFax:&nbsp;
+
+            <a href="tel:+96524981234"> @Html.Raw(fax)</a>
+
+
+        </h4>
+
+
+
+        <h4>
+
+            @Resources.Resource.Email:
+
+            <a href="mailto:cs.support@customs.gov.kw">mcsupport@agility.com</a>
+
+
+        </h4>
+
+    </div>
+</body>
+
+<style>
+    h2 a {
+        color: #012b73;
+    }
+
+
+
+
+</style>
+</html>

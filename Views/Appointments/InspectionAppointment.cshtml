@@ -1,0 +1,706 @@
+﻿@model WebApplication1.Models.InspectionAppointment
+@using WebApplication1.Models;
+
+@{
+    ViewBag.Title = Resources.Resource.InspectionAppointment;// "Inspection Appointment";
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+@{
+    HttpCookie cookieLanguage = Request.Cookies["culture"];
+}
+
+<div class="col-lg-11 col-centered marginTop15">
+
+    @*@using (Html.BeginForm())*@
+    @using (Ajax.BeginForm("InspectionAppointment", "Appointments", null,
+
+  new AjaxOptions
+  {
+      OnSuccess = "CreateSuccess",
+      OnFailure = "CreateFailure"
+  }, new { onkeydown = "return event.keyCode!=13" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal well">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            @Html.HiddenFor(model => model.AppointmentId)
+            @* @Html.HiddenFor(model => model.DeclarationIduid) *@
+            @Html.HiddenFor(model => model.PortId)
+            @Html.HiddenFor(model => model.UpdateRequest)
+            @Html.HiddenFor(model => model.EditableRequest)
+            @Html.HiddenFor(model => model.SelectedVehicleList)
+
+            @Html.HiddenFor(model => model.DeclarationNumberToPrint)
+
+
+
+
+            @{
+                string DOChangeAccess = "hoverpointer";
+                string AlwaysReadonlyfield = "hideclass";
+                string SubmitButtonText = Resources.Resource.CreateAppointment;// "Create Appointment";
+                string DeclChecked = "";
+                string TempDeclChecked = "";
+                string disabledOnUpdate = "";
+
+                if (Model.UpdateRequest && Model.EditableRequest)
+                {
+                    disabledOnUpdate = "disabled";
+                    DOChangeAccess = "hideclass";
+                    SubmitButtonText = Resources.Resource.UpdateAppointment;// "Update Appointment";
+
+                    if (!string.IsNullOrEmpty(Model.DeclarationId)) { DeclChecked = "checked"; } else { TempDeclChecked = "checked"; }
+                }
+            }
+
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.DeclarationId, htmlAttributes: new { @class = "control-label col-md-3 " + DOChangeAccess, @id = "Didlabel" })*@
+
+                @{
+                    if (cookieLanguage != null)
+                    {
+                        if (cookieLanguage.Value.Contains("ar"))
+                        {
+                            <p class="text-center">
+                                الرجاء اختيار نوع البيان، ثم ادخال رقم البيان،  ثم اختيار المنفذ، ثم اختيار السنة
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="text-center">
+                                Please Choose Declaration type, then Write Declaration Number,Then Choose Port, Then Choose Year.
+                            </p>
+                        }
+                    }
+                }
+
+
+
+                <div class="col-md-2 inputGroupContainer">
+                    <div class="input-group" id="">
+                        @* <input type="radio" id="DecId" @DeclChecked
+                            class="@DOChangeAccess" name="iptype"
+                            value="DecId" onclick="SwitchDecType(event)"> *@
+
+                        <label class="control-label @DOChangeAccess"
+                               id="Didlabel" style="margin-right:3px;font-size: 15px;"
+                               onclick="SwitchDecType(event)">
+
+                            @Resources.Resource.DeclarationNumber
+                        </label>
+
+
+                    </div>
+                </div>
+
+
+                @*@Html.Label(Resources.Resource.DeclarationNumber, htmlAttributes: new { @class = "control-label col-md-2 " + DOChangeAccess, @id = "Didlabel" })*@
+
+
+
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group " id="DeclGroupontrol" onclick="SwitchDecType(event)">
+                        <span class="input-group-addon">
+                            <input type="radio" id="DecId" @DeclChecked
+                                   class="@DOChangeAccess" name="iptype"
+                                   value="DecId" onclick="SwitchDecType(event)">
+                        </span>
+                        @{
+                            String disabled = String.Empty;
+                            if (Model.UpdateRequest && Model.EditableRequest)
+                            {
+                                disabled = "disabled";
+                            }
+                            else
+                            {
+                                disabled = "";
+                            }
+
+                            if (cookieLanguage != null)
+                            {
+                                if (cookieLanguage.Value.Contains("ar"))
+                                {
+                                    <select id="BayanType"
+                                            class="selectpicker form-control  select2  declarationClass @DOChangeAccess"
+                                            @disabledOnUpdate
+                                            style="width:100%" onselect="SwitchDecType(event)">
+                                        <option value="IM" selected="selected">إستيراد</option>
+                                        <option value="GS">إحصائي</option>
+                                        <option value="TM">إدخال مؤقت</option>
+                                        <option value="RE">إعادة تصدير</option>
+                                        <option value="TE">تصدير مؤقت</option>
+                                        <option value="DR">تصفيه فورية</option>
+                                        <option value="EB">صادر</option>
+                                        <option value="ld">نازل بالخطـأ بإذن تسليم</option>
+                                        <option value="lw">نازل بالخطأ بدون إذن تسليم</option>
+
+                                        @*<option value="RT">إعادة تصدير مقابل أدخال مؤقت</option>
+                                            <option value="TR">ترانزيت</option>
+                                            <option value="GI">مرسم خليجي</option>
+                                            <option value="GX">معفي خليجي</option>
+                                            <option value="IX">معفي عادي</option>*@
+                                    </select>
+
+                                }
+                                else
+                                {
+                                    <select id="BayanType"
+                                            class="selectpicker form-control  select2  declarationClass @DOChangeAccess"
+                                            @disabledOnUpdate
+                                            style="width:100%" onselect="SwitchDecType(event)">
+                                        <option value="IM" selected="selected">Import</option>
+                                        <option value="GS">Statistical</option>
+                                        <option value="TM">Temporary Import</option>
+                                        <option value="RE">Re-Export</option>
+                                        <option value="TE">Temporary Export</option>
+                                        <option value="DR">Direct Receivable</option>
+                                        <option value="EB">Export</option>
+                                        <option value="ld">Landed By Mistake (With DO)</option>
+                                        <option value="lw">Landed By Mistake (Without DO)</option>
+
+                                        @*<option value="RT">إعادة تصدير مقابل أدخال مؤقت</option>
+                                            <option value="TR">ترانزيت</option>
+                                            <option value="GI">مرسم خليجي</option>
+                                            <option value="GX">معفي خليجي</option>
+                                            <option value="IX">معفي عادي</option>*@
+                                    </select>
+
+                                }
+                            }
+                        }
+                        @Html.EditorFor(model => model.DeclarationId, new { htmlAttributes = new { @class = "form-control numericOnly " + DOChangeAccess, @placeholder = Resources.Resource.DeclarationNumber, @maxlength = "12", @onclick = "SwitchDecType(event)", @style = "width:100%", @disabledOnUpdate = @disabledOnUpdate } })
+                        @{
+                            if (cookieLanguage != null)
+                            {
+                                if (cookieLanguage.Value.Contains("ar"))
+                                {
+                                    <select id="BayanPort"
+                                            class="selectpicker form-control  select2 declarationClass @DOChangeAccess"
+                                            @disabledOnUpdate
+                                            style="width:50%" onselect="SwitchDecType(event)">
+                                        <option value="KWI" selected="selected">مطار الكويت الدولي</option>
+                                        <option value="SAL">السالمى</option>
+                                        <optkion value="FTZ">المنطقة الحرة بالكويت</optkion>
+                                        <option value="NUW">النويصيب</option>
+                                        <option value="VGM">شبرة الخضار</option>
+                                        <option value="KFN">كيفان</option>
+                                        <option value="DOH">ميناء الدوحة</option>
+                                        <option value="SAA">ميناء الشعيبة</option>
+                                        <option value="SWK">ميناء الشويخ</option>
+                                        <option value="MEA">ميناء الأحمدي</option>
+                                        <option value="ABD">العبدلي</option>
+                                        <option value="SLB">الصليبية</option>
+                                        <option value="HTN">حطين</option>
+
+                                        @*<option value="SLB">الجمرك البري</option>*@
+                                    </select>
+
+                                }
+
+                                else
+                                {
+                                    <select id="BayanPort"
+                                            class="selectpicker form-control  select2 declarationClass @DOChangeAccess"
+                                            @disabledOnUpdate
+                                            style="width:50%" onselect="SwitchDecType(event)">
+                                        <option value="KWI" selected="selected"> Kuwait Intnl. Airport </option>
+                                        <option value="SAL">Salmi</option>
+                                        <optkion value="FTZ">Kuwait FTZ</optkion>
+                                        <option value="NUW">Nuwaiseeb</option>
+                                        <option value="VGM">Vegetable Market </option>
+                                        <option value="KFN">Kaifan</option>
+                                        <option value="DOH">Doha</option>
+                                        <option value="SAA">Shuaiba</option>
+                                        <option value="SWK">Shuwaikh </option>
+                                        <option value="MEA">Mina Al Ahmadi </option>
+                                        <option value="ABD">Abdeli</option>
+                                        <option value="SLB">Sulaibiya</option>
+                                        <option value="HTN">Hiteen</option>
+
+                                        @*<option value="SLB">الجمرك البري</option>*@
+                                    </select>
+                                }
+                            }
+                        }
+
+
+                        <select id="BayanYear"
+                                class="selectpicker form-control  select2 declarationClass @DOChangeAccess"
+                                @disabledOnUpdate
+                                style="width:50%" onselect="SwitchDecType(event)">
+
+                            @{
+                                int currentYear = DateTime.Now.Year;
+                                int lastYear = currentYear - 1;
+                            }
+
+                            <option value="@lastYear.ToString().Substring(2,2)">@lastYear.ToString().Substring(2, 2)</option>
+                            <option value="@currentYear.ToString().Substring(2,2)" selected="selected">@currentYear.ToString().Substring(2, 2)</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+
+                <div class="col-md-2 inputGroupContainer">
+                    <div class="input-group" id="">
+                        @* <input type="radio" id="TDecId" @TempDeclChecked
+                            class="@DOChangeAccess" name="iptype"
+                            value="TDecId" onclick="SwitchDecType(event)"> *@
+
+                        <label class="control-label @DOChangeAccess"
+                               id="TDidlabel" style="margin-right:3px;font-size: 15px;"
+                               onclick="SwitchDecType(event)">
+                            @Resources.Resource.TempDeclarationnumber
+                        </label>
+
+
+                    </div>
+                </div>
+
+
+                @*<input type="radio" id="TDecId" @TempDeclChecked class="@DOChangeAccess" name="iptype" value="TDecId" onclick="SwitchDecType(event)">
+                    @Html.Label(Resources.Resource.TempDeclarationnumber, htmlAttributes: new { @class = "control-label col-md-2 " + DOChangeAccess, @id = "TDidlabel" })*@
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group" id="TempDeclarationIdValid">
+                        @* <span class="input-group-addon">
+                                <i class="fa fa-address-card"></i>
+
+                            </span> *@
+                        <span class="input-group-addon">
+                            <input type="radio" id="TDecId" @TempDeclChecked
+                                   class="@DOChangeAccess" name="iptype"
+                                   value="TDecId" onclick="SwitchDecType(event)">
+                        </span>
+                        @Html.EditorFor(model => model.TempDeclarationId, new { htmlAttributes = new { @class = "form-control " + DOChangeAccess, @placeholder = Resources.Resource.TempDeclarationnumber, @maxlength = "25",  @onclick = "SwitchDecType(event)" } })
+                    </div>
+
+                </div>
+            </div>
+            <div id="TempDeclarationIdValid">
+            </div>
+            @if (!Model.UpdateRequest)
+            {
+
+                <div class="form-group">
+                    @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @* col-md-offset-3  *@
+                    <div class="col-md-6 inputGroupContainer">
+
+                        <div class="input-group ">
+
+                            <input type="button" value="@Resources.Resource.Showvehicles" id="Verify" onclick="VerifyAndFetch(event)" class="btn btn-info col-md-6" />
+                            <input type="button" value="@Resources.Resource.clear" id="" onclick="Clear()" class="btn btn-info col-md-6" />
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+
+
+            @{
+                string CreateAccess = "disabledbuttonclass";//"disabled";//disabledbuttonclass";
+                string RoundChangeAccess = "hideclass";
+                string ShowAllSelectedInUpdate = "";
+                if (Model.UpdateRequest && Model.EditableRequest)
+                {
+                    CreateAccess = "";
+                    RoundChangeAccess = "";
+                    ShowAllSelectedInUpdate = "checked";
+                }
+            }
+            <div class="col-sm-12 form-group ShowIfVehiclesAvailable ">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 inputGroupContainer " id="VehicleListTable">
+
+                    @*<table id="vehlisttable" class="display select table data-table table-striped table-bordered responsive nowrap" cellspacing="0" width="100%">*@
+
+                    <b>
+                        @Resources.Resource.Vehiclelist
+                    </b>
+
+                    @*
+                        <table id="vehlisttable" class="display select table table-sm table-bordered table-condensed" cellspacing="0" width="100%">*@
+
+                    <table id="vehlisttable" class="display select table table-sm table-bordered table-condensed responsive" cellspacing="0" width="100%" style="border : 0.3px solid grey;">
+
+
+                        <thead>
+                            <tr class="boldc">
+                                <th class=""></th>
+                                <th class="text-center fcwidth all" style="border : 0.3px solid grey;">
+                                    @* <input type="checkbox" @ShowAllSelectedInUpdate class="text-center SELECTALLCHECKBOX" name="select_all" value="0" id="vehlisttable-select-all" style="margin-left: 19px;"> *@
+                                    <input type="checkbox" @ShowAllSelectedInUpdate @disabledOnUpdate class="text-center SELECTALLCHECKBOX" name="select_all" value="0" id="vehlisttable-select-all" style="margin-left: 9px;
+    margin-right: 9px;">
+                                </th>
+                                <th class=""></th>
+                                @*<th class="labelsize ">@Resources.Resource.Vehicleplatenumber</th>
+                                    <th class="labelsize">@Resources.Resource.Containernumber</th>
+                                    <th class="labelsize ">@Resources.Resource.Weight</th>
+                                    <th class="labelsize ">@Resources.Resource.Drivername</th>
+                                    <th class="labelsize ">رقم الجوال</th>*@
+
+                                @* <th class=" all" style="max-width:100px">@Resources.Resource.Vehicleplatenumber</th>
+                                    <th class=" desktop tablet-l tablet-p ">@Resources.Resource.Containernumber</th>
+                                    <th class=" desktop tablet-l ">@Resources.Resource.Weight/ @Resources.Resource.Quantity</th>
+                                    <th class=" desktop tablet-l tablet-p ">@Resources.Resource.Drivername&nbsp;</th>
+                                    <th class=" desktop tablet-l ">رقم الجوال</th> *@
+
+                                <th class="  text-center desktop tablet-l tablet-p mobile-l mobile-p" style="max-width:100px;border : 0.3px solid grey;">@Resources.Resource.Vehicleplatenumber</th>
+                                <th style="border : 0.3px solid grey;" class="  text-center desktop tablet-l tablet-p mobile-l">@Resources.Resource.Containernumber</th>
+                                <th style="border : 0.3px solid grey;" class="  text-center desktop tablet-l tablet-p">@Resources.Resource.Weight/ @Resources.Resource.Quantity</th>
+                                <th style="border : 0.3px solid grey;" class="  text-center desktop tablet-l ">@Resources.Resource.Drivername&nbsp;</th>
+                                <th style="border : 0.3px solid grey;" class="  text-center desktop "> @Resources.Resource.OrgReg_MobileNumber</th>
+
+                                @* <th class="  text-center ">رقم الجوال</th> *@
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (Model.UpdateRequest && Model.EditableRequest)
+                            {
+                                if (Model.SelectedVehicleDetails != null && Model.SelectedVehicleDetails.Count > 0)
+                                {
+                                    foreach (VehicleList v in Model.SelectedVehicleDetails)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td class="text-center"  style="border : 0.3px solid grey;">
+                                                <input type="checkbox" disabled checked name="@v.VehicleID" class="activateselectedservice text-center" id="@v.VehicleID" />
+                                            </td>
+                                            <td style="border : 0.3px solid grey;">@v.VehicleID</td>
+                                            <td style="border : 0.3px solid grey;">@v.VehiclePlateNumber</td>
+                                            <td style="border : 0.3px solid grey;">@v.ContainerNumber</td>
+                                            <td style="border : 0.3px solid grey;">@v.Weight</td>
+                                            <td style="border : 0.3px solid grey;">@v.DriverName</td>
+                                            <td style="border : 0.3px solid grey;">@v.MobileNumber</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.PortID, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.PortID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PortID, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.DeclarationType, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DeclarationType, new { htmlAttributes = new { @class = "form-control " + AlwaysReadonlyfield, @placeholder = "DeclarationType" } })
+                        @Html.ValidationMessageFor(model => model.DeclarationType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PortName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.PortName, new { htmlAttributes = new { @class = "form-control " + AlwaysReadonlyfield, @placeholder = "PortName" } })
+                        @Html.ValidationMessageFor(model => model.PortName, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <div class="form-group  ShowIfVehiclesAvailable ">
+                @Html.Label(Resources.Resource.declartionCCP, htmlAttributes: new { @class = "control-label col-md-2 " + AlwaysReadonlyfield })
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+
+
+                        @Html.EditorFor(model => model.DeclarationType, new { htmlAttributes = new { @class = "form-control " + AlwaysReadonlyfield, @placeholder = Resources.Resource.declartionCCP } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.DeclarationType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group  " style="display:none;">
+                @Html.Label(Resources.Resource.Portname, htmlAttributes: new { @class = "control-label col-md-2 " + AlwaysReadonlyfield })
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-ship"></i>
+                        </span>
+
+
+                        @Html.EditorFor(model => model.PortName, new { htmlAttributes = new { @class = "form-control " + AlwaysReadonlyfield, @placeholder = Resources.Resource.Portname } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PortName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.PortName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-ship"></i>
+                            </span>
+
+                            @Html.TextBox("PortName", "Port Name", new { @class = "form-control", @readonly = "readonly", @placeholder = "Port Name" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.PortName, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            @*fa-calender*@
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.InspectionDate, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.InspectionDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InspectionDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <div class="form-group ShowIfVehiclesAvailable  ">
+                @Html.Label(Resources.Resource.InspectionDate, htmlAttributes: new { @class = "control-label col-md-2  " + RoundChangeAccess })
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+
+
+                        @Html.EditorFor(model => model.InspectionDate, new { htmlAttributes = new { @class = "form-control mydate textval helperclassforjs " + RoundChangeAccess, @placeholder = Resources.Resource.InspectionDate } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.InspectionDate, "", new { @class = "text-danger helperclassforjsval " })
+                </div>
+            </div>
+
+            <div class="form-group ShowIfVehiclesAvailable  ">
+                @Html.Label(Resources.Resource.InspectionZone, htmlAttributes: new { @class = "control-label col-md-2  " + RoundChangeAccess })
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-server"></i>
+                        </span>
+                        @Html.DropDownListFor(m => m.InspectionZone,
+
+                        new SelectList(
+                       Model.InsZone,
+                       "ZoneId",
+                       "ZoneName",
+                        Model.InspectionZone), new { @class = "selectpicker form-control  select2 helperclassforjs " + RoundChangeAccess } )
+                    </div>
+                    @Html.ValidationMessageFor(model => model.InspectionZone, "", new { @class = "text-danger  helperclassforjsval " })
+                </div>
+            </div>
+
+            <div class="form-group  ShowIfVehiclesAvailable ">
+                @Html.Label(Resources.Resource.InspectionRound, htmlAttributes: new { @class = "control-label col-md-2  " + RoundChangeAccess })
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                        </span>
+                        @Html.DropDownListFor(m => m.InspectionRound,
+
+                      new SelectList(
+                        Model.InsRound,
+                         "RoundId",
+                         "RoundName",
+                          Model.InspectionRound), new { @class = "selectpicker form-control  select2 helperclassforjs " + RoundChangeAccess })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.InspectionRound, "", new { @class = "text-danger  helperclassforjsval " })
+                </div>
+            </div>
+
+            <div class="form-group  ShowIfVehiclesAvailable ">
+                @Html.Label(Resources.Resource.InspectionTerminal, htmlAttributes: new { @class = "control-label col-md-2  " + RoundChangeAccess })
+                <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-window-restore"></i>
+                        </span>
+                        @Html.DropDownListFor(m => m.InspectionTerminal,
+
+                           new SelectList(
+                          Model.InsTerminal,
+                          "TerminalId",
+                          "TerminalName",
+                           Model.InspectionTerminal), new { @class = "selectpicker form-control  select2 helperclassforjs " + RoundChangeAccess })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.InspectionTerminal, "", new { @class = "text-danger  helperclassforjsval " })
+                </div>
+            </div>
+
+            <div class="form-group ShowIfVehiclesAvailable ">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2  " })
+                <div class=" col-md-6 ">
+                    <input type="submit" id="SubmitSchedule" onclick="TakeSelectedVehicles(event)" value="@SubmitButtonText" @CreateAccess class="btn btn-info btn-block col-centered marginTop15 @CreateAccess " />
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>
+
+
+<!-- The Modal -->
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+            </p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<style>
+
+    .selectpicker, select2 {
+        padding: 1px;
+    }
+
+        .selectpicker[disabled],
+        .selectpicker[readonly] {
+            /*cursor: not-allowed;*/
+            background-color: #F5F5F5;
+        }
+
+    .input-group-addon {
+        width: 40px;
+    }
+
+    .labelsize {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .table-condensed thead > tr > th, .table-condensed tbody > tr > th, .table-condensed tfoot > tr > th, .table-condensed thead > tr > td, .table-condensed tbody > tr > td, .table-condensed tfoot > tr > td {
+        padding: 0px;
+    }
+
+    .hideclass {
+        pointer-events: none;
+        /*$("#mydiv :input").attr("disabled", true);
+        $("#mydiv :input").attr("style", "background-color:#ccc;");*/
+        /* background-color: #eeeeee; */
+        background-color: #F5F5F5
+        /*display:none;*/
+    }
+
+    .disablebuttonclass, .disablebuttonclass:hover {
+        pointer-events: none;
+        background-color: #F5F5F5;
+    }
+
+    .hoverpointer:hover {
+        cursor: pointer;
+    }
+
+    .dataTables_empty {
+        display: none;
+    }
+
+    .nopad {
+        padding: 0px;
+    }
+
+    table.dataTable.table-condensed > thead > tr > th {
+        padding-right: 0px;
+    }
+
+    table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+        top: 3px;
+    }
+
+    .ShowIfVehiclesAvailable {
+        display: none;
+    }
+
+    input[readonly], input[disabled] {
+        background-color: #F5F5F5;
+    }
+
+td{
+border : 0.3px solid grey !important;
+}
+</style>
+@{
+    string ShowIfVehiclesAvailable = "display:none";
+    if (Model.UpdateRequest)
+    {
+        ShowIfVehiclesAvailable = "display:block";
+    }
+
+    <script>
+
+var msgSomeissuehasoccured = '@Resources.Resource.Someissuehasoccured';
+var AtleastOnevehiclerequiredforappointment = '@Resources.Resource.AtleastOnevehiclerequiredforappointment';
+    var NoVehiclesforgivendeclaration = '@Resources.Resource.NoVehiclesforgivendeclaration';
+
+var ShowIfVehiclesAvailable='@ShowIfVehiclesAvailable';
+
+    $(document).ready(function ()
+    {
+        var declarationNumber = $('#DeclarationNumberToPrint').val();
+        if (declarationNumber)
+        {
+            //  IM/17940/SWK20
+            var declarationDetails = declarationNumber.split('/');
+
+            //console.log(declarationDetails);
+
+            var year = declarationDetails[2].substr(3, 2);
+            var type_ = declarationDetails[0];
+            var port = declarationDetails[2].substring(0, 3);
+
+
+            $('#BayanType').val(type_);
+            $('#BayanPort').val(port)
+            $('#BayanYear').val(year)
+
+            //console.log(type_);
+            //console.log(port);
+            //console.log(year);
+
+            //console.log(declarationDetails[2]);
+        }
+
+    });
+
+    </script>
+}
+<script src="~/Scripts/JS_View/InspectionAppointment.js"></script>

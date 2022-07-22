@@ -1,0 +1,231 @@
+﻿@model System.Data.DataSet
+@using System.Data;
+
+@{
+    ViewBag.Title = @Resources.Resource.HSCodeSearch;
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm("HSCodeSearch", "User", FormMethod.Post))
+{
+    <div class="col-lg-12 col-centered marginTop50">
+
+        <table class="table table-striped center-block">
+            @{ if (Model != null)
+                {
+                    if (Model.Tables["HSCODE"] != null)
+                    {
+                        if (Model.Tables["HSCODE"].Rows.Count > 0)
+                        {
+                            <tr>
+                                <td style="width:100%">
+                                    <table class="table table-striped center-block">
+                                        @{
+
+                                            foreach (DataRow row in Model.Tables["HSCODE"].Rows)
+                                            {
+                                                <tr><td><span style="font-weight:bold">@Resources.Resource.HSCode:</span>&nbsp;@row["Code"]</td><td><span style="font-weight:bold">@Resources.Resource.UOM:</span>&nbsp;@row["UnitOfMesurement"]</td></tr>
+                                                <tr><td colspan="2"><span style="font-weight:bold">@Resources.Resource.Description:</span>&nbsp;@row["Description"]</td></tr>
+                                                <tr><td colspan="2"><span style="font-weight:bold">@Resources.Resource.LocalDescription:</span>&nbsp;@row["LocalDescription"]</td></tr>
+                                                <tr><td colspan="2"><span style="font-weight:bold">@Resources.Resource.ShortDescription:</span>&nbsp;@row["ShortDescription"]</td></tr>
+                                            }
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+            <tr>
+                <td>
+                    <table class="table table-striped center-block">
+                        <tr>
+
+                            <th>
+                                @Resources.Resource.Name
+                            </th>
+                            <th>
+                                @Resources.Resource.Code
+                            </th>
+                            <th>
+                                @Resources.Resource.Description
+                            </th>
+                            <th>
+                                @Resources.Resource.ShortDescription
+                            </th>
+
+                        </tr>
+                        @{if (Model != null)
+                            {
+                                if (Model.Tables["HsCodeTree"] != null)
+                                {
+                                    if (Model.Tables["HsCodeTree"].Rows.Count > 0)
+                                    {
+
+
+                                        foreach (DataRow row in Model.Tables["HsCodeTree"].Rows)
+                                        {
+                                            <tr>
+                                                <td>@row["NAME"]</td>
+                                                <td>@row["Code"]</td>
+                                                <td>@row["Description"]</td>
+                                                <td>@row["ShortDescription"]</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="redColor">
+                        @Resources.Resource.Dutieslist
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table table-striped center-block">
+                    <tr>
+
+                        <th>
+                            @Resources.Resource.DutyID
+                        </th>
+                        <th>
+                            @Resources.Resource.DutyName
+                        </th>
+                        <th>
+                            @Resources.Resource.Description
+                        </th>
+
+                    </tr>
+                    @{if (Model != null)
+                        {
+                            if (Model.Tables["Duties"] != null)
+                            {
+                                if (Model.Tables["Duties"].Rows.Count > 0)
+                                {
+                                    foreach (DataRow row in Model.Tables["Duties"].Rows)
+                                    {
+                                        <tr>
+                                            <td>@row["DutyId"]</td>
+                                            <td>@row["DutyName"]</td>
+                                            <td>@row["Description"]</td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td align="center" colspan="3">
+                                        <h6 class="redColor">
+                                            @Resources.Resource.noRecordsFound
+                                        </h6>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <span class="redColor">
+                    @Resources.Resource.RestrictionsProhibitions
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table table-striped center-block">
+                    <tr>
+
+                        <th>
+                            @Resources.Resource.Type
+                        </th>
+                        <th>
+                            @Resources.Resource.Action
+                        </th>
+                        <th>
+                            @Resources.Resource.PermissionAuthority
+                        </th>
+                        <th>
+                            @Resources.Resource.Code
+                        </th>
+                        <th>
+                            @Resources.Resource.Restrictionlevel
+                        </th>
+                    </tr>
+                    @{if (Model != null)
+                        {
+                            if (Model.Tables["Restrictions"] != null)
+                            {
+                                if (Model.Tables["Restrictions"].Rows.Count > 0)
+                                {
+                                    foreach (DataRow row in Model.Tables["Restrictions"].Rows)
+                                    {
+                                        <tr>
+                                            <td>@row["TransType"]</td>
+                                            <td>@row["ActionType"]</td>
+                                            <td>@row["PermissionRelAuth"]</td>
+                                            <td>@row["OrganizationCode"]</td>
+                                            <td>@row["RestOn"]</td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td align="center" colspan="5">
+                                        <h6 class="redColor">
+                                            @Resources.Resource.noRecordsFound
+                                        </h6>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </table>
+            </td>
+        </tr>
+
+            <tr>
+                <td colspan="2">
+
+                    @Html.ActionLink(Resources.Resource.Back, "HSCodeSearch", "User", null, new { @class = "btn btn-info btn-block col-centered marginTop15 width9em" })
+
+                    @*<button type="button" 
+                            id="btnsubmit" 
+                            class="btn btn-info btn-block col-centered marginTop15 width9em" 
+                            causesvalidation="false">
+                        <b>
+                            <span class="glyphicon glyphicon-back"></span>
+                            &nbsp; @Resources.Resource.Back &nbsp;
+                        </b>
+                    </button>*@
+                </td>
+            </tr>
+
+    </table>
+
+</div>
+
+
+
+
+
+}
+

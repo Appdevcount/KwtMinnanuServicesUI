@@ -1,0 +1,370 @@
+﻿@model WebApplication1.Models.ShipmentAuthorization
+@using WebApplication1.Models;
+@{
+    ViewBag.Title = "ShipmentReceivingAuth";// Resources.Resource.InspectionAppointment;// "Inspection Appointment";
+    Layout = "~/Views/Shared/_LayoutPageFinal.cshtml";
+}
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" nonce="EDNnf03nceIOfn39fn3e9h3sdfa"></script>
+
+@{
+    HttpCookie cookieLanguage = Request.Cookies["culture"];
+}
+
+<div class="col-lg-12 col-centered marginTop15">
+
+    @using (Ajax.BeginForm("Index", "ShipmentReceivingAuthorization", null,
+
+  new AjaxOptions
+  {
+      OnSuccess = "CreateSuccess",
+      OnFailure = "CreateFailure"
+//,
+//OnBegin = "Checkauthpersdata"
+}, new { onkeydown = "return event.keyCode!=13" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal well">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @Html.HiddenFor(Model => Model.HidDelegateInfo)
+        @Html.HiddenFor(Model => Model.Renewal)
+        @Html.HiddenFor(Model => Model.Edit)
+        @Html.HiddenFor(Model => Model.RequesterUserId)
+        @Html.HiddenFor(Model => Model.OrganizationId)
+
+
+        <div class="form-group   ">
+            @Html.Label(Resources.Resource.requestNo, htmlAttributes: new { @class = "control-label col-md-3 " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-tag"></i>
+                    </span>
+
+
+                    @Html.EditorFor(model => model.RequestNumber, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control NotEditable ", @placeholder = Resources.Resource.requestNo } })
+                </div>
+                @*@Html.ValidationMessageFor(model => model.DeclarationType, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group  ">
+            @Html.Label(Resources.Resource.OrganizationName, htmlAttributes: new { @class = "control-label col-md-3 " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-ship"></i>
+                    </span>
+                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control NotEditable" }, @placeholder = Resources.Resource.OrganizationName })
+                </div>
+                @*@Html.ValidationMessageFor(model => model.PortName, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group   ">
+            @Html.Label("AuthorizationFormidityType", htmlAttributes: new { @class = "control-label col-md-3  " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-server"></i>
+                    </span>
+                    @*@Html.DropDownListFor(m => m.InspectionZone,
+
+                     new SelectList(
+                    Model.InsZone,
+                    "ZoneId",
+                    "ZoneName",
+                     Model.InspectionZone), new { @class = "selectpicker form-control  select2  "  } )*@
+                    @Html.DropDownListFor(m => m.AuthorizationFormValidity,
+              Model.AuthorizationFormValidityType,
+              // new SelectList(
+              //Model.AuthorizationFormidityType,
+              //"VisitorTypeId",
+              //"VisitorTypeName",
+              // Model.AuthorizationFormidity),
+              new { @class = " form-control  select2  " })
+
+                </div>
+                @Html.ValidationMessageFor(model => model.AuthorizationFormValidity, "", new { @class = "text-danger   " })
+            </div>
+        </div>
+        <div class="form-group  authpers  " style="border:0.5px solid grey;padding:8px;border-radius:8px;">
+            <fieldset>
+                <legend>Auth persons:</legend>
+                @*@if (Model.shipmentAuthorizationDetails != null)
+        {
+            foreach (var item in Model.shipmentAuthorizationDetails)
+            {
+                @Html.EditorFor(model => model.shipmentAuthorizationDetails)
+            }
+        }*@
+                @Html.EditorFor(model => model.shipmentAuthorizationDetails)
+
+                <div class="form-group  ">
+                    @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-4  " })
+                    <div class="col-md-4 inputGroupContainer" style="padding-top:10px">
+                        <div class="input-group">
+                            <button type="button" onclick="clone();" class="btn btn-info btn-block col-centered width50Percent" causesvalidation="false" id="uploadWindow1">
+                                <b>
+                                    <span class="glyphicon glyphicon-file"></span>&nbsp; @Resources.Resource.AddMore &nbsp;
+                                </b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+      
+        <div class="form-group   ">
+            @Html.Label("AuthorizationFormRemarks", htmlAttributes: new { @class = "control-label col-md-3  " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+
+
+                    @Html.EditorFor(model => model.AuthorizationFormRemarks, new { htmlAttributes = new { @class = "form-control  text  ", @placeholder = Resources.Resource.InspectionDate } })
+                </div>
+                @Html.ValidationMessageFor(model => model.AuthorizationFormRemarks, "", new { @class = "text-danger  " })
+            </div>
+        </div>
+        <div class="form-group   ">
+            @Html.Label(@Resources.Resource.docTypesLabel, htmlAttributes: new { @class = "control-label col-md-3  " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+
+                    @Html.DropDownListFor(m => m.docsid, Model.ddlDocumentTypesitems, new
+                                      {
+                                          @id = "ddlDocumentTypes",
+                                          @class = "form-control "
+                                      })
+                </div>
+                @Html.ValidationMessageFor(model => model.docsid, "", new { @class = "text-danger  " })
+            </div>
+        </div>
+        <div class="form-group   ">
+            @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-3  " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+
+                    <div class="file-loading">
+                        <input id="fileUploadCtrl" type="file" data-min-file-count="0" data-theme="fas">
+                    </div>
+                </div>
+                @*@Html.ValidationMessageFor(model => model.docsid, "", new { @class = "text-danger  " })*@
+            </div>
+        </div>
+        <div class="form-group   ">
+            @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-3  " })
+            <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+
+                    <table id="Uploadedfileslist" class=" table data-table table-striped table-bordered responsive  ">
+
+                        @*<table id="Uploadedfileslist" class="data-table table table-striped table-bordered responsive nowrap ">*@
+                        <thead>
+                            <tr>
+
+                                <th class="all" style="max-width:100px">@Resources.Resource.fileName</th>
+                                <th class="desktop tablet-l tablet-p ">@Resources.Resource.docType</th>
+                                <th class="desktop tablet-l ">@Resources.Resource.uploadDate</th>
+                                <th class="desktop tablet-l tablet-p ">@Resources.Resource.ActionLabel&nbsp;</th>
+                                @*<th class="desktop tablet-l tablet-p ">&nbsp;</th>*@
+
+                                @*<th>@Resources.Resource.docType</th>
+                                <th>@Resources.Resource.fileName</th>
+                                <th>@Resources.Resource.uploadDate</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ListOfUploadedFiles != null)
+                            {
+                                foreach (var item in Model.ListOfUploadedFiles)
+
+                                {
+
+                                    <tr>
+                                        @*<td>
+                                            <input type="checkbox" name="@item.DocumentId" runat="server" class="deleteselctedcheckbox" id=@item.DocumentId />
+                                        </td>*@
+                                        <td>
+                                            @item.NewFileName
+                                        </td>
+
+                                        <td>
+                                            @item.DocumentType
+                                        </td>
+                                        <td>
+                                            @item.Createddate
+                                        </td>
+                                        <td class="text-center test21" style="white-space: nowrap;">
+                                            @*@Html.ActionLink(Resources.Resource.download, "DownloadFile", "BrokerRenewal", new { filename = @item.DocumentId }, new { @class = "btn btn-primary" })*@
+                                            <a href="@Url.Action("DownloadFile", "BrokerRenewal",new { filename = @item.DocumentId })">
+                                                <img class="btnimg1" src="~/images/Buttons/Download.png">
+                                            </a>
+                                            @*</td>
+                                            <td class="text-center">*@
+                                            @*@Html.ActionLink(Resources.Resource.deleteFile, "DeleteFile", "BrokerRenewal", new { dataItem = @item.DocumentId }, new { @class = "btn btn-primary" })*@
+                                            @*<button type='button' class='btn btn-primary' onclick="DeleteFilewithDocId('@item.DocumentId',event)">@Resources.Resource.deleteFile</button>*@
+
+
+                                            @*<input type="button" value=@Resources.Resource.deleteFile onclick="DeleteFilewithDocIdForClearingExam(this)" id="@item.DocumentId" class="mcbutton btn btn-primary" runat="server" />*@
+                                            <img class="btnimg" onclick="DeleteFilewithDocIdForClearingExam(this)" id="@item.DocumentId" src="~/images/Buttons/Delete.png" />
+
+
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                        </tbody>
+
+                    </table>
+                    @{
+                        ViewBag.UploadDocsURL = System.Configuration.ConfigurationManager.AppSettings["UploadDocs"].ToString();
+                        ViewBag.UploadDocs_actioncall = System.Configuration.ConfigurationManager.AppSettings["UploadDocs_actioncall"].ToString();
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group  ">
+            @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-3  " })
+            <div class=" col-md-6 ">
+                <button type="submit" onclick="Checkauthpersdata()" class="btn btn-info btn-block col-centered marginTop50 width50Percent" causesvalidation="true" id="MySubmitRequest">
+                    <b>
+                        <span class="glyphicon glyphicon-ok-sign"></span>&nbsp; @Resources.Resource.Send &nbsp;
+                    </b>
+                </button>
+                @*<input type="submit" onclick="prepareSavedata(event)" id="MySubmitRequest" value="@Resources.Resource.Send" class="btn btn-info btn-block col-centered marginTop15  " />*@
+
+            </div>
+        </div>
+
+    </div>
+    }
+
+</div>
+
+
+<!-- The Modal -->
+<div id="modalDiv" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeError">&times;</span>
+            <h6 id="modelHeaderTitle">&nbsp;</h6>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage">
+            </p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" ID="closeModal" class="btn btn-info" value="@Resources.Resource.Ok" />
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<style>
+
+    .selectpicker, select2 {
+        padding: 1px;
+    }
+
+        .selectpicker[disabled],
+        .selectpicker[readonly] {
+            /*cursor: not-allowed;*/
+            background-color: #F5F5F5;
+        }
+
+    .input-group-addon {
+        width: 40px;
+    }
+
+    .labelsize {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .table-condensed thead > tr > th, .table-condensed tbody > tr > th, .table-condensed tfoot > tr > th, .table-condensed thead > tr > td, .table-condensed tbody > tr > td, .table-condensed tfoot > tr > td {
+        padding: 0px;
+    }
+
+    .hideclass {
+        pointer-events: none;
+        /*$("#mydiv :input").attr("disabled", true);
+        $("#mydiv :input").attr("style", "background-color:#ccc;");*/
+        /* background-color: #eeeeee; */
+        background-color: #F5F5F5
+        /*display:none;*/
+    }
+
+    .disablebuttonclass, .disablebuttonclass:hover {
+        pointer-events: none;
+        background-color: #F5F5F5;
+    }
+
+    .hoverpointer:hover {
+        cursor: pointer;
+    }
+
+    .dataTables_empty {
+        display: none;
+    }
+
+    .nopad {
+        padding: 0px;
+    }
+
+    table.dataTable.table-condensed > thead > tr > th {
+        padding-right: 0px;
+    }
+
+    table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+        top: 3px;
+    }
+
+    .ShowIfVehiclesAvailable {
+        display: none;
+    }
+
+    input[readonly], input[disabled] {
+        background-color: #F5F5F5;
+    }
+
+    td {
+        border: 0.3px solid grey !important;
+    }
+</style>
+
+@{
+    <script type="text/javascript">
+
+    var msgSomeissuehasoccured = '@Resources.Resource.Someerrorhasoccured';
+
+    var Duplicateauthperspresent = 'Authorized persons with same civil id cannot be added more than once';
+    </script>
+}
+<script src="~/Scripts/JS_View/Shipment.js"></script>

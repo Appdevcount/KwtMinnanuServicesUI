@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C640D4FE-CBDC-4292-B3E3-C5D330FCE763}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MicroClear.EnterpriseSolutions, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ETradeAPI\ETradeAPI\bin\MicroClear.EnterpriseSolutions.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroClear.EnterpriseSolutions.CryptographyServices">
+      <HintPath>..\..\..\Projects\CsUploads\CsUploadWithItemAssociationAndApprFunctionality\WebApplication1\bin\MicroClear.EnterpriseSolutions.CryptographyServices.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroClear.EnterpriseSolutions.ServiceFactories">
+      <HintPath>..\..\..\Projects\CsUploads\CsUploadWithItemAssociationAndApprFunctionality\WebApplication1\bin\MicroClear.EnterpriseSolutions.ServiceFactories.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog">
+      <HintPath>C:\Users\barevarapu\Desktop\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RandomStringGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RandomStringGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AES.cs" />
+    <Compile Include="APPLog\ActionLog.cs" />
+    <Compile Include="APPLog\ClientInfoFromRequest.cs" />
+    <Compile Include="APPLog\Crypt.cs" />
+    <Compile Include="APPLog\ExceptionLog.cs" />
+    <Compile Include="APPLog\HttpRequestMessageExtensions.cs" />
+    <Compile Include="APPLog\JsonDataCrawler.cs" />
+    <Compile Include="APPLog\JSONHelper.cs" />
+    <Compile Include="APPLog\MimeTypeMap.cs" />
+    <Compile Include="APPLog\NLogger.cs" />
+    <Compile Include="App_GlobalResources\Resource.ar.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resource.designer.cs" />
+    <Compile Include="App_GlobalResources\Resource2.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
+    <Compile Include="Controllers\BrokerRenewalController.cs" />
+    <Compile Include="Controllers\ClearingAgentCancelRequestController.cs" />
+    <Compile Include="Controllers\ClearingAgentExamRequestController.cs" />
+    <Compile Include="Controllers\ClearingAgentOfficeController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GCSKnetController.cs" />
+    <Compile Include="Controllers\InspectionAppointmentsController.cs" />
+    <Compile Include="Controllers\PrintingServicesController.cs" />
+    <Compile Include="Controllers\registrationController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\ShipmentReceivingAuthorizationController.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="Controllers\ToWhomItMayConcernsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BrokerRenwalModel.cs" />
+    <Compile Include="Models\CommonFunctions.cs" />
+    <Compile Include="Models\CustomsVisit.cs" />
+    <Compile Include="Models\CustomValidation.cs" />
+    <Compile Include="Models\Dataclass.cs" />
+    <Compile Include="Models\DataAccess.cs" />
+    <Compile Include="Models\EservicesRequests.cs" />
+    <Compile Include="Models\FileResult.cs" />
+    <Compile Include="Models\GCSKnet.cs" />
+    <Compile Include="Models\GeneralBrokerSubOrdinates.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Impersonator.cs" />
+    <Compile Include="Models\InspectionAppointment.cs" />
+    <Compile Include="Models\OrgRequest.cs" />
+    <Compile Include="Models\Search.cs" />
+    <Compile Include="Models\SecurityParams.cs" />
+    <Compile Include="Models\ShipmentAuthorization.cs" />
+    <Compile Include="Models\SiteLanguages.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="MyBaseController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelfService\DataAccess\GCSKnetDataclass.cs" />
+    <Compile Include="SelfService\Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SelfService\Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Compatability.js" />
+    <Content Include="Content\bell.png" />
+    <Content Include="Content\bell1.png" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\CustomFont.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.min.js" />
+    <Content Include="Content\loader4.gif" />
+    <Content Include="Content\Main\commercial.css" />
+    <Content Include="Content\Main\Declaration.css" />
+    <Content Include="Content\Main\Emailvery.css" />
+    <Content Include="Content\Main\Epayment.css" />
+    <Content Include="Content\Main\Forgot.css" />
+    <Content Include="Content\Main\Home.css" />
+    <Content Include="Content\Main\Housebill.css" />
+    <Content Include="Content\Main\Hscode.css" />
+    <Content Include="Content\Main\Hscodeid.css" />
+    <Content Include="Content\Main\Industrial.css" />
+    <Content Include="Content\Main\importer.css" />
+    <Content Include="Content\Main\login.css" />
+    <Content Include="Content\Main\Main.css" />
+    <Content Include="Content\Main\Myaccount.css" />
+    <Content Include="Content\Main\OrgReg.css" />
+    <Content Include="Content\Main\payment.css" />
+    <Content Include="Content\Main\Registration.css" />
+    <Content Include="Content\Main\ReqStatus.css" />
+    <Content Include="Content\Main\Upload.css" />
+    <Content Include="Content\nty.png" />
+    <Content Include="Content\progress.gif" />
+    <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Content\w3.css" />
+    <Content Include="fonts\fa-brands-400.svg" />
+    <Content Include="fonts\fa-regular-400.svg" />
+    <Content Include="fonts\fa-solid-900.svg" />
+    <Content Include="fonts\majallab.svg" />
+    <Content Include="GCSKnetassets\css\bootstrap.min.css" />
+    <Content Include="GCSKnetassets\css\demo.css" />
+    <Content Include="GCSKnetassets\css\gsdk-bootstrap-wizard.css" />
+    <Content Include="GCSKnetassets\css\styleAra.css" />
+    <Content Include="GCSKnetassets\img\apple-icon.png" />
+    <Content Include="GCSKnetassets\img\bggcs.png" />
+    <Content Include="GCSKnetassets\img\Card.jpg" />
+    <Content Include="GCSKnetassets\img\default-avatar.png" />
+    <Content Include="GCSKnetassets\img\favicon.ico" />
+    <Content Include="GCSKnetassets\img\favicon.png" />
+    <Content Include="GCSKnetassets\img\GCS.jpg" />
+    <Content Include="GCSKnetassets\img\GeneralCard.jpg" />
+    <Content Include="GCSKnetassets\img\GeneralCard.png" />
+    <Content Include="GCSKnetassets\img\loader.gif" />
+    <Content Include="GCSKnetassets\img\logo.jpg" />
+    <Content Include="GCSKnetassets\img\new_logo.png" />
+    <Content Include="GCSKnetassets\img\Pay - Copy.png" />
+    <Content Include="GCSKnetassets\img\Pay.png" />
+    <Content Include="GCSKnetassets\img\thumb_list_boat.png" />
+    <Content Include="GCSKnetassets\img\thumb_list_place.png" />
+    <Content Include="GCSKnetassets\img\thumb_register.png" />
+    <Content Include="GCSKnetassets\img\tim_80x80.png" />
+    <Content Include="GCSKnetassets\img\TitleIcon.JPG" />
+    <Content Include="GCSKnetassets\img\wizard-boat.jpg" />
+    <Content Include="GCSKnetassets\img\wizard-city.jpg" />
+    <Content Include="GCSKnetassets\img\wizard.jpg" />
+    <Content Include="GCSKnetassets\js\bootstrap.min.js" />
+    <Content Include="GCSKnetassets\js\Common.js" />
+    <Content Include="GCSKnetassets\js\gsdk-bootstrap-wizard.js" />
+    <Content Include="GCSKnetassets\js\jquery-1.10.2.js" />
+    <Content Include="GCSKnetassets\js\jquery-2.2.4.min.js" />
+    <Content Include="GCSKnetassets\js\jquery.bootstrap.wizard.js" />
+    <Content Include="GCSKnetassets\js\jquery.validate.min.js" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad - 768-1024.jpg" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad 15082019.jpg" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad Pro - 1024-1366.jpg" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad.JPG" />
+    <Content Include="images\bgimg\backup27Nov2019\IphoneX - 375-812.dib" />
+    <Content Include="images\bgimg\backup27Nov2019\Wide 15082019.jpg" />
+    <Content Include="images\bgimg\backup27Nov2019\Wide.jpg" />
+    <Content Include="images\bgimg\BackUp\Ipad - 768-1024.jpg" />
+    <Content Include="images\bgimg\BackUp\Ipad 15082019.jpg" />
+    <Content Include="images\bgimg\BackUp\Ipad Pro - 1024-1366.jpg" />
+    <Content Include="images\bgimg\BackUp\Ipad.JPG" />
+    <Content Include="images\bgimg\BackUp\IphoneX - 375-812.dib" />
+    <Content Include="images\bgimg\BackUp\Wide 15082019.jpg" />
+    <Content Include="images\bgimg\BackUp\Wide.jpg" />
+    <Content Include="images\bgimg\Ipad - 768-1024.jpg" />
+    <Content Include="images\bgimg\Ipad 15082019.jpg" />
+    <Content Include="images\bgimg\Ipad Pro - 1024-1366.jpg" />
+    <Content Include="images\bgimg\Ipad.JPG" />
+    <Content Include="images\bgimg\IphoneX - 375-812.dib" />
+    <Content Include="images\bgimg\kuwaitappointmentimg.jpg" />
+    <Content Include="images\bgimg\Wide 15082019.jpg" />
+    <Content Include="images\bgimg\Wide.jpg" />
+    <Content Include="images\Buttons\Back.png" />
+    <Content Include="images\Buttons\Delete.png" />
+    <Content Include="images\Buttons\Download.png" />
+    <Content Include="images\Buttons\edit.png" />
+    <Content Include="images\Buttons\Info.png" />
+    <Content Include="images\Buttons\New Request.png" />
+    <Content Include="images\Buttons\Next.png" />
+    <Content Include="images\Buttons\Pay.png" />
+    <Content Include="images\Buttons\Print.png" />
+    <Content Include="images\Buttons\refresh.png" />
+    <Content Include="images\Buttons\Reject payment.PNG" />
+    <Content Include="images\Buttons\Save.png" />
+    <Content Include="images\Buttons\Search.png" />
+    <Content Include="images\Buttons\Send.png" />
+    <Content Include="images\Buttons\Upload.png" />
+    <Content Include="images\Buttons\View uploaded documents.png" />
+    <Content Include="images\EServices-QuickReference.pdf" />
+    <Content Include="fonts\majallab.ttf" />
+    <Content Include="fonts\majalla.ttf" />
+    <Content Include="fonts\majallab.eot" />
+    <Content Include="fonts\majallab.otf" />
+    <Content Include="fonts\majallab.woff" />
+    <Content Include="fonts\majallab.woff2" />
+    <Content Include="images\E-Services-broker-registration.pdf" />
+    <Content Include="images\bgimg\Ipad - 768-1024.BackUp" />
+    <Content Include="images\bgimg\Ipad 15082019.BackUp" />
+    <Content Include="images\bgimg\Ipad Pro - 1024-1366.BackUp" />
+    <Content Include="images\bgimg\Ipad.BackUp" />
+    <Content Include="images\bgimg\IphoneX - 375-812.dib   BackUp" />
+    <Content Include="images\bgimg\Wide.BackUp" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad - 768-1024.BackUp" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad 15082019.BackUp" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad Pro - 1024-1366.BackUp" />
+    <Content Include="images\bgimg\backup27Nov2019\Ipad.BackUp" />
+    <Content Include="images\bgimg\backup27Nov2019\IphoneX - 375-812.dib   BackUp" />
+    <Content Include="images\bgimg\backup27Nov2019\Wide.BackUp" />
+    <Content Include="images\GCSKnet\Failed.png" />
+    <Content Include="images\GCSKnet\gcslogo.PNG" />
+    <Content Include="images\GCSKnet\gcslogoBkup.png" />
+    <Content Include="images\GCSKnet\GeneralCard.jpg" />
+    <Content Include="images\GCSKnet\KgacLogo.gif" />
+    <Content Include="images\GCSKnet\KgacLogo.PNG" />
+    <Content Include="images\GCSKnet\knet.gif" />
+    <Content Include="images\GCSKnet\Lang.png" />
+    <Content Include="images\GCSKnet\Logo.PNG" />
+    <Content Include="images\GCSKnet\Logobkup.png" />
+    <Content Include="images\GCSKnet\LTR-old.gif" />
+    <Content Include="images\GCSKnet\LTR.gif" />
+    <Content Include="images\GCSKnet\Oldlogo.jpg" />
+    <Content Include="images\GCSKnet\RTL-old.gif" />
+    <Content Include="images\GCSKnet\RTL.gif" />
+    <Content Include="images\GCSKnet\Self Payment.png" />
+    <Content Include="images\GCSKnet\Self PaymentMenu.png" />
+    <Content Include="images\GCSKnet\Success.png" />
+    <Content Include="images\GCSKnet\SuccessOLD.png" />
+    <Content Include="images\HomeIcons\BRSPrintingServices.png" />
+    <Content Include="images\HomeIcons\InspectionAppointments.png" />
+    <Content Include="images\UploadDocIcons\Filesearch.png" />
+    <Content Include="images\UploadDocIcons\Unconfirmed 805906.crdownload" />
+    <Content Include="GCSKnetassets\css\.DS_Store" />
+    <Content Include="GCSKnetassets\img\.DS_Store" />
+    <Content Include="GCSKnetassets\js\.DS_Store" />
+    <Content Include="GCSKnetassets\js\gsdk-bootstrap-wizard.js~RF472ff5b.TMP" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\arabic.json" />
+    <Content Include="images\fav.ico" />
+    <Content Include="images\HomeIcons\Arabic.PNG" />
+    <Content Include="images\HomeIcons\BayanSearch.PNG" />
+    <Content Include="images\HomeIcons\Brokers registration Trans.png" />
+    <Content Include="images\HomeIcons\Brokers.PNG" />
+    <Content Include="images\HomeIcons\BrokersLoginTrans.PNG" />
+    <Content Include="images\HomeIcons\BrokersLoginTrans1.PNG" />
+    <Content Include="images\HomeIcons\Companies.PNG" />
+    <Content Include="images\HomeIcons\CompanyloginTrans.PNG" />
+    <Content Include="images\HomeIcons\CompanyloginTrans1.png" />
+    <Content Include="images\HomeIcons\CompanyRegistrationTrans.PNG" />
+    <Content Include="images\HomeIcons\English.PNG" />
+    <Content Include="images\HomeIcons\ExamRequests.png" />
+    <Content Include="images\HomeIcons\HBSearch.PNG" />
+    <Content Include="images\HomeIcons\Home.png" />
+    <Content Include="images\HomeIcons\HSCODESearch.png" />
+    <Content Include="images\HomeIcons\InfoTrans.png" />
+    <Content Include="images\HomeIcons\OnlinePayment.png" />
+    <Content Include="images\HomeIcons\OrganizationRegistrationPNG.PNG" />
+    <Content Include="images\HomeIcons\Registration.png" />
+    <Content Include="images\HomeIcons\Renewal.png" />
+    <Content Include="images\HomeIcons\Requestforbrokertransferservice.png" />
+    <Content Include="images\HomeIcons\Requestforcancellingbrokerlicenseservice.PNG" />
+    <Content Include="images\HomeIcons\Requestfordeactivatebrokerlicenseservice.PNG" />
+    <Content Include="images\HomeIcons\Requestforissuingbrokerlicenseservice.png" />
+    <Content Include="images\HomeIcons\Requestforprintingalostidentitycardservice.png" />
+    <Content Include="images\HomeIcons\Requestfortowhomitconcernsletterservice.PNG" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
+    <Content Include="images\UploadDocIcons\add.png" />
+    <Content Include="images\UploadDocIcons\Browse.png" />
+    <Content Include="images\UploadDocIcons\Delete.png" />
+    <Content Include="images\UploadDocIcons\Download.png" />
+    <Content Include="images\UploadDocIcons\ImageIcon.png" />
+    <Content Include="images\UploadDocIcons\pdficon.png" />
+    <Content Include="images\UploadDocIcons\Save.png" />
+    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\dataTables.responsive.min.js" />
+    <Content Include="Scripts\fileUpload\ar.js" />
+    <Content Include="Scripts\BrokerProcess.js" />
+    <Content Include="Scripts\JS_View\AuthSignatory.js" />
+    <Content Include="Scripts\JS_View\InspectionAppointment.js" />
+    <Content Include="Scripts\JS_View\MyOrg.js" />
+    <Content Include="Scripts\JS_View\OrgFileUpload.js" />
+    <Content Include="Scripts\JS_View\Shipment.js" />
+    <Content Include="Scripts\JS_View\ShipmentAuthReq.js" />
+    <Content Include="Scripts\Registration.js" />
+    <Content Include="SelfService\Payment.aspx" />
+    <Content Include="styles\bootstrapArabic.css" />
+    <Content Include="styles\dataTables.bootstrap.min.css" />
+    <Content Include="styles\fonts\majallab.svg" />
+    <Content Include="styles\newStyle\backGround.jpg" />
+    <Content Include="styles\newStyle\backGround1.jpg" />
+    <Content Include="styles\newStyle\bootstrap.css" />
+    <Content Include="styles\newStyle\bootstrap.min.css" />
+    <Content Include="styles\newStyle\bootstrap.min.js" />
+    <Content Include="styles\newStyle\customsLogo.png" />
+    <Content Include="styles\newStyle\English.png" />
+    <Content Include="styles\newStyle\fa-regular-400.svg" />
+    <Content Include="styles\newStyle\fontsFace.css" />
+    <Content Include="styles\newStyle\icons.css" />
+    <Content Include="styles\newStyle\jquery.min.js" />
+    <Content Include="styles\newStyle\style.css" />
+    <Content Include="styles\responsive.dataTables.min.css" />
+    <Content Include="styles\responsive.dataTables-rtl.min.css" />
+    <Content Include="styles\Startcss\main.css" />
+    <Content Include="styles\Startcss\util.css" />
+    <Content Include="styles\fileUploadCss\fileinput-rtl.css" />
+    <Content Include="styles\fileUploadCss\fileinput-rtl.min.css" />
+    <Content Include="styles\fileUploadCss\fileinput.css" />
+    <Content Include="styles\fileUploadCss\fileinput.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontCss.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\bgnoise_lg.png" />
+    <Content Include="images\bkImage.jpg" />
+    <Content Include="images\clip_payment_RTL.png" />
+    <Content Include="images\customs.png" />
+    <Content Include="images\default_thumb.jpg" />
+    <Content Include="images\ePay2test.png" />
+    <Content Include="images\iStock-697462282.jpg" />
+    <Content Include="images\NewLogoicon.png" />
+    <Content Include="images\select-arrow.png" />
+    <Content Include="images\style.css" />
+    <Content Include="Scripts\fileUpload\fileinput.js" />
+    <Content Include="Scripts\fileUpload\fileinput.min.js" />
+    <Content Include="Scripts\fileUpload\plugins\piexif.js" />
+    <Content Include="Scripts\fileUpload\plugins\piexif.min.js" />
+    <Content Include="Scripts\fileUpload\plugins\purify.js" />
+    <Content Include="Scripts\fileUpload\plugins\purify.min.js" />
+    <Content Include="Scripts\fileUpload\plugins\sortable.js" />
+    <Content Include="Scripts\fileUpload\plugins\sortable.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\DroidKufi-Regular.ttf" />
+    <AdditionalFiles Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\DroidKufi-Bold.eot" />
+    <Content Include="fonts\DroidKufi-Bold.ttf" />
+    <Content Include="fonts\DroidKufi-Bold.woff" />
+    <Content Include="fonts\DroidKufi-Bold.woff2" />
+    <Content Include="fonts\DroidKufi-Regular.eot" />
+    <Content Include="fonts\DroidKufi-Regular.woff" />
+    <Content Include="fonts\DroidKufi-Regular.woff2" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\summernote.eot" />
+    <Content Include="fonts\summernote.ttf" />
+    <Content Include="fonts\summernote.woff" />
+    <Content Include="fonts\fa-brands-400.eot" />
+    <Content Include="fonts\fa-brands-400.ttf" />
+    <Content Include="fonts\fa-brands-400.woff" />
+    <Content Include="fonts\fa-brands-400.woff2" />
+    <Content Include="fonts\fa-regular-400.eot" />
+    <Content Include="fonts\fa-regular-400.ttf" />
+    <Content Include="fonts\fa-regular-400.woff" />
+    <Content Include="fonts\fa-regular-400.woff2" />
+    <Content Include="fonts\fa-solid-900.eot" />
+    <Content Include="fonts\fa-solid-900.ttf" />
+    <Content Include="fonts\fa-solid-900.woff" />
+    <Content Include="fonts\fa-solid-900.woff2" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\datepicker-ar.js" />
+    <Content Include="Scripts\eServiceScript.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JS_View\Commercial.js" />
+    <Content Include="Scripts\JS_View\Declaration.js" />
+    <Content Include="Scripts\Emailvery.js" />
+    <Content Include="Scripts\JS_View\forgot.js" />
+    <Content Include="Scripts\JS_View\Housebill.js" />
+    <Content Include="Scripts\JS_View\Hscode.js" />
+    <Content Include="Scripts\JS_View\Importer.js" />
+    <Content Include="Scripts\JS_View\Industrial.js" />
+    <Content Include="Scripts\JS_View\jquery_min_321.js" />
+    <Content Include="Scripts\JS_View\Login.js" />
+    <Content Include="Scripts\JS_View\Myaccount.js" />
+    <Content Include="Scripts\JS_View\OrgReg.js" />
+    <Content Include="Scripts\JS_View\Payment.js" />
+    <Content Include="Scripts\JS_View\Reg.js" />
+    <Content Include="Scripts\ResetPassword.js" />
+    <Content Include="Scripts\JS_View\Uploaddoc.js" />
+    <Content Include="Scripts\Main\Captcha.js" />
+    <Content Include="Scripts\Main\Commercial.js" />
+    <Content Include="Scripts\Main\Date.js" />
+    <Content Include="Scripts\Main\Main.js" />
+    <Content Include="Scripts\Main\popup.js" />
+    <Content Include="Scripts\Main\upload.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Select2.js" />
+    <Content Include="styles\animate.min.css" />
+    <Content Include="styles\Blue.css" />
+    <Content Include="styles\bootstrap.css" />
+    <Content Include="styles\bootstrap.min.css" />
+    <Content Include="styles\datatables.css" />
+    <Content Include="styles\datatables.min.css" />
+    <Content Include="styles\datepickercss.css" />
+    <Content Include="styles\errorPageStyle.css" />
+    <Content Include="styles\font-awesome.css" />
+    <Content Include="styles\font-awesome.min.css" />
+    <Content Include="styles\fonts\fontCss.css" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="styles\Home.css" />
+    <Content Include="styles\images\bgnoise_lg.png" />
+    <Content Include="styles\images\fav.ico" />
+    <Content Include="styles\images\ui-icons_444444_256x240.png" />
+    <Content Include="styles\images\ui-icons_4ca300_256x240.png" />
+    <Content Include="styles\images\ui-icons_555555_256x240.png" />
+    <Content Include="styles\images\ui-icons_9fda58_256x240.png" />
+    <Content Include="styles\jquery-ui.css" />
+    <Content Include="styles\select2.css" />
+    <Content Include="styles\style.css" />
+    <Content Include="styles\style4Arabic.css" />
+    <Content Include="styles\style4.css" />
+    <Content Include="styles\theme.css" />
+    <Content Include="styles\ModifiedStyles.css" />
+    <Content Include="styles\Untitled.css" />
+    <Content Include="themes\explorer-fas\theme.css" />
+    <Content Include="themes\explorer-fas\theme.js" />
+    <Content Include="themes\explorer-fas\theme.min.css" />
+    <Content Include="themes\explorer-fas\theme.min.js" />
+    <Content Include="themes\fas\theme.js" />
+    <Content Include="themes\fas\theme.min.js" />
+    <Content Include="Views\BrokerRenewal\BrokerTransfer.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\PrintingServices\Index.cshtml" />
+    <Content Include="Views\PrintingServices\PrintFormRequest.cshtml" />
+    <Content Include="Views\registration\ContactVerification - Copy.cshtml" />
+    <Content Include="Views\InspectionAppointments\Index.cshtml" />
+    <Content Include="Views\Appointments\InspectionAppointment.cshtml" />
+    <Content Include="Views\Appointments\CustomsVisit.cshtml" />
+    <None Include="Views\registration\Index.cshtml" />
+    <Content Include="Views\registration\Index2.cshtml" />
+    <None Include="Views\registration\Index29Oct.cshtml" />
+    <Content Include="Views\registration\Registration.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\User\payment.cshtml" />
+    <Content Include="Views\Request\RequestDetailsfortheRequest.cshtml" />
+    <Content Include="Views\Request\RequestListfortheUser.cshtml" />
+    <Content Include="styles\fonts\DroidKufi-Bold.eot" />
+    <Content Include="styles\fonts\DroidKufi-Bold.ttf" />
+    <Content Include="styles\fonts\DroidKufi-Bold.woff" />
+    <Content Include="styles\fonts\DroidKufi-Bold.woff2" />
+    <Content Include="styles\fonts\DroidKufi-Regular.eot" />
+    <Content Include="styles\fonts\DroidKufi-Regular.ttf" />
+    <Content Include="styles\fonts\DroidKufi-Regular.woff" />
+    <Content Include="styles\fonts\DroidKufi-Regular.woff2" />
+    <Content Include="styles\fonts\fontawesome-webfont.eot" />
+    <Content Include="styles\fonts\fontawesome-webfont.ttf" />
+    <Content Include="styles\fonts\fontawesome-webfont.woff" />
+    <Content Include="styles\fonts\fontawesome-webfont.woff2" />
+    <Content Include="styles\fonts\FontAwesome.otf" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="styles\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="styles\fonts\summernote.eot" />
+    <Content Include="styles\fonts\summernote.ttf" />
+    <Content Include="styles\fonts\summernote.woff" />
+    <Content Include="styles\fonts\majalla.ttf" />
+    <Content Include="styles\fonts\majallab.ttf" />
+    <Content Include="styles\fonts\majallab.eot" />
+    <Content Include="styles\fonts\majallab.otf" />
+    <Content Include="styles\fonts\majallab.woff" />
+    <Content Include="styles\fonts\majallab.woff2" />
+    <Content Include="styles\newStyle\fa-brands-400.eot" />
+    <Content Include="styles\newStyle\fa-brands-400.ttf" />
+    <Content Include="styles\newStyle\fa-brands-400.woff" />
+    <Content Include="styles\newStyle\fa-brands-400.woff2" />
+    <Content Include="styles\newStyle\fa-regular-400.eot" />
+    <Content Include="styles\newStyle\fa-regular-400.ttf" />
+    <Content Include="styles\newStyle\fa-regular-400.woff" />
+    <Content Include="styles\newStyle\fa-regular-400.woff2" />
+    <Content Include="styles\newStyle\fa-solid-900.ttf" />
+    <Content Include="styles\newStyle\fa-solid-900.woff" />
+    <Content Include="styles\newStyle\fa-solid-900.woff2" />
+    <None Include="Views\ClearingAgentCancelRequest\Indexx.cshtml" />
+    <Content Include="Views\registration\UserRegistration.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageFinal.cshtml" />
+    <Content Include="Views\ClearingAgentExamRequest\ExamRequest.cshtml" />
+    <Content Include="Views\registration\ManageUser.cshtml" />
+    <Content Include="Views\registration\UnAuthorizedAction.cshtml" />
+    <Content Include="Views\User\Org_Industrialbkp.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Org_ImporterDetailsLive.cshtml" />
+    <Content Include="Views\User\Org_CommercialLive.cshtml" />
+    <Content Include="Views\User\UploadDocument.cshtml" />
+    <Content Include="Views\User\Org_RequestStatus.cshtml" />
+    <Content Include="Views\User\MyOrganizations.cshtml" />
+    <Content Include="Views\User\Epayment.cshtml" />
+    <Content Include="Views\User\Org_IndustrialLive.cshtml" />
+    <Content Include="Views\registration\Forgot_Password.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\servererror.cshtml" />
+    <Content Include="Views\registration\EmailVerification.cshtml" />
+    <Content Include="Views\User\MyAccount.cshtml" />
+    <Content Include="Views\User\HSCodeSearch.cshtml" />
+    <Content Include="Views\User\HouseBillSearch.cshtml" />
+    <Content Include="Views\User\DeclarationSearch.cshtml" />
+    <Content Include="Views\User\HSCodeSearchid.cshtml" />
+    <Content Include="Views\registration\ResetPassword.cshtml" />
+    <Content Include="Views\BrokerRenewal\BrokerUpdate.cshtml" />
+    <Content Include="styles\bootstrap.css~RFb05b7b4.TMP" />
+    <Content Include="styles\bootstrap.css~RFb064227.TMP" />
+    <Content Include="styles\style.css~RFb08c6a2.TMP" />
+    <Content Include="styles\theme.css~RF575ed95.TMP" />
+    <Content Include="styles\theme.css~RF575efc7.TMP" />
+    <Content Include="styles\theme.css~RF57930cc.TMP" />
+    <Content Include="styles\Untitled.css~RF20255fd4.TMP" />
+    <Content Include="styles\Untitled.css~RF58e1a60.TMP" />
+    <Content Include="styles\Untitled.css~RF58f3926.TMP" />
+    <Content Include="Views\BrokerRenewal\BrokerRenewal.cshtml" />
+    <Content Include="Views\BrokerRenewal\BrokerServiceRequest.cshtml" />
+    <Content Include="Views\ClearingAgentOffice\Index.cshtml" />
+    <Content Include="Views\ClearingAgentExamRequest\Indexpp.cshtml" />
+    <None Include="Views\ClearingAgentCancelRequest\Index.cshtml" />
+    <Content Include="Views\ToWhomItMayConcerns\Index.cshtml" />
+    <Content Include="Views\registration\Home.cshtml" />
+    <Content Include="Views\registration\GETChildUsers.cshtml" />
+    <Content Include="Views\BrokerRenewal\BrokerServiceRequestUpdates.cshtml" />
+    <Content Include="Views\User\Org_Registrationlive.cshtml" />
+    <Content Include="Views\registration\StartOld.cshtml" />
+    <Content Include="Views\DashBoard\MenuView.cshtml" />
+    <None Include="Views\registration\Start.cshtml" />
+    <Content Include="Views\registration\IndexOld.cshtml" />
+    <Content Include="Views\registration\ContactVerification.cshtml" />
+    <Content Include="Views\ClearingAgentExamRequest\Index.cshtml" />
+    <Content Include="Views\registration\Start29Oct.cshtml" />
+    <Content Include="Views\registration\Start2.cshtml" />
+    <None Include="Views\Request\RequestDetailsfortheRequest.backup" />
+    <Content Include="Views\User\ShowNotifications.cshtml" />
+    <Content Include="Views\User\Org_Registration.cshtml" />
+    <Content Include="Views\User\Org_Industrial.cshtml" />
+    <Content Include="Views\User\Org_ImporterDetails.cshtml" />
+    <Content Include="Views\User\Org_Commercial.cshtml" />
+    <Content Include="Views\User\UploadDocumentn.cshtml" />
+    <Content Include="Views\User\OrganizationsDetail.cshtml" />
+    <Content Include="Views\User\OrganizationDocumentsmod.cshtml" />
+    <Content Include="Views\User\OrganizationDocumentstemp.cshtml" />
+    <Content Include="Views\User\OrganizationDocumentsnew.cshtml" />
+    <Content Include="Views\User\OrganizationDocuments.cshtml" />
+    <Content Include="Views\User\Org_AuthSignatory.cshtml" />
+    <Content Include="Views\User\OrganizationProfile.cshtml" />
+    <Content Include="Views\User\HouseBillSearch - Copy.cshtml" />
+    <Content Include="Views\Support\Index.cshtml" />
+    <Content Include="Views\ShipmentReceivingAuthorization\Index - Copy.cshtml" />
+    <Content Include="Views\ShipmentReceivingAuthorization\Index.cshtml" />
+    <Content Include="Views\ShipmentReceivingAuthorization\Indexjustnewfield.cshtml" />
+    <Content Include="Views\ShipmentReceivingAuthorization\EditorTemplates\bkp.cshtml" />
+    <Content Include="Views\ShipmentReceivingAuthorization\EditorTemplates\ShipmentAuthorizationDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\UploadFile\" />
+    <Folder Include="Views\GCSKnet\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resource2.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.ar.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.ar.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58449</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://10.10.26.226/Etrade/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
